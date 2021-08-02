@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","Error type for the `pacaptr` library."]],"type":[["Result","A specialized `Result` type used by `pacaptr`."]]});

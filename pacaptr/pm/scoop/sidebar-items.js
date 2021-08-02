@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Scoop","The Scoop CLI Installer."]]});

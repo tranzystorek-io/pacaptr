@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["dispatch","APIs for command line argument parsing and environment detection."],["error","Basic error definitions specific to this crate."],["exec","APIs for spawning subprocesses and handling their results."],["pm","Mapping from `pacman` commands to various operations of specific package managers."],["print","Output messages and prompts."]]});

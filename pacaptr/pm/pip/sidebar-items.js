@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["STRAT_PROMPT",""],["STRAT_UNINSTALL",""]],"struct":[["Pip","The Python Package Installer."]]});

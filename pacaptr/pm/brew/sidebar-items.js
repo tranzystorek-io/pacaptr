@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Brew","The Homebrew Package Manager."]]});

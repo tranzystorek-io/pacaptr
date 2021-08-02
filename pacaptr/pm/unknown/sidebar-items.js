@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Unknown","An empty mapping for unidentified package managers."]]});

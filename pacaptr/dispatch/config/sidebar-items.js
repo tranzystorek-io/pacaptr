@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CONFIG_ENV_VAR","The environment variable name for custom config file path."]],"struct":[["Config","Configurations that may vary when running the package manager."]]});
