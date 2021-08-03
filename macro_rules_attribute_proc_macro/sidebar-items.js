@@ -1,0 +1,1 @@
+initSidebarItems({"attr":[["macro_rules_attribute","Applies the given `macro_rules!` macro to the decorated item."],["macro_rules_derive","Applies the given `macro_rules!` macro to the decorated item."]]});

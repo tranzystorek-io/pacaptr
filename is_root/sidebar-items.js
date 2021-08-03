@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["is_root","Returns `true` if user is root; `false` otherwise"]]});

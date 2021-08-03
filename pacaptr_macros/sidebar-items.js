@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["compat_table",""],["test_dsl","A DSL (Domain-Specific Language) embedded in Rust, in order to simplify the form of smoke tests."]]});

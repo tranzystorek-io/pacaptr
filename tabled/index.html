@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="An easy to use library for pretty print tables of Rust `struct`s and `enum`s."><meta name="keywords" content="rust, rustlang, rust-lang, tabled"><title>tabled - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../favicon.svg"><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../tabled/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><h2 class="location">Crate tabled</h2><div class="block version"><div class="narrow-helper"></div><p>Version 0.2.2</p></div><div class="sidebar-elems"><a id="all-types" href="all.html"><p>See all tabled's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><div id="sidebar-vars" data-name="tabled" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">tabled</a><button id="copy-path" onclick="copy_path(this)" title="copy path"><img src="../clipboard.svg" width="19" height="18" alt="Copy item import" title="Copy item import to clipboard"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/tabled/lib.rs.html#1-403" title="goto source code">[src]</a></span></h1><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>An easy to use library for pretty print tables of Rust <code>struct</code>s and <code>enum</code>s.</p>
+<h1 id="get-started" class="section-header"><a href="#get-started">Get started</a></h1>
+<p>The common and probably the best way to begin is to annotate your type with
+<code>#[derive(Tabled)]</code>. You can also implement it on your own as well.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+    <span class="kw">use</span> <span class="ident">tabled</span>::{<span class="ident">Tabled</span>, <span class="ident">Table</span>};
+
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Tabled</span>)]</span>
+    <span class="kw">struct</span> <span class="ident">Language</span> {
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+        <span class="ident">designed_by</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+        <span class="ident">invented_year</span>: <span class="ident">usize</span>,
+    }
+
+    <span class="kw">let</span> <span class="ident">languages</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        <span class="ident">Language</span>{
+            <span class="ident">name</span>: <span class="string">&quot;C&quot;</span>,
+            <span class="ident">designed_by</span>: <span class="string">&quot;Dennis Ritchie&quot;</span>,
+            <span class="ident">invented_year</span>: <span class="number">1972</span>
+        },
+        <span class="ident">Language</span>{
+            <span class="ident">name</span>: <span class="string">&quot;Rust&quot;</span>,
+            <span class="ident">designed_by</span>: <span class="string">&quot;Graydon Hoare&quot;</span>,
+            <span class="ident">invented_year</span>: <span class="number">2010</span>
+        },
+        <span class="ident">Language</span>{
+            <span class="ident">name</span>: <span class="string">&quot;Go&quot;</span>,
+            <span class="ident">designed_by</span>: <span class="string">&quot;Rob Pike&quot;</span>,
+            <span class="ident">invented_year</span>: <span class="number">2009</span>
+        },
+    ];
+
+    <span class="kw">let</span> <span class="ident">table</span> <span class="op">=</span> <span class="ident">Table::new</span>(<span class="ident">languages</span>).<span class="ident">to_string</span>();
+
+    <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;+------+----------------+---------------+\n\
+                    | name |  designed_by   | invented_year |\n\
+                    +------+----------------+---------------+\n\
+                    |  C   | Dennis Ritchie |     1972      |\n\
+                    +------+----------------+---------------+\n\
+                    | Rust | Graydon Hoare  |     2010      |\n\
+                    +------+----------------+---------------+\n\
+                    |  Go  |    Rob Pike    |     2009      |\n\
+                    +------+----------------+---------------+\n&quot;</span>;
+
+    <span class="macro">assert_eq!</span>(<span class="ident">table</span>, <span class="ident">expected</span>);</pre></div>
+<p>We must to know what we print in the field
+accordingly each field should implement <code>std::fmt::Display</code>
+The example below is not compiled</p>
+
+<div class='information'><div class='tooltip compile_fail'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered compile_fail">
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Tabled</span>)]</span>
+    <span class="kw">struct</span> <span class="ident">SomeType</span> {
+        <span class="ident">field1</span>: <span class="ident">SomeOtherType</span>,
+    }
+
+    <span class="kw">struct</span> <span class="ident">SomeOtherType</span>;</pre></div>
+<p>Most of the default types implements the trait out of the box.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+    <span class="kw">use</span> <span class="ident">tabled</span>::{<span class="ident">Tabled</span>, <span class="ident">Table</span>};
+    <span class="kw">let</span> <span class="ident">some_numbers</span> <span class="op">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+    <span class="kw">let</span> <span class="ident">table</span> <span class="op">=</span> <span class="ident">Table::new</span>(<span class="kw-2">&amp;</span><span class="ident">some_numbers</span>);</pre></div>
+<p>You also can combine structures by means of tuples.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+    <span class="kw">use</span> <span class="ident">tabled</span>::{<span class="ident">Tabled</span>, <span class="ident">Table</span>, <span class="ident">Style</span>};
+
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Tabled</span>)]</span>
+    <span class="kw">enum</span> <span class="ident">Domain</span> {
+        <span class="ident">Security</span>,
+        <span class="ident">Embeded</span>,
+        <span class="ident">Frontend</span>,
+        <span class="ident">Unknown</span>,
+    }
+
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Tabled</span>)]</span>
+    <span class="kw">struct</span> <span class="ident">Developer</span>(<span class="attribute">#[<span class="ident">header</span>(<span class="string">&quot;name&quot;</span>)]</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>);
+     
+    <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">vec!</span>[
+        (<span class="ident">Developer</span>(<span class="string">&quot;Terri Kshlerin&quot;</span>), <span class="ident">Domain::Embeded</span>),
+        (<span class="ident">Developer</span>(<span class="string">&quot;Catalina Dicki&quot;</span>), <span class="ident">Domain::Security</span>),
+        (<span class="ident">Developer</span>(<span class="string">&quot;Jennie Schmeler&quot;</span>), <span class="ident">Domain::Frontend</span>),
+        (<span class="ident">Developer</span>(<span class="string">&quot;Maxim Zhiburt&quot;</span>), <span class="ident">Domain::Unknown</span>),
+    ];
+     
+    <span class="kw">let</span> <span class="ident">table</span> <span class="op">=</span> <span class="ident">Table::new</span>(<span class="ident">data</span>).<span class="ident">with</span>(<span class="ident">Style::psql</span>()).<span class="ident">to_string</span>();
+
+    <span class="macro">assert_eq!</span>(
+        <span class="ident">table</span>,
+        <span class="macro">concat!</span>(
+            <span class="string">&quot;      name       | Security | Embeded | Frontend | Unknown \n&quot;</span>,
+            <span class="string">&quot;-----------------+----------+---------+----------+---------\n&quot;</span>,
+            <span class="string">&quot; Terri Kshlerin  |          |    +    |          |         \n&quot;</span>,
+            <span class="string">&quot; Catalina Dicki  |    +     |         |          |         \n&quot;</span>,
+            <span class="string">&quot; Jennie Schmeler |          |         |    +     |         \n&quot;</span>,
+            <span class="string">&quot;  Maxim Zhiburt  |          |         |          |    +    \n&quot;</span>
+        )
+    );</pre></div>
+</div></details><h2 id="reexports" class="section-header"><a href="#reexports">Re-exports</a></h2>
+<div class="item-table"><div class="item-left import-item"><code>pub use crate::style::<a class="struct" href="style/struct.Style.html" title="struct tabled::style::Style">Style</a>;</code></div><div class="item-right docblock-short"></div><div class="item-left import-item"><code>pub use <a class="mod" href="../papergrid/index.html" title="mod papergrid">papergrid</a>;</code></div><div class="item-right docblock-short"></div></div><h2 id="modules" class="section-header"><a href="#modules">Modules</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="mod" href="style/index.html" title="tabled::style mod">style</a></div><div class="item-right docblock-short"></div></div><h2 id="structs" class="section-header"><a href="#structs">Structs</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="struct" href="struct.Cell.html" title="tabled::Cell struct">Cell</a></div><div class="item-right docblock-short"><p>Cell denotes a particular of cells on a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Column.html" title="tabled::Column struct">Column</a></div><div class="item-right docblock-short"><p>Column denotes a set of cells on given columns on a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Combination.html" title="tabled::Combination struct">Combination</a></div><div class="item-right docblock-short"><p>Combination struct which allows a chain of objects</p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Footer.html" title="tabled::Footer struct">Footer</a></div><div class="item-right docblock-short"><p>Footer renders information at the bottom.
+see <code>Panel</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Format.html" title="tabled::Format struct">Format</a></div><div class="item-right docblock-short"><p>Format a structure which modifies a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Full.html" title="tabled::Full struct">Full</a></div><div class="item-right docblock-short"><p>Head represent all cells on a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Head.html" title="tabled::Head struct">Head</a></div><div class="item-right docblock-short"><p>Head represent a row with column names</p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Header.html" title="tabled::Header struct">Header</a></div><div class="item-right docblock-short"><p>Header renders information at the top.
+see <code>Panel</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Indent.html" title="tabled::Indent struct">Indent</a></div><div class="item-right docblock-short"><p>Indent is responsilbe for a left/right/top/bottom indent.</p>
+</div><div class="item-left module-item"><a class="struct" href="struct.MaxWidth.html" title="tabled::MaxWidth struct">MaxWidth</a></div><div class="item-right docblock-short"><p>Format a structure which modifies a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Modify.html" title="tabled::Modify struct">Modify</a></div><div class="item-right docblock-short"><p>Modify structure provide a conviniet way for applying a set of <a href="trait.CellOption.html"><code>CellOption</code></a>s to the same object.</p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Panel.html" title="tabled::Panel struct">Panel</a></div><div class="item-right docblock-short"><p>Panel allows to add a custom panel to table.</p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Row.html" title="tabled::Row struct">Row</a></div><div class="item-right docblock-short"><p>Row denotes a set of cells on given rows on a <code>Grid</code></p>
+</div><div class="item-left module-item"><a class="struct" href="struct.Table.html" title="tabled::Table struct">Table</a></div><div class="item-right docblock-short"><p>Table structure provides an interface for building a table for types that implements <a href="./trait.Tabled.html"><code>Tabled</code></a>.</p>
+</div></div><h2 id="enums" class="section-header"><a href="#enums">Enums</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="enum" href="enum.Alignment.html" title="tabled::Alignment enum">Alignment</a></div><div class="item-right docblock-short"><p>Alignment represent a horizontal and vertical alignemt setting for a <a href="./struct.Table.html"><code>Table</code></a></p>
+</div><div class="item-left module-item"><a class="enum" href="enum.Disable.html" title="tabled::Disable enum">Disable</a></div><div class="item-right docblock-short"><p>Disable represent a disable setting for a <a href="./struct.Table.html"><code>Table</code></a></p>
+</div></div><h2 id="traits" class="section-header"><a href="#traits">Traits</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="trait" href="trait.CellOption.html" title="tabled::CellOption trait">CellOption</a></div><div class="item-right docblock-short"><p>CellOption is trait for configuring a <code>Cell</code> which represented by ‘row’ and ‘column’ indexes.</p>
+</div><div class="item-left module-item"><a class="trait" href="trait.Object.html" title="tabled::Object trait">Object</a></div><div class="item-right docblock-short"><p>Object helps to locate a nessesary part of a <code>Grid</code>.</p>
+</div><div class="item-left module-item"><a class="trait" href="trait.TableOption.html" title="tabled::TableOption trait">TableOption</a></div><div class="item-right docblock-short"><p>A trait for configuring a <code>Grid</code>.</p>
+</div><div class="item-left module-item"><a class="trait" href="trait.Tabled.html" title="tabled::Tabled trait">Tabled</a></div><div class="item-right docblock-short"><p>Tabled a trait responsible for providing a header filds and a row fields.</p>
+</div></div><h2 id="functions" class="section-header"><a href="#functions">Functions</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="fn" href="fn.build_grid.html" title="tabled::build_grid fn">build_grid</a></div><div class="item-right docblock-short"><p>Build_grid function build a <a href="../papergrid/struct.Grid.html"><code>Grid</code></a> from a data.
+A <a href="./macro.table.html"><code>table</code> macros</a> should be prefered over this function.</p>
+</div><div class="item-left module-item"><a class="fn" href="fn.multiline.html" title="tabled::multiline fn">multiline</a></div><div class="item-right docblock-short"><p>Multiline a helper function for changing multiline content of cell by rows not as a whole.</p>
+</div></div><h2 id="derives" class="section-header"><a href="#derives">Derive Macros</a></h2>
+<div class="item-table"><div class="item-left module-item"><a class="derive" href="derive.Tabled.html" title="tabled::Tabled derive">Tabled</a></div><div class="item-right docblock-short"></div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="tabled" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
+    <script src="../main.js"></script>
+</body></html>
