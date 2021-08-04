@@ -151,6 +151,15 @@
 <span id="151">151</span>
 <span id="152">152</span>
 <span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
 </pre><pre class="rust">
 <span class="attribute">#![<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_self!</span>()]</span>
 
@@ -226,6 +235,15 @@
         } <span class="kw">else</span> {
             <span class="self">self</span>.<span class="ident">qs</span>(<span class="ident">kws</span>, <span class="ident">flags</span>).<span class="kw">await</span>
         }
+    }
+
+    <span class="doccomment">/// Qo queries the package which provides FILE.</span>
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">qo</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;conda&quot;</span>, <span class="string">&quot;package&quot;</span>, <span class="string">&quot;--which&quot;</span>])
+            .<span class="ident">kws</span>(<span class="ident">kws</span>)
+            .<span class="ident">flags</span>(<span class="ident">flags</span>)
+            .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">cmd</span>))
+            .<span class="kw">await</span>
     }
 
     <span class="doccomment">/// Qs searches locally installed package for names or descriptions.</span>
