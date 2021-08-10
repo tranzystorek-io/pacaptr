@@ -592,8 +592,8 @@
 <span id="592">592</span>
 <span id="593">593</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::handle::Handle</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime</span>::{<span class="ident">blocking</span>, <span class="ident">driver</span>, <span class="ident">Callback</span>, <span class="ident">Runtime</span>, <span class="ident">Spawner</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::handle::Handle</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime</span>::{<span class="ident">blocking</span>, <span class="ident">driver</span>, <span class="ident">Callback</span>, <span class="ident">Runtime</span>, <span class="ident">Spawner</span>};
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -1027,7 +1027,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">build_basic_runtime</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Runtime</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime</span>::{<span class="ident">BasicScheduler</span>, <span class="ident">Kind</span>};
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime</span>::{<span class="ident">BasicScheduler</span>, <span class="ident">Kind</span>};
 
         <span class="kw">let</span> (<span class="ident">driver</span>, <span class="ident">resources</span>) <span class="op">=</span> <span class="ident">driver::Driver::new</span>(<span class="self">self</span>.<span class="ident">get_cfg</span>())<span class="question-mark">?</span>;
 
@@ -1132,9 +1132,9 @@
 <span class="macro">cfg_rt_multi_thread!</span> {
     <span class="kw">impl</span> <span class="ident">Builder</span> {
         <span class="kw">fn</span> <span class="ident">build_threaded_runtime</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Runtime</span><span class="op">&gt;</span> {
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sys::num_cpus</span>;
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime</span>::{<span class="ident">Kind</span>, <span class="ident">ThreadPool</span>};
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::park::Parker</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sys::num_cpus</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime</span>::{<span class="ident">Kind</span>, <span class="ident">ThreadPool</span>};
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::park::Parker</span>;
 
             <span class="kw">let</span> <span class="ident">core_threads</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">worker_threads</span>.<span class="ident">unwrap_or_else</span>(<span class="ident">num_cpus</span>);
 
@@ -1158,7 +1158,7 @@
             };
 
             <span class="comment">// Spawn the thread pool workers</span>
-            <span class="kw">let</span> <span class="ident">_enter</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::runtime::context::enter</span>(<span class="ident">handle</span>.<span class="ident">clone</span>());
+            <span class="kw">let</span> <span class="ident">_enter</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::runtime::context::enter</span>(<span class="ident">handle</span>.<span class="ident">clone</span>());
             <span class="ident">launch</span>.<span class="ident">launch</span>();
 
             <span class="prelude-val">Ok</span>(<span class="ident">Runtime</span> {

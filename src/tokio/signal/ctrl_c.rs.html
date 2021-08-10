@@ -53,9 +53,9 @@
 <span id="53">53</span>
 </pre><pre class="rust">
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::unix</span>::{<span class="self">self</span> <span class="kw">as</span> <span class="ident">os_impl</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::unix</span>::{<span class="self">self</span> <span class="kw">as</span> <span class="ident">os_impl</span>};
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::windows</span>::{<span class="self">self</span> <span class="kw">as</span> <span class="ident">os_impl</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::windows</span>::{<span class="self">self</span> <span class="kw">as</span> <span class="ident">os_impl</span>};
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
 

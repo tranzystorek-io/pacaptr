@@ -358,16 +358,16 @@
 <span id="358">358</span>
 <span id="359">359</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time::driver</span>::{<span class="ident">TimerHandle</span>, <span class="ident">TimerShared</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time::error::InsertError</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time::driver</span>::{<span class="ident">TimerHandle</span>, <span class="ident">TimerShared</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time::error::InsertError</span>;
 
 <span class="kw">mod</span> <span class="ident">level</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::level::Expiration</span>;
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::level::Level</span>;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::level::Expiration</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::level::Level</span>;
 
 <span class="kw">use</span> <span class="ident">std::ptr::NonNull</span>;
 
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::EntryList</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::EntryList</span>;
 
 <span class="doccomment">/// Timing wheel implementation.</span>
 <span class="doccomment">///</span>

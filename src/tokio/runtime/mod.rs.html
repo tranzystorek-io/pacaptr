@@ -754,18 +754,18 @@
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">blocking::spawn_blocking</span>;
 
     <span class="kw">mod</span> <span class="ident">builder</span>;
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::builder::Builder</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::builder::Builder</span>;
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">context</span>;
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">driver</span>;
 
-    <span class="kw">use</span> <span class="self">self</span><span class="ident">::enter::enter</span>;
+    <span class="kw">use</span> <span class="ident"><span class="self">self</span>::enter::enter</span>;
 
     <span class="kw">mod</span> <span class="ident">handle</span>;
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">handle</span>::{<span class="ident">EnterGuard</span>, <span class="ident">Handle</span>};
 
     <span class="kw">mod</span> <span class="ident">spawner</span>;
-    <span class="kw">use</span> <span class="self">self</span><span class="ident">::spawner::Spawner</span>;
+    <span class="kw">use</span> <span class="ident"><span class="self">self</span>::spawner::Spawner</span>;
 }
 
 <span class="macro">cfg_rt_multi_thread!</span> {
@@ -777,11 +777,11 @@
     <span class="kw">mod</span> <span class="ident">queue</span>;
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">thread_pool</span>;
-    <span class="kw">use</span> <span class="self">self</span><span class="ident">::thread_pool::ThreadPool</span>;
+    <span class="kw">use</span> <span class="ident"><span class="self">self</span>::thread_pool::ThreadPool</span>;
 }
 
 <span class="macro">cfg_rt!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::task::JoinHandle</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::task::JoinHandle</span>;
 
     <span class="kw">use</span> <span class="ident">std::future::Future</span>;
     <span class="kw">use</span> <span class="ident">std::time::Duration</span>;

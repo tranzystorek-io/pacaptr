@@ -107,7 +107,7 @@
 <span id="107">107</span>
 <span id="108">108</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::stream</span>::{<span class="ident">Fuse</span>, <span class="ident">FuturesOrdered</span>, <span class="ident">StreamExt</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::stream</span>::{<span class="ident">Fuse</span>, <span class="ident">FuturesOrdered</span>, <span class="ident">StreamExt</span>};
 <span class="kw">use</span> <span class="ident">core::fmt</span>;
 <span class="kw">use</span> <span class="ident">core::pin::Pin</span>;
 <span class="kw">use</span> <span class="ident">futures_core::future::Future</span>;
@@ -153,7 +153,7 @@
     <span class="ident">St::Item</span>: <span class="ident">Future</span>,
 {
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">stream</span>: <span class="ident">St</span>, <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span> { <span class="ident">stream</span>: <span class="kw">super</span><span class="ident">::Fuse::new</span>(<span class="ident">stream</span>), <span class="ident">in_progress_queue</span>: <span class="ident">FuturesOrdered::new</span>(), <span class="ident">max</span>: <span class="ident">n</span> }
+        <span class="self">Self</span> { <span class="ident">stream</span>: <span class="ident"><span class="kw">super</span>::Fuse::new</span>(<span class="ident">stream</span>), <span class="ident">in_progress_queue</span>: <span class="ident">FuturesOrdered::new</span>(), <span class="ident">max</span>: <span class="ident">n</span> }
     }
 
     <span class="macro">delegate_access_inner!</span>(<span class="ident">stream</span>, <span class="ident">St</span>, (.));
@@ -166,7 +166,7 @@
 {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">St::Item</span> <span class="kw">as</span> <span class="ident">Future</span><span class="op">&gt;</span><span class="ident">::Output</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">this</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">project</span>();
 
         <span class="comment">// First up, try to spawn off as many futures as possible by filling up</span>

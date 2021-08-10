@@ -312,8 +312,8 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
 <span class="kw">use</span> <span class="ident">std::os::windows::io</span>::{<span class="ident">AsRawSocket</span>, <span class="ident">FromRawSocket</span>, <span class="ident">IntoRawSocket</span>, <span class="ident">RawSocket</span>};
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io_source::IoSource</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::net::TcpSocket</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io_source::IoSource</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::net::TcpSocket</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">event</span>, <span class="ident">Interest</span>, <span class="ident">Registry</span>, <span class="ident">Token</span>};
 
 <span class="doccomment">/// A non-blocking TCP stream between a local socket and a remote socket.</span>

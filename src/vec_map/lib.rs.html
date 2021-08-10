@@ -1642,7 +1642,7 @@
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">serde</span>;
 
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::Entry</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::Entry</span>::<span class="kw-2">*</span>;
 
 <span class="kw">use</span> <span class="ident">std::cmp</span>::{<span class="ident">Ordering</span>, <span class="ident">max</span>};
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
@@ -1714,7 +1714,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">VecMap</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="self">Self</span><span class="ident">::new</span>() }
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="ident"><span class="self">Self</span>::new</span>() }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="ident">Hash</span><span class="op">&gt;</span> <span class="ident">Hash</span> <span class="kw">for</span> <span class="ident">VecMap</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
@@ -2365,7 +2365,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> <span class="ident">FromIterator</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">V</span>)<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">VecMap</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from_iter</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> (<span class="ident">usize</span>, <span class="ident">V</span>)<span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="ident">I</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="self">Self</span><span class="ident">::new</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::new</span>();
         <span class="ident">map</span>.<span class="ident">extend</span>(<span class="ident">iter</span>);
         <span class="ident">map</span>
     }
@@ -2704,8 +2704,8 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">test</span> {
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::VecMap</span>;
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Entry</span>::{<span class="ident">Occupied</span>, <span class="ident">Vacant</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::VecMap</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Entry</span>::{<span class="ident">Occupied</span>, <span class="ident">Vacant</span>};
     <span class="kw">use</span> <span class="ident">std::hash</span>::{<span class="ident">Hash</span>, <span class="ident">Hasher</span>};
     <span class="kw">use</span> <span class="ident">std::collections::hash_map::DefaultHasher</span>;
 

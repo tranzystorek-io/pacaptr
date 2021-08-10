@@ -64,7 +64,7 @@ stream is finished.</p>
 <p>Equivalent to:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Item</span><span class="op">&gt;</span>;</pre></div>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span>;</pre></div>
 <p>Note that because <code>next</code> doesn’t take ownership over the stream,
 the <a href="../futures_core/stream/trait.Stream.html" title="Stream"><code>Stream</code></a> type must be <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="Unpin"><code>Unpin</code></a>. If you want to use <code>next</code> with a
 <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html"><code>!Unpin</code></a> stream, you’ll first have to pin the stream. This can

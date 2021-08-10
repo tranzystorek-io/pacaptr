@@ -78,7 +78,7 @@
 <span class="doccomment">//! re-export of `AtomicU64`. On 32 bit platforms, this is implemented using a</span>
 <span class="doccomment">//! `Mutex`.</span>
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::imp::AtomicU64</span>;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::imp::AtomicU64</span>;
 
 <span class="comment">// `AtomicU64` can only be used on targets with `target_has_atomic` is 64 or greater.</span>
 <span class="comment">// Once `cfg_target_has_atomic` feature is stable, we can replace it with</span>
@@ -91,7 +91,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;arm&quot;</span>, <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;mips&quot;</span>, <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;powerpc&quot;</span>))]</span>
 <span class="kw">mod</span> <span class="ident">imp</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Mutex</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Mutex</span>;
     <span class="kw">use</span> <span class="ident">std::sync::atomic::Ordering</span>;
 
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>

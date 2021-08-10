@@ -869,9 +869,9 @@
 <span class="doccomment">//! An asynchronously awaitable `CancellationToken`.</span>
 <span class="doccomment">//! The token allows to signal a cancellation request to one or more tasks.</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicUsize</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Mutex</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::intrusive_double_linked_list</span>::{<span class="ident">LinkedList</span>, <span class="ident">ListNode</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicUsize</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Mutex</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::intrusive_double_linked_list</span>::{<span class="ident">LinkedList</span>, <span class="ident">ListNode</span>};
 
 <span class="kw">use</span> <span class="ident">core::future::Future</span>;
 <span class="kw">use</span> <span class="ident">core::pin::Pin</span>;

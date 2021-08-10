@@ -58,7 +58,7 @@
     <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>,
     <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;solaris&quot;</span>
 ))]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::epoll</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::epoll</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(
     <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;dragonfly&quot;</span>,
@@ -78,7 +78,7 @@
     <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>,
     <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;openbsd&quot;</span>
 ))]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::kqueue</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::kqueue</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
 
 <span class="doccomment">/// Lowest file descriptor used in `Selector::try_clone`.</span>
 <span class="doccomment">///</span>

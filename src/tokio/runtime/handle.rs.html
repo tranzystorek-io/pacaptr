@@ -323,10 +323,10 @@
 <span id="323">323</span>
 <span id="324">324</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::blocking</span>::{<span class="ident">BlockingTask</span>, <span class="ident">NoopSchedule</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime</span>::{<span class="ident">blocking</span>, <span class="ident">context</span>, <span class="ident">driver</span>, <span class="ident">Spawner</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::error::CONTEXT_MISSING_ERROR</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::blocking</span>::{<span class="ident">BlockingTask</span>, <span class="ident">NoopSchedule</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime</span>::{<span class="ident">blocking</span>, <span class="ident">context</span>, <span class="ident">driver</span>, <span class="ident">Spawner</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::error::CONTEXT_MISSING_ERROR</span>;
 
 <span class="kw">use</span> <span class="ident">std::future::Future</span>;
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">error</span>, <span class="ident">fmt</span>};
@@ -470,7 +470,7 @@
         <span class="ident">F::Output</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">tokio_unstable</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tracing&quot;</span>))]</span>
-        <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::util::trace::task</span>(<span class="ident">future</span>, <span class="string">&quot;task&quot;</span>, <span class="prelude-val">None</span>);
+        <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::util::trace::task</span>(<span class="ident">future</span>, <span class="string">&quot;task&quot;</span>, <span class="prelude-val">None</span>);
         <span class="self">self</span>.<span class="ident">spawner</span>.<span class="ident">spawn</span>(<span class="ident">future</span>)
     }
 
@@ -618,7 +618,7 @@
         <span class="kw">let</span> <span class="ident">_rt_enter</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">enter</span>();
 
         <span class="comment">// Enter a **blocking** context. This prevents blocking from a runtime.</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">blocking_enter</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::runtime::enter</span>(<span class="bool-val">true</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">blocking_enter</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::runtime::enter</span>(<span class="bool-val">true</span>);
 
         <span class="comment">// Block on the future</span>
         <span class="ident">blocking_enter</span>

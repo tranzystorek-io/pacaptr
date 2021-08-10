@@ -891,7 +891,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_get</span>() {
-        <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="kw">super</span><span class="ident">::get</span>();
+        <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::get</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">n</span>) <span class="op">=</span> <span class="ident">env_var</span>(<span class="string">&quot;NUM_CPUS_TEST_GET&quot;</span>) {
             <span class="macro">assert_eq!</span>(<span class="ident">num</span>, <span class="ident">n</span>);
         } <span class="kw">else</span> {
@@ -902,7 +902,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_get_physical</span>() {
-        <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="kw">super</span><span class="ident">::get_physical</span>();
+        <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::get_physical</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">n</span>) <span class="op">=</span> <span class="ident">env_var</span>(<span class="string">&quot;NUM_CPUS_TEST_GET_PHYSICAL&quot;</span>) {
             <span class="macro">assert_eq!</span>(<span class="ident">num</span>, <span class="ident">n</span>);
         } <span class="kw">else</span> {

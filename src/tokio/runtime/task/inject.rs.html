@@ -219,9 +219,9 @@
 </pre><pre class="rust">
 <span class="doccomment">//! Inject queue used to send wakeups to a work-stealing scheduler</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicUsize</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Mutex</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicUsize</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Mutex</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>;
 
 <span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
 <span class="kw">use</span> <span class="ident">std::ptr::NonNull</span>;

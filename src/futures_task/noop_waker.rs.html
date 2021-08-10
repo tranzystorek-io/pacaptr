@@ -121,7 +121,7 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">issue_2091_cross_thread_segfault</span>() {
-        <span class="kw">let</span> <span class="ident">waker</span> <span class="op">=</span> <span class="ident">std::thread::spawn</span>(<span class="kw">super</span><span class="ident">::noop_waker_ref</span>).<span class="ident">join</span>().<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">waker</span> <span class="op">=</span> <span class="ident">std::thread::spawn</span>(<span class="ident"><span class="kw">super</span>::noop_waker_ref</span>).<span class="ident">join</span>().<span class="ident">unwrap</span>();
         <span class="ident">waker</span>.<span class="ident">wake_by_ref</span>();
     }
 }

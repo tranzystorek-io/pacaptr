@@ -88,13 +88,13 @@
 
 <span class="macro">cfg_os_poll!</span> {
     <span class="kw">mod</span> <span class="ident">selector</span>;
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::selector</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::selector</span>::{<span class="ident">event</span>, <span class="ident">Event</span>, <span class="ident">Events</span>, <span class="ident">Selector</span>};
 
     <span class="kw">mod</span> <span class="ident">sourcefd</span>;
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::sourcefd::SourceFd</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::sourcefd::SourceFd</span>;
 
     <span class="kw">mod</span> <span class="ident">waker</span>;
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::waker::Waker</span>;
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::waker::Waker</span>;
 
     <span class="macro">cfg_net!</span> {
         <span class="kw">mod</span> <span class="ident">net</span>;
@@ -102,7 +102,7 @@
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">tcp</span>;
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">udp</span>;
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">uds</span>;
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::uds::SocketAddr</span>;
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::uds::SocketAddr</span>;
     }
 
     <span class="macro">cfg_io_source!</span> {
@@ -135,12 +135,12 @@
 <span class="macro">cfg_not_os_poll!</span> {
     <span class="macro">cfg_net!</span> {
         <span class="kw">mod</span> <span class="ident">uds</span>;
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::uds::SocketAddr</span>;
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::uds::SocketAddr</span>;
     }
 
     <span class="macro">cfg_any_os_ext!</span> {
         <span class="kw">mod</span> <span class="ident">sourcefd</span>;
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::sourcefd::SourceFd</span>;
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::sourcefd::SourceFd</span>;
     }
 }
 </pre></div>

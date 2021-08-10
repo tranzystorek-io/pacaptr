@@ -368,8 +368,8 @@
 <span class="kw">mod</span> <span class="ident">scheduled_io</span>;
 <span class="kw">use</span> <span class="ident">scheduled_io::ScheduledIo</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park</span>::{<span class="ident">Park</span>, <span class="ident">Unpark</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::slab</span>::{<span class="self">self</span>, <span class="ident">Slab</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park</span>::{<span class="ident">Park</span>, <span class="ident">Unpark</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::slab</span>::{<span class="self">self</span>, <span class="ident">Slab</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">loom::sync::Mutex</span>, <span class="ident">util::bit</span>};
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
@@ -579,7 +579,7 @@
     <span class="kw">type</span> <span class="ident">Unpark</span> <span class="op">=</span> <span class="ident">Handle</span>;
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">io::Error</span>;
 
-    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Unpark</span> {
+    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Unpark</span> {
         <span class="self">self</span>.<span class="ident">handle</span>()
     }
 
@@ -613,7 +613,7 @@
         <span class="doccomment">/// This function panics if there is no current reactor set and `rt` feature</span>
         <span class="doccomment">/// flag is not enabled.</span>
         <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">current</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-            <span class="kw">crate</span><span class="ident">::runtime::context::io_handle</span>().<span class="ident">expect</span>(<span class="string">&quot;A Tokio 1.x context was found, but IO is disabled. Call `enable_io` on the runtime builder to enable IO.&quot;</span>)
+            <span class="ident"><span class="kw">crate</span>::runtime::context::io_handle</span>().<span class="ident">expect</span>(<span class="string">&quot;A Tokio 1.x context was found, but IO is disabled. Call `enable_io` on the runtime builder to enable IO.&quot;</span>)
         }
     }
 }
@@ -627,7 +627,7 @@
         <span class="doccomment">/// This function panics if there is no current reactor set, or if the `rt`</span>
         <span class="doccomment">/// feature flag is not enabled.</span>
         <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">current</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-            <span class="macro">panic!</span>(<span class="string">&quot;{}&quot;</span>, <span class="kw">crate</span><span class="ident">::util::error::CONTEXT_MISSING_ERROR</span>)
+            <span class="macro">panic!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident"><span class="kw">crate</span>::util::error::CONTEXT_MISSING_ERROR</span>)
         }
     }
 }

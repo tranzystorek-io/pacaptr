@@ -356,12 +356,12 @@
 <span id="356">356</span>
 <span id="357">357</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::cell::UnsafeCell</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::future::AtomicWaker</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicUsize</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Arc</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::mpsc::list</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::notify::Notify</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::cell::UnsafeCell</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::future::AtomicWaker</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicUsize</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Arc</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::mpsc::list</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::notify::Notify</span>;
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::process</span>;
@@ -572,10 +572,10 @@
 
     <span class="doccomment">/// Receive the next value</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">recv</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="kw">super</span><span class="ident">::block::Read</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read</span>::<span class="kw-2">*</span>;
 
         <span class="comment">// Keep track of task budget</span>
-        <span class="kw">let</span> <span class="ident">coop</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="kw">crate</span><span class="ident">::coop::poll_proceed</span>(<span class="ident">cx</span>));
+        <span class="kw">let</span> <span class="ident">coop</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="ident"><span class="kw">crate</span>::coop::poll_proceed</span>(<span class="ident">cx</span>));
 
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
@@ -625,7 +625,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span>: <span class="ident">Semaphore</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Rx</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">use</span> <span class="kw">super</span><span class="ident">::block::Read::Value</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read::Value</span>;
 
         <span class="self">self</span>.<span class="ident">close</span>();
 
@@ -653,7 +653,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Chan</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">use</span> <span class="kw">super</span><span class="ident">::block::Read::Value</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read::Value</span>;
 
         <span class="comment">// Safety: the only owner of the rx fields is Chan, and eing</span>
         <span class="comment">// inside its own Drop means we&#39;re the last ones to touch it.</span>
@@ -668,7 +668,7 @@
 
 <span class="comment">// ===== impl Semaphore for (::Semaphore, capacity) =====</span>
 
-<span class="kw">impl</span> <span class="ident">Semaphore</span> <span class="kw">for</span> (<span class="kw">crate</span><span class="ident">::sync::batch_semaphore::Semaphore</span>, <span class="ident">usize</span>) {
+<span class="kw">impl</span> <span class="ident">Semaphore</span> <span class="kw">for</span> (<span class="ident"><span class="kw">crate</span>::sync::batch_semaphore::Semaphore</span>, <span class="ident">usize</span>) {
     <span class="kw">fn</span> <span class="ident">add_permit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">release</span>(<span class="number">1</span>)
     }

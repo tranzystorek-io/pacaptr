@@ -160,7 +160,7 @@
 <span id="160">160</span>
 <span id="161">161</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::DEFAULT_BUF_SIZE</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::DEFAULT_BUF_SIZE</span>;
 <span class="kw">use</span> <span class="ident">futures_core::ready</span>;
 <span class="kw">use</span> <span class="ident">futures_core::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 <span class="kw">use</span> <span class="ident">futures_io</span>::{<span class="ident">AsyncBufRead</span>, <span class="ident">AsyncRead</span>, <span class="ident">AsyncSeek</span>, <span class="ident">AsyncWrite</span>, <span class="ident">IoSlice</span>, <span class="ident">SeekFrom</span>};
@@ -203,7 +203,7 @@
     <span class="doccomment">/// Creates a new `BufWriter` with a default buffer capacity. The default is currently 8 KB,</span>
     <span class="doccomment">/// but may change in the future.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">inner</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::with_capacity</span>(<span class="ident">DEFAULT_BUF_SIZE</span>, <span class="ident">inner</span>)
+        <span class="ident"><span class="self">Self</span>::with_capacity</span>(<span class="ident">DEFAULT_BUF_SIZE</span>, <span class="ident">inner</span>)
     }
 
     <span class="doccomment">/// Creates a new `BufWriter` with the specified buffer capacity.</span>

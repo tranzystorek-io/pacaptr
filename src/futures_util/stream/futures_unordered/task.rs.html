@@ -122,9 +122,9 @@
 <span class="kw">use</span> <span class="ident">core::sync::atomic::Ordering</span>::{<span class="self">self</span>, <span class="ident">SeqCst</span>};
 <span class="kw">use</span> <span class="ident">core::sync::atomic</span>::{<span class="ident">AtomicBool</span>, <span class="ident">AtomicPtr</span>};
 
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::abort::abort</span>;
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::ReadyToRunQueue</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::task</span>::{<span class="ident">waker_ref</span>, <span class="ident">ArcWake</span>, <span class="ident">WakerRef</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::abort::abort</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::ReadyToRunQueue</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::task</span>::{<span class="ident">waker_ref</span>, <span class="ident">ArcWake</span>, <span class="ident">WakerRef</span>};
 
 <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">struct</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span> {
     <span class="comment">// The future</span>

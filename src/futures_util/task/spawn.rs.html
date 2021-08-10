@@ -165,11 +165,11 @@
 <span class="kw">use</span> <span class="ident">futures_task</span>::{<span class="ident">LocalSpawn</span>, <span class="ident">Spawn</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;compat&quot;</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::compat::Compat</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::compat::Compat</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;channel&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future</span>::{<span class="ident">FutureExt</span>, <span class="ident">RemoteHandle</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future</span>::{<span class="ident">FutureExt</span>, <span class="ident">RemoteHandle</span>};
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;alloc&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">alloc::boxed::Box</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;alloc&quot;</span>)]</span>

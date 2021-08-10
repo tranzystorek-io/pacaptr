@@ -278,8 +278,8 @@
 <span id="278">278</span>
 <span id="279">279</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::sys</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>, <span class="ident">ReadBuf</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::sys</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>, <span class="ident">ReadBuf</span>};
 
 <span class="kw">use</span> <span class="ident">std::cmp</span>;
 <span class="kw">use</span> <span class="ident">std::future::Future</span>;
@@ -289,7 +289,7 @@
 <span class="kw">use</span> <span class="ident">std::task::Poll</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::State</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::State</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// `T` should not implement _both_ Read and Write.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>

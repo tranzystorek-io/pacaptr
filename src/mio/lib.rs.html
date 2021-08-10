@@ -344,10 +344,10 @@
         <span class="doccomment">//!</span>
         <span class="doccomment">//! See the [`new`] function for documentation.</span>
 
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sys::pipe</span>::{<span class="ident">new</span>, <span class="ident">Receiver</span>, <span class="ident">Sender</span>};
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys::pipe</span>::{<span class="ident">new</span>, <span class="ident">Receiver</span>, <span class="ident">Sender</span>};
     }
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sys::SourceFd</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys::SourceFd</span>;
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">windows</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;os-ext&quot;</span>))]</span>
@@ -355,7 +355,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">windows</span> {
     <span class="doccomment">//! Windows only extensions.</span>
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sys::named_pipe::NamedPipe</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys::named_pipe::NamedPipe</span>;
 }
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">features</span> {

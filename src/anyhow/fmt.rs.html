@@ -154,17 +154,17 @@
 <span id="154">154</span>
 <span id="155">155</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::chain::Chain</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error::ErrorImpl</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::ptr::Ref</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::chain::Chain</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::ErrorImpl</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ptr::Ref</span>;
 <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="self">self</span>, <span class="ident">Debug</span>, <span class="ident">Write</span>};
 
 <span class="kw">impl</span> <span class="ident">ErrorImpl</span> {
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">display</span>(<span class="ident">this</span>: <span class="ident">Ref</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="self">Self</span><span class="ident">::error</span>(<span class="ident">this</span>))<span class="question-mark">?</span>;
+        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident"><span class="self">Self</span>::error</span>(<span class="ident">this</span>))<span class="question-mark">?</span>;
 
         <span class="kw">if</span> <span class="ident">f</span>.<span class="ident">alternate</span>() {
-            <span class="kw">for</span> <span class="ident">cause</span> <span class="kw">in</span> <span class="self">Self</span><span class="ident">::chain</span>(<span class="ident">this</span>).<span class="ident">skip</span>(<span class="number">1</span>) {
+            <span class="kw">for</span> <span class="ident">cause</span> <span class="kw">in</span> <span class="ident"><span class="self">Self</span>::chain</span>(<span class="ident">this</span>).<span class="ident">skip</span>(<span class="number">1</span>) {
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;: {}&quot;</span>, <span class="ident">cause</span>)<span class="question-mark">?</span>;
             }
         }
@@ -173,7 +173,7 @@
     }
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">debug</span>(<span class="ident">this</span>: <span class="ident">Ref</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="self">Self</span><span class="ident">::error</span>(<span class="ident">this</span>);
+        <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::error</span>(<span class="ident">this</span>);
 
         <span class="kw">if</span> <span class="ident">f</span>.<span class="ident">alternate</span>() {
             <span class="kw">return</span> <span class="ident">Debug::fmt</span>(<span class="ident">error</span>, <span class="ident">f</span>);
@@ -197,9 +197,9 @@
 
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">backtrace</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>))]</span>
         {
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::backtrace::BacktraceStatus</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::backtrace::BacktraceStatus</span>;
 
-            <span class="kw">let</span> <span class="ident">backtrace</span> <span class="op">=</span> <span class="self">Self</span><span class="ident">::backtrace</span>(<span class="ident">this</span>);
+            <span class="kw">let</span> <span class="ident">backtrace</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::backtrace</span>(<span class="ident">this</span>);
             <span class="kw">if</span> <span class="kw">let</span> <span class="ident">BacktraceStatus::Captured</span> <span class="op">=</span> <span class="ident">backtrace</span>.<span class="ident">status</span>() {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">backtrace</span> <span class="op">=</span> <span class="ident">backtrace</span>.<span class="ident">to_string</span>();
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;\n\n&quot;</span>)<span class="question-mark">?</span>;

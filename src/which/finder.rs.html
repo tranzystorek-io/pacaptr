@@ -192,10 +192,10 @@
 <span id="192">192</span>
 <span id="193">193</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::checker::CompositeChecker</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::checker::CompositeChecker</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error</span>::<span class="kw-2">*</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::helper::has_executable_extension</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helper::has_executable_extension</span>;
 <span class="kw">use</span> <span class="ident">either::Either</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;regex&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">regex::Regex</span>;
@@ -260,13 +260,13 @@
 
         <span class="kw">let</span> <span class="ident">binary_path_candidates</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">path</span>.<span class="ident">has_separator</span>() {
             <span class="comment">// Search binary in cwd if the path have a path separator.</span>
-            <span class="ident">Either::Left</span>(<span class="self">Self</span><span class="ident">::cwd_search_candidates</span>(<span class="ident">path</span>, <span class="ident">cwd</span>).<span class="ident">into_iter</span>())
+            <span class="ident">Either::Left</span>(<span class="ident"><span class="self">Self</span>::cwd_search_candidates</span>(<span class="ident">path</span>, <span class="ident">cwd</span>).<span class="ident">into_iter</span>())
         } <span class="kw">else</span> {
             <span class="comment">// Search binary in PATHs(defined in environment variable).</span>
             <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">paths</span>.<span class="ident">ok_or</span>(<span class="ident">Error::CannotFindBinaryPath</span>)<span class="question-mark">?</span>;
             <span class="kw">let</span> <span class="ident">paths</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">env::split_paths</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>).<span class="ident">collect</span>();
 
-            <span class="ident">Either::Right</span>(<span class="self">Self</span><span class="ident">::path_search_candidates</span>(<span class="ident">path</span>, <span class="ident">paths</span>).<span class="ident">into_iter</span>())
+            <span class="ident">Either::Right</span>(<span class="ident"><span class="self">Self</span>::path_search_candidates</span>(<span class="ident">path</span>, <span class="ident">paths</span>).<span class="ident">into_iter</span>())
         };
 
         <span class="prelude-val">Ok</span>(<span class="ident">binary_path_candidates</span>.<span class="ident">filter</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">binary_checker</span>.<span class="ident">is_valid</span>(<span class="ident">p</span>)))
@@ -309,7 +309,7 @@
     {
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">binary_name</span>.<span class="ident">to_absolute</span>(<span class="ident">cwd</span>);
 
-        <span class="self">Self</span><span class="ident">::append_extension</span>(<span class="ident">iter::once</span>(<span class="ident">path</span>))
+        <span class="ident"><span class="self">Self</span>::append_extension</span>(<span class="ident">iter::once</span>(<span class="ident">path</span>))
     }
 
     <span class="kw">fn</span> <span class="ident">path_search_candidates</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(
@@ -321,7 +321,7 @@
     {
         <span class="kw">let</span> <span class="ident">new_paths</span> <span class="op">=</span> <span class="ident">paths</span>.<span class="ident">into_iter</span>().<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">join</span>(<span class="ident">binary_name</span>.<span class="ident">clone</span>()));
 
-        <span class="self">Self</span><span class="ident">::append_extension</span>(<span class="ident">new_paths</span>)
+        <span class="ident"><span class="self">Self</span>::append_extension</span>(<span class="ident">new_paths</span>)
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>

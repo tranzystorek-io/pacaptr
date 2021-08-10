@@ -215,7 +215,7 @@
 <span class="doccomment">//! configurable.</span>
 
 <span class="macro">cfg_not_test_util!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time</span>::{<span class="ident">Instant</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time</span>::{<span class="ident">Instant</span>};
 
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">Clock</span> {}
@@ -236,12 +236,12 @@
 }
 
 <span class="macro">cfg_test_util!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>};
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">Mutex</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time</span>::{<span class="ident">Duration</span>, <span class="ident">Instant</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">Mutex</span>};
 
     <span class="macro">cfg_rt!</span> {
         <span class="kw">fn</span> <span class="ident">clock</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Clock</span><span class="op">&gt;</span> {
-            <span class="kw">crate</span><span class="ident">::runtime::context::clock</span>()
+            <span class="ident"><span class="kw">crate</span>::runtime::context::clock</span>()
         }
     }
 
@@ -338,7 +338,7 @@
         <span class="kw">let</span> <span class="ident">clock</span> <span class="op">=</span> <span class="ident">clock</span>().<span class="ident">expect</span>(<span class="string">&quot;time cannot be frozen from outside the Tokio runtime&quot;</span>);
         <span class="ident">clock</span>.<span class="ident">advance</span>(<span class="ident">duration</span>);
 
-        <span class="kw">crate</span><span class="ident">::task::yield_now</span>().<span class="kw">await</span>;
+        <span class="ident"><span class="kw">crate</span>::task::yield_now</span>().<span class="kw">await</span>;
     }
 
     <span class="doccomment">/// Return the current instant, factoring in frozen time.</span>

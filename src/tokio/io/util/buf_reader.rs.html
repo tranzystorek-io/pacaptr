@@ -311,8 +311,8 @@
 <span id="311">311</span>
 <span id="312">312</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::util::DEFAULT_BUF_SIZE</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io</span>::{<span class="ident">AsyncBufRead</span>, <span class="ident">AsyncRead</span>, <span class="ident">AsyncSeek</span>, <span class="ident">AsyncWrite</span>, <span class="ident">ReadBuf</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::util::DEFAULT_BUF_SIZE</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io</span>::{<span class="ident">AsyncBufRead</span>, <span class="ident">AsyncRead</span>, <span class="ident">AsyncSeek</span>, <span class="ident">AsyncWrite</span>, <span class="ident">ReadBuf</span>};
 
 <span class="kw">use</span> <span class="ident">pin_project_lite::pin_project</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>::{<span class="self">self</span>, <span class="ident">IoSlice</span>, <span class="ident">SeekFrom</span>};
@@ -351,7 +351,7 @@
     <span class="doccomment">/// Creates a new `BufReader` with a default buffer capacity. The default is currently 8 KB,</span>
     <span class="doccomment">/// but may change in the future.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">inner</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::with_capacity</span>(<span class="ident">DEFAULT_BUF_SIZE</span>, <span class="ident">inner</span>)
+        <span class="ident"><span class="self">Self</span>::with_capacity</span>(<span class="ident">DEFAULT_BUF_SIZE</span>, <span class="ident">inner</span>)
     }
 
     <span class="doccomment">/// Creates a new `BufReader` with the specified buffer capacity.</span>
@@ -620,7 +620,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">assert_unpin</span>() {
-        <span class="kw">crate</span><span class="ident">::is_unpin</span>::<span class="op">&lt;</span><span class="ident">BufReader</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span>();
+        <span class="ident"><span class="kw">crate</span>::is_unpin</span>::<span class="op">&lt;</span><span class="ident">BufReader</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span>();
     }
 }
 </pre></div>

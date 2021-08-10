@@ -303,7 +303,7 @@
         <span class="kw">use</span> <span class="ident">wasm</span> <span class="kw">as</span> <span class="ident">sys</span>;
     } <span class="kw">else</span> {
         <span class="kw">mod</span> <span class="ident">lin</span>;
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::lin</span> <span class="kw">as</span> <span class="ident">sys</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::lin</span> <span class="kw">as</span> <span class="ident">sys</span>;
     }
 }
 
@@ -525,22 +525,22 @@
 <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_dirs</span>() {
-        <span class="macro">println!</span>(<span class="string">&quot;home_dir:       {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::home_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;cache_dir:      {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::cache_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;config_dir:     {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::config_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;data_dir:       {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::data_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;data_local_dir: {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::data_local_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;executable_dir: {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::executable_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;runtime_dir:    {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::runtime_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;audio_dir:      {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::audio_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;home_dir:       {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::desktop_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;cache_dir:      {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::document_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;config_dir:     {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::download_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;font_dir:       {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::font_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;picture_dir:    {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::picture_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;public_dir:     {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::public_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;template_dir:   {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::template_dir</span>());
-        <span class="macro">println!</span>(<span class="string">&quot;video_dir:      {:?}&quot;</span>, <span class="kw">crate</span><span class="ident">::video_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;home_dir:       {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::home_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;cache_dir:      {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::cache_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;config_dir:     {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::config_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;data_dir:       {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::data_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;data_local_dir: {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::data_local_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;executable_dir: {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::executable_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;runtime_dir:    {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::runtime_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;audio_dir:      {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::audio_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;home_dir:       {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::desktop_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;cache_dir:      {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::document_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;config_dir:     {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::download_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;font_dir:       {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::font_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;picture_dir:    {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::picture_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;public_dir:     {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::public_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;template_dir:   {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::template_dir</span>());
+        <span class="macro">println!</span>(<span class="string">&quot;video_dir:      {:?}&quot;</span>, <span class="ident"><span class="kw">crate</span>::video_dir</span>());
     }
 }
 </pre></div>

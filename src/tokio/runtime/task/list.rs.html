@@ -148,10 +148,10 @@
 <span class="doccomment">//! The collections can be closed to prevent adding new tasks during shutdown of</span>
 <span class="doccomment">//! the scheduler with the collection.</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future::Future</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Mutex</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="ident">JoinHandle</span>, <span class="ident">Notified</span>, <span class="ident">Schedule</span>, <span class="ident">Task</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::linked_list</span>::{<span class="ident">Link</span>, <span class="ident">LinkedList</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future::Future</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Mutex</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="ident">JoinHandle</span>, <span class="ident">Notified</span>, <span class="ident">Schedule</span>, <span class="ident">Task</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::linked_list</span>::{<span class="ident">Link</span>, <span class="ident">LinkedList</span>};
 
 <span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
 
@@ -191,7 +191,7 @@
         <span class="ident">T</span>: <span class="ident">Future</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="ident">T::Output</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
-        <span class="kw">let</span> (<span class="ident">task</span>, <span class="ident">notified</span>, <span class="ident">join</span>) <span class="op">=</span> <span class="kw">super</span><span class="ident">::new_task</span>(<span class="ident">task</span>, <span class="ident">scheduler</span>);
+        <span class="kw">let</span> (<span class="ident">task</span>, <span class="ident">notified</span>, <span class="ident">join</span>) <span class="op">=</span> <span class="ident"><span class="kw">super</span>::new_task</span>(<span class="ident">task</span>, <span class="ident">scheduler</span>);
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lock</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">lock</span>();
         <span class="kw">if</span> <span class="ident">lock</span>.<span class="ident">closed</span> {
@@ -249,7 +249,7 @@
         <span class="ident">T</span>: <span class="ident">Future</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="ident">T::Output</span>: <span class="lifetime">&#39;static</span>,
     {
-        <span class="kw">let</span> (<span class="ident">task</span>, <span class="ident">notified</span>, <span class="ident">join</span>) <span class="op">=</span> <span class="kw">super</span><span class="ident">::new_task</span>(<span class="ident">task</span>, <span class="ident">scheduler</span>);
+        <span class="kw">let</span> (<span class="ident">task</span>, <span class="ident">notified</span>, <span class="ident">join</span>) <span class="op">=</span> <span class="ident"><span class="kw">super</span>::new_task</span>(<span class="ident">task</span>, <span class="ident">scheduler</span>);
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">closed</span> {
             <span class="ident">drop</span>(<span class="ident">task</span>);

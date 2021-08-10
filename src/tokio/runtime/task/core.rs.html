@@ -248,12 +248,12 @@
 <span class="doccomment">//! Make sure to consult the relevant safety section of each function before</span>
 <span class="doccomment">//! use.</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future::Future</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::cell::UnsafeCell</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::raw</span>::{<span class="self">self</span>, <span class="ident">Vtable</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::state::State</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::Schedule</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::linked_list</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future::Future</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::cell::UnsafeCell</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::raw</span>::{<span class="self">self</span>, <span class="ident">Vtable</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::state::State</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::Schedule</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::linked_list</span>;
 
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 <span class="kw">use</span> <span class="ident">std::ptr::NonNull</span>;
@@ -321,7 +321,7 @@
 <span class="doccomment">/// Either the future or the output.</span>
 <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">enum</span> <span class="ident">Stage</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Future</span><span class="op">&gt;</span> {
     <span class="ident">Running</span>(<span class="ident">T</span>),
-    <span class="ident">Finished</span>(<span class="kw">super</span><span class="ident">::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>),
+    <span class="ident">Finished</span>(<span class="ident"><span class="kw">super</span>::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>),
     <span class="ident">Consumed</span>,
 }
 
@@ -411,7 +411,7 @@
     <span class="doccomment">/// # Safety</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The caller must ensure it is safe to mutate the `stage` field.</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">store_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">output</span>: <span class="kw">super</span><span class="ident">::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>) {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">store_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">output</span>: <span class="ident"><span class="kw">super</span>::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>) {
         <span class="comment">// Safety: the caller ensures mutual exclusion to the field.</span>
         <span class="kw">unsafe</span> {
             <span class="self">self</span>.<span class="ident">set_stage</span>(<span class="ident">Stage::Finished</span>(<span class="ident">output</span>));
@@ -423,7 +423,7 @@
     <span class="doccomment">/// # Safety</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The caller must ensure it is safe to mutate the `stage` field.</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">take_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">super</span><span class="ident">::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">take_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">super</span>::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">std::mem</span>;
 
         <span class="self">self</span>.<span class="ident">stage</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> {

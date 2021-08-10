@@ -45,13 +45,13 @@
 <span id="45">45</span>
 </pre><pre class="rust">
 <span class="macro">cfg_rt!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future::Future</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::basic_scheduler</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::task::JoinHandle</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future::Future</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::basic_scheduler</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::task::JoinHandle</span>;
 }
 
 <span class="macro">cfg_rt_multi_thread!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::thread_pool</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::thread_pool</span>;
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>

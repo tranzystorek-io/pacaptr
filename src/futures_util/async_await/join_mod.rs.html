@@ -206,8 +206,8 @@
     <span class="attribute">#[<span class="ident">macro_export</span>]</span>
     <span class="macro">macro_rules!</span> <span class="ident">join</span> {
         ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> {{
-            <span class="kw">use</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::__private</span> <span class="kw">as</span> <span class="ident">__futures_crate</span>;
-            <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::join_internal!</span> {
+            <span class="kw">use</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::__private</span> <span class="kw">as</span> <span class="ident">__futures_crate</span>;
+            <span class="macro-nonterminal">$</span><span class="macro">crate::join_internal!</span> {
                 $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span> )<span class="op">*</span>
             }
         }}
@@ -216,8 +216,8 @@
     <span class="attribute">#[<span class="ident">macro_export</span>]</span>
     <span class="macro">macro_rules!</span> <span class="ident">try_join</span> {
         ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> {{
-            <span class="kw">use</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::__private</span> <span class="kw">as</span> <span class="ident">__futures_crate</span>;
-            <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::try_join_internal!</span> {
+            <span class="kw">use</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::__private</span> <span class="kw">as</span> <span class="ident">__futures_crate</span>;
+            <span class="macro-nonterminal">$</span><span class="macro">crate::try_join_internal!</span> {
                 $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span> )<span class="op">*</span>
             }
         }}

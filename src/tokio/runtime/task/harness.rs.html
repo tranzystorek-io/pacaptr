@@ -460,11 +460,11 @@
 <span id="460">460</span>
 <span id="461">461</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future::Future</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::core</span>::{<span class="ident">Cell</span>, <span class="ident">Core</span>, <span class="ident">CoreStage</span>, <span class="ident">Header</span>, <span class="ident">Trailer</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::state::Snapshot</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::waker::waker_ref</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="ident">JoinError</span>, <span class="ident">Notified</span>, <span class="ident">Schedule</span>, <span class="ident">Task</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future::Future</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::core</span>::{<span class="ident">Cell</span>, <span class="ident">Core</span>, <span class="ident">CoreStage</span>, <span class="ident">Header</span>, <span class="ident">Trailer</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::state::Snapshot</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::waker::waker_ref</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="ident">JoinError</span>, <span class="ident">Notified</span>, <span class="ident">Schedule</span>, <span class="ident">Task</span>};
 
 <span class="kw">use</span> <span class="ident">std::mem</span>;
 <span class="kw">use</span> <span class="ident">std::panic</span>;
@@ -566,7 +566,7 @@
     <span class="comment">// ===== join handle =====</span>
 
     <span class="doccomment">/// Read the task output into `dst`.</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">try_read_output</span>(<span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="kw">super</span><span class="ident">::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">waker</span>: <span class="kw-2">&amp;</span><span class="ident">Waker</span>) {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">try_read_output</span>(<span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="kw">super</span>::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">waker</span>: <span class="kw-2">&amp;</span><span class="ident">Waker</span>) {
         <span class="kw">if</span> <span class="ident">can_read_output</span>(<span class="self">self</span>.<span class="ident">header</span>(), <span class="self">self</span>.<span class="ident">trailer</span>(), <span class="ident">waker</span>) {
             <span class="kw-2">*</span><span class="ident">dst</span> <span class="op">=</span> <span class="ident">Poll::Ready</span>(<span class="self">self</span>.<span class="ident">core</span>().<span class="ident">stage</span>.<span class="ident">take_output</span>());
         }
@@ -654,7 +654,7 @@
 
     <span class="comment">// ====== internal ======</span>
 
-    <span class="kw">fn</span> <span class="ident">complete</span>(<span class="self">self</span>, <span class="ident">output</span>: <span class="kw">super</span><span class="ident">::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>, <span class="ident">is_join_interested</span>: <span class="ident">bool</span>) {
+    <span class="kw">fn</span> <span class="ident">complete</span>(<span class="self">self</span>, <span class="ident">output</span>: <span class="ident"><span class="kw">super</span>::Result</span><span class="op">&lt;</span><span class="ident">T::Output</span><span class="op">&gt;</span>, <span class="ident">is_join_interested</span>: <span class="ident">bool</span>) {
         <span class="comment">// We catch panics here because dropping the output may panic.</span>
         <span class="comment">//</span>
         <span class="comment">// Dropping the output can also happen in the first branch inside</span>

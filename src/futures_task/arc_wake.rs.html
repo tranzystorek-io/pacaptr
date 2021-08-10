@@ -79,7 +79,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Waker`]: std::task::Waker</span>
     <span class="kw">fn</span> <span class="ident">wake</span>(<span class="self">self</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {
-        <span class="self">Self</span><span class="ident">::wake_by_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>)
+        <span class="ident"><span class="self">Self</span>::wake_by_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>)
     }
 
     <span class="doccomment">/// Indicates that the associated task is ready to make progress and should</span>

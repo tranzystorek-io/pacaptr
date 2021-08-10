@@ -748,9 +748,9 @@
 <span class="kw">mod</span> <span class="ident">iter</span>;
 <span class="kw">mod</span> <span class="ident">parse</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error</span>::{<span class="ident">compile_error</span>, <span class="ident">Error</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::iter::Iter</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::parse</span>::{
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error</span>::{<span class="ident">compile_error</span>, <span class="ident">Error</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::iter::Iter</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::parse</span>::{
     <span class="ident">parse_define_args</span>, <span class="ident">parse_enum_hack</span>, <span class="ident">parse_export_args</span>, <span class="ident">parse_fake_call_site</span>, <span class="ident">parse_input</span>,
 };
 <span class="kw">use</span> <span class="ident">proc_macro</span>::{<span class="ident">Ident</span>, <span class="ident">Punct</span>, <span class="ident">Spacing</span>, <span class="ident">Span</span>, <span class="ident">TokenStream</span>, <span class="ident">TokenTree</span>};
@@ -1014,7 +1014,7 @@
     <span class="macro">quote!</span> {
         <span class="kw">mod</span> #<span class="ident">pub_name</span> {
             <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">proc_macro</span>;
-            <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::proc_macro</span>::<span class="kw-2">*</span>;
+            <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::proc_macro</span>::<span class="kw-2">*</span>;
         }
 
         #<span class="ident">attrs</span>

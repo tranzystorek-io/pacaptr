@@ -71,7 +71,7 @@
 <span class="kw">use</span> <span class="ident">futures_core::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 <span class="kw">use</span> <span class="ident">pin_project_lite::pin_project</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::fns::FnOnce1</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fns::FnOnce1</span>;
 
 <span class="macro">pin_project!</span> {
     <span class="doccomment">/// Internal Map future</span>
@@ -92,7 +92,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">Fut</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="ident">Map</span><span class="op">&lt;</span><span class="ident">Fut</span>, <span class="ident">F</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Creates a new Map.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">future</span>: <span class="ident">Fut</span>, <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::Incomplete</span> { <span class="ident">future</span>, <span class="ident">f</span> }
+        <span class="ident"><span class="self">Self</span>::Incomplete</span> { <span class="ident">future</span>, <span class="ident">f</span> }
     }
 }
 
@@ -103,8 +103,8 @@
 {
     <span class="kw">fn</span> <span class="ident">is_terminated</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Incomplete</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
-            <span class="self">Self</span><span class="ident">::Complete</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident"><span class="self">Self</span>::Incomplete</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident"><span class="self">Self</span>::Complete</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
         }
     }
 }

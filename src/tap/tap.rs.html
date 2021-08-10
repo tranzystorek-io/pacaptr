@@ -946,7 +946,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// as being empty.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap`]: trait.Tap.html#method.tap</span>
-	<span class="kw">fn</span> <span class="ident">tap_some</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_some</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Mutably accesses an interor value only when it is present.</span>
 	<span class="doccomment">///</span>
@@ -956,7 +956,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// is marked as being empty.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap_mut`]: trait.Tap.html#method.tap_mut</span>
-	<span class="kw">fn</span> <span class="ident">tap_some_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_some_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Runs an effect function when the container is empty.</span>
 	<span class="doccomment">///</span>
@@ -971,7 +971,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// Calls `.tap_some()` only in debug builds, and is erased in release</span>
 	<span class="doccomment">/// builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_some_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_some_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_some</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {
@@ -982,7 +982,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// Calls `.tap_some_mut()` only in debug builds, and is erased in release</span>
 	<span class="doccomment">/// builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_some_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_some_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Val</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_some_mut</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {
@@ -1061,7 +1061,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// as being a failure.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap`]: trait.Tap.html#method.tap</span>
-	<span class="kw">fn</span> <span class="ident">tap_ok</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_ok</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Mutably accesses an interior success value.</span>
 	<span class="doccomment">///</span>
@@ -1071,7 +1071,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// is marked as being a failure.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap_mut`]: trait.Tap.html#method.tap_mut</span>
-	<span class="kw">fn</span> <span class="ident">tap_ok_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_ok_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Immutably accesses an interior failure value.</span>
 	<span class="doccomment">///</span>
@@ -1081,7 +1081,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// as being a success.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap`]: trait.Tap.html#method.tap</span>
-	<span class="kw">fn</span> <span class="ident">tap_err</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_err</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Mutably accesses an interior failure value.</span>
 	<span class="doccomment">///</span>
@@ -1091,11 +1091,11 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// is marked as being a success.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// [`Tap::tap_mut`]: trait.Tap.html#method.tap_mut</span>
-	<span class="kw">fn</span> <span class="ident">tap_err_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+	<span class="kw">fn</span> <span class="ident">tap_err_mut</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
 	<span class="doccomment">/// Calls `.tap_ok()` only in debug builds, and is erased in release builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_ok_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_ok_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_ok</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {
@@ -1106,7 +1106,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// Calls `.tap_ok_mut()` only in debug builds, and is erased in release</span>
 	<span class="doccomment">/// builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_ok_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_ok_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Ok</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_ok_mut</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {
@@ -1117,7 +1117,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// Calls `.tap_err()` only in debug builds, and is erased in release</span>
 	<span class="doccomment">/// builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_err_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_err_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_err</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {
@@ -1128,7 +1128,7 @@ container to determine if the effect function should execute or not.
 	<span class="doccomment">/// Calls `.tap_err_mut()` only in debug builds, and is erased in release</span>
 	<span class="doccomment">/// builds.</span>
 	<span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-	<span class="kw">fn</span> <span class="ident">tap_err_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="ident">::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">tap_err_mut_dbg</span>(<span class="self">self</span>, <span class="ident">func</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident"><span class="self">Self</span>::Err</span>)) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
 		<span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">debug_assertions</span>) {
 			<span class="self">self</span>.<span class="ident">tap_err_mut</span>(<span class="ident">func</span>)
 		} <span class="kw">else</span> {

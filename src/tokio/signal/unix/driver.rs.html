@@ -210,10 +210,10 @@
 
 <span class="doccomment">//! Signal driver</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::driver</span>::{<span class="ident">Driver</span> <span class="kw">as</span> <span class="ident">IoDriver</span>, <span class="ident">Interest</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::PollEvented</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::Park</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::signal::registry::globals</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::driver</span>::{<span class="ident">Driver</span> <span class="kw">as</span> <span class="ident">IoDriver</span>, <span class="ident">Interest</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::PollEvented</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::Park</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::registry::globals</span>;
 
 <span class="kw">use</span> <span class="ident">mio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>::{<span class="self">self</span>, <span class="ident">Read</span>};
@@ -350,17 +350,17 @@
     <span class="kw">type</span> <span class="ident">Unpark</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">IoDriver</span> <span class="kw">as</span> <span class="ident">Park</span><span class="op">&gt;</span><span class="ident">::Unpark</span>;
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">io::Error</span>;
 
-    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Unpark</span> {
+    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Unpark</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">unpark</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">park</span>()<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">process</span>();
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">park_timeout</span>(<span class="ident">duration</span>)<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">process</span>();
         <span class="prelude-val">Ok</span>(())
@@ -391,7 +391,7 @@
         <span class="doccomment">///</span>
         <span class="doccomment">/// This function panics if there is no current signal driver set.</span>
         <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">current</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-            <span class="kw">crate</span><span class="ident">::runtime::context::signal_handle</span>().<span class="ident">expect</span>(
+            <span class="ident"><span class="kw">crate</span>::runtime::context::signal_handle</span>().<span class="ident">expect</span>(
                 <span class="string">&quot;there is no signal driver running, must be called from the context of Tokio runtime&quot;</span>,
             )
         }

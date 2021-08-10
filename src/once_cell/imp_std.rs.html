@@ -379,7 +379,7 @@
     <span class="ident">thread</span>::{<span class="self">self</span>, <span class="ident">Thread</span>},
 };
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::take_unchecked</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::take_unchecked</span>;
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
@@ -609,7 +609,7 @@
     <span class="kw">use</span> <span class="ident">std::panic</span>;
     <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">sync::mpsc::channel</span>, <span class="ident">thread</span>};
 
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::OnceCell</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::OnceCell</span>;
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">fn</span> <span class="ident">init</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">T</span>) {

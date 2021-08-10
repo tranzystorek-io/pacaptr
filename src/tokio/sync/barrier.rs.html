@@ -142,8 +142,8 @@
 <span id="142">142</span>
 <span id="143">143</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Mutex</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::watch</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Mutex</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::watch</span>;
 
 <span class="doccomment">/// A barrier enables multiple tasks to synchronize the beginning of some computation.</span>
 <span class="doccomment">///</span>
@@ -200,7 +200,7 @@
     <span class="doccomment">/// A barrier will block `n`-1 tasks which call [`Barrier::wait`] and then wake up all</span>
     <span class="doccomment">/// tasks at once when the `n`th task calls `wait`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="kw-2">mut</span> <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Barrier</span> {
-        <span class="kw">let</span> (<span class="ident">waker</span>, <span class="ident">wait</span>) <span class="op">=</span> <span class="kw">crate</span><span class="ident">::sync::watch::channel</span>(<span class="number">0</span>);
+        <span class="kw">let</span> (<span class="ident">waker</span>, <span class="ident">wait</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::sync::watch::channel</span>(<span class="number">0</span>);
 
         <span class="kw">if</span> <span class="ident">n</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
             <span class="comment">// if n is 0, it&#39;s not clear what behavior the user wants.</span>

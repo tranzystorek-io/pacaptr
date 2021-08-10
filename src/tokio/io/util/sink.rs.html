@@ -86,7 +86,7 @@
 <span id="86">86</span>
 <span id="87">87</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::AsyncWrite</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::AsyncWrite</span>;
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -170,7 +170,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">assert_unpin</span>() {
-        <span class="kw">crate</span><span class="ident">::is_unpin</span>::<span class="op">&lt;</span><span class="ident">Sink</span><span class="op">&gt;</span>();
+        <span class="ident"><span class="kw">crate</span>::is_unpin</span>::<span class="op">&lt;</span><span class="ident">Sink</span><span class="op">&gt;</span>();
     }
 }
 </pre></div>

@@ -2322,8 +2322,8 @@
 <span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
 
 <span class="kw">mod</span> <span class="ident">indentation</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::indentation::dedent</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::indentation::indent</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::indentation::dedent</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::indentation::indent</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">word_separators</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">word_splitters</span>;
@@ -2539,7 +2539,7 @@
     <span class="doccomment">/// enabled.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;terminal_size&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_termwidth</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">termwidth</span>())
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">termwidth</span>())
     }
 }
 
@@ -3512,7 +3512,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::word_splitters::WordSplitter</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::word_splitters::WordSplitter</span>;
     <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">word_splitters</span>, <span class="ident">wrap_algorithms</span>};
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;hyphenation&quot;</span>)]</span>

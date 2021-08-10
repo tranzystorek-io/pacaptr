@@ -498,8 +498,8 @@
 <span class="kw">use</span> <span class="ident">std::os::windows::io</span>::{<span class="ident">AsRawSocket</span>, <span class="ident">FromRawSocket</span>, <span class="ident">IntoRawSocket</span>, <span class="ident">RawSocket</span>};
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::net</span>::{<span class="ident">TcpListener</span>, <span class="ident">TcpStream</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sys</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::net</span>::{<span class="ident">TcpListener</span>, <span class="ident">TcpStream</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
 
 <span class="doccomment">/// A non-blocking TCP socket used to configure a stream or listener.</span>
 <span class="doccomment">///</span>
@@ -976,7 +976,7 @@
 
     <span class="doccomment">/// Returns a new, empty set of TCP keepalive parameters.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::default</span>()
+        <span class="ident"><span class="self">Self</span>::default</span>()
     }
 }
 </pre></div>

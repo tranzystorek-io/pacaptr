@@ -3360,8 +3360,8 @@
 <span id="3360">3360</span>
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::derive</span>::{<span class="ident">Data</span>, <span class="ident">DataEnum</span>, <span class="ident">DataStruct</span>, <span class="ident">DataUnion</span>, <span class="ident">DeriveInput</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::punctuated::Punctuated</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::derive</span>::{<span class="ident">Data</span>, <span class="ident">DataEnum</span>, <span class="ident">DataStruct</span>, <span class="ident">DataUnion</span>, <span class="ident">DeriveInput</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::punctuated::Punctuated</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parsing&quot;</span>)]</span>
@@ -3456,7 +3456,7 @@
         <span class="comment">// reimplemented as a non_exhaustive enum.</span>
         <span class="comment">// https://github.com/rust-lang/rust/issues/44109#issuecomment-521781237</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-        <span class="ident">__TestExhaustive</span>(<span class="kw">crate</span><span class="ident">::private</span>),
+        <span class="ident">__TestExhaustive</span>(<span class="ident"><span class="kw">crate</span>::private</span>),
     }
 }
 
@@ -3965,7 +3965,7 @@
         <span class="comment">// reimplemented as a non_exhaustive enum.</span>
         <span class="comment">// https://github.com/rust-lang/rust/issues/44109#issuecomment-521781237</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-        <span class="ident">__TestExhaustive</span>(<span class="kw">crate</span><span class="ident">::private</span>),
+        <span class="ident">__TestExhaustive</span>(<span class="ident"><span class="kw">crate</span>::private</span>),
     }
 }
 
@@ -4076,7 +4076,7 @@
         <span class="comment">// reimplemented as a non_exhaustive enum.</span>
         <span class="comment">// https://github.com/rust-lang/rust/issues/44109#issuecomment-521781237</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-        <span class="ident">__TestExhaustive</span>(<span class="kw">crate</span><span class="ident">::private</span>),
+        <span class="ident">__TestExhaustive</span>(<span class="ident"><span class="kw">crate</span>::private</span>),
     }
 }
 
@@ -4189,7 +4189,7 @@
         <span class="comment">// reimplemented as a non_exhaustive enum.</span>
         <span class="comment">// https://github.com/rust-lang/rust/issues/44109#issuecomment-521781237</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-        <span class="ident">__TestExhaustive</span>(<span class="kw">crate</span><span class="ident">::private</span>),
+        <span class="ident">__TestExhaustive</span>(<span class="ident"><span class="kw">crate</span>::private</span>),
     }
 }
 
@@ -4339,15 +4339,15 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parsing&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">parsing</span> {
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::ext::IdentExt</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::parse::discouraged::Speculative</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::parse</span>::{<span class="ident">Parse</span>, <span class="ident">ParseBuffer</span>, <span class="ident">ParseStream</span>, <span class="prelude-ty">Result</span>};
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::token::Brace</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ext::IdentExt</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::parse::discouraged::Speculative</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::parse</span>::{<span class="ident">Parse</span>, <span class="ident">ParseBuffer</span>, <span class="ident">ParseStream</span>, <span class="prelude-ty">Result</span>};
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::token::Brace</span>;
     <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Delimiter</span>, <span class="ident">Group</span>, <span class="ident">Punct</span>, <span class="ident">Spacing</span>, <span class="ident">TokenTree</span>};
     <span class="kw">use</span> <span class="ident">std::iter</span>::{<span class="self">self</span>, <span class="ident">FromIterator</span>};
 
-    <span class="kw">crate</span><span class="macro">::custom_keyword!</span>(<span class="ident">existential</span>);
-    <span class="kw">crate</span><span class="macro">::custom_keyword!</span>(<span class="ident">macro_rules</span>);
+    <span class="macro">crate::custom_keyword!</span>(<span class="ident">existential</span>);
+    <span class="macro">crate::custom_keyword!</span>(<span class="ident">macro_rules</span>);
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parsing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">Parse</span> <span class="kw">for</span> <span class="ident">Item</span> {
@@ -5327,7 +5327,7 @@
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">item_existential</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::attr::FilterAttrs</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::attr::FilterAttrs</span>;
         <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">ToTokens</span>, <span class="ident">TokenStreamExt</span>};
 
         <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">call</span>(<span class="ident">Attribute::parse_outer</span>)<span class="question-mark">?</span>;
@@ -6163,9 +6163,9 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">printing</span> {
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::attr::FilterAttrs</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::print::TokensOrDefault</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::punctuated::Pair</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::attr::FilterAttrs</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::print::TokensOrDefault</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::punctuated::Pair</span>;
     <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
     <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">ToTokens</span>, <span class="ident">TokenStreamExt</span>};
 

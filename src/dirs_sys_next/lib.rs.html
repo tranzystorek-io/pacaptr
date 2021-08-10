@@ -260,7 +260,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;redox&quot;</span>)))]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::target_unix_not_redox::home_dir</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::target_unix_not_redox::home_dir</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;redox&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">target_redox</span> {
@@ -279,7 +279,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;redox&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::target_redox::home_dir</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::target_redox::home_dir</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;ios&quot;</span>))))]</span>
 <span class="kw">mod</span> <span class="ident">xdg_user_dirs</span>;
@@ -291,7 +291,7 @@
     <span class="kw">use</span> <span class="ident">std::env</span>;
     <span class="kw">use</span> <span class="ident">std::path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
 
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::xdg_user_dirs</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::xdg_user_dirs</span>;
     <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">home_dir</span>, <span class="ident">is_absolute_path</span>};
 
     <span class="kw">fn</span> <span class="ident">user_dir_file</span>(<span class="ident">home_dir</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathBuf</span> {
@@ -316,7 +316,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;ios&quot;</span>))))]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::target_unix_not_mac</span>::{<span class="ident">user_dir</span>, <span class="ident">user_dirs</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::target_unix_not_mac</span>::{<span class="ident">user_dir</span>, <span class="ident">user_dirs</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;windows&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">target_windows</span> {
@@ -390,7 +390,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;windows&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::target_windows</span>::{
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::target_windows</span>::{
     <span class="ident">known_folder</span>, <span class="ident">known_folder_desktop</span>, <span class="ident">known_folder_documents</span>, <span class="ident">known_folder_downloads</span>, <span class="ident">known_folder_local_app_data</span>,
     <span class="ident">known_folder_music</span>, <span class="ident">known_folder_pictures</span>, <span class="ident">known_folder_profile</span>, <span class="ident">known_folder_public</span>,
     <span class="ident">known_folder_roaming_app_data</span>, <span class="ident">known_folder_templates</span>, <span class="ident">known_folder_videos</span>,

@@ -263,8 +263,8 @@
 </pre><pre class="rust">
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;net&quot;</span>), <span class="ident">allow</span>(<span class="ident">dead_code</span>))]</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::io::driver</span>::{<span class="ident">Direction</span>, <span class="ident">Handle</span>, <span class="ident">Interest</span>, <span class="ident">ReadyEvent</span>, <span class="ident">ScheduledIo</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::slab</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::driver</span>::{<span class="ident">Direction</span>, <span class="ident">Handle</span>, <span class="ident">Interest</span>, <span class="ident">ReadyEvent</span>, <span class="ident">ScheduledIo</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::slab</span>;
 
 <span class="kw">use</span> <span class="ident">mio::event::Source</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
@@ -417,7 +417,7 @@
         <span class="ident">direction</span>: <span class="ident">Direction</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// Keep track of task budget</span>
-        <span class="kw">let</span> <span class="ident">coop</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="kw">crate</span><span class="ident">::coop::poll_proceed</span>(<span class="ident">cx</span>));
+        <span class="kw">let</span> <span class="ident">coop</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="ident"><span class="kw">crate</span>::coop::poll_proceed</span>(<span class="ident">cx</span>));
         <span class="kw">let</span> <span class="ident">ev</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">poll_readiness</span>(<span class="ident">cx</span>, <span class="ident">direction</span>));
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">inner</span>().<span class="ident">is_none</span>() {
@@ -497,11 +497,11 @@
             <span class="kw">let</span> <span class="ident">fut</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">readiness</span>(<span class="ident">interest</span>);
             <span class="macro">pin!</span>(<span class="ident">fut</span>);
 
-            <span class="kw">crate</span><span class="ident">::future::poll_fn</span>(<span class="op">|</span><span class="ident">cx</span><span class="op">|</span> {
+            <span class="ident"><span class="kw">crate</span>::future::poll_fn</span>(<span class="op">|</span><span class="ident">cx</span><span class="op">|</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">inner</span>().<span class="ident">is_none</span>() {
                     <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(
                         <span class="ident">io::ErrorKind::Other</span>,
-                        <span class="kw">crate</span><span class="ident">::util::error::RUNTIME_SHUTTING_DOWN_ERROR</span>
+                        <span class="ident"><span class="kw">crate</span>::util::error::RUNTIME_SHUTTING_DOWN_ERROR</span>
                     )));
                 }
 

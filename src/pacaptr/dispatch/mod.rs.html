@@ -216,7 +216,7 @@
             <span class="comment">// Test-only mock package manager</span>
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
             <span class="string">&quot;mockpm&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="kw">use</span> <span class="self">self</span><span class="ident">::cmd::tests::MockPm</span>;
+                <span class="kw">use</span> <span class="ident"><span class="self">self</span>::cmd::tests::MockPm</span>;
                 <span class="ident">MockPm</span> { <span class="ident">cfg</span> }.<span class="ident">boxed</span>()
             }
 

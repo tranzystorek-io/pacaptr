@@ -495,8 +495,8 @@
 <span class="kw">use</span> <span class="ident">std::os::unix::io</span>::{<span class="ident">AsRawFd</span>, <span class="ident">FromRawFd</span>};
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sys::unix::net</span>::{<span class="ident">new_socket</span>, <span class="ident">socket_addr</span>, <span class="ident">to_socket_addr</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::net::TcpKeepalive</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys::unix::net</span>::{<span class="ident">new_socket</span>, <span class="ident">socket_addr</span>, <span class="ident">to_socket_addr</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::net::TcpKeepalive</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;openbsd&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>, <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;haiku&quot;</span>))]</span>
 <span class="kw">use</span> <span class="ident">libc::SO_KEEPALIVE</span> <span class="kw">as</span> <span class="ident">KEEPALIVE_TIME</span>;

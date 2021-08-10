@@ -274,9 +274,9 @@
 <span id="274">274</span>
 <span id="275">275</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time::driver::TimerHandle</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time::driver::TimerHandle</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time::driver</span>::{<span class="ident">EntryList</span>, <span class="ident">TimerShared</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time::driver</span>::{<span class="ident">EntryList</span>, <span class="ident">TimerShared</span>};
 
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fmt</span>, <span class="ident">ptr::NonNull</span>};
 
@@ -440,7 +440,7 @@
             <span class="comment">// pseudo-ring buffer, and we rotate around them indefinitely. If we</span>
             <span class="comment">// compute a deadline before now, and it&#39;s the top level, it</span>
             <span class="comment">// therefore means we&#39;re actually looking at a slot in the future.</span>
-            <span class="macro">debug_assert_eq!</span>(<span class="self">self</span>.<span class="ident">level</span>, <span class="kw">super</span><span class="ident">::NUM_LEVELS</span> <span class="op">-</span> <span class="number">1</span>);
+            <span class="macro">debug_assert_eq!</span>(<span class="self">self</span>.<span class="ident">level</span>, <span class="ident"><span class="kw">super</span>::NUM_LEVELS</span> <span class="op">-</span> <span class="number">1</span>);
 
             <span class="ident">deadline</span> <span class="op">+</span><span class="op">=</span> <span class="ident">level_range</span>;
         }

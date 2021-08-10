@@ -669,7 +669,7 @@
         <span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>,
     {
         <span class="ident">OsStr::from_raw_bytes</span>(<span class="ident">string</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">os_string</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">os_string</span> {
-            <span class="ident">Cow::Borrowed</span>(<span class="ident">os_string</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Cow::Borrowed</span>(<span class="self">Self</span><span class="ident">::new</span>(<span class="ident">os_string</span>)),
+            <span class="ident">Cow::Borrowed</span>(<span class="ident">os_string</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Cow::Borrowed</span>(<span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">os_string</span>)),
             <span class="ident">Cow::Owned</span>(<span class="ident">os_string</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Cow::Owned</span>(<span class="ident">os_string</span>.<span class="ident">into</span>()),
         })
     }

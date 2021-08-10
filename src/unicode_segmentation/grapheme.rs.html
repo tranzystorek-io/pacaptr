@@ -768,7 +768,7 @@
 
 <span class="kw">use</span> <span class="ident">core::cmp</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme::GraphemeCat</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme::GraphemeCat</span>;
 
 <span class="doccomment">/// External iterator for grapheme clusters and byte offsets.</span>
 <span class="doccomment">///</span>
@@ -988,8 +988,8 @@
 
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">fn</span> <span class="ident">check_pair</span>(<span class="ident">before</span>: <span class="ident">GraphemeCat</span>, <span class="ident">after</span>: <span class="ident">GraphemeCat</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PairResult</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme::GraphemeCat</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="self">self</span><span class="ident">::PairResult</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme::GraphemeCat</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident"><span class="self">self</span>::PairResult</span>::<span class="kw-2">*</span>;
     <span class="kw">match</span> (<span class="ident">before</span>, <span class="ident">after</span>) {
         (<span class="ident">GC_CR</span>, <span class="ident">GC_LF</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">NotBreak</span>,  <span class="comment">// GB3</span>
         (<span class="ident">GC_Control</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Break</span>,  <span class="comment">// GB4</span>
@@ -1054,8 +1054,8 @@
     }
 
     <span class="kw">fn</span> <span class="ident">grapheme_category</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ch</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">GraphemeCat</span> {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme::GraphemeCat</span>::<span class="kw-2">*</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme::GraphemeCat</span>::<span class="kw-2">*</span>;
 
         <span class="kw">if</span> <span class="ident">ch</span> <span class="op">&lt;</span><span class="op">=</span> <span class="string">&#39;\u{7e}&#39;</span> {
             <span class="comment">// Special-case optimization for ascii, except U+007F.  This</span>
@@ -1146,7 +1146,7 @@
     <span class="doccomment">/// assert_eq!(cursor.is_boundary(&amp;flags[8..], 8), Ok(true));</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">provide_context</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="macro">assert!</span>(<span class="ident">chunk_start</span> <span class="op">+</span> <span class="ident">chunk</span>.<span class="ident">len</span>() <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">pre_context_offset</span>.<span class="ident">unwrap</span>());
         <span class="self">self</span>.<span class="ident">pre_context_offset</span> <span class="op">=</span> <span class="prelude-val">None</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_extended</span> <span class="op">&amp;&amp;</span> <span class="ident">chunk_start</span> <span class="op">+</span> <span class="ident">chunk</span>.<span class="ident">len</span>() <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">offset</span> {
@@ -1196,7 +1196,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">handle_regional</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ris_count</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ris_count</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>);
         <span class="kw">for</span> <span class="ident">ch</span> <span class="kw">in</span> <span class="ident">chunk</span>.<span class="ident">chars</span>().<span class="ident">rev</span>() {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">grapheme_category</span>(<span class="ident">ch</span>) <span class="op">!</span><span class="op">=</span> <span class="ident">gr::GC_Regional_Indicator</span> {
@@ -1217,7 +1217,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">handle_emoji</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">chunk</span>.<span class="ident">chars</span>().<span class="ident">rev</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ch</span>) <span class="op">=</span> <span class="ident">iter</span>.<span class="ident">next</span>() {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">grapheme_category</span>(<span class="ident">ch</span>) <span class="op">!</span><span class="op">=</span> <span class="ident">gr::GC_ZWJ</span> {
@@ -1271,7 +1271,7 @@
     <span class="doccomment">/// assert_eq!(cursor.is_boundary(flags, 0), Ok(false));</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">GraphemeState::Break</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>)
         }

@@ -476,10 +476,10 @@
 </pre><pre class="rust">
 <span class="doccomment">//! Run-queue structures to support a work-stealing scheduler</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::cell::UnsafeCell</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic</span>::{<span class="ident">AtomicU16</span>, <span class="ident">AtomicU32</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Arc</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="self">self</span>, <span class="ident">Inject</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::cell::UnsafeCell</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic</span>::{<span class="ident">AtomicU16</span>, <span class="ident">AtomicU32</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Arc</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="self">self</span>, <span class="ident">Inject</span>};
 
 <span class="kw">use</span> <span class="ident">std::mem::MaybeUninit</span>;
 <span class="kw">use</span> <span class="ident">std::ptr</span>;

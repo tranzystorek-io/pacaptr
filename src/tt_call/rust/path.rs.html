@@ -573,7 +573,7 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>)<span class="op">*</span> }]
             <span class="ident">_tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>)<span class="op">*</span> }]
@@ -586,10 +586,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ :: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">_segment</span>:<span class="ident">ident</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_possibly_empty_path_after_ident</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_possibly_empty_path_after_ident</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">prefix</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span> }]
             }
@@ -602,10 +602,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">_segment</span>:<span class="ident">ident</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_possibly_empty_path_after_ident</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_possibly_empty_path_after_ident</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">prefix</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span> }]
             }
@@ -619,7 +619,7 @@
         <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">prefix</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -636,7 +636,7 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_ident!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_ident!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>)<span class="op">*</span> }]
@@ -651,7 +651,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ <span class="op">&lt;</span> <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -665,7 +665,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ <span class="op">&lt;</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>:<span class="ident">tt</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>
         }
     };
@@ -677,10 +677,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ <span class="op">&lt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_generic_param</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_generic_param</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_in_angle_brackets!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_in_angle_brackets!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">prefix</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span> }]
             }
@@ -694,7 +694,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ :: <span class="op">&lt;</span> <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -708,10 +708,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ :: <span class="op">&lt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_generic_param</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_generic_param</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_in_angle_brackets!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_in_angle_brackets!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">prefix</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lt</span> }]
             }
@@ -725,10 +725,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">args</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">original</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_validate_fn_path_args</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_validate_fn_path_args</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">args</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path_after_fn_args!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path_after_fn_args!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">original</span> }]
                 <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -743,7 +743,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>)<span class="op">*</span> }]
@@ -760,7 +760,7 @@
         <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>)<span class="op">*</span> }]
@@ -775,7 +775,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ :: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">_segment</span>:<span class="ident">ident</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_ident!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_ident!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">colons</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">segment</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -790,7 +790,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ :: $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>)<span class="op">*</span>
         }
     };
@@ -802,7 +802,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -820,7 +820,7 @@
         <span class="ident">param</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_in_angle_brackets!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_in_angle_brackets!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">prefix</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">param</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> }]
@@ -837,7 +837,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -852,7 +852,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ <span class="op">&gt;</span><span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> <span class="op">&gt;</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -867,7 +867,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ , <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_possibly_empty_path_after_close_angle!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_possibly_empty_path_after_close_angle!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gt</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -882,7 +882,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ , <span class="op">&gt;</span><span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span> <span class="op">&gt;</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ <span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -897,10 +897,10 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ , $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_generic_param</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_generic_param</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_in_angle_brackets!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_in_angle_brackets!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">prefix</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">comma</span> }]
             }
@@ -915,7 +915,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>)<span class="op">*</span>
         }
     };
@@ -928,7 +928,7 @@
         <span class="ident">rest</span> <span class="op">=</span> [{ }]
         <span class="ident">_rest</span> <span class="op">=</span> [{ }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected_last!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected_last!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">param</span>)<span class="op">*</span>
         }
     };
@@ -943,7 +943,7 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">input</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lifetime</span>:<span class="ident">lifetime</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">param</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">lifetime</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -955,10 +955,10 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">input</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">assoc</span>:<span class="ident">ident</span> <span class="op">=</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::parse_type</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::parse_type</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_generic_param!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_generic_param!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">assoc</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">assoc</span> <span class="op">=</span> }]
             }
@@ -972,7 +972,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">param</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">assoc</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">eq</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -984,10 +984,10 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::private_parse_type_with_plus</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::private_parse_type_with_plus</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">input</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_generic_param!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_generic_param!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             }
         }
@@ -999,7 +999,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">param</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -1015,7 +1015,7 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">tokens</span> <span class="op">=</span> [{ }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
         }
     };
@@ -1025,10 +1025,10 @@
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::parse_type</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::parse_type</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_validate_fn_path_args!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_validate_fn_path_args!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             }
         }
@@ -1040,7 +1040,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
         }
     };
@@ -1051,7 +1051,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ , $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_validate_fn_path_args!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_validate_fn_path_args!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
         }
@@ -1063,7 +1063,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>:<span class="ident">tt</span>)<span class="op">+</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unexpected</span>)<span class="op">*</span>
         }
     };
@@ -1078,7 +1078,7 @@
         <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path_after_fn_args!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path_after_fn_args!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>)<span class="op">*</span> }]
@@ -1093,10 +1093,10 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ <span class="op">-</span><span class="op">&gt;</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">arrow</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_call!</span> {
-            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro-nonterminal">::parse_type</span> }]
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_call!</span> {
+            <span class="kw">macro</span> <span class="op">=</span> [{ <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::parse_type</span> }]
             <span class="ident">input</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
-            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_parse_path_after_fn_args!</span> {
+            ~~<span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro">crate::private_parse_path_after_fn_args!</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
                 <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">arrow</span> }]
             }
@@ -1110,7 +1110,7 @@
         <span class="ident">tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">_tokens</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">dup</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]
@@ -1124,7 +1124,7 @@
         <span class="kw">type</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
         <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }]
     } <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::tt_return!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">path</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">path</span>)<span class="op">*</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>)<span class="op">*</span> }]
             <span class="ident">rest</span> <span class="op">=</span> [{ $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }]

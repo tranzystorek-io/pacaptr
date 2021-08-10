@@ -267,7 +267,7 @@
         <span class="ident">F</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">future</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">try_set</span>(<span class="ident">future</span>) {
-            <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">future</span>);
+            <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">future</span>);
         }
     }
 
@@ -380,7 +380,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">test</span> {
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::ReusableBoxFuture</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::ReusableBoxFuture</span>;
     <span class="kw">use</span> <span class="ident">futures::future::FutureExt</span>;
     <span class="kw">use</span> <span class="ident">std::alloc::Layout</span>;
     <span class="kw">use</span> <span class="ident">std::future::Future</span>;

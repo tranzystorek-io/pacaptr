@@ -142,7 +142,7 @@
 <span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 <span class="kw">use</span> <span class="ident">tokio::sync</span>::{<span class="ident">AcquireError</span>, <span class="ident">OwnedSemaphorePermit</span>, <span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
 
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::ReusableBoxFuture</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::ReusableBoxFuture</span>;
 
 <span class="doccomment">/// A wrapper around [`Semaphore`] that provides a `poll_acquire` method.</span>
 <span class="doccomment">///</span>

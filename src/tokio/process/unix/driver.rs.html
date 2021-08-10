@@ -61,9 +61,9 @@
 
 <span class="doccomment">//! Process driver</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::Park</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::process::unix::GlobalOrphanQueue</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::signal::unix::driver</span>::{<span class="ident">Driver</span> <span class="kw">as</span> <span class="ident">SignalDriver</span>, <span class="ident">Handle</span> <span class="kw">as</span> <span class="ident">SignalHandle</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::Park</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::process::unix::GlobalOrphanQueue</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::unix::driver</span>::{<span class="ident">Driver</span> <span class="kw">as</span> <span class="ident">SignalDriver</span>, <span class="ident">Handle</span> <span class="kw">as</span> <span class="ident">SignalHandle</span>};
 
 <span class="kw">use</span> <span class="ident">std::io</span>;
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
@@ -95,17 +95,17 @@
     <span class="kw">type</span> <span class="ident">Unpark</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">SignalDriver</span> <span class="kw">as</span> <span class="ident">Park</span><span class="op">&gt;</span><span class="ident">::Unpark</span>;
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">io::Error</span>;
 
-    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Unpark</span> {
+    <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Unpark</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">unpark</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">park</span>()<span class="question-mark">?</span>;
         <span class="ident">GlobalOrphanQueue::reap_orphans</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">signal_handle</span>);
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">park_timeout</span>(<span class="ident">duration</span>)<span class="question-mark">?</span>;
         <span class="ident">GlobalOrphanQueue::reap_orphans</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">signal_handle</span>);
         <span class="prelude-val">Ok</span>(())

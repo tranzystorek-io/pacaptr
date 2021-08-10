@@ -88,7 +88,7 @@
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">once</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">value</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Once</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="ident">Once</span> {
-        <span class="ident">iter</span>: <span class="kw">crate</span><span class="ident">::iter</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>).<span class="ident">into_iter</span>()),
+        <span class="ident">iter</span>: <span class="ident"><span class="kw">crate</span>::iter</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>).<span class="ident">into_iter</span>()),
     }
 }
 

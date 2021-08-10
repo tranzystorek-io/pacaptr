@@ -589,7 +589,7 @@
 <span class="doccomment">//! [`poll`]: method@std::future::Future::poll</span>
 
 <span class="macro">cfg_rt!</span> {
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="ident">JoinError</span>, <span class="ident">JoinHandle</span>};
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="ident">JoinError</span>, <span class="ident">JoinHandle</span>};
 
     <span class="kw">mod</span> <span class="ident">blocking</span>;
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">blocking::spawn_blocking</span>;
@@ -620,7 +620,7 @@
 
     <span class="doccomment">/// Task-related futures.</span>
     <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">futures</span> {
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">super</span><span class="ident">::task_local::TaskLocalFuture</span>;
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::task_local::TaskLocalFuture</span>;
     }
 }
 </pre></div>

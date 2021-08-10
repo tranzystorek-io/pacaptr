@@ -1071,8 +1071,8 @@
 <span id="1071">1071</span>
 </pre><pre class="rust">
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::buf</span>::{<span class="ident">reader</span>, <span class="ident">Reader</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::buf</span>::{<span class="ident">take</span>, <span class="ident">Chain</span>, <span class="ident">Take</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::buf</span>::{<span class="ident">reader</span>, <span class="ident">Reader</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::buf</span>::{<span class="ident">take</span>, <span class="ident">Chain</span>, <span class="ident">Take</span>};
 
 <span class="kw">use</span> <span class="ident">core</span>::{<span class="ident">cmp</span>, <span class="ident">mem</span>, <span class="ident">ptr</span>};
 
@@ -1801,7 +1801,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function panics if there is not enough remaining data in `self`.</span>
     <span class="kw">fn</span> <span class="ident">get_f32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f32</span> {
-        <span class="ident">f32::from_bits</span>(<span class="self">Self</span><span class="ident">::get_u32</span>(<span class="self">self</span>))
+        <span class="ident">f32::from_bits</span>(<span class="ident"><span class="self">Self</span>::get_u32</span>(<span class="self">self</span>))
     }
 
     <span class="doccomment">/// Gets an IEEE754 single-precision (4 bytes) floating point number from</span>
@@ -1822,7 +1822,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function panics if there is not enough remaining data in `self`.</span>
     <span class="kw">fn</span> <span class="ident">get_f32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f32</span> {
-        <span class="ident">f32::from_bits</span>(<span class="self">Self</span><span class="ident">::get_u32_le</span>(<span class="self">self</span>))
+        <span class="ident">f32::from_bits</span>(<span class="ident"><span class="self">Self</span>::get_u32_le</span>(<span class="self">self</span>))
     }
 
     <span class="doccomment">/// Gets an IEEE754 double-precision (8 bytes) floating point number from</span>
@@ -1843,7 +1843,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function panics if there is not enough remaining data in `self`.</span>
     <span class="kw">fn</span> <span class="ident">get_f64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f64</span> {
-        <span class="ident">f64::from_bits</span>(<span class="self">Self</span><span class="ident">::get_u64</span>(<span class="self">self</span>))
+        <span class="ident">f64::from_bits</span>(<span class="ident"><span class="self">Self</span>::get_u64</span>(<span class="self">self</span>))
     }
 
     <span class="doccomment">/// Gets an IEEE754 double-precision (8 bytes) floating point number from</span>
@@ -1864,7 +1864,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function panics if there is not enough remaining data in `self`.</span>
     <span class="kw">fn</span> <span class="ident">get_f64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f64</span> {
-        <span class="ident">f64::from_bits</span>(<span class="self">Self</span><span class="ident">::get_u64_le</span>(<span class="self">self</span>))
+        <span class="ident">f64::from_bits</span>(<span class="ident"><span class="self">Self</span>::get_u64_le</span>(<span class="self">self</span>))
     }
 
     <span class="doccomment">/// Consumes `len` bytes inside self and returns new instance of `Bytes`</span>
@@ -1882,12 +1882,12 @@
     <span class="doccomment">/// let bytes = (&amp;b&quot;hello world&quot;[..]).copy_to_bytes(5);</span>
     <span class="doccomment">/// assert_eq!(&amp;bytes[..], &amp;b&quot;hello&quot;[..]);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::Bytes</span> {
-        <span class="kw">use</span> <span class="kw">super</span><span class="ident">::BufMut</span>;
+    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Bytes</span> {
+        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::BufMut</span>;
 
         <span class="macro">assert!</span>(<span class="ident">len</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">remaining</span>(), <span class="string">&quot;`len` greater than remaining&quot;</span>);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::BytesMut::with_capacity</span>(<span class="ident">len</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::BytesMut::with_capacity</span>(<span class="ident">len</span>);
         <span class="ident">ret</span>.<span class="ident">put</span>(<span class="self">self</span>.<span class="ident">take</span>(<span class="ident">len</span>));
         <span class="ident">ret</span>.<span class="ident">freeze</span>()
     }
@@ -2073,7 +2073,7 @@
             (<span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">get_int_le</span>(<span class="ident">nbytes</span>)
         }
 
-        <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::Bytes</span> {
+        <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Bytes</span> {
             (<span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">copy_to_bytes</span>(<span class="ident">len</span>)
         }
     };

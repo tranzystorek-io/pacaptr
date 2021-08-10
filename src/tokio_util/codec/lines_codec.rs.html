@@ -229,8 +229,8 @@
 <span id="229">229</span>
 <span id="230">230</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::codec::decoder::Decoder</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::codec::encoder::Encoder</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::codec::decoder::Decoder</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::codec::encoder::Encoder</span>;
 
 <span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">Buf</span>, <span class="ident">BufMut</span>, <span class="ident">BytesMut</span>};
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">cmp</span>, <span class="ident">fmt</span>, <span class="ident">io</span>, <span class="ident">str</span>, <span class="ident">usize</span>};
@@ -430,7 +430,7 @@
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">LinesCodec</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>()
+        <span class="ident"><span class="self">Self</span>::new</span>()
     }
 }
 

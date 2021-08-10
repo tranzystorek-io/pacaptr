@@ -2620,7 +2620,7 @@
     <span class="kw">fn</span> <span class="ident">is_alphabetic</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="ident">c</span> {
             <span class="string">&#39;a&#39;</span> ..<span class="op">=</span> <span class="string">&#39;z&#39;</span> <span class="op">|</span> <span class="string">&#39;A&#39;</span> ..<span class="op">=</span> <span class="string">&#39;Z&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">c</span> <span class="kw">if</span> <span class="ident">c</span> <span class="op">&gt;</span> <span class="string">&#39;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">super</span><span class="ident">::derived_property::Alphabetic</span>(<span class="ident">c</span>),
+            <span class="ident">c</span> <span class="kw">if</span> <span class="ident">c</span> <span class="op">&gt;</span> <span class="string">&#39;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="kw">super</span>::derived_property::Alphabetic</span>(<span class="ident">c</span>),
             <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
@@ -2629,7 +2629,7 @@
     <span class="kw">fn</span> <span class="ident">is_numeric</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="ident">c</span> {
             <span class="string">&#39;0&#39;</span> ..<span class="op">=</span> <span class="string">&#39;9&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">c</span> <span class="kw">if</span> <span class="ident">c</span> <span class="op">&gt;</span> <span class="string">&#39;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">super</span><span class="ident">::general_category::N</span>(<span class="ident">c</span>),
+            <span class="ident">c</span> <span class="kw">if</span> <span class="ident">c</span> <span class="op">&gt;</span> <span class="string">&#39;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="kw">super</span>::general_category::N</span>(<span class="ident">c</span>),
             <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
@@ -2687,7 +2687,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">N</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">super</span><span class="ident">::util::bsearch_range_table</span>(<span class="ident">c</span>, <span class="ident">N_table</span>)
+        <span class="ident"><span class="kw">super</span>::util::bsearch_range_table</span>(<span class="ident">c</span>, <span class="ident">N_table</span>)
     }
 
 }
@@ -2910,7 +2910,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">Alphabetic</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">super</span><span class="ident">::util::bsearch_range_table</span>(<span class="ident">c</span>, <span class="ident">Alphabetic_table</span>)
+        <span class="ident"><span class="kw">super</span>::util::bsearch_range_table</span>(<span class="ident">c</span>, <span class="ident">Alphabetic_table</span>)
     }
 
 }
@@ -2918,7 +2918,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">grapheme</span> {
     <span class="kw">use</span> <span class="ident">core::result::Result</span>::{<span class="prelude-val">Ok</span>, <span class="prelude-val">Err</span>};
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::GraphemeCat</span>::<span class="kw-2">*</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::GraphemeCat</span>::<span class="kw-2">*</span>;
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -3564,7 +3564,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">word</span> {
     <span class="kw">use</span> <span class="ident">core::result::Result</span>::{<span class="prelude-val">Ok</span>, <span class="prelude-val">Err</span>};
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::WordCat</span>::<span class="kw-2">*</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::WordCat</span>::<span class="kw-2">*</span>;
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -4056,7 +4056,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">emoji</span> {
     <span class="kw">use</span> <span class="ident">core::result::Result</span>::{<span class="prelude-val">Ok</span>, <span class="prelude-val">Err</span>};
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::EmojiCat</span>::<span class="kw-2">*</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::EmojiCat</span>::<span class="kw-2">*</span>;
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -4146,7 +4146,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sentence</span> {
     <span class="kw">use</span> <span class="ident">core::result::Result</span>::{<span class="prelude-val">Ok</span>, <span class="prelude-val">Err</span>};
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::SentenceCat</span>::<span class="kw-2">*</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::SentenceCat</span>::<span class="kw-2">*</span>;
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>

@@ -38,7 +38,7 @@
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="ident">Formatter</span>, <span class="ident">LowerHex</span>, <span class="prelude-ty">Result</span>, <span class="ident">UpperHex</span>};
 
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::BytesRef</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::BytesRef</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Bytes</span>, <span class="ident">BytesMut</span>};
 
 <span class="kw">impl</span> <span class="ident">LowerHex</span> <span class="kw">for</span> <span class="ident">BytesRef</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {

@@ -482,9 +482,9 @@
 
 <span class="attribute">#![<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::signal::registry</span>::{<span class="ident">globals</span>, <span class="ident">EventId</span>, <span class="ident">EventInfo</span>, <span class="ident">Globals</span>, <span class="ident">Init</span>, <span class="ident">Storage</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::signal::RxFuture</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::watch</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::registry</span>::{<span class="ident">globals</span>, <span class="ident">EventId</span>, <span class="ident">EventInfo</span>, <span class="ident">Globals</span>, <span class="ident">Init</span>, <span class="ident">Storage</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::RxFuture</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::watch</span>;
 
 <span class="kw">use</span> <span class="ident">mio::net::UnixStream</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>::{<span class="self">self</span>, <span class="ident">Error</span>, <span class="ident">ErrorKind</span>, <span class="ident">Write</span>};
@@ -494,7 +494,7 @@
 <span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">driver</span>;
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::driver::Handle</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::driver::Handle</span>;
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">OsStorage</span> <span class="op">=</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SignalInfo</span><span class="op">&gt;</span>;
 

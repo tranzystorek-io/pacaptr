@@ -353,15 +353,15 @@
 </pre><pre class="rust">
 <span class="doccomment">//! Thread pool for blocking operations</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">Condvar</span>, <span class="ident">Mutex</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::thread</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::blocking::schedule::NoopSchedule</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::blocking::shutdown</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::builder::ThreadNameFn</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::context</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime</span>::{<span class="ident">Builder</span>, <span class="ident">Callback</span>, <span class="ident">Handle</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util::error::CONTEXT_MISSING_ERROR</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">Condvar</span>, <span class="ident">Mutex</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::thread</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::blocking::schedule::NoopSchedule</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::blocking::shutdown</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::builder::ThreadNameFn</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::context</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime</span>::{<span class="ident">Builder</span>, <span class="ident">Callback</span>, <span class="ident">Handle</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::error::CONTEXT_MISSING_ERROR</span>;
 
 <span class="kw">use</span> <span class="ident">std::collections</span>::{<span class="ident">HashMap</span>, <span class="ident">VecDeque</span>};
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
@@ -594,7 +594,7 @@
         <span class="ident">builder</span>
             .<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
                 <span class="comment">// Only the reference should be moved into the closure</span>
-                <span class="kw">let</span> <span class="ident">_enter</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::runtime::context::enter</span>(<span class="ident">rt</span>.<span class="ident">clone</span>());
+                <span class="kw">let</span> <span class="ident">_enter</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::runtime::context::enter</span>(<span class="ident">rt</span>.<span class="ident">clone</span>());
                 <span class="ident">rt</span>.<span class="ident">blocking_spawner</span>.<span class="ident">inner</span>.<span class="ident">run</span>(<span class="ident">id</span>);
                 <span class="ident">drop</span>(<span class="ident">shutdown_tx</span>);
             })

@@ -709,11 +709,11 @@
 <span class="doccomment">//! [`Sender::is_closed`]: crate::sync::watch::Sender::is_closed</span>
 <span class="doccomment">//! [`Sender::closed`]: crate::sync::watch::Sender::closed</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::notify::Notify</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::notify::Notify</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicUsize</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::Ordering::Relaxed</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">RwLock</span>, <span class="ident">RwLockReadGuard</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicUsize</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::Ordering::Relaxed</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync</span>::{<span class="ident">Arc</span>, <span class="ident">RwLock</span>, <span class="ident">RwLockReadGuard</span>};
 <span class="kw">use</span> <span class="ident">std::ops</span>;
 
 <span class="doccomment">/// Receives values from the associated [`Sender`](struct@Sender).</span>
@@ -808,10 +808,10 @@
     <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">RecvError</span> {}
 }
 
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::state</span>::{<span class="ident">AtomicState</span>, <span class="ident">Version</span>};
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::state</span>::{<span class="ident">AtomicState</span>, <span class="ident">Version</span>};
 <span class="kw">mod</span> <span class="ident">state</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicUsize</span>;
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::Ordering::SeqCst</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicUsize</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::Ordering::SeqCst</span>;
 
     <span class="kw">const</span> <span class="ident">CLOSED</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">1</span>;
 
@@ -1061,7 +1061,7 @@
         <span class="kw">let</span> <span class="ident">version</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">version</span>;
         <span class="kw">let</span> <span class="ident">shared</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">clone</span>();
 
-        <span class="self">Self</span><span class="ident">::from_shared</span>(<span class="ident">version</span>, <span class="ident">shared</span>)
+        <span class="ident"><span class="self">Self</span>::from_shared</span>(<span class="ident">version</span>, <span class="ident">shared</span>)
     }
 }
 
@@ -1238,7 +1238,7 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">watch_spurious_wakeup</span>() {
         <span class="ident">loom::model</span>(<span class="op">|</span><span class="op">|</span> {
-            <span class="kw">let</span> (<span class="ident">send</span>, <span class="kw-2">mut</span> <span class="ident">recv</span>) <span class="op">=</span> <span class="kw">crate</span><span class="ident">::sync::watch::channel</span>(<span class="number">0i32</span>);
+            <span class="kw">let</span> (<span class="ident">send</span>, <span class="kw-2">mut</span> <span class="ident">recv</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::sync::watch::channel</span>(<span class="number">0i32</span>);
 
             <span class="ident">send</span>.<span class="ident">send</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
 
@@ -1272,7 +1272,7 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">watch_borrow</span>() {
         <span class="ident">loom::model</span>(<span class="op">|</span><span class="op">|</span> {
-            <span class="kw">let</span> (<span class="ident">send</span>, <span class="kw-2">mut</span> <span class="ident">recv</span>) <span class="op">=</span> <span class="kw">crate</span><span class="ident">::sync::watch::channel</span>(<span class="number">0i32</span>);
+            <span class="kw">let</span> (<span class="ident">send</span>, <span class="kw-2">mut</span> <span class="ident">recv</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::sync::watch::channel</span>(<span class="number">0i32</span>);
 
             <span class="macro">assert!</span>(<span class="ident">send</span>.<span class="ident">borrow</span>().<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="number">0</span>));
             <span class="macro">assert!</span>(<span class="ident">recv</span>.<span class="ident">borrow</span>().<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="number">0</span>));

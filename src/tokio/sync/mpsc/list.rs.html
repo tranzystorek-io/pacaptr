@@ -340,9 +340,9 @@
 </pre><pre class="rust">
 <span class="doccomment">//! A concurrent, lock-free, FIFO list.</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic</span>::{<span class="ident">AtomicPtr</span>, <span class="ident">AtomicUsize</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::thread</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::mpsc::block</span>::{<span class="self">self</span>, <span class="ident">Block</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic</span>::{<span class="ident">AtomicPtr</span>, <span class="ident">AtomicUsize</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::thread</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::mpsc::block</span>::{<span class="self">self</span>, <span class="ident">Block</span>};
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::ptr::NonNull</span>;

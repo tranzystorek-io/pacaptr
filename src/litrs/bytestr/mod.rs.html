@@ -151,7 +151,7 @@
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="prelude-val">None</span>, <span class="ident">InvalidByteStringLiteralStart</span>));
         }
 
-        <span class="self">Self</span><span class="ident">::parse_impl</span>(<span class="ident">input</span>)
+        <span class="ident"><span class="self">Self</span>::parse_impl</span>(<span class="ident">input</span>)
     }
 
     <span class="doccomment">/// Returns the string value this literal represents (where all escapes have</span>

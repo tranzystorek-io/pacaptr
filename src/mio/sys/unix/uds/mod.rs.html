@@ -149,7 +149,7 @@
 <span id="149">149</span>
 </pre><pre class="rust">
 <span class="kw">mod</span> <span class="ident">socketaddr</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::socketaddr::SocketAddr</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::socketaddr::SocketAddr</span>;
 
 <span class="doccomment">/// Get the `sun_path` field offset of `sockaddr_un` for the target OS.</span>
 <span class="doccomment">///</span>
@@ -157,7 +157,7 @@
 <span class="doccomment">/// `size_of::&lt;sa_family_t&gt;()`, but some other implementations include</span>
 <span class="doccomment">/// other fields before `sun_path`, so the expression more portably</span>
 <span class="doccomment">/// describes the size of the address structure.</span>
-<span class="kw">pub</span>(<span class="kw">in</span> <span class="kw">crate</span><span class="ident">::sys</span>) <span class="kw">fn</span> <span class="ident">path_offset</span>(<span class="ident">sockaddr</span>: <span class="kw-2">&amp;</span><span class="ident">libc::sockaddr_un</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+<span class="kw">pub</span>(<span class="kw">in</span> <span class="ident"><span class="kw">crate</span>::sys</span>) <span class="kw">fn</span> <span class="ident">path_offset</span>(<span class="ident">sockaddr</span>: <span class="kw-2">&amp;</span><span class="ident">libc::sockaddr_un</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
     <span class="kw">let</span> <span class="ident">base</span> <span class="op">=</span> <span class="ident">sockaddr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="ident">usize</span>;
     <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">sockaddr</span>.<span class="ident">sun_path</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="ident">usize</span>;
     <span class="ident">path</span> <span class="op">-</span> <span class="ident">base</span>
@@ -174,7 +174,7 @@
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">listener</span>;
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">stream</span>;
 
-    <span class="kw">pub</span>(<span class="kw">in</span> <span class="kw">crate</span><span class="ident">::sys</span>) <span class="kw">fn</span> <span class="ident">socket_addr</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>(<span class="ident">libc::sockaddr_un</span>, <span class="ident">libc::socklen_t</span>)<span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">in</span> <span class="ident"><span class="kw">crate</span>::sys</span>) <span class="kw">fn</span> <span class="ident">socket_addr</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>(<span class="ident">libc::sockaddr_un</span>, <span class="ident">libc::socklen_t</span>)<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">sockaddr</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit</span>::<span class="op">&lt;</span><span class="ident">libc::sockaddr_un</span><span class="op">&gt;</span><span class="ident">::zeroed</span>();
 
         <span class="comment">// This is safe to assume because a `libc::sockaddr_un` filled with `0`</span>

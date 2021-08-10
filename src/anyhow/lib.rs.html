@@ -910,8 +910,8 @@
 <span class="kw">mod</span> <span class="ident">ptr</span>;
 <span class="kw">mod</span> <span class="ident">wrapper</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error::ErrorImpl</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::ptr::Own</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::ErrorImpl</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ptr::Own</span>;
 <span class="kw">use</span> <span class="ident">core::fmt::Display</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
@@ -1058,7 +1058,7 @@
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Chain</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">state</span>: <span class="kw">crate</span><span class="ident">::chain::ChainState</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="ident">state</span>: <span class="ident"><span class="kw">crate</span>::chain::ChainState</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// `Result&lt;T, Error&gt;`</span>
@@ -1270,17 +1270,17 @@
 <span class="comment">// Not public API. Referenced by macro-generated code.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">private</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Error</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Error</span>;
     <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="ident">Debug</span>, <span class="ident">Display</span>};
 
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::result::Result::Err</span>;
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">kind</span> {
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::kind</span>::{<span class="ident">AdhocKind</span>, <span class="ident">TraitKind</span>};
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::kind</span>::{<span class="ident">AdhocKind</span>, <span class="ident">TraitKind</span>};
 
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::kind::BoxedKind</span>;
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::kind::BoxedKind</span>;
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_adhoc</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>(<span class="ident">message</span>: <span class="ident">M</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Error</span>

@@ -231,7 +231,7 @@
 }
 
 <span class="macro">cfg_rt!</span> {
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::thread::ParkError</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::thread::ParkError</span>;
 
     <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 
@@ -351,7 +351,7 @@
         <span class="kw">where</span>
             <span class="ident">F</span>: <span class="ident">std::future::Future</span>,
         {
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::thread::CachedParkThread</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::thread::CachedParkThread</span>;
 
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">park</span> <span class="op">=</span> <span class="ident">CachedParkThread::new</span>();
             <span class="ident">park</span>.<span class="ident">block_on</span>(<span class="ident">f</span>)
@@ -365,8 +365,8 @@
         <span class="kw">where</span>
             <span class="ident">F</span>: <span class="ident">std::future::Future</span>,
         {
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::Park</span>;
-            <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::park::thread::CachedParkThread</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::Park</span>;
+            <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::park::thread::CachedParkThread</span>;
             <span class="kw">use</span> <span class="ident">std::task::Context</span>;
             <span class="kw">use</span> <span class="ident">std::task::Poll::Ready</span>;
             <span class="kw">use</span> <span class="ident">std::time::Instant</span>;
@@ -379,7 +379,7 @@
             <span class="kw">let</span> <span class="ident">when</span> <span class="op">=</span> <span class="ident">Instant::now</span>() <span class="op">+</span> <span class="ident">timeout</span>;
 
             <span class="kw">loop</span> {
-                <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Ready</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="kw">crate</span><span class="ident">::coop::budget</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">as_mut</span>().<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cx</span>)) {
+                <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Ready</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::coop::budget</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">as_mut</span>().<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cx</span>)) {
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">v</span>);
                 }
 

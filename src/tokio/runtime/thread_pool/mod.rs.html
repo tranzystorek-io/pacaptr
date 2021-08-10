@@ -113,16 +113,16 @@
 <span class="kw">use</span> <span class="ident">atomic_cell::AtomicCell</span>;
 
 <span class="kw">mod</span> <span class="ident">idle</span>;
-<span class="kw">use</span> <span class="self">self</span><span class="ident">::idle::Idle</span>;
+<span class="kw">use</span> <span class="ident"><span class="self">self</span>::idle::Idle</span>;
 
 <span class="kw">mod</span> <span class="ident">worker</span>;
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">worker::Launch</span>;
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">worker::block_in_place</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::Arc</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::task::JoinHandle</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::runtime::Parker</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::Arc</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::task::JoinHandle</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::runtime::Parker</span>;
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::future::Future</span>;
@@ -176,7 +176,7 @@
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">Future</span>,
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">enter</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::runtime::enter</span>(<span class="bool-val">true</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">enter</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::runtime::enter</span>(<span class="bool-val">true</span>);
         <span class="ident">enter</span>.<span class="ident">block_on</span>(<span class="ident">future</span>).<span class="ident">expect</span>(<span class="string">&quot;failed to park thread&quot;</span>)
     }
 }
@@ -199,7 +199,7 @@
     <span class="doccomment">/// Spawns a future onto the thread pool</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">spawn</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">future</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">JoinHandle</span><span class="op">&lt;</span><span class="ident">F::Output</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="kw">crate</span><span class="ident">::future::Future</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+        <span class="ident">F</span>: <span class="ident"><span class="kw">crate</span>::future::Future</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="ident">F::Output</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="ident">worker::Shared::bind_new_task</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared</span>, <span class="ident">future</span>)

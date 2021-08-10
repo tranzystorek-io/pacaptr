@@ -158,11 +158,11 @@
 <span class="comment">//     let error = $msg;</span>
 <span class="comment">//     (&amp;error).anyhow_kind().new(error)</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Error</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Error</span>;
 <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="ident">Debug</span>, <span class="ident">Display</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::StdError</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::StdError</span>;
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Adhoc</span>;
 

@@ -291,7 +291,7 @@
         <span class="comment">// API does not provide a way to obtain max `Instant`</span>
         <span class="comment">// or convert specific date in the future to instant.</span>
         <span class="comment">// 1000 years overflows on macOS, 100 years overflows on FreeBSD.</span>
-        <span class="self">Self</span><span class="ident">::now</span>() <span class="op">+</span> <span class="ident">Duration::from_secs</span>(<span class="number">86400</span> <span class="op">*</span> <span class="number">365</span> <span class="op">*</span> <span class="number">30</span>)
+        <span class="ident"><span class="self">Self</span>::now</span>() <span class="op">+</span> <span class="ident">Duration::from_secs</span>(<span class="number">86400</span> <span class="op">*</span> <span class="number">365</span> <span class="op">*</span> <span class="number">30</span>)
     }
 
     <span class="doccomment">/// Convert the value into a `std::time::Instant`.</span>
@@ -446,7 +446,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;test-util&quot;</span>))]</span>
 <span class="kw">mod</span> <span class="ident">variant</span> {
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Instant</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Instant</span>;
 
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">now</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Instant</span> {
         <span class="ident">Instant::from_std</span>(<span class="ident">std::time::Instant::now</span>())
@@ -455,10 +455,10 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;test-util&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">variant</span> {
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Instant</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Instant</span>;
 
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">now</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Instant</span> {
-        <span class="kw">crate</span><span class="ident">::time::clock::now</span>()
+        <span class="ident"><span class="kw">crate</span>::time::clock::now</span>()
     }
 }
 </pre></div>

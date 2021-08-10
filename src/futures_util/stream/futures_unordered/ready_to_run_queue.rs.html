@@ -121,15 +121,15 @@
 <span id="121">121</span>
 <span id="122">122</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::task::AtomicWaker</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::task::AtomicWaker</span>;
 <span class="kw">use</span> <span class="ident">alloc::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">core::cell::UnsafeCell</span>;
 <span class="kw">use</span> <span class="ident">core::ptr</span>;
 <span class="kw">use</span> <span class="ident">core::sync::atomic::AtomicPtr</span>;
 <span class="kw">use</span> <span class="ident">core::sync::atomic::Ordering</span>::{<span class="ident">AcqRel</span>, <span class="ident">Acquire</span>, <span class="ident">Relaxed</span>, <span class="ident">Release</span>};
 
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::abort::abort</span>;
-<span class="kw">use</span> <span class="kw">super</span><span class="ident">::task::Task</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::abort::abort</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::task::Task</span>;
 
 <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">enum</span> <span class="ident">Dequeue</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span> {
     <span class="ident">Data</span>(<span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span>),

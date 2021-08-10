@@ -726,8 +726,8 @@
 <span id="726">726</span>
 <span id="727">727</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::batch_semaphore</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::sync::mutex::TryLockError</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::batch_semaphore</span>::{<span class="ident">Semaphore</span>, <span class="ident">TryAcquireError</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sync::mutex::TryLockError</span>;
 <span class="kw">use</span> <span class="ident">std::cell::UnsafeCell</span>;
 <span class="kw">use</span> <span class="ident">std::marker</span>;
 <span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
@@ -1441,7 +1441,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">s</span>)
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">s</span>)
     }
 }
 
@@ -1450,7 +1450,7 @@
     <span class="ident">T</span>: <span class="ident">Default</span>,
 {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">T::default</span>())
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">T::default</span>())
     }
 }
 </pre></div>

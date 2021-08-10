@@ -347,10 +347,10 @@
     <span class="doccomment">/// `&quot;0o&quot;`, `&quot;&quot;` and `&quot;0x&quot;`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prefix</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Binary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0b&quot;</span>,
-            <span class="self">Self</span><span class="ident">::Octal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0o&quot;</span>,
-            <span class="self">Self</span><span class="ident">::Decimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;&quot;</span>,
-            <span class="self">Self</span><span class="ident">::Hexadecimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0x&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Binary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0b&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Octal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0o&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Decimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Hexadecimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0x&quot;</span>,
         }
     }
 }
@@ -360,7 +360,7 @@
     <span class="doccomment">/// invalid or represents a different kind of literal.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">first_byte_or_empty</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>)<span class="question-mark">?</span> {
-            <span class="ident">digit</span> @ <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::parse_impl</span>(<span class="ident">input</span>, <span class="ident">digit</span>),
+            <span class="ident">digit</span> @ <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::parse_impl</span>(<span class="ident">input</span>, <span class="ident">digit</span>),
             <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="number">0</span>, <span class="ident">DoesNotStartWithDigit</span>)),
         }
     }
@@ -520,7 +520,7 @@
 <span class="doccomment">/// Implemented for all integer literal types. This trait is sealed and cannot</span>
 <span class="doccomment">/// be implemented outside of this crate. The trait&#39;s methods are implementation</span>
 <span class="doccomment">/// detail of this library and are not subject to semver.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromIntegerLiteral</span>: <span class="self">self</span><span class="ident">::sealed::Sealed</span> <span class="op">+</span> <span class="ident">Copy</span> {
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromIntegerLiteral</span>: <span class="ident"><span class="self">self</span>::sealed::Sealed</span> <span class="op">+</span> <span class="ident">Copy</span> {
     <span class="doccomment">/// Creates itself from the given number. `n` is guaranteed to be `&lt;= 16`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
@@ -538,7 +538,7 @@
 <span class="macro">macro_rules!</span> <span class="ident">impl_from_int_literal</span> {
     ($( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ty</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> ,)<span class="op">*</span> ) <span class="op">=</span><span class="op">&gt;</span> {
         $(
-            <span class="kw">impl</span> <span class="self">self</span><span class="ident">::sealed::Sealed</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span> {}
+            <span class="kw">impl</span> <span class="ident"><span class="self">self</span>::sealed::Sealed</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span> {}
             <span class="kw">impl</span> <span class="ident">FromIntegerLiteral</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span> {
                 <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
                     <span class="ident">n</span> <span class="kw">as</span> <span class="self">Self</span>

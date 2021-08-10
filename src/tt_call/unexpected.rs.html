@@ -147,7 +147,7 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">error_unexpected</span> {
     ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="op">+</span>) <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_unexpected!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>)<span class="op">*</span>
         }
     };
@@ -183,7 +183,7 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">error_eof</span> {
     () <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_eof!</span> {}
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_eof!</span> {}
     };
 }
 
@@ -216,7 +216,7 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">error_unexpected_last</span> {
     ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">tt</span>)<span class="op">+</span>) <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_unexpected_last!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_unexpected_last!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>)<span class="op">*</span>
         }
     };
@@ -226,13 +226,13 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">private_unexpected_last</span> {
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">last</span>:<span class="ident">tt</span>) <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::error_unexpected!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::error_unexpected!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">last</span>
         }
     };
 
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">skip</span>:<span class="ident">tt</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="macro-nonterminal">$</span><span class="kw">crate</span><span class="macro">::private_unexpected_last!</span> {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::private_unexpected_last!</span> {
             $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span>
         }
     };

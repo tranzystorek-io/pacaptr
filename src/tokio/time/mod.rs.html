@@ -199,7 +199,7 @@
 <span class="doccomment">//! [`interval`]: crate::time::interval()</span>
 
 <span class="kw">mod</span> <span class="ident">clock</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::clock::Clock</span>;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::clock::Clock</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;test-util&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">clock</span>::{<span class="ident">advance</span>, <span class="ident">pause</span>, <span class="ident">resume</span>};
 
@@ -211,7 +211,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">error</span>;
 
 <span class="kw">mod</span> <span class="ident">instant</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::instant::Instant</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::instant::Instant</span>;
 
 <span class="kw">mod</span> <span class="ident">interval</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">interval</span>::{<span class="ident">interval</span>, <span class="ident">interval_at</span>, <span class="ident">Interval</span>, <span class="ident">MissedTickBehavior</span>};

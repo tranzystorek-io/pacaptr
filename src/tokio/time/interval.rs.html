@@ -446,8 +446,8 @@
 <span id="446">446</span>
 <span id="447">447</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::future::poll_fn</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::time</span>::{<span class="ident">sleep_until</span>, <span class="ident">Duration</span>, <span class="ident">Instant</span>, <span class="ident">Sleep</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::future::poll_fn</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::time</span>::{<span class="ident">sleep_until</span>, <span class="ident">Duration</span>, <span class="ident">Instant</span>, <span class="ident">Sleep</span>};
 
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 <span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
@@ -752,9 +752,9 @@
     <span class="doccomment">/// If a tick is missed, this method is called to determine when the next tick should happen.</span>
     <span class="kw">fn</span> <span class="ident">next_timeout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">timeout</span>: <span class="ident">Instant</span>, <span class="ident">now</span>: <span class="ident">Instant</span>, <span class="ident">period</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Instant</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Burst</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">timeout</span> <span class="op">+</span> <span class="ident">period</span>,
-            <span class="self">Self</span><span class="ident">::Delay</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">now</span> <span class="op">+</span> <span class="ident">period</span>,
-            <span class="self">Self</span><span class="ident">::Skip</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Burst</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">timeout</span> <span class="op">+</span> <span class="ident">period</span>,
+            <span class="ident"><span class="self">Self</span>::Delay</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">now</span> <span class="op">+</span> <span class="ident">period</span>,
+            <span class="ident"><span class="self">Self</span>::Skip</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">now</span> <span class="op">+</span> <span class="ident">period</span>
                     <span class="op">-</span> <span class="ident">Duration::from_nanos</span>(
                         ((<span class="ident">now</span> <span class="op">-</span> <span class="ident">timeout</span>).<span class="ident">as_nanos</span>() <span class="op">%</span> <span class="ident">period</span>.<span class="ident">as_nanos</span>())
@@ -786,7 +786,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Burst`]: MissedTickBehavior::Burst</span>
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::Burst</span>
+        <span class="ident"><span class="self">Self</span>::Burst</span>
     }
 }
 

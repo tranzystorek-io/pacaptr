@@ -404,7 +404,7 @@
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">std::backtrace</span>::{<span class="ident">Backtrace</span>, <span class="ident">BacktraceStatus</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">not</span>(<span class="ident">backtrace</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>))]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span><span class="ident">::capture</span>::{<span class="ident">Backtrace</span>, <span class="ident">BacktraceStatus</span>};
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::capture</span>::{<span class="ident">Backtrace</span>, <span class="ident">BacktraceStatus</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">backtrace</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>)))]</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">Backtrace</span> {}
@@ -426,7 +426,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">backtrace</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>))]</span>
 <span class="macro">macro_rules!</span> <span class="ident">backtrace</span> {
     () <span class="op">=</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Some</span>(<span class="kw">crate</span><span class="ident">::backtrace::Backtrace::capture</span>())
+        <span class="prelude-val">Some</span>(<span class="ident"><span class="kw">crate</span>::backtrace::Backtrace::capture</span>())
     };
 }
 

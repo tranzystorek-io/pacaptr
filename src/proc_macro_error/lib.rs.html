@@ -921,12 +921,12 @@
 
     <span class="doccomment">/// Behaves like `Result::unwrap`: if self is `Ok` yield the contained value,</span>
     <span class="doccomment">/// otherwise abort macro execution via `abort!`.</span>
-    <span class="kw">fn</span> <span class="ident">unwrap_or_abort</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Ok</span>;
+    <span class="kw">fn</span> <span class="ident">unwrap_or_abort</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ok</span>;
 
     <span class="doccomment">/// Behaves like `Result::expect`: if self is `Ok` yield the contained value,</span>
     <span class="doccomment">/// otherwise abort macro execution via `abort!`.</span>
     <span class="doccomment">/// If it aborts then resulting error message will be preceded with `message`.</span>
-    <span class="kw">fn</span> <span class="ident">expect_or_abort</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Ok</span>;
+    <span class="kw">fn</span> <span class="ident">expect_or_abort</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ok</span>;
 }
 
 <span class="doccomment">/// This traits expands `Option` with some handy shortcuts.</span>
@@ -938,7 +938,7 @@
     <span class="doccomment">/// If it aborts the `message` will be used for [`compile_error!`][compl_err] invocation.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [compl_err]: https://doc.rust-lang.org/std/macro.compile_error.html</span>
-    <span class="kw">fn</span> <span class="ident">expect_or_abort</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Some</span>;
+    <span class="kw">fn</span> <span class="ident">expect_or_abort</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Some</span>;
 }
 
 <span class="doccomment">/// Abort macro execution and display all the emitted errors, if any.</span>
@@ -1058,7 +1058,7 @@
     <span class="kw">use</span> <span class="ident">proc_macro2::Span</span>;
     <span class="kw">use</span> <span class="ident">quote::ToTokens</span>;
 
-    <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::SpanRange</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::SpanRange</span>;
 
     <span class="comment">// inspired by</span>
     <span class="comment">// https://github.com/dtolnay/case-studies/blob/master/autoref-specialization/README.md#simple-application</span>

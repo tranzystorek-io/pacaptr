@@ -1143,11 +1143,11 @@
 
 <span class="kw">use</span> <span class="ident">alloc</span>::{<span class="ident">borrow::Borrow</span>, <span class="ident">boxed::Box</span>, <span class="ident">string::String</span>, <span class="ident">vec::Vec</span>};
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::buf::IntoIter</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::buf::IntoIter</span>;
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic::AtomicMut</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::loom::sync::atomic</span>::{<span class="self">self</span>, <span class="ident">AtomicPtr</span>, <span class="ident">AtomicUsize</span>, <span class="ident">Ordering</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Buf</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic::AtomicMut</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::loom::sync::atomic</span>::{<span class="self">self</span>, <span class="ident">AtomicPtr</span>, <span class="ident">AtomicUsize</span>, <span class="ident">Ordering</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Buf</span>;
 
 <span class="doccomment">/// A cheaply cloneable and sliceable chunk of contiguous memory.</span>
 <span class="doccomment">///</span>
@@ -1687,7 +1687,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::Bytes</span> {
+    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Bytes</span> {
         <span class="kw">if</span> <span class="ident">len</span> <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">remaining</span>() {
             <span class="ident">core::mem::replace</span>(<span class="self">self</span>, <span class="ident">Bytes::new</span>())
         } <span class="kw">else</span> {
@@ -1733,7 +1733,7 @@
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">u8</span>;
     <span class="kw">type</span> <span class="ident">IntoIter</span> <span class="op">=</span> <span class="ident">IntoIter</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::IntoIter</span> {
+    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::IntoIter</span> {
         <span class="ident">IntoIter::new</span>(<span class="self">self</span>)
     }
 }
@@ -1742,7 +1742,7 @@
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">u8</span>;
     <span class="kw">type</span> <span class="ident">IntoIter</span> <span class="op">=</span> <span class="ident">core::slice::Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">u8</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::IntoIter</span> {
+    <span class="kw">fn</span> <span class="ident">into_iter</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::IntoIter</span> {
         <span class="self">self</span>.<span class="ident">as_slice</span>().<span class="ident">into_iter</span>()
     }
 }
@@ -2109,7 +2109,7 @@
     <span class="kw">let</span> <span class="ident">old_size</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="ident">shared</span>).<span class="ident">ref_cnt</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::Relaxed</span>);
 
     <span class="kw">if</span> <span class="ident">old_size</span> <span class="op">&gt;</span> <span class="ident">usize::MAX</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">1</span> {
-        <span class="kw">crate</span><span class="ident">::abort</span>();
+        <span class="ident"><span class="kw">crate</span>::abort</span>();
     }
 
     <span class="ident">Bytes</span> {
@@ -2249,7 +2249,7 @@
     <span class="kw">use</span> <span class="ident">loom::sync::Arc</span>;
     <span class="kw">use</span> <span class="ident">loom::thread</span>;
 
-    <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Bytes</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Bytes</span>;
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">bytes_cloning_vec</span>() {
         <span class="ident">loom::model</span>(<span class="op">|</span><span class="op">|</span> {

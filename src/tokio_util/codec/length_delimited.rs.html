@@ -1366,7 +1366,7 @@
 <span class="doccomment">//! [`Encoder`]: trait@Encoder</span>
 <span class="doccomment">//! [`BytesMut`]: bytes::BytesMut</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::codec</span>::{<span class="ident">Decoder</span>, <span class="ident">Encoder</span>, <span class="ident">Framed</span>, <span class="ident">FramedRead</span>, <span class="ident">FramedWrite</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::codec</span>::{<span class="ident">Decoder</span>, <span class="ident">Encoder</span>, <span class="ident">Framed</span>, <span class="ident">FramedRead</span>, <span class="ident">FramedWrite</span>};
 
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>};
 
@@ -1617,7 +1617,7 @@
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">LengthDelimitedCodec</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>()
+        <span class="ident"><span class="self">Self</span>::new</span>()
     }
 }
 
@@ -1966,7 +1966,7 @@
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Builder</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>()
+        <span class="ident"><span class="self">Self</span>::new</span>()
     }
 }
 
