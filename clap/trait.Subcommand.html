@@ -3,7 +3,7 @@
 <div class="item-spacer"></div>    fn <a href="#tymethod.augment_subcommands_for_update" class="fnname">augment_subcommands_for_update</a>(app: <a class="struct" href="struct.App.html" title="struct clap::App">App</a>&lt;'_&gt;) -&gt; <a class="struct" href="struct.App.html" title="struct clap::App">App</a>&lt;'_&gt;;
 <div class="item-spacer"></div>    fn <a href="#tymethod.has_subcommand" class="fnname">has_subcommand</a>(name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 }</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Parse a sub-command into a user-defined enum.</p>
-<p>Implementing this trait let’s a parent container delegate subcommand behavior to <code>Self</code>.
+<p>Implementing this trait lets a parent container delegate subcommand behavior to <code>Self</code>.
 with:</p>
 <ul>
 <li><code>#[clap(subcommand)] field: SubCmd</code>: Attribute can be used with either struct fields or enum
