@@ -478,7 +478,6 @@
 <span id="478">478</span>
 <span id="479">479</span>
 <span id="480">480</span>
-<span id="481">481</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Definitions for command line argument mapping and dispatching.</span>
 
 <span class="kw">use</span> <span class="ident">std::iter::FromIterator</span>;
@@ -680,7 +679,6 @@
     <span class="doccomment">/// Generates current [`Config`] by merging current command line arguments</span>
     <span class="doccomment">/// and options obtained with [`clap`] with the dotfile [`Config`], which</span>
     <span class="doccomment">/// has a lower precedence.</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">merge_cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dotfile</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
         <span class="ident">Config</span> {
             <span class="ident">dry_run</span>: <span class="self">self</span>.<span class="ident">dry_run</span> <span class="op">|</span><span class="op">|</span> <span class="ident">dotfile</span>.<span class="ident">dry_run</span>,
