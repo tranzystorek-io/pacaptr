@@ -1,1 +1,1 @@
-initSidebarItems({"static":[["STRAT_CHECK_DRY",""],["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Zypper","The Zypper Package Manager."]]});
+initSidebarItems({"macro":[["docs_self",""]],"static":[["STRAT_CHECK_DRY",""],["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Zypper","The Zypper Package Manager."]]});

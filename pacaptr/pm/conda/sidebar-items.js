@@ -1,1 +1,1 @@
-initSidebarItems({"static":[["STRAT_PROMPT",""]],"struct":[["Conda","The Conda Package Manager."]]});
+initSidebarItems({"macro":[["docs_self",""]],"static":[["STRAT_PROMPT",""]],"struct":[["Conda","The Conda Package Manager."]]});

@@ -1,1 +1,1 @@
-initSidebarItems({"static":[["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Port","The MacPorts Package Manager."]]});
+initSidebarItems({"macro":[["docs_self",""]],"static":[["STRAT_INSTALL",""],["STRAT_PROMPT",""]],"struct":[["Port","The MacPorts Package Manager."]]});

@@ -1,1 +1,1 @@
-initSidebarItems({"static":[["STRAT_CHECK_DRY",""]],"struct":[["Tlmgr","The TexLive Package Manager."]]});
+initSidebarItems({"macro":[["docs_self",""]],"static":[["STRAT_CHECK_DRY",""]],"struct":[["Tlmgr","The TexLive Package Manager."]]});
