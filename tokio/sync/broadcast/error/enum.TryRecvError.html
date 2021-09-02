@@ -7,7 +7,7 @@
 <a href="../struct.Sender.html"><code>Sender</code></a> handles, so data may yet become available.</p>
 </div><div id="variant.Closed" class="variant small-section-header"><a href="#variant.Closed" class="anchor field"></a><code>Closed</code></div><div class="docblock"><p>There are no more active senders implying no further messages will ever
 be sent.</p>
-</div><div id="variant.Lagged" class="variant small-section-header"><a href="#variant.Lagged" class="anchor field"></a><code>Lagged</code></div><div class="docblock"><p>The receiver lagged too far behind and has been forcibly disconnected.
+</div><div id="variant.Lagged" class="variant small-section-header"><a href="#variant.Lagged" class="anchor field"></a><code>Lagged(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</code></div><div class="docblock"><p>The receiver lagged too far behind and has been forcibly disconnected.
 Attempting to receive again will return the oldest message still
 retained by the channel.</p>
 <p>Includes the number of skipped messages.</p>
