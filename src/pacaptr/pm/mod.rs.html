@@ -430,16 +430,6 @@
 <span id="430">430</span>
 <span id="431">431</span>
 <span id="432">432</span>
-<span id="433">433</span>
-<span id="434">434</span>
-<span id="435">435</span>
-<span id="436">436</span>
-<span id="437">437</span>
-<span id="438">438</span>
-<span id="439">439</span>
-<span id="440">440</span>
-<span id="441">441</span>
-<span id="442">442</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Mapping from [`pacman`] commands to various operations of specific package</span>
 <span class="doccomment">//! managers.</span>
 <span class="doccomment">//!</span>
@@ -472,7 +462,7 @@
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">dispatch::Config</span>,
     <span class="ident">error::Result</span>,
-    <span class="ident">exec</span>::{<span class="ident">Cmd</span>, <span class="ident">Mode</span>, <span class="ident">Output</span>, <span class="ident">StatusCode</span>},
+    <span class="ident">exec</span>::{<span class="ident">Cmd</span>, <span class="ident">Mode</span>, <span class="ident">Output</span>},
 };
 
 <span class="doccomment">/// The list of [`pacman`](https://wiki.archlinux.org/index.php/Pacman) methods supported by [`pacaptr`](crate).</span>
@@ -653,13 +643,6 @@
     {
         <span class="ident">Box::new</span>(<span class="self">self</span>)
     }
-
-    <span class="doccomment">/// Gets the [`StatusCode`] to be returned.</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">StatusCode</span>;
-
-    <span class="doccomment">/// Sets the [`StatusCode`] to be returned.</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">set_code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">to</span>: <span class="ident">StatusCode</span>);
 }
 
 <span class="doccomment">/// Extra implementation helper functions for [`Pm`],</span>
@@ -722,9 +705,6 @@
             };
         }
 
-        <span class="comment">// Reset the current status code.</span>
-        <span class="comment">// If the code is `None`, then the subprocess ends with a signal.</span>
-        <span class="self">self</span>.<span class="ident">set_code</span>(<span class="ident">res</span>.<span class="ident">code</span>.<span class="ident">unwrap_or</span>(<span class="number">1</span>)).<span class="kw">await</span>;
         <span class="prelude-val">Ok</span>(<span class="ident">res</span>)
     }
 

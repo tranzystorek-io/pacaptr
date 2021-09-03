@@ -444,9 +444,6 @@
 <span id="444">444</span>
 <span id="445">445</span>
 <span id="446">446</span>
-<span id="447">447</span>
-<span id="448">448</span>
-<span id="449">449</span>
 </pre><pre class="rust"><code><span class="doccomment">//! APIs for spawning subprocesses and handling their results.</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::{
@@ -479,7 +476,7 @@
     <span class="ident">print</span>::{<span class="ident">print_cmd</span>, <span class="ident">print_question</span>, <span class="ident">PROMPT_CANCELED</span>, <span class="ident">PROMPT_PENDING</span>, <span class="ident">PROMPT_RUN</span>},
 };
 
-<span class="doccomment">/// Different ways in which a command shall be dealt with.</span>
+<span class="doccomment">/// Different ways in which a [`Cmd`] shall be dealt with.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Mode</span> {
     <span class="doccomment">/// Solely prints out the command that should be executed and stops.</span>
@@ -512,27 +509,25 @@
 <span class="doccomment">/// The status code type returned by a [`Cmd`],</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">StatusCode</span> <span class="op">=</span> <span class="ident">i32</span>;
 
-<span class="doccomment">/// Output of running a [`Cmd`].</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Output</span> {
-    <span class="doccomment">/// The captured `stdout`, and if set to [`Mode::CheckAll`], mixed with</span>
-    <span class="doccomment">/// captured `stderr`.</span>
-    <span class="kw">pub</span> <span class="ident">contents</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-
-    <span class="doccomment">/// The status code returned by the [`Cmd`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Here we use [`Some`] for exit code, [`None`] for signals.</span>
-    <span class="kw">pub</span> <span class="ident">code</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">StatusCode</span><span class="op">&gt;</span>,
-}
-
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Output</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Output</span> {
-            <span class="ident">code</span>: <span class="prelude-val">Some</span>(<span class="number">0</span>),
-            <span class="ident">contents</span>: <span class="macro">vec!</span>[],
-        }
+<span class="doccomment">/// Returns a [`Result`] for a [`Cmd`] according to if its exit status code</span>
+<span class="doccomment">/// indicates an error.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Errors</span>
+<span class="doccomment">/// This function might return one of the following errors:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// - [`Error::CmdStatusCodeError`], when `status` is `Some(n)` where `n != 0`.</span>
+<span class="doccomment">/// - [`Error::CmdInterruptedError`], when `status` is `None`.</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exit_result</span>(<span class="ident">code</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">StatusCode</span><span class="op">&gt;</span>, <span class="ident">output</span>: <span class="ident">Output</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">match</span> <span class="ident">code</span> {
+        <span class="prelude-val">Some</span>(<span class="number">0</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">output</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">code</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error::CmdStatusCodeError</span> { <span class="ident">code</span>, <span class="ident">output</span> }),
+        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error::CmdInterruptedError</span>),
     }
 }
+
+<span class="doccomment">/// The type for captured `stdout`, and if set to [`Mode::CheckAll`], mixed with</span>
+<span class="doccomment">/// captured `stderr`.</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>;
 
 <span class="doccomment">/// A command to be executed, provided in `command-flags-keywords` form.</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
@@ -656,6 +651,8 @@
             - [`Error::CmdNoHandleError`]
             - [`Error::CmdSpawnError`]
             - [`Error::CmdWaitError`]
+            - [`Error::CmdStatusCodeError`]
+            - [`Error::CmdInterruptedError`]
         &quot;</span>}
     };
 }
@@ -731,12 +728,9 @@
             <span class="prelude-val">Ok</span>(<span class="ident">status</span>.<span class="ident">code</span>())
         });
 
-        <span class="kw">let</span> <span class="ident">contents</span> <span class="op">=</span> <span class="ident">exec_tee</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">reader</span>, (<span class="op">!</span><span class="ident">mute</span>).<span class="ident">then</span>(<span class="op">|</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>)).<span class="kw">await</span><span class="question-mark">?</span>;
-
-        <span class="prelude-val">Ok</span>(<span class="ident">Output</span> {
-            <span class="ident">contents</span>,
-            <span class="ident">code</span>: <span class="ident">code</span>.<span class="kw">await</span>.<span class="ident">map_err</span>(<span class="ident">CmdJoinError</span>)<span class="question-mark">?</span><span class="question-mark">?</span>,
-        })
+        <span class="kw">let</span> <span class="ident">output</span> <span class="op">=</span> <span class="ident">exec_tee</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">reader</span>, (<span class="op">!</span><span class="ident">mute</span>).<span class="ident">then</span>(<span class="op">|</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>)).<span class="kw">await</span><span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">code</span> <span class="op">=</span> <span class="ident">code</span>.<span class="kw">await</span>.<span class="ident">map_err</span>(<span class="ident">CmdJoinError</span>)<span class="question-mark">?</span><span class="question-mark">?</span>;
+        <span class="ident">exit_result</span>(<span class="ident">code</span>, <span class="ident">output</span>)
     }
 
     <span class="doccomment">/// Executes a [`Cmd`] and returns its `stdout` and `stderr`.</span>

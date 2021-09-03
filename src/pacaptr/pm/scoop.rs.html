@@ -191,34 +191,18 @@
 <span id="191">191</span>
 <span id="192">192</span>
 <span id="193">193</span>
-<span id="194">194</span>
-<span id="195">195</span>
-<span id="196">196</span>
-<span id="197">197</span>
-<span id="198">198</span>
-<span id="199">199</span>
-<span id="200">200</span>
-<span id="201">201</span>
-<span id="202">202</span>
-<span id="203">203</span>
-<span id="204">204</span>
-<span id="205">205</span>
-<span id="206">206</span>
-<span id="207">207</span>
-<span id="208">208</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_self!</span>()]</span>
 
 <span class="kw">use</span> <span class="ident">async_trait::async_trait</span>;
 <span class="kw">use</span> <span class="ident">indoc::indoc</span>;
 <span class="kw">use</span> <span class="ident">once_cell::sync::Lazy</span>;
 <span class="kw">use</span> <span class="ident">tap::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">tokio::sync::Mutex</span>;
 
 <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">NoCacheStrategy</span>, <span class="ident">Pm</span>, <span class="ident">PmHelper</span>, <span class="ident">PmMode</span>, <span class="ident">PromptStrategy</span>, <span class="ident">Strategy</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::{
-    <span class="ident">dispatch::config::Config</span>,
+    <span class="ident">dispatch::Config</span>,
     <span class="ident">error::Result</span>,
-    <span class="ident">exec</span>::{<span class="self">self</span>, <span class="ident">Cmd</span>, <span class="ident">StatusCode</span>},
+    <span class="ident">exec</span>::{<span class="self">self</span>, <span class="ident">Cmd</span>},
     <span class="ident">print</span>::{<span class="self">self</span>, <span class="ident">PROMPT_RUN</span>},
 };
 
@@ -234,7 +218,6 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Scoop</span> {
     <span class="ident">cfg</span>: <span class="ident">Config</span>,
-    <span class="ident">code</span>: <span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">StatusCode</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">static</span> <span class="ident">STRAT_PROMPT</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Strategy</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Strategy</span> {
@@ -252,10 +235,7 @@
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Scoop</span> {
-            <span class="ident">cfg</span>,
-            <span class="ident">code</span>: <span class="ident">Mutex::default</span>(),
-        }
+        <span class="ident">Scoop</span> { <span class="ident">cfg</span> }
     }
 
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">search_regex</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
@@ -265,9 +245,7 @@
         }
         <span class="kw">let</span> <span class="ident">out_bytes</span> <span class="op">=</span> <span class="self">self</span>
             .<span class="ident">check_output</span>(<span class="ident">cmd</span>, <span class="ident">PmMode::Mute</span>, <span class="kw-2">&amp;</span><span class="ident">Strategy::default</span>())
-            .<span class="kw">await</span><span class="question-mark">?</span>
-            .<span class="ident">contents</span>;
-
+            .<span class="kw">await</span><span class="question-mark">?</span>;
         <span class="ident">exec::grep_print</span>(<span class="kw-2">&amp;</span><span class="ident">String::from_utf8</span>(<span class="ident">out_bytes</span>)<span class="question-mark">?</span>, <span class="ident">kws</span>)<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(())
     }
@@ -283,14 +261,6 @@
 
     <span class="kw">fn</span> <span class="ident">cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Config</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cfg</span>
-    }
-
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">StatusCode</span> {
-        <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">code</span>.<span class="ident">lock</span>().<span class="kw">await</span>
-    }
-
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">set_code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">to</span>: <span class="ident">StatusCode</span>) {
-        <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">code</span>.<span class="ident">lock</span>().<span class="kw">await</span> <span class="op">=</span> <span class="ident">to</span>;
     }
 
     <span class="doccomment">/// Q generates a list of installed packages.</span>
