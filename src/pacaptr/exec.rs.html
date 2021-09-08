@@ -444,6 +444,12 @@
 <span id="444">444</span>
 <span id="445">445</span>
 <span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
 </pre><pre class="rust"><code><span class="doccomment">//! APIs for spawning subprocesses and handling their results.</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::{
@@ -559,22 +565,28 @@
     <span class="doccomment">/// Makes a new [`Cmd`] instance with the given [`cmd`](Cmd::cmd) part,</span>
     <span class="doccomment">/// setting [`sudo`](field@Cmd::sudo) to `true`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_sudo</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">cmd</span>).<span class="ident">sudo</span>(<span class="bool-val">true</span>)
+        <span class="ident">Cmd::new</span>(<span class="ident">cmd</span>).<span class="ident">sudo</span>(<span class="bool-val">true</span>)
     }
 
     <span class="doccomment">/// Overrides the value of [`flags`](field@Cmd::flags).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="self">self</span>, <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">tap_mut</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>())
+        <span class="ident">Cmd</span> {
+            <span class="ident">flags</span>: <span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>(),
+            ..<span class="self">self</span>
+        }
     }
 
     <span class="doccomment">/// Overrides the value of [`kws`](field@Cmd::kws).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kws</span>(<span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">tap_mut</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">kws</span> <span class="op">=</span> <span class="ident">kws</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>())
+        <span class="ident">Cmd</span> {
+            <span class="ident">kws</span>: <span class="ident">kws</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>(),
+            ..<span class="self">self</span>
+        }
     }
 
     <span class="doccomment">/// Overrides the value of [`sudo`](field@Cmd::sudo).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sudo</span>(<span class="self">self</span>, <span class="ident">sudo</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">tap_mut</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">sudo</span> <span class="op">=</span> <span class="ident">sudo</span>)
+        <span class="ident">Cmd</span> { <span class="ident">sudo</span>, ..<span class="self">self</span> }
     }
 
     <span class="doccomment">/// Determines if this command actually needs to run with `sudo -S`.</span>
