@@ -152,6 +152,12 @@
 <span id="152">152</span>
 <span id="153">153</span>
 <span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_self!</span>()]</span>
 
 <span class="kw">use</span> <span class="ident">async_trait::async_trait</span>;
@@ -178,8 +184,6 @@
 <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_self!</span>()]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Pip</span> {
-    <span class="doccomment">/// The command used to invoke [`Pip`], eg. `pip`, `pip3`.</span>
-    <span class="kw">pub</span> <span class="ident">cmd</span>: <span class="ident">String</span>,
     <span class="ident">cfg</span>: <span class="ident">Config</span>,
 }
 
@@ -194,13 +198,21 @@
 });
 
 <span class="kw">impl</span> <span class="ident">Pip</span> {
+    <span class="doccomment">/// Returns the command used to invoke [`Pip`], eg. `pip`, `pip3`.</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cmd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="self">self</span>.<span class="ident">cfg</span>
+            .<span class="ident">default_pm</span>
+            .<span class="ident">as_deref</span>()
+            .<span class="ident">expect</span>(<span class="string">&quot;default package manager should have been assigned before initialization&quot;</span>)
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Pip</span> {
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Pip</span> {
-            <span class="ident">cmd</span>: <span class="ident">cmd</span>.<span class="ident">into</span>(),
-            <span class="ident">cfg</span>,
-        }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="ident">Pip</span> { <span class="ident">cfg</span> }
     }
 }
 
@@ -218,7 +230,7 @@
     <span class="doccomment">/// Q generates a list of installed packages.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">q</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="ident">kws</span>.<span class="ident">is_empty</span>() {
-            <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;list&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
+            <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;list&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
                 .<span class="kw">await</span>
         } <span class="kw">else</span> {
             <span class="self">self</span>.<span class="ident">qs</span>(<span class="ident">kws</span>, <span class="ident">flags</span>).<span class="kw">await</span>
@@ -227,7 +239,7 @@
 
     <span class="doccomment">/// Qi displays local package information: name, version, description, etc.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">qi</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;show&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">kws</span>(<span class="ident">kws</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
+        <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;show&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">kws</span>(<span class="ident">kws</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
             .<span class="kw">await</span>
     }
 
@@ -236,7 +248,7 @@
     <span class="comment">// when including multiple search terms, only packages with descriptions</span>
     <span class="comment">// matching ALL of those terms are returned.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">qs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;list&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>);
+        <span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;list&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>);
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">cfg</span>.<span class="ident">dry_run</span> {
             <span class="ident">print::print_cmd</span>(<span class="kw-2">&amp;</span><span class="ident">cmd</span>, <span class="ident">PROMPT_RUN</span>);
         }
@@ -249,7 +261,7 @@
 
     <span class="doccomment">/// Qu lists packages which have an update available.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">qu</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;list&quot;</span>, <span class="string">&quot;--outdated&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;list&quot;</span>, <span class="string">&quot;--outdated&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
             .<span class="ident">kws</span>(<span class="ident">kws</span>)
             .<span class="ident">flags</span>(<span class="ident">flags</span>)
             .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">cmd</span>))
@@ -258,7 +270,7 @@
 
     <span class="doccomment">/// R removes a single package, leaving all of its dependencies installed.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">r</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;uninstall&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;uninstall&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
             .<span class="ident">kws</span>(<span class="ident">kws</span>)
             .<span class="ident">flags</span>(<span class="ident">flags</span>)
             .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run_with</span>(<span class="ident">cmd</span>, <span class="ident">PmMode::default</span>(), <span class="kw-2">&amp;</span><span class="ident">STRAT_UNINSTALL</span>))
@@ -267,7 +279,7 @@
 
     <span class="doccomment">/// S installs one or more packages by name.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">s</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;install&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;install&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
             .<span class="ident">kws</span>(<span class="ident">kws</span>)
             .<span class="ident">flags</span>(<span class="ident">flags</span>)
             .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run_with</span>(<span class="ident">cmd</span>, <span class="ident">PmMode::default</span>(), <span class="kw-2">&amp;</span><span class="ident">STRAT_PROMPT</span>))
@@ -277,7 +289,7 @@
     <span class="doccomment">/// Sc removes all the cached packages that are not currently installed, and</span>
     <span class="doccomment">/// the unused sync database.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">sc</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;cache&quot;</span>, <span class="string">&quot;purge&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
+        <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;cache&quot;</span>, <span class="string">&quot;purge&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">flags</span>(<span class="ident">flags</span>))
             .<span class="kw">await</span>
     }
 
@@ -289,7 +301,7 @@
                 <span class="ident">pm</span>: <span class="self">self</span>.<span class="ident">name</span>().<span class="ident">into</span>(),
             });
         }
-        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;install&quot;</span>, <span class="string">&quot;--upgrade&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;install&quot;</span>, <span class="string">&quot;--upgrade&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
             .<span class="ident">kws</span>(<span class="ident">kws</span>)
             .<span class="ident">flags</span>(<span class="ident">flags</span>)
             .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">cmd</span>))
@@ -299,7 +311,7 @@
     <span class="doccomment">/// Sw retrieves all packages from the server, but does not install/upgrade</span>
     <span class="doccomment">/// anything.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">sw</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="string">&quot;download&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
+        <span class="ident">Cmd::new</span>(<span class="kw-2">&amp;</span>[<span class="self">self</span>.<span class="ident">cmd</span>(), <span class="string">&quot;download&quot;</span>] <span class="kw">as</span> <span class="kw">_</span>)
             .<span class="ident">kws</span>(<span class="ident">kws</span>)
             .<span class="ident">flags</span>(<span class="ident">flags</span>)
             .<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">cmd</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run</span>(<span class="ident">cmd</span>))
