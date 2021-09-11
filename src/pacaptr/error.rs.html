@@ -66,6 +66,7 @@
 <span id="66">66</span>
 <span id="67">67</span>
 <span id="68">68</span>
+<span id="69">69</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Basic error definitions specific to this crate.</span>
 
 <span class="kw">use</span> <span class="ident">thiserror::Error</span>;
@@ -75,10 +76,11 @@
 
 <span class="doccomment">/// A specialized [`Result`](std::result::Result) type used by</span>
 <span class="doccomment">/// [`pacaptr`](crate).</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std::result::Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span>;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std::result::Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span>;
 
 <span class="doccomment">/// Error type for the [`pacaptr`](crate) library.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Error</span>)]</span>
+<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span> {
     <span class="doccomment">/// Error while parsing CLI arguments.</span>
     <span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Failed to parse arguments: {msg}&quot;</span>)]</span>

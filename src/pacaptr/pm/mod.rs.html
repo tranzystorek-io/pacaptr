@@ -430,6 +430,14 @@
 <span id="430">430</span>
 <span id="431">431</span>
 <span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Mapping from [`pacman`] commands to various operations of specific package</span>
 <span class="doccomment">//! managers.</span>
 <span class="doccomment">//!</span>
@@ -437,25 +445,33 @@
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::module_name_repetitions</span>)]</span>
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">apk</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">apt</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">brew</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">choco</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">conda</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">dnf</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">emerge</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">pip</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">port</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">scoop</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">tlmgr</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">unknown</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">zypper</span>;
+<span class="macro">macro_rules!</span> <span class="ident">mods</span> {
+    ( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span>:<span class="ident">vis</span> <span class="macro-nonterminal">$</span><span class="kw">mod</span>:<span class="macro-nonterminal">ident</span>; )<span class="op">+</span> ) <span class="op">=</span><span class="op">&gt;</span> {
+        $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span> <span class="kw">mod</span> <span class="macro-nonterminal">$</span><span class="kw">mod</span>; )<span class="op">+</span>
+    }
+}
+
+<span class="macro">mods!</span> {
+    <span class="macro-nonterminal">apk</span>;
+    <span class="ident">apt</span>;
+    <span class="ident">brew</span>;
+    <span class="ident">choco</span>;
+    <span class="ident">conda</span>;
+    <span class="ident">dnf</span>;
+    <span class="ident">emerge</span>;
+    <span class="ident">pip</span>;
+    <span class="ident">port</span>;
+    <span class="ident">scoop</span>;
+    <span class="ident">tlmgr</span>;
+    <span class="ident">unknown</span>;
+    <span class="ident">zypper</span>;
+}
 
 <span class="kw">use</span> <span class="ident">async_trait::async_trait</span>;
 <span class="kw">use</span> <span class="ident">macro_rules_attribute::macro_rules_attribute</span>;
 <span class="kw">use</span> <span class="ident">tt_call::tt_call</span>;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::{
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="self">self</span>::{
     <span class="ident">apk::Apk</span>, <span class="ident">apt::Apt</span>, <span class="ident">brew::Brew</span>, <span class="ident">choco::Choco</span>, <span class="ident">conda::Conda</span>, <span class="ident">dnf::Dnf</span>, <span class="ident">emerge::Emerge</span>, <span class="ident">pip::Pip</span>,
     <span class="ident">port::Port</span>, <span class="ident">scoop::Scoop</span>, <span class="ident">tlmgr::Tlmgr</span>, <span class="ident">unknown::Unknown</span>, <span class="ident">zypper::Zypper</span>,
 };
@@ -607,7 +623,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```rust</span>
 <span class="doccomment">/// _decor_pm! {</span>
-<span class="doccomment">///     def = [{ pub trait Pm { .. } }]</span>
+<span class="doccomment">///     def = [{  trait Pm { .. } }]</span>
 <span class="doccomment">///     methods = [{ q qc qe .. }] )</span>
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
@@ -629,7 +645,7 @@
 <span class="doccomment">/// - &lt;https://wiki.archlinux.org/index.php/Pacman/Rosetta&gt;</span>
 <span class="attribute">#[<span class="ident">macro_rules_attribute</span>(<span class="macro">decor_pm!</span>)]</span>
 <span class="attribute">#[<span class="ident">async_trait</span>]</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Pm</span>: <span class="ident">Sync</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait</span> <span class="ident">Pm</span>: <span class="ident">Sync</span> {
     <span class="doccomment">/// Gets the name of the package manager.</span>
     <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span>;
 
@@ -649,7 +665,7 @@
 <span class="doccomment">/// focusing on the ability to run commands ([`Cmd`]s) in a configured and</span>
 <span class="doccomment">/// [`Pm`]-specific context.</span>
 <span class="attribute">#[<span class="ident">async_trait</span>]</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">PmHelper</span>: <span class="ident">Pm</span> {
+<span class="kw">trait</span> <span class="ident">PmHelper</span>: <span class="ident">Pm</span> {
     <span class="doccomment">/// Executes a command in the context of the [`Pm`] implementation. Returns</span>
     <span class="doccomment">/// the [`Output`] of this command.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">check_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cmd</span>: <span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
@@ -728,7 +744,7 @@
 <span class="doccomment">/// This is a [`Pm`] specified version intended to be used along with</span>
 <span class="doccomment">/// [`Strategy`].</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">PmMode</span> {
+<span class="kw">enum</span> <span class="ident">PmMode</span> {
     <span class="doccomment">/// Silently collects all the `stdout`/`stderr` combined. Print nothing.</span>
     <span class="ident">Mute</span>,
 
@@ -761,20 +777,20 @@
 <span class="doccomment">/// A set of intrinsic properties of a command in the context of a specific</span>
 <span class="doccomment">/// package manager, indicating how it is run.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Strategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">struct</span> <span class="ident">Strategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// How a dry run is dealt with.</span>
-    <span class="kw">pub</span> <span class="ident">dry_run</span>: <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">dry_run</span>: <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// How the prompt is dealt with when running the package manager.</span>
-    <span class="kw">pub</span> <span class="ident">prompt</span>: <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">prompt</span>: <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// How the cache is cleaned when `no_cache` is set to `true`.</span>
-    <span class="kw">pub</span> <span class="ident">no_cache</span>: <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">no_cache</span>: <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// How a dry run is dealt with.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Prints the command to be run, and stop.</span>
     <span class="ident">PrintCmd</span>,
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
@@ -784,7 +800,7 @@
 <span class="kw">impl</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
     }
 }
@@ -797,7 +813,7 @@
 
 <span class="doccomment">/// How the prompt is dealt with when running the package manager.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// There is no prompt.</span>
     <span class="prelude-val">None</span>,
     <span class="doccomment">/// There is no prompt, but a custom prompt is added.</span>
@@ -814,14 +830,14 @@
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be disabled with a flag.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::NativeNoConfirm</span>(<span class="ident">no_confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
     }
 
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be enabled with a flag.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::NativeConfirm</span>(<span class="ident">confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
     }
 }
@@ -834,7 +850,7 @@
 
 <span class="doccomment">/// How the cache is cleaned when `no_cache` is set to `true`.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Does not clean cache.</span>
     <span class="doccomment">/// This variant MUST be used when implementing cache cleaning methods like</span>
     <span class="doccomment">/// `-Sc`.</span>
@@ -852,7 +868,7 @@
 <span class="kw">impl</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
     }
 }

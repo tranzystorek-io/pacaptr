@@ -543,7 +543,7 @@
 <span class="comment">// For details on operations, flags and flagcounters, see: https://www.archlinux.org/pacman/pacman.8.html</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clap</span>)]</span>
 <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">about</span> <span class="op">=</span> <span class="macro">clap::crate_description!</span>())]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Operations</span> {
+<span class="kw">enum</span> <span class="ident">Operations</span> {
     <span class="doccomment">/// Query the package database.</span>
     <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">short_flag</span> <span class="op">=</span> <span class="string">&#39;Q&#39;</span>, <span class="ident">long_flag</span> <span class="op">=</span> <span class="string">&quot;query&quot;</span>)]</span>
     <span class="ident">Query</span> {
@@ -669,7 +669,7 @@
     <span class="doccomment">/// Generates current [`Config`] by merging current command line arguments</span>
     <span class="doccomment">/// and options obtained with [`clap`] with the dotfile [`Config`], which</span>
     <span class="doccomment">/// has a lower precedence.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">merge_cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dotfile</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
+    <span class="kw">fn</span> <span class="ident">merge_cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dotfile</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
         <span class="ident">Config</span> {
             <span class="ident">dry_run</span>: <span class="self">self</span>.<span class="ident">dry_run</span> <span class="op">|</span><span class="op">|</span> <span class="ident">dotfile</span>.<span class="ident">dry_run</span>,
             <span class="ident">needed</span>: <span class="self">self</span>.<span class="ident">needed</span> <span class="op">|</span><span class="op">|</span> <span class="ident">dotfile</span>.<span class="ident">dry_run</span>,
@@ -685,7 +685,7 @@
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">/// See [`Error`](crate::error::Error) for a  list of possible errors.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="comment">// Collect options as a `String`, eg. `-S -y -u =&gt; &quot;Suy&quot;`.</span>
         <span class="comment">// ! HACK: In `Pm` we ensure the Pacman methods are all named with flags in</span>
         <span class="comment">// ! ASCII order, ! eg. `Suy` instead of `Syu`.</span>
@@ -788,7 +788,7 @@
 
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MockPm</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">MockPm</span> {
         <span class="kw">pub</span> <span class="ident">cfg</span>: <span class="ident">Config</span>,
     }
 
