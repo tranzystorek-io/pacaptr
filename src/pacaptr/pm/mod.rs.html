@@ -777,35 +777,35 @@
 <span class="doccomment">/// A set of intrinsic properties of a command in the context of a specific</span>
 <span class="doccomment">/// package manager, indicating how it is run.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>)]</span>
-<span class="kw">struct</span> <span class="ident">Strategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">struct</span> <span class="ident">Strategy</span> {
     <span class="doccomment">/// How a dry run is dealt with.</span>
-    <span class="ident">dry_run</span>: <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">dry_run</span>: <span class="ident">DryRunStrategy</span>,
 
     <span class="doccomment">/// How the prompt is dealt with when running the package manager.</span>
-    <span class="ident">prompt</span>: <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">prompt</span>: <span class="ident">PromptStrategy</span>,
 
     <span class="doccomment">/// How the cache is cleaned when `no_cache` is set to `true`.</span>
-    <span class="ident">no_cache</span>: <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
+    <span class="ident">no_cache</span>: <span class="ident">NoCacheStrategy</span>,
 }
 
 <span class="doccomment">/// How a dry run is dealt with.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">enum</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">DryRunStrategy</span> {
     <span class="doccomment">/// Prints the command to be run, and stop.</span>
     <span class="ident">PrintCmd</span>,
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
-    <span class="ident">WithFlags</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>),
+    <span class="ident">WithFlags</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>),
 }
 
-<span class="kw">impl</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">DryRunStrategy</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">DryRunStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">DryRunStrategy</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">DryRunStrategy::PrintCmd</span>
     }
@@ -813,36 +813,36 @@
 
 <span class="doccomment">/// How the prompt is dealt with when running the package manager.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">enum</span> <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">PromptStrategy</span> {
     <span class="doccomment">/// There is no prompt.</span>
     <span class="prelude-val">None</span>,
     <span class="doccomment">/// There is no prompt, but a custom prompt is added.</span>
     <span class="ident">CustomPrompt</span>,
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be disabled with a flag.</span>
-    <span class="ident">NativeNoConfirm</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>),
+    <span class="ident">NativeNoConfirm</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>),
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be enabled with a flag.</span>
-    <span class="ident">NativeConfirm</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>),
+    <span class="ident">NativeConfirm</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>),
 }
 
-<span class="kw">impl</span> <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">PromptStrategy</span> {
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be disabled with a flag.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::NativeNoConfirm</span>(<span class="ident">no_confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
+    <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::NativeNoConfirm</span>(<span class="ident">no_confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be enabled with a flag.</span>
-    <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::NativeConfirm</span>(<span class="ident">confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
+    <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::NativeConfirm</span>(<span class="ident">confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">PromptStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">PromptStrategy</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">PromptStrategy::None</span>
     }
@@ -850,7 +850,7 @@
 
 <span class="doccomment">/// How the cache is cleaned when `no_cache` is set to `true`.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">enum</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span> <span class="op">=</span> <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">enum</span> <span class="ident">NoCacheStrategy</span> {
     <span class="doccomment">/// Does not clean cache.</span>
     <span class="doccomment">/// This variant MUST be used when implementing cache cleaning methods like</span>
     <span class="doccomment">/// `-Sc`.</span>
@@ -862,18 +862,18 @@
     <span class="doccomment">/// Uses `-Sccc`.</span>
     <span class="ident">Sccc</span>,
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
-    <span class="ident">WithFlags</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>),
+    <span class="ident">WithFlags</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>),
 }
 
-<span class="kw">impl</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">NoCacheStrategy</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>()).<span class="ident">collect</span>())
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">NoCacheStrategy</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">NoCacheStrategy</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">NoCacheStrategy::None</span>
     }

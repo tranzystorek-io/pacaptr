@@ -557,7 +557,7 @@
     <span class="doccomment">/// Makes a new [`Cmd`] instance with the given [`cmd`](Cmd::cmd) part.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
-            <span class="ident">cmd</span>: <span class="ident">cmd</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>(),
+            <span class="ident">cmd</span>: <span class="ident">cmd</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="ident">Cmd::default</span>()
         }
     }
@@ -571,7 +571,7 @@
     <span class="doccomment">/// Overrides the value of [`flags`](field@Cmd::flags).</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">flags</span>(<span class="self">self</span>, <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
-            <span class="ident">flags</span>: <span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>(),
+            <span class="ident">flags</span>: <span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="self">self</span>
         }
     }
@@ -579,7 +579,7 @@
     <span class="doccomment">/// Overrides the value of [`kws`](field@Cmd::kws).</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">kws</span>(<span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
-            <span class="ident">kws</span>: <span class="ident">kws</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">map_into</span>().<span class="ident">collect</span>(),
+            <span class="ident">kws</span>: <span class="ident">kws</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="self">self</span>
         }
     }
