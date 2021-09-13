@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled-0.2.2&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../tabled/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled-0.3.0&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../tabled/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -401,59 +401,86 @@
 <span id="401">401</span>
 <span id="402">402</span>
 <span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
 </pre><pre class="rust"><code><span class="doccomment">//! An easy to use library for pretty print tables of Rust `struct`s and `enum`s.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! # Get started</span>
+<span class="doccomment">//! The library is based on a [Tabled] trait which is used to actually build tables.</span>
+<span class="doccomment">//! It also provides an variate of dynamic settings for customization of a [Table].</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The common and probably the best way to begin is to annotate your type with</span>
-<span class="doccomment">//! `#[derive(Tabled)]`. You can also implement it on your own as well.</span>
+<span class="doccomment">//! [Table] can be build from vast majority of Rust&#39;s standart types.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Examples</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! If you wan&#39;t to build a table for your data.</span>
+<span class="doccomment">//! Most likely a starting point is to anotate your type with `#[derive(Tabled)]`.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust</span>
-<span class="doccomment">//!     use tabled::{Tabled, Table};</span>
+<span class="doccomment">//! use tabled::{Tabled, Table};</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     #[derive(Tabled)]</span>
-<span class="doccomment">//!     struct Language {</span>
-<span class="doccomment">//!         name: &amp;&#39;static str,</span>
-<span class="doccomment">//!         designed_by: &amp;&#39;static str,</span>
-<span class="doccomment">//!         invented_year: usize,</span>
-<span class="doccomment">//!     }</span>
+<span class="doccomment">//! #[derive(Tabled)]</span>
+<span class="doccomment">//! struct Language {</span>
+<span class="doccomment">//!     name: &amp;&#39;static str,</span>
+<span class="doccomment">//!     designed_by: &amp;&#39;static str,</span>
+<span class="doccomment">//!     invented_year: usize,</span>
+<span class="doccomment">//! }</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     let languages = vec![</span>
-<span class="doccomment">//!         Language{</span>
-<span class="doccomment">//!             name: &quot;C&quot;,</span>
-<span class="doccomment">//!             designed_by: &quot;Dennis Ritchie&quot;,</span>
-<span class="doccomment">//!             invented_year: 1972</span>
-<span class="doccomment">//!         },</span>
-<span class="doccomment">//!         Language{</span>
-<span class="doccomment">//!             name: &quot;Rust&quot;,</span>
-<span class="doccomment">//!             designed_by: &quot;Graydon Hoare&quot;,</span>
-<span class="doccomment">//!             invented_year: 2010</span>
-<span class="doccomment">//!         },</span>
-<span class="doccomment">//!         Language{</span>
-<span class="doccomment">//!             name: &quot;Go&quot;,</span>
-<span class="doccomment">//!             designed_by: &quot;Rob Pike&quot;,</span>
-<span class="doccomment">//!             invented_year: 2009</span>
-<span class="doccomment">//!         },</span>
-<span class="doccomment">//!     ];</span>
+<span class="doccomment">//! let languages = vec![</span>
+<span class="doccomment">//!     Language{</span>
+<span class="doccomment">//!         name: &quot;C&quot;,</span>
+<span class="doccomment">//!         designed_by: &quot;Dennis Ritchie&quot;,</span>
+<span class="doccomment">//!         invented_year: 1972</span>
+<span class="doccomment">//!     },</span>
+<span class="doccomment">//!     Language{</span>
+<span class="doccomment">//!         name: &quot;Rust&quot;,</span>
+<span class="doccomment">//!         designed_by: &quot;Graydon Hoare&quot;,</span>
+<span class="doccomment">//!         invented_year: 2010</span>
+<span class="doccomment">//!     },</span>
+<span class="doccomment">//!     Language{</span>
+<span class="doccomment">//!         name: &quot;Go&quot;,</span>
+<span class="doccomment">//!         designed_by: &quot;Rob Pike&quot;,</span>
+<span class="doccomment">//!         invented_year: 2009</span>
+<span class="doccomment">//!     },</span>
+<span class="doccomment">//! ];</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     let table = Table::new(languages).to_string();</span>
+<span class="doccomment">//! let table = Table::new(languages).to_string();</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     let expected = &quot;+------+----------------+---------------+\n\</span>
-<span class="doccomment">//!                     | name |  designed_by   | invented_year |\n\</span>
-<span class="doccomment">//!                     +------+----------------+---------------+\n\</span>
-<span class="doccomment">//!                     |  C   | Dennis Ritchie |     1972      |\n\</span>
-<span class="doccomment">//!                     +------+----------------+---------------+\n\</span>
-<span class="doccomment">//!                     | Rust | Graydon Hoare  |     2010      |\n\</span>
-<span class="doccomment">//!                     +------+----------------+---------------+\n\</span>
-<span class="doccomment">//!                     |  Go  |    Rob Pike    |     2009      |\n\</span>
-<span class="doccomment">//!                     +------+----------------+---------------+\n&quot;;</span>
+<span class="doccomment">//! let expected = &quot;+------+----------------+---------------+\n\</span>
+<span class="doccomment">//!                 | name |  designed_by   | invented_year |\n\</span>
+<span class="doccomment">//!                 +------+----------------+---------------+\n\</span>
+<span class="doccomment">//!                 |  C   | Dennis Ritchie |     1972      |\n\</span>
+<span class="doccomment">//!                 +------+----------------+---------------+\n\</span>
+<span class="doccomment">//!                 | Rust | Graydon Hoare  |     2010      |\n\</span>
+<span class="doccomment">//!                 +------+----------------+---------------+\n\</span>
+<span class="doccomment">//!                 |  Go  |    Rob Pike    |     2009      |\n\</span>
+<span class="doccomment">//!                 +------+----------------+---------------+\n&quot;;</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     assert_eq!(table, expected);</span>
+<span class="doccomment">//! assert_eq!(table, expected);</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! We must to know what we print in the field</span>
-<span class="doccomment">//! accordingly each field should implement `std::fmt::Display`</span>
-<span class="doccomment">//! The example below is not compiled</span>
+<span class="doccomment">//! Not all types can derive [Tabled] trait though.</span>
+<span class="doccomment">//! The example below can&#39;t be compiled.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust,compile_fail</span>
 <span class="doccomment">//!   # use tabled::Tabled;</span>
@@ -465,61 +492,79 @@
 <span class="doccomment">//!     struct SomeOtherType;</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Most of the default types implements the trait out of the box.</span>
+<span class="doccomment">//! We must know what we&#39;re up to print as a field. Because of this</span>
+<span class="doccomment">//! each field must implement [std::fmt::Display].</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ### Default implementations</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! As I&#39;ve already mentioned most of the default types implements the trait out of the box.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This allows you to run the following code.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust</span>
-<span class="doccomment">//!     use tabled::{Tabled, Table};</span>
-<span class="doccomment">//!     let some_numbers = [1, 2, 3];</span>
-<span class="doccomment">//!     let table = Table::new(&amp;some_numbers);</span>
-<span class="doccomment">//!     # let expected = &quot;+-----+\n\</span>
-<span class="doccomment">//!     #                 | i32 |\n\</span>
-<span class="doccomment">//!     #                 +-----+\n\</span>
-<span class="doccomment">//!     #                 |  1  |\n\</span>
-<span class="doccomment">//!     #                 +-----+\n\</span>
-<span class="doccomment">//!     #                 |  2  |\n\</span>
-<span class="doccomment">//!     #                 +-----+\n\</span>
-<span class="doccomment">//!     #                 |  3  |\n\</span>
-<span class="doccomment">//!     #                 +-----+\n&quot;;</span>
-<span class="doccomment">//!     # assert_eq!(table.to_string(), expected);</span>
+<span class="doccomment">//! use tabled::{Tabled, Table};</span>
+<span class="doccomment">//! let table = Table::new(&amp;[1, 2, 3]);</span>
+<span class="doccomment">//! # let expected = &quot;+-----+\n\</span>
+<span class="doccomment">//! #                 | i32 |\n\</span>
+<span class="doccomment">//! #                 +-----+\n\</span>
+<span class="doccomment">//! #                 |  1  |\n\</span>
+<span class="doccomment">//! #                 +-----+\n\</span>
+<span class="doccomment">//! #                 |  2  |\n\</span>
+<span class="doccomment">//! #                 +-----+\n\</span>
+<span class="doccomment">//! #                 |  3  |\n\</span>
+<span class="doccomment">//! #                 +-----+\n&quot;;</span>
+<span class="doccomment">//! # assert_eq!(table.to_string(), expected);</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! You also can combine structures by means of tuples.</span>
+<span class="doccomment">//! ### Combination of types via tuples</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Personally I consider this a feature which drives the library to shine.</span>
+<span class="doccomment">//! You can combine any types that implements [Tabled] trait into one table.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! You can also see in this example a `#[header(&quot;name&quot;)]` usage which configures a header</span>
+<span class="doccomment">//! of a table which will be printed.</span>
+<span class="doccomment">//! You could change it dynamically as well.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust</span>
-<span class="doccomment">//!     use tabled::{Tabled, Table, Style};</span>
+<span class="doccomment">//! use tabled::{Tabled, Table, Style};</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     #[derive(Tabled)]</span>
-<span class="doccomment">//!     enum Domain {</span>
-<span class="doccomment">//!         Security,</span>
-<span class="doccomment">//!         Embeded,</span>
-<span class="doccomment">//!         Frontend,</span>
-<span class="doccomment">//!         Unknown,</span>
-<span class="doccomment">//!     }</span>
+<span class="doccomment">//! #[derive(Tabled)]</span>
+<span class="doccomment">//! enum Domain {</span>
+<span class="doccomment">//!     Security,</span>
+<span class="doccomment">//!     Embeded,</span>
+<span class="doccomment">//!     Frontend,</span>
+<span class="doccomment">//!     Unknown,</span>
+<span class="doccomment">//! }</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     #[derive(Tabled)]</span>
-<span class="doccomment">//!     struct Developer(#[header(&quot;name&quot;)] &amp;&#39;static str);</span>
+<span class="doccomment">//! #[derive(Tabled)]</span>
+<span class="doccomment">//! struct Developer(#[header(&quot;name&quot;)] &amp;&#39;static str);</span>
 <span class="doccomment">//!     </span>
-<span class="doccomment">//!     let data = vec![</span>
-<span class="doccomment">//!         (Developer(&quot;Terri Kshlerin&quot;), Domain::Embeded),</span>
-<span class="doccomment">//!         (Developer(&quot;Catalina Dicki&quot;), Domain::Security),</span>
-<span class="doccomment">//!         (Developer(&quot;Jennie Schmeler&quot;), Domain::Frontend),</span>
-<span class="doccomment">//!         (Developer(&quot;Maxim Zhiburt&quot;), Domain::Unknown),</span>
-<span class="doccomment">//!     ];</span>
+<span class="doccomment">//! let data = vec![</span>
+<span class="doccomment">//!     (Developer(&quot;Terri Kshlerin&quot;), Domain::Embeded),</span>
+<span class="doccomment">//!     (Developer(&quot;Catalina Dicki&quot;), Domain::Security),</span>
+<span class="doccomment">//!     (Developer(&quot;Jennie Schmeler&quot;), Domain::Frontend),</span>
+<span class="doccomment">//!     (Developer(&quot;Maxim Zhiburt&quot;), Domain::Unknown),</span>
+<span class="doccomment">//! ];</span>
 <span class="doccomment">//!     </span>
-<span class="doccomment">//!     let table = Table::new(data).with(Style::psql()).to_string();</span>
+<span class="doccomment">//! let table = Table::new(data).with(Style::psql()).to_string();</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     assert_eq!(</span>
-<span class="doccomment">//!         table,</span>
-<span class="doccomment">//!         concat!(</span>
-<span class="doccomment">//!             &quot;      name       | Security | Embeded | Frontend | Unknown \n&quot;,</span>
-<span class="doccomment">//!             &quot;-----------------+----------+---------+----------+---------\n&quot;,</span>
-<span class="doccomment">//!             &quot; Terri Kshlerin  |          |    +    |          |         \n&quot;,</span>
-<span class="doccomment">//!             &quot; Catalina Dicki  |    +     |         |          |         \n&quot;,</span>
-<span class="doccomment">//!             &quot; Jennie Schmeler |          |         |    +     |         \n&quot;,</span>
-<span class="doccomment">//!             &quot;  Maxim Zhiburt  |          |         |          |    +    \n&quot;</span>
-<span class="doccomment">//!         )</span>
-<span class="doccomment">//!     );</span>
+<span class="doccomment">//! assert_eq!(</span>
+<span class="doccomment">//!     table,</span>
+<span class="doccomment">//!     concat!(</span>
+<span class="doccomment">//!         &quot;      name       | Security | Embeded | Frontend | Unknown \n&quot;,</span>
+<span class="doccomment">//!         &quot;-----------------+----------+---------+----------+---------\n&quot;,</span>
+<span class="doccomment">//!         &quot; Terri Kshlerin  |          |    +    |          |         \n&quot;,</span>
+<span class="doccomment">//!         &quot; Catalina Dicki  |    +     |         |          |         \n&quot;,</span>
+<span class="doccomment">//!         &quot; Jennie Schmeler |          |         |    +     |         \n&quot;,</span>
+<span class="doccomment">//!         &quot;  Maxim Zhiburt  |          |         |          |    +    \n&quot;</span>
+<span class="doccomment">//!     )</span>
+<span class="doccomment">//! );</span>
 <span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Settings</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! You can find more examples of settings and attributes in</span>
+<span class="doccomment">//! [README.md](https://github.com/zhiburt/tabled/blob/master/README.md)</span>
 <span class="doccomment">//!</span>
 
 <span class="kw">use</span> <span class="ident">papergrid</span>::{<span class="ident">AlignmentHorizontal</span>, <span class="ident">Entity</span>, <span class="ident">Grid</span>, <span class="ident">Settings</span>};
@@ -527,30 +572,35 @@
 
 <span class="kw">mod</span> <span class="ident">alignment</span>;
 <span class="kw">mod</span> <span class="ident">disable</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">display</span>;
 <span class="kw">mod</span> <span class="ident">formating</span>;
 <span class="kw">mod</span> <span class="ident">indent</span>;
 <span class="kw">mod</span> <span class="ident">object</span>;
 <span class="kw">mod</span> <span class="ident">panel</span>;
+<span class="kw">mod</span> <span class="ident">rotate</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">style</span>;
 <span class="kw">mod</span> <span class="ident">width</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
-    <span class="ident">alignment</span>::<span class="kw-2">*</span>, <span class="ident">disable</span>::<span class="kw-2">*</span>, <span class="ident">formating</span>::<span class="kw-2">*</span>, <span class="ident">indent</span>::<span class="kw-2">*</span>, <span class="ident">object</span>::<span class="kw-2">*</span>, <span class="ident">panel</span>::<span class="kw-2">*</span>, <span class="ident">style::Style</span>, <span class="ident">width</span>::<span class="kw-2">*</span>,
+    <span class="ident">alignment</span>::<span class="kw-2">*</span>, <span class="ident">disable</span>::<span class="kw-2">*</span>, <span class="ident">formating</span>::<span class="kw-2">*</span>, <span class="ident">indent</span>::<span class="kw-2">*</span>, <span class="ident">object</span>::<span class="kw-2">*</span>, <span class="ident">panel</span>::<span class="kw-2">*</span>, <span class="ident">rotate</span>::<span class="kw-2">*</span>,
+    <span class="ident">style::Style</span>, <span class="ident">width</span>::<span class="kw-2">*</span>,
 };
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">papergrid</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">tabled_derive::Tabled</span>;
 
-<span class="doccomment">/// Tabled a trait responsible for providing a header filds and a row fields.</span>
+<span class="doccomment">/// Tabled a trait responsible for providing a header fields and a row fields.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// It&#39;s urgent that `header` len is equal to `fields` len.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```text</span>
-<span class="doccomment">///     Self::headers().len() == self.fields().len()</span>
+<span class="doccomment">/// Self::headers().len() == self.fields().len()</span>
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Tabled</span> {
-    <span class="doccomment">/// Fields must return a list of cell in a row</span>
+    <span class="doccomment">/// Fields method must return a list of cells.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The cells will be placed in the same row, preserving the order.</span>
     <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
-    <span class="doccomment">/// Headers return a list of names for columns</span>
+    <span class="doccomment">/// Headers must return a list of column names.</span>
     <span class="kw">fn</span> <span class="ident">headers</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
 }
 
@@ -566,57 +616,52 @@
     }
 }
 
-<span class="doccomment">/// A trait for configuring a `Grid`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Mainly was created to be able to have a variadic set of parameters in a [the `table` macros](./macros.table.html)</span>
+<span class="doccomment">/// A trait which is responsilbe for configuration of a [Grid].</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TableOption</span> {
-    <span class="doccomment">/// Modification function of a `Grid`</span>
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>);
+    <span class="doccomment">/// The function modifies a [Grid] object.</span>
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>);
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">T</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">TableOption</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span>,
 {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
         <span class="ident">T::change</span>(<span class="self">self</span>, <span class="ident">grid</span>)
     }
 }
 
-<span class="doccomment">/// CellOption is trait for configuring a `Cell` which represented by &#39;row&#39; and &#39;column&#39; indexes.</span>
+<span class="doccomment">/// A trait for configuring a [Cell] a single cell.</span>
+<span class="doccomment">/// Where cell represented by &#39;row&#39; and &#39;column&#39; indexes.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">CellOption</span> {
-    <span class="doccomment">/// Modification function of a `Cell`</span>
-    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>);
+    <span class="doccomment">/// Modification function of a [Cell]</span>
+    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>);
 }
 
-<span class="doccomment">/// Table structure provides an interface for building a table for types that implements [`Tabled`].</span>
+<span class="doccomment">/// Table structure provides an interface for building a table for types that implements [Tabled].</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// # Example</span>
+<span class="doccomment">/// To build a string representation of a table you must use a [std::fmt::Display].</span>
+<span class="doccomment">/// Or simply call `.to_string()` method.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ## Basic usage</span>
+<span class="doccomment">/// ## Example</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```rust,no_run</span>
-<span class="doccomment">///     use tabled::Table;</span>
-<span class="doccomment">///     let data: Vec&lt;&amp;&#39;static str&gt; = Vec::new();</span>
-<span class="doccomment">///     let table = Table::new(data);</span>
-<span class="doccomment">///     println!(&quot;{}&quot;, table);</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ## A list of settings</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It may take a list of arguments such as [`Style`](./enum.Style.html),</span>
-<span class="doccomment">/// [`Alignment`](./struct.Alignment.html), [`ChangeRing`](./struct.ChangeRing.html)</span>
+<span class="doccomment">/// ### Basic usage</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```rust,no_run</span>
-<span class="doccomment">///     use tabled::{Table, Style, Alignment, Full, Modify};</span>
-<span class="doccomment">///     let data = vec![&quot;Hello&quot;, &quot;2021&quot;];</span>
-<span class="doccomment">///     let table = Table::new(&amp;data)</span>
-<span class="doccomment">///                     .with(Style::psql())</span>
-<span class="doccomment">///                     .with(Modify::new(Full).with(Alignment::left()));</span>
-<span class="doccomment">///     println!(&quot;{}&quot;, table);</span>
+<span class="doccomment">/// use tabled::Table;</span>
+<span class="doccomment">/// let table = Table::new(&amp;[&quot;Year&quot;, &quot;2021&quot;]);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`Tabled`]: ./trait.Tabled.html</span>
+<span class="doccomment">/// ### With settings</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```rust,no_run</span>
+<span class="doccomment">/// use tabled::{Table, Style, Alignment, Full, Modify};</span>
+<span class="doccomment">/// let data = vec![&quot;Hello&quot;, &quot;2021&quot;];</span>
+<span class="doccomment">/// let table = Table::new(&amp;data)</span>
+<span class="doccomment">///                 .with(Style::psql())</span>
+<span class="doccomment">///                 .with(Modify::new(Full).with(Alignment::left()));</span>
+<span class="doccomment">/// println!(&quot;{}&quot;, table);</span>
+<span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Table</span> {
     <span class="ident">grid</span>: <span class="ident">Grid</span>,
 }
@@ -629,8 +674,10 @@
         <span class="self">Self</span> { <span class="ident">grid</span> }
     }
 
-    <span class="doccomment">/// With is a generic function which applies options to the table.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">option</span>: <span class="ident">O</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="doccomment">/// With is a generic function which applies options to the [Table].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It applies settings immediately.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">option</span>: <span class="ident">O</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">O</span>: <span class="ident">TableOption</span>,
     {
@@ -645,9 +692,8 @@
     }
 }
 
-<span class="doccomment">/// Modify structure provide a conviniet way for applying a set of [`CellOption`]s to the same object.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`CellOption`]: trait.CellOption.html</span>
+<span class="doccomment">/// Modify structure provide an abstraction, to be able to apply</span>
+<span class="doccomment">/// a set of [CellOption]s to the same object.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Modify</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span> {
     <span class="ident">obj</span>: <span class="ident">O</span>,
     <span class="ident">modifiers</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">CellOption</span><span class="op">&gt;</span><span class="op">&gt;</span>,
@@ -657,7 +703,7 @@
 <span class="kw">where</span>
     <span class="ident">O</span>: <span class="ident">Object</span>,
 {
-    <span class="doccomment">/// New creates a instance of Modify structure</span>
+    <span class="doccomment">/// Creates a new [Modify] without any options.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">obj</span>: <span class="ident">O</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">obj</span>,
@@ -665,10 +711,10 @@
         }
     }
 
-    <span class="doccomment">/// With a generic function which stores a [`CellOption`] to apply it later to an [`Object`]</span>
+    <span class="doccomment">/// With a generic function which stores a [CellOption].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`CellOption`]: trait.CellOption.html</span>
-    <span class="doccomment">/// [`Object`]: trait.Object.html</span>
+    <span class="doccomment">/// The function *doesn&#39;t* changes a [Grid]. [Grid] will be changed</span>
+    <span class="doccomment">/// only after passing [Modify] object to [Table::with].</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">CellOption</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -683,9 +729,9 @@
 <span class="kw">where</span>
     <span class="ident">O</span>: <span class="ident">Object</span>,
 {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
         <span class="kw">let</span> <span class="ident">cells</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">obj</span>.<span class="ident">cells</span>(<span class="ident">grid</span>.<span class="ident">count_rows</span>(), <span class="ident">grid</span>.<span class="ident">count_columns</span>());
-        <span class="kw">for</span> <span class="ident">func</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">modifiers</span> {
+        <span class="kw">for</span> <span class="ident">func</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">modifiers</span> {
             <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="ident">row</span>, <span class="ident">column</span>) <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">cells</span> {
                 <span class="ident">func</span>.<span class="ident">change_cell</span>(<span class="ident">grid</span>, <span class="ident">row</span>, <span class="ident">column</span>)
             }
@@ -693,9 +739,9 @@
     }
 }
 
-<span class="doccomment">/// Build_grid function build a [`Grid`](../papergrid/struct.Grid.html) from a data.</span>
-<span class="doccomment">/// A [`table` macros](./macro.table.html) should be prefered over this function.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_grid</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Tabled</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Grid</span> {
+<span class="doccomment">/// Building [Grid] from a data.</span>
+<span class="doccomment">/// You must prefer [Table] over this function.</span>
+<span class="kw">fn</span> <span class="ident">build_grid</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Tabled</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Grid</span> {
     <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">T::headers</span>();
     <span class="kw">let</span> <span class="ident">obj</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">iter</span>.<span class="ident">into_iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">fields</span>()).<span class="ident">collect</span>();
 
@@ -753,9 +799,9 @@
 <span class="macro">tuple_table!</span> { <span class="ident">A</span> }
 <span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> }
 <span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> }
-<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span>}
-<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span> <span class="ident">E</span>}
-<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span> <span class="ident">E</span> <span class="ident">F</span>}
+<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span> }
+<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span> <span class="ident">E</span> }
+<span class="macro">tuple_table!</span> { <span class="ident">A</span> <span class="ident">B</span> <span class="ident">C</span> <span class="ident">D</span> <span class="ident">E</span> <span class="ident">F</span> }
 
 <span class="macro">macro_rules!</span> <span class="ident">default_table</span> {
     ( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span> ) <span class="op">=</span><span class="op">&gt;</span> {
@@ -797,7 +843,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Display</span>, <span class="kw">const</span> <span class="ident">N</span>: <span class="ident">usize</span><span class="op">&gt;</span> <span class="ident">Tabled</span> <span class="kw">for</span> [<span class="ident">T</span>; <span class="ident">N</span>] {
     <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-        (<span class="kw-2">&amp;</span><span class="self">self</span>).<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">to_string</span>()).<span class="ident">collect</span>()
+        <span class="self">self</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">to_string</span>()).<span class="ident">collect</span>()
     }
 
     <span class="kw">fn</span> <span class="ident">headers</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {

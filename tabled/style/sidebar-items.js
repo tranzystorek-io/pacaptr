@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Line",""],["Style","Style is responsible for a look of a table."]]});
+initSidebarItems({"struct":[["Line","Line represents a horizontal line on a [Table]."],["Style","Style is responsible for a look of a [Table]."]]});
