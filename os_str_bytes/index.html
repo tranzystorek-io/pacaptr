@@ -37,7 +37,7 @@ way to do so is using <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/
 undesirable to use the bytes in interchange.</p>
 <p>Since this encoding can change between versions and platforms, it should
 not be used for storage. The standard library provides implementations of
-<a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/ffi/os_str/trait.OsStrExt.html"><code>OsStrExt</code></a> and <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/ffi/os_str/trait.OsStringExt.html"><code>OsStringExt</code></a> for various platforms, which should be
+<a href="https://doc.rust-lang.org/nightly/std/os/unix/ffi/os_str/trait.OsStrExt.html"><code>OsStrExt</code></a> and <a href="https://doc.rust-lang.org/nightly/std/os/unix/ffi/os_str/trait.OsStringExt.html"><code>OsStringExt</code></a> for various platforms, which should be
 preferred for that use case.</p>
 <h1 id="user-input" class="section-header"><a href="#user-input">User Input</a></h1>
 <p>Traits in this crate should ideally not be used to convert byte sequences
@@ -115,8 +115,8 @@ platform encoding.</p>
 </div><div class="item-left module-item"><a class="struct" href="struct.RawOsStr.html" title="os_str_bytes::RawOsStr struct">RawOsStr</a></div><div class="item-right docblock-short"><p>A container for the byte strings converted by <a href="trait.OsStrBytes.html" title="OsStrBytes"><code>OsStrBytes</code></a>.</p>
 </div><div class="item-left module-item"><a class="struct" href="struct.RawOsString.html" title="os_str_bytes::RawOsString struct">RawOsString</a></div><div class="item-right docblock-short"><p>A container for the byte strings converted by <a href="trait.OsStringBytes.html" title="OsStringBytes"><code>OsStringBytes</code></a>.</p>
 </div></div><h2 id="traits" class="section-header"><a href="#traits">Traits</a></h2>
-<div class="item-table"><div class="item-left module-item"><a class="trait" href="trait.OsStrBytes.html" title="os_str_bytes::OsStrBytes trait">OsStrBytes</a></div><div class="item-right docblock-short"><p>A platform agnostic variant of <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/ffi/os_str/trait.OsStrExt.html"><code>OsStrExt</code></a>.</p>
-</div><div class="item-left module-item"><a class="trait" href="trait.OsStringBytes.html" title="os_str_bytes::OsStringBytes trait">OsStringBytes</a></div><div class="item-right docblock-short"><p>A platform agnostic variant of <a href="https://doc.rust-lang.org/nightly/std/os/imp/unix/ffi/os_str/trait.OsStringExt.html"><code>OsStringExt</code></a>.</p>
+<div class="item-table"><div class="item-left module-item"><a class="trait" href="trait.OsStrBytes.html" title="os_str_bytes::OsStrBytes trait">OsStrBytes</a></div><div class="item-right docblock-short"><p>A platform agnostic variant of <a href="https://doc.rust-lang.org/nightly/std/os/unix/ffi/os_str/trait.OsStrExt.html"><code>OsStrExt</code></a>.</p>
+</div><div class="item-left module-item"><a class="trait" href="trait.OsStringBytes.html" title="os_str_bytes::OsStringBytes trait">OsStringBytes</a></div><div class="item-right docblock-short"><p>A platform agnostic variant of <a href="https://doc.rust-lang.org/nightly/std/os/unix/ffi/os_str/trait.OsStringExt.html"><code>OsStringExt</code></a>.</p>
 </div><div class="item-left module-item"><a class="trait" href="trait.Pattern.html" title="os_str_bytes::Pattern trait">Pattern</a></div><div class="item-right docblock-short"><p>Allows a type to be used for searching by <a href="struct.RawOsStr.html"><code>RawOsStr</code></a> and <a href="struct.RawOsString.html"><code>RawOsString</code></a>.</p>
 </div></div></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="os_str_bytes" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
     <script src="../main.js"></script>

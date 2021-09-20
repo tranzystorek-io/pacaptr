@@ -622,7 +622,7 @@ above to enforce this:</p>
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;format&quot;</span>)
         .<span class="ident">long</span>(<span class="string">&quot;format&quot;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
-        .<span class="ident">possible_values</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;txt&quot;</span>, <span class="string">&quot;json&quot;</span>]))
+        .<span class="ident">possible_values</span>([<span class="string">&quot;txt&quot;</span>, <span class="string">&quot;json&quot;</span>]))
     .<span class="ident">replace</span>(<span class="string">&quot;--save-all&quot;</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;--save-context&quot;</span>, <span class="string">&quot;--save-runtime&quot;</span>, <span class="string">&quot;--format=json&quot;</span>])
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;app&quot;</span>, <span class="string">&quot;--save-all&quot;</span>]);
 
