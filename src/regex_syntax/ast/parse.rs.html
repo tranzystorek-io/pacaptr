@@ -6249,7 +6249,7 @@ This module provides a regular expression parser.
     <span class="doccomment">/// This state is pushed whenever an opening bracket is found.</span>
     <span class="ident">Open</span> {
         <span class="doccomment">/// The union of class items immediately preceding this class.</span>
-        <span class="ident">union</span>: <span class="ident">ast::ClassSetUnion</span>,
+        <span class="kw">union</span>: <span class="ident">ast::ClassSetUnion</span>,
         <span class="doccomment">/// The class that has been opened. Typically this just corresponds</span>
         <span class="doccomment">/// to the `[`, but it can also include `[^` since `^` indicates</span>
         <span class="doccomment">/// negation of the class.</span>
@@ -6773,7 +6773,7 @@ This module provides a regular expression parser.
         <span class="self">self</span>.<span class="ident">parser</span>()
             .<span class="ident">stack_class</span>
             .<span class="ident">borrow_mut</span>()
-            .<span class="ident">push</span>(<span class="ident">ClassState::Open</span> { <span class="ident">union</span>: <span class="ident">parent_union</span>, <span class="ident">set</span>: <span class="ident">nested_set</span> });
+            .<span class="ident">push</span>(<span class="ident">ClassState::Open</span> { <span class="kw">union</span>: <span class="ident">parent_union</span>, <span class="ident">set</span>: <span class="ident">nested_set</span> });
         <span class="prelude-val">Ok</span>(<span class="ident">nested_union</span>)
     }
 
