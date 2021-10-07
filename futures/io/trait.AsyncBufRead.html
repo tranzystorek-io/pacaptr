@@ -21,7 +21,7 @@ calling <a href="trait.AsyncRead.html#tymethod.poll_read"><code>poll_read</code>
 be called with the number of bytes that are consumed from this buffer to
 ensure that the bytes are never returned twice.</p>
 <p>An empty buffer returned indicates that the stream has reached EOF.</p>
-<h1 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h1>
+<h5 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h5>
 <p>This function may not return errors of kind <code>WouldBlock</code> or
 <code>Interrupted</code>.  Implementations must convert <code>WouldBlock</code> into
 <code>Poll::Pending</code> and either internally retry or convert

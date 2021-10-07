@@ -42,7 +42,7 @@ The <code>TryFrom&lt;TokenTree&gt;</code> impls check for those two special iden
 return a <code>BoolLit</code> appropriately. For that reason, there is also no
 <code>TryFrom&lt;proc_macro::Literal&gt;</code> impl for <code>BoolLit</code>. The <code>proc_macro::Literal</code>
 simply cannot represent bool literals.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>In a proc-macro:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -88,7 +88,7 @@ simply cannot represent bool literals.</p>
     <span class="ident">Literal::Byte</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
     <span class="ident">Literal::ByteString</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
 }</code></pre></div>
-<h1 id="crate-features" class="section-header"><a href="#crate-features">Crate features</a></h1>
+<h2 id="crate-features" class="section-header"><a href="#crate-features">Crate features</a></h2>
 <ul>
 <li><code>proc-macro2</code> (<strong>default</strong>): adds the dependency <code>proc_macro2</code>, a bunch of
 <code>From</code> and <code>TryFrom</code> impls, and <a href="struct.InvalidToken.html#method.to_compile_error2" title="InvalidToken::to_compile_error2"><code>InvalidToken::to_compile_error2</code></a>.</li>

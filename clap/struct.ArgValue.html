@@ -2,7 +2,7 @@
 <p>This is used for specifying <a href="struct.Arg.html#method.possible_value">possible values</a> of <a href="struct.Arg.html">Args</a>.</p>
 <p><strong>NOTE:</strong> This struct is likely not needed for most usecases as it is only required to
 <a href="struct.ArgValue.html#method.hidden">hide</a> single values from help messages and shell completions or to attach <a href="struct.ArgValue.html#method.about">about</a> to possible values.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">cfg</span> <span class="op">=</span> <span class="ident">Arg::new</span>(<span class="string">&quot;config&quot;</span>)
       .<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
       .<span class="ident">value_name</span>(<span class="string">&quot;FILE&quot;</span>)
@@ -18,7 +18,7 @@
 Namely the name and all aliases.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.matches" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#90-97" title="goto source code">[src]</a></div><a href="#method.matches" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.matches" class="fnname">matches</a>(&amp;self, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, ignore_case: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Tests if the value is valid for this argument value</p>
 <p>The value is valid if it is either the name or one of the aliases.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">arg_value</span> <span class="op">=</span> <span class="ident">ArgValue::new</span>(<span class="string">&quot;fast&quot;</span>).<span class="ident">alias</span>(<span class="string">&quot;not-slow&quot;</span>);
 
 <span class="macro">assert!</span>(<span class="ident">arg_value</span>.<span class="ident">matches</span>(<span class="string">&quot;fast&quot;</span>, <span class="bool-val">false</span>));
@@ -30,27 +30,27 @@ Namely the name and all aliases.</p>
 decide wether this value was provided by the user to an argument.</p>
 <p><strong>NOTE:</strong> In case it is not <a href="struct.ArgValue.html#method.hidden">hidden</a> it will also be shown in help messages for arguments
 that use it as a <a href="struct.Arg.html#method.possible_values">possible value</a> and have not hidden them through <a href="struct.Arg.html#method.hide_possible_values"><code>Arg::hide_possible_values(true)</code></a>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgValue::new</span>(<span class="string">&quot;fast&quot;</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.about" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#136-139" title="goto source code">[src]</a></div><a href="#method.about" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.about" class="fnname">about</a>(self, about: &amp;'help <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Sets the help text of the value that will be displayed to the user when completing the
 value in a compatible shell. Typically, this is a short description of the value.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgValue::new</span>(<span class="string">&quot;slow&quot;</span>)
     .<span class="ident">about</span>(<span class="string">&quot;not fast&quot;</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.hidden" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#156-159" title="goto source code">[src]</a></div><a href="#method.hidden" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.hidden" class="fnname">hidden</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Hides this value from help text and shell completions.</p>
 <p>This is an alternative to hiding through <a href="struct.Arg.html#method.hide_possible_values"><code>Arg::hide_possible_values(true)</code></a>, if you only
 want to hide some values.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgValue::new</span>(<span class="string">&quot;secret&quot;</span>)
     .<span class="ident">hidden</span>(<span class="bool-val">true</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.alias" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#173-176" title="goto source code">[src]</a></div><a href="#method.alias" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.alias" class="fnname">alias</a>(self, name: &amp;'help <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Sets an alias for this argument value.</p>
 <p>The alias will be hidden from completion and help texts.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgValue::new</span>(<span class="string">&quot;slow&quot;</span>)
     .<span class="ident">alias</span>(<span class="string">&quot;not-fast&quot;</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.aliases" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#190-196" title="goto source code">[src]</a></div><a href="#method.aliases" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.aliases" class="fnname">aliases</a>&lt;I&gt;(self, names: I) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = &amp;'help <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Sets multiple aliases for this argument value.</p>
 <p>The aliases will be hidden from completion and help texts.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgValue::new</span>(<span class="string">&quot;slow&quot;</span>)
     .<span class="ident">aliases</span>([<span class="string">&quot;not-fast&quot;</span>, <span class="string">&quot;snake-like&quot;</span>])</code></pre></div>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#25" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl&lt;'help&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.ArgValue.html" title="struct clap::ArgValue">ArgValue</a>&lt;'help&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/arg_value.rs.html#25" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.ArgValue.html" title="struct clap::ArgValue">ArgValue</a>&lt;'help&gt;</h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

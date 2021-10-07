@@ -2,7 +2,7 @@
 <p>The library is based on a <a href="trait.Tabled.html" title="Tabled">Tabled</a> trait which is used to actually build tables.
 It also provides an variate of dynamic settings for customization of a <a href="struct.Table.html" title="Table">Table</a>.</p>
 <p><a href="struct.Table.html" title="Table">Table</a> can be build from vast majority of Rust’s standart types.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h3 id="examples" class="section-header"><a href="#examples">Examples</a></h3>
 <p>If you wan’t to build a table for your data.
 Most likely a starting point is to anotate your type with <code>#[derive(Tabled)]</code>.</p>
 
@@ -57,13 +57,13 @@ The example below can’t be compiled.</p>
     <span class="kw">struct</span> <span class="ident">SomeOtherType</span>;</code></pre></div>
 <p>We must know what we’re up to print as a field. Because of this
 each field must implement <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="std::fmt::Display">std::fmt::Display</a>.</p>
-<h3 id="default-implementations" class="section-header"><a href="#default-implementations">Default implementations</a></h3>
+<h4 id="default-implementations" class="section-header"><a href="#default-implementations">Default implementations</a></h4>
 <p>As I’ve already mentioned most of the default types implements the trait out of the box.</p>
 <p>This allows you to run the following code.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tabled</span>::{<span class="ident">Tabled</span>, <span class="ident">Table</span>};
 <span class="kw">let</span> <span class="ident">table</span> <span class="op">=</span> <span class="ident">Table::new</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</code></pre></div>
-<h3 id="combination-of-types-via-tuples" class="section-header"><a href="#combination-of-types-via-tuples">Combination of types via tuples</a></h3>
+<h4 id="combination-of-types-via-tuples" class="section-header"><a href="#combination-of-types-via-tuples">Combination of types via tuples</a></h4>
 <p>Personally I consider this a feature which drives the library to shine.
 You can combine any types that implements <a href="trait.Tabled.html" title="Tabled">Tabled</a> trait into one table.</p>
 <p>You can also see in this example a <code>#[header(&quot;name&quot;)]</code> usage which configures a header
@@ -103,7 +103,7 @@ You could change it dynamically as well.</p>
         <span class="string">&quot;  Maxim Zhiburt  |          |         |          |    +    \n&quot;</span>
     )
 );</code></pre></div>
-<h2 id="settings" class="section-header"><a href="#settings">Settings</a></h2>
+<h3 id="settings" class="section-header"><a href="#settings">Settings</a></h3>
 <p>You can find more examples of settings and attributes in
 <a href="https://github.com/zhiburt/tabled/blob/master/README.md">README.md</a></p>
 </div></details><h2 id="reexports" class="section-header"><a href="#reexports">Re-exports</a></h2>

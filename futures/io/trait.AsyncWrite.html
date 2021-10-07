@@ -16,7 +16,7 @@ the calling thread.</p>
 <code>Poll::Pending</code> and arranges for the current task (via
 <code>cx.waker().wake_by_ref()</code>) to receive a notification when the object becomes
 writable or is closed.</p>
-<h1 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h1>
+<h5 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h5>
 <p>This function may not return errors of kind <code>WouldBlock</code> or
 <code>Interrupted</code>.  Implementations must convert <code>WouldBlock</code> into
 <code>Poll::Pending</code> and either internally retry or convert
@@ -30,7 +30,7 @@ their destination.</p>
 <code>Poll::Pending</code> and arranges for the current task (via
 <code>cx.waker().wake_by_ref()</code>) to receive a notification when the object can make
 progress towards flushing.</p>
-<h1 id="implementation-1" class="section-header"><a href="#implementation-1">Implementation</a></h1>
+<h5 id="implementation-1" class="section-header"><a href="#implementation-1">Implementation</a></h5>
 <p>This function may not return errors of kind <code>WouldBlock</code> or
 <code>Interrupted</code>.  Implementations must convert <code>WouldBlock</code> into
 <code>Poll::Pending</code> and either internally retry or convert
@@ -42,7 +42,7 @@ progress towards flushing.</p>
 <code>Poll::Pending</code> and arranges for the current task (via
 <code>cx.waker().wake_by_ref()</code>) to receive a notification when the object can make
 progress towards closing.</p>
-<h1 id="implementation-2" class="section-header"><a href="#implementation-2">Implementation</a></h1>
+<h5 id="implementation-2" class="section-header"><a href="#implementation-2">Implementation</a></h5>
 <p>This function may not return errors of kind <code>WouldBlock</code> or
 <code>Interrupted</code>.  Implementations must convert <code>WouldBlock</code> into
 <code>Poll::Pending</code> and either internally retry or convert
@@ -59,7 +59,7 @@ writable or is closed.</p>
 <p>By default, this method delegates to using <code>poll_write</code> on the first
 nonempty buffer in <code>bufs</code>, or an empty one if none exists. Objects which
 support vectored IO should override this method.</p>
-<h1 id="implementation-3" class="section-header"><a href="#implementation-3">Implementation</a></h1>
+<h5 id="implementation-3" class="section-header"><a href="#implementation-3">Implementation</a></h5>
 <p>This function may not return errors of kind <code>WouldBlock</code> or
 <code>Interrupted</code>.  Implementations must convert <code>WouldBlock</code> into
 <code>Poll::Pending</code> and either internally retry or convert

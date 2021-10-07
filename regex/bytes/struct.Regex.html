@@ -16,7 +16,7 @@ string given.</p>
 <p>It is recommended to use this method if all you need to do is test
 a match, since the underlying matching engine may be able to do less
 work.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <p>Test if some text contains at least one word with exactly 13 ASCII word
 bytes:</p>
 
@@ -27,7 +27,7 @@ bytes:</p>
 <p>Note that this should only be used if you want to discover the position
 of the match. Testing the existence of a match is faster if you use
 <code>is_match</code>.</p>
-<h1 id="example-1" class="section-header"><a href="#example-1">Example</a></h1>
+<h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
 <p>Find the start and end location of the first word with exactly 13
 ASCII word bytes:</p>
 
@@ -37,7 +37,7 @@ ASCII word bytes:</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.find_iter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/regex/re_bytes.rs.html#188-190" title="goto source code">[src]</a></div><a href="#method.find_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.find_iter" class="fnname">find_iter</a>&lt;'r, 't&gt;(&amp;'r self, text: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'t [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="struct" href="struct.Matches.html" title="struct regex::bytes::Matches">Matches</a>&lt;'r, 't&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="struct.Matches.html" title="struct regex::bytes::Matches">Matches</a>&lt;'r, 't&gt;</div><code class="content"><span class="where fmt-newline">impl&lt;'r, 't&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="struct.Matches.html" title="struct regex::bytes::Matches">Matches</a>&lt;'r, 't&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="type">Item</a> = <a class="struct" href="struct.Match.html" title="struct regex::bytes::Match">Match</a>&lt;'t&gt;;</span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Returns an iterator for each successive non-overlapping match in
 <code>text</code>, returning the start and end byte indices with respect to
 <code>text</code>.</p>
-<h1 id="example-2" class="section-header"><a href="#example-2">Example</a></h1>
+<h5 id="example-2" class="section-header"><a href="#example-2">Example</a></h5>
 <p>Find the start and end location of every word with exactly 13 ASCII
 word bytes:</p>
 
@@ -51,7 +51,7 @@ match. If no match is found, then <code>None</code> is returned.</p>
 <p>You should only use <code>captures</code> if you need access to the location of
 capturing group matches. Otherwise, <code>find</code> is faster for discovering
 the location of the overall match.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Say you have some text with movie names and their release years,
 like “‘Citizen Kane’ (1941)”. It’d be nice if we could search for text
 looking like that, while also extracting the movie name and its release
@@ -94,7 +94,7 @@ accessed with <code>get(0)</code> or <code>[0]</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.captures_iter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/regex/re_bytes.rs.html#290-295" title="goto source code">[src]</a></div><a href="#method.captures_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.captures_iter" class="fnname">captures_iter</a>&lt;'r, 't&gt;(&amp;'r self, text: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'t [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="struct" href="struct.CaptureMatches.html" title="struct regex::bytes::CaptureMatches">CaptureMatches</a>&lt;'r, 't&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="struct.CaptureMatches.html" title="struct regex::bytes::CaptureMatches">CaptureMatches</a>&lt;'r, 't&gt;</div><code class="content"><span class="where fmt-newline">impl&lt;'r, 't&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="struct.CaptureMatches.html" title="struct regex::bytes::CaptureMatches">CaptureMatches</a>&lt;'r, 't&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="type">Item</a> = <a class="struct" href="struct.Captures.html" title="struct regex::bytes::Captures">Captures</a>&lt;'t&gt;;</span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Returns an iterator over all the non-overlapping capture groups matched
 in <code>text</code>. This is operationally the same as <code>find_iter</code>, except it
 yields information about capturing group matches.</p>
-<h1 id="example-3" class="section-header"><a href="#example-3">Example</a></h1>
+<h5 id="example-3" class="section-header"><a href="#example-3">Example</a></h5>
 <p>We can use this to find all movie titles and their release years in
 some text, where the movie is formatted like “‘Title’ (xxxx)”:</p>
 
@@ -114,7 +114,7 @@ some text, where the movie is formatted like “‘Title’ (xxxx)”:</p>
 regular expression. Namely, each element of the iterator corresponds to
 text that <em>isn’t</em> matched by the regular expression.</p>
 <p>This method will <em>not</em> copy the text given.</p>
-<h1 id="example-4" class="section-header"><a href="#example-4">Example</a></h1>
+<h5 id="example-4" class="section-header"><a href="#example-4">Example</a></h5>
 <p>To split a string delimited by arbitrary amounts of spaces or tabs:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">re</span> <span class="op">=</span> <span class="ident">Regex::new</span>(<span class="string">r&quot;[ \t]+&quot;</span>).<span class="ident">unwrap</span>();
@@ -128,7 +128,7 @@ substrings.) Namely, each element of the iterator corresponds to text
 that <em>isn’t</em> matched by the regular expression. The remainder of the
 string that is not split will be the last element in the iterator.</p>
 <p>This method will <em>not</em> copy the text given.</p>
-<h1 id="example-5" class="section-header"><a href="#example-5">Example</a></h1>
+<h5 id="example-5" class="section-header"><a href="#example-5">Example</a></h5>
 <p>Get the first two words in some text:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">re</span> <span class="op">=</span> <span class="ident">Regex::new</span>(<span class="string">r&quot;\W+&quot;</span>).<span class="ident">unwrap</span>();
@@ -140,7 +140,7 @@ expanded to match capture groups) or a function that takes the matches’
 <code>Captures</code> and returns the replaced byte string.</p>
 <p>If no match is found, then a copy of the byte string is returned
 unchanged.</p>
-<h1 id="replacement-string-syntax" class="section-header"><a href="#replacement-string-syntax">Replacement string syntax</a></h1>
+<h5 id="replacement-string-syntax" class="section-header"><a href="#replacement-string-syntax">Replacement string syntax</a></h5>
 <p>All instances of <code>$name</code> in the replacement text is replaced with the
 corresponding capture group <code>name</code>.</p>
 <p><code>name</code> may be an integer corresponding to the index of the
@@ -153,7 +153,7 @@ or isn’t a valid index), then it is replaced with the empty string.</p>
 group named <code>1a</code> and not the capture group at index <code>1</code>. To exert more
 precise control over the name, use braces, e.g., <code>${1}a</code>.</p>
 <p>To write a literal <code>$</code> use <code>$$</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Note that this function is polymorphic with respect to the replacement.
 In typical usage, this can just be a normal byte string:</p>
 
@@ -218,7 +218,7 @@ capturing group matches in the replacement text.</p>
 <code>is_match</code>, except it provides an end location for a match. In
 particular, the location returned <em>may be shorter</em> than the proper end
 of the leftmost-first match.</p>
-<h1 id="example-6" class="section-header"><a href="#example-6">Example</a></h1>
+<h5 id="example-6" class="section-header"><a href="#example-6">Example</a></h5>
 <p>Typically, <code>a+</code> would match the entire first sequence of <code>a</code> in some
 text, but <code>shortest_match</code> can give up as soon as it sees the first
 <code>a</code>.</p>

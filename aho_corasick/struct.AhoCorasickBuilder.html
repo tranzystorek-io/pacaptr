@@ -12,7 +12,7 @@ identifiers, which is <code>usize</code>. This guarantees that building the
 automaton will succeed and is generally a good default, but can make
 the size of the automaton 2-8 times bigger than it needs to be,
 depending on your target platform.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasickBuilder</span>;
@@ -38,7 +38,7 @@ automaton.</p>
 <code>S</code> type variable. This requires a type hint of some sort, either
 by specifying the return type or using the turbofish, e.g.,
 <code>build_with_size::&lt;u16, _, _&gt;(...)</code>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasick</span>, <span class="ident">AhoCorasickBuilder</span>};
@@ -64,7 +64,7 @@ small anyway. As the number of patterns grows, this will fall back to
 slower configurations that use less space.</p>
 <p>This is guaranteed to never set <code>match_kind</code>, but any other option may
 be overridden.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasickBuilder</span>;
@@ -90,7 +90,7 @@ corresponds to finding the longest possible match among all leftmost
 matches.</p>
 <p>For more details on match semantics, see the
 <a href="enum.MatchKind.html">documentation for <code>MatchKind</code></a>.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <p>In these examples, we demonstrate the differences between match
 semantics for a particular set of patterns in a specific order:
 <code>b</code>, <code>abc</code>, <code>abcd</code>.</p>
@@ -133,7 +133,7 @@ semantics for a particular set of patterns in a specific order:
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.anchored" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/aho_corasick/ahocorasick.rs.html#1790-1793" title="goto source code">[src]</a></div><a href="#method.anchored" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.anchored" class="fnname">anchored</a>(&amp;mut self, yes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; &amp;mut <a class="struct" href="struct.AhoCorasickBuilder.html" title="struct aho_corasick::AhoCorasickBuilder">AhoCorasickBuilder</a></h4></div></summary><div class="docblock"><p>Enable anchored mode, which requires all matches to start at the
 first position in a haystack.</p>
 <p>This option is disabled by default.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasickBuilder</span>;
@@ -166,7 +166,7 @@ increase the size of the automaton.</p>
 <p><strong>NOTE:</strong> In the future, support for full Unicode case insensitivity
 may be added, but ASCII case insensitivity is comparatively much
 simpler to add.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasickBuilder</span>;

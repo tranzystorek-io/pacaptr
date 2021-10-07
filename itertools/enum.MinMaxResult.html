@@ -13,7 +13,7 @@ has variant <code>None</code> if and only if the <code>MinMaxResult</code> has v
 <code>NoElements</code>. Otherwise <code>Some((x, y))</code> is returned where <code>x &lt;= y</code>.
 If the <code>MinMaxResult</code> has variant <code>OneElement(x)</code>, performing this
 operation will make one clone of <code>x</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">itertools::MinMaxResult</span>::{<span class="self">self</span>, <span class="ident">NoElements</span>, <span class="ident">OneElement</span>, <span class="ident">MinMax</span>};
 
 <span class="kw">let</span> <span class="ident">r</span>: <span class="ident">MinMaxResult</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">NoElements</span>;

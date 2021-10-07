@@ -12,7 +12,7 @@ which implements <code>Debug</code> and <code>Display</code>.</p>
 (in addition to <code>Debug</code> and <code>Display</code>, which are always required), then that
 Error impl’s <code>source</code> is preserved as the <code>source</code> of the resulting
 <code>anyhow::Error</code>.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">anyhow</span>::{<span class="ident">anyhow</span>, <span class="prelude-ty">Result</span>};
 
 <span class="kw">fn</span> <span class="ident">lookup</span>(<span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {

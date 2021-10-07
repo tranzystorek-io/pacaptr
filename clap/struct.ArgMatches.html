@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Used to get information about the arguments that were supplied to the program at runtime by the user. New instances of this struct are obtained by using the `App::get_matches` family of methods."><meta name="keywords" content="rust, rustlang, rust-lang, ArgMatches"><title>ArgMatches in clap - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc struct"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a><h2 class="location">Struct ArgMatches</h2><div class="sidebar-elems"><div class="block items"><h3 class="sidebar-title"><a href="#implementations">Methods</a></h3><div class="sidebar-links"><a href="#method.grouped_values_of">grouped_values_of</a><a href="#method.index_of">index_of</a><a href="#method.indices_of">indices_of</a><a href="#method.is_present">is_present</a><a href="#method.occurrences_of">occurrences_of</a><a href="#method.subcommand">subcommand</a><a href="#method.subcommand_matches">subcommand_matches</a><a href="#method.subcommand_name">subcommand_name</a><a href="#method.value_of">value_of</a><a href="#method.value_of_lossy">value_of_lossy</a><a href="#method.value_of_os">value_of_os</a><a href="#method.value_of_t">value_of_t</a><a href="#method.value_of_t_or_exit">value_of_t_or_exit</a><a href="#method.values_of">values_of</a><a href="#method.values_of_lossy">values_of_lossy</a><a href="#method.values_of_os">values_of_os</a><a href="#method.values_of_t">values_of_t</a><a href="#method.values_of_t_or_exit">values_of_t_or_exit</a></div><h3 class="sidebar-title"><a href="#trait-implementations">Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a><a href="#impl-Default">Default</a><a href="#impl-Eq">Eq</a><a href="#impl-PartialEq%3CArgMatches%3E">PartialEq&lt;ArgMatches&gt;</a><a href="#impl-StructuralEq">StructuralEq</a><a href="#impl-StructuralPartialEq">StructuralPartialEq</a></div><h3 class="sidebar-title"><a href="#synthetic-implementations">Auto Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-RefUnwindSafe">RefUnwindSafe</a><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a><a href="#impl-Unpin">Unpin</a><a href="#impl-UnwindSafe">UnwindSafe</a></div><h3 class="sidebar-title"><a href="#blanket-implementations">Blanket Implementations</a></h3><div class="sidebar-links"><a href="#impl-Any">Any</a><a href="#impl-Borrow%3CT%3E">Borrow&lt;T&gt;</a><a href="#impl-BorrowMut%3CT%3E">BorrowMut&lt;T&gt;</a><a href="#impl-Equivalent%3CK%3E">Equivalent&lt;K&gt;</a><a href="#impl-From%3CT%3E">From&lt;T&gt;</a><a href="#impl-Into%3CU%3E">Into&lt;U&gt;</a><a href="#impl-ToOwned">ToOwned</a><a href="#impl-TryFrom%3CU%3E">TryFrom&lt;U&gt;</a><a href="#impl-TryInto%3CU%3E">TryInto&lt;U&gt;</a></div></div><h2 class="location">Other items in<br><a href="index.html">clap</a></h2><div id="sidebar-vars" data-name="ArgMatches" data-ty="struct" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Struct <a href="index.html">clap</a>::<wbr><a class="struct" href="#">ArgMatches</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#76-79" title="goto source code">[src]</a></span></h1><div class="docblock type-decl"><pre class="rust struct"><code>pub struct ArgMatches { /* fields omitted */ }</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Used to get information about the arguments that were supplied to the program at runtime by
 the user. New instances of this struct are obtained by using the <a href="struct.App.html#method.get_matches"><code>App::get_matches</code></a> family of
 methods.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;MyApp&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;out&quot;</span>)
         .<span class="ident">long</span>(<span class="string">&quot;output&quot;</span>)
@@ -47,10 +47,10 @@ prefer <a href="struct.ArgMatches.html#method.values_of"><code>ArgMatches::value
 value.</p>
 <p><em>NOTE:</em> This will always return <code>Some(value)</code> if <a href="struct.Arg.html#method.default_value"><code>default_value</code></a> has been set.
 <a href="struct.ArgMatches.html#method.occurrences_of"><code>occurrences_of</code></a> can be used to check if a value is present at runtime.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html" title="panic!"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;output&quot;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
@@ -65,7 +65,7 @@ invalid points will be replaced with <code>\u{FFFD}</code></p>
 prefer <a href="struct.ArgMatches.html#method.values_of_lossy"><code>Arg::values_of_lossy</code></a> as <code>value_of_lossy()</code> will only return the <em>first</em> value.</p>
 <p><em>NOTE:</em> This will always return <code>Some(value)</code> if <a href="struct.Arg.html#method.default_value"><code>default_value</code></a> has been set.
 <a href="struct.ArgMatches.html#method.occurrences_of"><code>occurrences_of</code></a> can be used to check if a value is present at runtime.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::ffi::OsString</span>;
 <span class="kw">use</span> <span class="ident">std::os::unix::ffi</span>::{<span class="ident">OsStrExt</span>,<span class="ident">OsStringExt</span>};
 
@@ -87,7 +87,7 @@ prefer <a href="struct.ArgMatches.html#method.values_of_os"><code>ArgMatches::va
 value.</p>
 <p><em>NOTE:</em> This will always return <code>Some(value)</code> if <a href="struct.Arg.html#method.default_value"><code>default_value</code></a> has been set.
 <a href="struct.ArgMatches.html#method.occurrences_of"><code>occurrences_of</code></a> can be used to check if a value is present at runtime.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::ffi::OsString</span>;
 <span class="kw">use</span> <span class="ident">std::os::unix::ffi</span>::{<span class="ident">OsStrExt</span>,<span class="ident">OsStringExt</span>};
 
@@ -101,10 +101,10 @@ value.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.values_of" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#237-247" title="goto source code">[src]</a></div><a href="#method.values_of" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.values_of" class="fnname">values_of</a>&lt;T:&nbsp;Key&gt;(&amp;self, id: T) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.Values.html" title="struct clap::Values">Values</a>&lt;'_&gt;&gt;</h4></div></summary><div class="docblock"><p>Gets a <a href="struct.Values.html" title="Values"><code>Values</code></a> struct which implements <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html"><code>Iterator</code></a> for values of a specific argument
 (i.e. an argument that takes multiple values at runtime). If the option wasn’t present at
 runtime it returns <code>None</code></p>
-<h1 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h1>
+<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html" title="panic!"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;output&quot;</span>)
         .<span class="ident">multiple_values</span>(<span class="bool-val">true</span>)
@@ -120,7 +120,7 @@ runtime it returns <code>None</code></p>
 it returns <code>None</code>. A lossy value is one where if it contains invalid UTF-8 code points,
 those invalid points will be replaced with <code>\u{FFFD}</code></p>
 <p><em>NOTE:</em> Recommend having set <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::ffi::OsString</span>;
 <span class="kw">use</span> <span class="ident">std::os::unix::ffi::OsStringExt</span>;
 
@@ -142,7 +142,7 @@ on Unix-like systems is any series of bytes, regardless of whether or not they c
 valid UTF-8 code points. Since <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html"><code>String</code></a>s in Rust are guaranteed to be valid UTF-8, a valid
 filename as an argument value on Linux (for example) may contain invalid UTF-8 code points.</p>
 <p><em>NOTE:</em> Recommend having set <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::ffi</span>::{<span class="ident">OsStr</span>,<span class="ident">OsString</span>};
 <span class="kw">use</span> <span class="ident">std::os::unix::ffi</span>::{<span class="ident">OsStrExt</span>,<span class="ident">OsStringExt</span>};
 
@@ -166,10 +166,10 @@ value at runtime) and then converts it into the result type using <a href="https
 <p><em>NOTE:</em> If getting a value for an option or positional argument that allows multiples,
 prefer <a href="struct.ArgMatches.html#method.values_of_t"><code>ArgMatches::values_of_t</code></a> as this method will only return the <em>first</em>
 value.</p>
-<h1 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h1>
+<h5 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/std/macro.panic!.html"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
               .<span class="ident">arg</span>(<span class="string">&quot;[length] &#39;Set the length to use as a pos whole num, i.e. 20&#39;&quot;</span>)
               .<span class="ident">get_matches_from</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;test&quot;</span>, <span class="string">&quot;12&quot;</span>]);
@@ -185,10 +185,10 @@ value.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.value_of_t_or_exit" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#431-437" title="goto source code">[src]</a></div><a href="#method.value_of_t_or_exit" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.value_of_t_or_exit" class="fnname">value_of_t_or_exit</a>&lt;R&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;R as <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html#associatedtype.Err" title="type core::str::traits::FromStr::Err">Err</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Gets the value of a specific argument (i.e. an argument that takes an additional
 value at runtime) and then converts it into the result type using <a href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="std::str::FromStr"><code>std::str::FromStr</code></a>.</p>
 <p>If either the value is not present or parsing failed, exits the program.</p>
-<h1 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h1>
+<h5 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/std/macro.panic!.html"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
               .<span class="ident">arg</span>(<span class="string">&quot;[length] &#39;Set the length to use as a pos whole num, i.e. 20&#39;&quot;</span>)
               .<span class="ident">get_matches_from</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;test&quot;</span>, <span class="string">&quot;12&quot;</span>]);
@@ -204,10 +204,10 @@ value at runtime) and then converts it into the result type using <a href="https
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.values_of_t" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#469-490" title="goto source code">[src]</a></div><a href="#method.values_of_t" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.values_of_t" class="fnname">values_of_t</a>&lt;R&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;R&gt;, <a class="struct" href="struct.Error.html" title="struct clap::Error">Error</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;R as <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html#associatedtype.Err" title="type core::str::traits::FromStr::Err">Err</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Gets the typed values of a specific argument (i.e. an argument that takes multiple
 values at runtime) and then converts them into the result type using <a href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="std::str::FromStr"><code>std::str::FromStr</code></a>.</p>
 <p>If parsing (of any value) has failed, returns Err.</p>
-<h1 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h1>
+<h5 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/std/macro.panic!.html"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
               .<span class="ident">arg</span>(<span class="string">&quot;[length]... &#39;A sequence of integers because integers are neat!&#39;&quot;</span>)
               .<span class="ident">get_matches_from</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;test&quot;</span>, <span class="string">&quot;12&quot;</span>, <span class="string">&quot;77&quot;</span>, <span class="string">&quot;40&quot;</span>]);
@@ -223,10 +223,10 @@ values at runtime) and then converts them into the result type using <a href="ht
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.values_of_t_or_exit" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#522-528" title="goto source code">[src]</a></div><a href="#method.values_of_t_or_exit" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.values_of_t_or_exit" class="fnname">values_of_t_or_exit</a>&lt;R&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;R as <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="trait core::str::traits::FromStr">FromStr</a>&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html#associatedtype.Err" title="type core::str::traits::FromStr::Err">Err</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Gets the typed values of a specific argument (i.e. an argument that takes multiple
 values at runtime) and then converts them into the result type using <a href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html" title="std::str::FromStr"><code>std::str::FromStr</code></a>.</p>
 <p>If parsing (of any value) has failed, exits the program.</p>
-<h1 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h1>
+<h5 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h5>
 <p>This method will <a href="https://doc.rust-lang.org/std/macro.panic!.html"><code>panic!</code></a> if the value is invalid UTF-8.  See
 <a href="enum.ArgSettings.html#variant.AllowInvalidUtf8" title="crate::ArgSettings::AllowInvalidUtf8"><code>ArgSettings::AllowInvalidUtf8</code></a>.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
               .<span class="ident">arg</span>(<span class="string">&quot;[length]... &#39;A sequence of integers because integers are neat!&#39;&quot;</span>)
               .<span class="ident">get_matches_from</span>(<span class="kw-2">&amp;</span>[<span class="string">&quot;test&quot;</span>, <span class="string">&quot;12&quot;</span>, <span class="string">&quot;77&quot;</span>, <span class="string">&quot;40&quot;</span>]);
@@ -242,7 +242,7 @@ values at runtime) and then converts them into the result type using <a href="ht
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_present" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#551-554" title="goto source code">[src]</a></div><a href="#method.is_present" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_present" class="fnname">is_present</a>&lt;T:&nbsp;Key&gt;(&amp;self, id: T) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Returns <code>true</code> if an argument was present at runtime, otherwise <code>false</code>.</p>
 <p><em>NOTE:</em> This will always return <code>true</code> if <a href="struct.Arg.html#method.default_value"><code>default_value</code></a> has been set.
 <a href="struct.ArgMatches.html#method.occurrences_of"><code>occurrences_of</code></a> can be used to check if a value is present at runtime.</p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;debug&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;d&#39;</span>))
@@ -256,7 +256,7 @@ it will return <code>0</code>.</p>
 <p><strong>NOTE:</strong> This returns the number of times the argument was used, <em>not</em> the number of
 values. For example, <code>-o val1 val2 val3 -o val4</code> would return <code>2</code> (2 occurrences, but 4
 values).</p>
-<h1 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h1>
+<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;debug&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;d&#39;</span>)
@@ -292,7 +292,7 @@ an argv index does not.</p>
 <p>The examples should clear this up.</p>
 <p><em>NOTE:</em> If an argument is allowed multiple times, this method will only give the <em>first</em>
 index.</p>
-<h1 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h1>
+<h5 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h5>
 <p>The argv indices are listed in the comments below. See how they correspond to the clap
 indices. Note that if it’s not listed in a clap index, this is because it’s not saved in
 in an <code>ArgMatches</code> struct for querying.</p>
@@ -391,7 +391,7 @@ refer to the <em>values</em> <code>-o val</code> would therefore not represent t
 index for <code>val</code> would be recorded. This is by design.</p>
 <p><em>NOTE:</em> For more information about how clap indices compare to argv indices, see
 <a href="struct.ArgMatches.html#method.index_of"><code>ArgMatches::index_of</code></a></p>
-<h1 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h1>
+<h5 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;option&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
@@ -440,7 +440,7 @@ index.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.subcommand_matches" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#845-852" title="goto source code">[src]</a></div><a href="#method.subcommand_matches" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.subcommand_matches" class="fnname">subcommand_matches</a>&lt;T:&nbsp;Key&gt;(&amp;self, id: T) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.ArgMatches.html" title="struct clap::ArgMatches">ArgMatches</a>&gt;</h4></div></summary><div class="docblock"><p>Because <a href="trait.Subcommand.html"><code>Subcommand</code></a>s are essentially “sub-<a href="struct.App.html"><code>App</code></a>s” they have their own <a href="struct.ArgMatches.html" title="ArgMatches"><code>ArgMatches</code></a>
 as well. This method returns the <a href="struct.ArgMatches.html" title="ArgMatches"><code>ArgMatches</code></a> for a particular subcommand or <code>None</code> if
 the subcommand wasn’t present at runtime.</p>
-<h1 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h1>
+<h5 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">app_m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;debug&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;d&#39;</span>))
@@ -486,7 +486,7 @@ $ git push origin path
 $ git add ref local
 $ git commit message</code></pre></div>
 <p>Notice only one command per “level” may be used. You could not, for example, do <code>$ git clone url push origin path</code></p>
-<h1 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h1>
+<h5 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code> <span class="kw">let</span> <span class="ident">app_m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;git&quot;</span>)
      .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;clone&quot;</span>))
      .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;push&quot;</span>))
@@ -501,7 +501,7 @@ $ git commit message</code></pre></div>
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.subcommand" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#964-966" title="goto source code">[src]</a></div><a href="#method.subcommand" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.subcommand" class="fnname">subcommand</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, &amp;<a class="struct" href="struct.ArgMatches.html" title="struct clap::ArgMatches">ArgMatches</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</h4></div></summary><div class="docblock"><p>This brings together <a href="struct.ArgMatches.html#method.subcommand_matches"><code>ArgMatches::subcommand_matches</code></a> and <a href="struct.ArgMatches.html#method.subcommand_name"><code>ArgMatches::subcommand_name</code></a>
 by returning a tuple with both pieces of information.</p>
-<h1 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h1>
+<h5 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code> <span class="kw">let</span> <span class="ident">app_m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;git&quot;</span>)
      .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;clone&quot;</span>))
      .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;push&quot;</span>))

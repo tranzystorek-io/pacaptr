@@ -10,7 +10,7 @@ and <code>Vec</code> is that <code>Slab</code> returns the key when storing the 
 <p>It is important to note that keys may be reused. In other words, once a
 value associated with a given key is removed from a slab, that key may be
 returned from future calls to <code>insert</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Basic storing and retrieval.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">Slab::new</span>();
@@ -52,7 +52,7 @@ To avoid this, add a check.</p>
 }
 
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&quot;the slab is not at capacity yet&quot;</span>);</code></pre></div>
-<h1 id="capacity-and-reallocation" class="section-header"><a href="#capacity-and-reallocation">Capacity and reallocation</a></h1>
+<h2 id="capacity-and-reallocation" class="section-header"><a href="#capacity-and-reallocation">Capacity and reallocation</a></h2>
 <p>The capacity of a slab is the amount of space allocated for any future
 values that will be inserted in the slab. This is not to be confused with
 the <em>length</em> of the slab, which specifies the number of actual values
@@ -66,7 +66,7 @@ if the slab length is increased to 11 (due to another <code>insert</code>), it w
 have to reallocate, which can be slow. For this reason, it is recommended to
 use <a href="struct.Slab.html#with_capacity"><code>Slab::with_capacity</code></a> whenever possible to specify how many values the
 slab is expected to store.</p>
-<h1 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h1>
+<h2 id="implementation" class="section-header"><a href="#implementation">Implementation</a></h2>
 <p><code>Slab</code> is backed by a <code>Vec</code> of slots. Each slot is either occupied or
 vacant. <code>Slab</code> maintains a stack of vacant slots using a linked list. To
 find a vacant slot, the stack is popped. When a slot is released, it is

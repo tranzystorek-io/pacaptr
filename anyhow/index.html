@@ -3,7 +3,7 @@
 <p>This library provides <a href="struct.Error.html" title="Error"><code>anyhow::Error</code></a>, a trait object based error
 type for easy idiomatic error handling in Rust applications.</p>
 <br>
-<h1 id="details" class="section-header"><a href="#details">Details</a></h1>
+<h2 id="details" class="section-header"><a href="#details">Details</a></h2>
 <ul>
 <li>
 <p>Use <code>Result&lt;T, anyhow::Error&gt;</code>, or equivalently <code>anyhow::Result&lt;T&gt;</code>, as
@@ -95,7 +95,7 @@ supports string interpolation and produces an <code>anyhow::Error</code>.</p>
 </li>
 </ul>
 <br>
-<h1 id="no-std-support" class="section-header"><a href="#no-std-support">No-std support</a></h1>
+<h2 id="no-std-support" class="section-header"><a href="#no-std-support">No-std support</a></h2>
 <p>In no_std mode, the same API is almost all available and works the same way.
 To depend on Anyhow in no_std mode, disable our default enabled “std”
 feature in Cargo.toml. A global allocator is required.</p>

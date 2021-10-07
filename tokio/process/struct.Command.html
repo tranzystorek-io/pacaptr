@@ -19,7 +19,7 @@ an OS-defined way.</p>
 <code>PATH</code> environment variable on the Command,
 but this has some implementation limitations on Windows
 (see issue <a href="https://github.com/rust-lang/rust/issues/37519">rust-lang/rust#37519</a>).</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -35,7 +35,7 @@ but this has some implementation limitations on Windows
   .<span class="ident">arg</span>(<span class="string">&quot;-C&quot;</span>)
   .<span class="ident">arg</span>(<span class="string">&quot;/path/to/repo&quot;</span>);</code></pre></div>
 <p>To pass multiple arguments see <a href="struct.Command.html#method.args"><code>args</code></a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -45,7 +45,7 @@ but this has some implementation limitations on Windows
         .<span class="ident">arg</span>(<span class="string">&quot;-a&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.args" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#320-327" title="goto source code">[src]</a></div><a href="#method.args" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.args" class="fnname">args</a>&lt;I, S&gt;(&amp;mut self, args: I) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = S&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Adds multiple arguments to pass to the program.</p>
 <p>To pass a single argument see <a href="struct.Command.html#method.arg"><code>arg</code></a>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -55,7 +55,7 @@ but this has some implementation limitations on Windows
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.env" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#344-351" title="goto source code">[src]</a></div><a href="#method.env" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.env" class="fnname">env</a>&lt;K, V&gt;(&amp;mut self, key: K, val: V) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;K: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;V: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Inserts or updates an environment variable mapping.</p>
 <p>Note that environment variable names are case-insensitive (but case-preserving) on Windows,
 and case-sensitive on all other platforms.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -63,7 +63,7 @@ and case-sensitive on all other platforms.</p>
 <span class="kw">let</span> <span class="ident">command</span> <span class="op">=</span> <span class="ident">Command::new</span>(<span class="string">&quot;ls&quot;</span>)
         .<span class="ident">env</span>(<span class="string">&quot;PATH&quot;</span>, <span class="string">&quot;/bin&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.envs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#376-384" title="goto source code">[src]</a></div><a href="#method.envs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.envs" class="fnname">envs</a>&lt;I, K, V&gt;(&amp;mut self, vars: I) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>K, V<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;K: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;V: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Adds or updates multiple environment variable mappings.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -82,7 +82,7 @@ and case-sensitive on all other platforms.</p>
         .<span class="ident">env_clear</span>()
         .<span class="ident">envs</span>(<span class="kw-2">&amp;</span><span class="ident">filtered_env</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.env_remove" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#398-401" title="goto source code">[src]</a></div><a href="#method.env_remove" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.env_remove" class="fnname">env_remove</a>&lt;K:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;&gt;(&amp;mut self, key: K) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Removes an environment variable mapping.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -90,7 +90,7 @@ and case-sensitive on all other platforms.</p>
 <span class="kw">let</span> <span class="ident">command</span> <span class="op">=</span> <span class="ident">Command::new</span>(<span class="string">&quot;ls&quot;</span>)
         .<span class="ident">env_remove</span>(<span class="string">&quot;PATH&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.env_clear" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#415-418" title="goto source code">[src]</a></div><a href="#method.env_clear" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.env_clear" class="fnname">env_clear</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Clears the entire environment map for the child process.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -98,13 +98,13 @@ and case-sensitive on all other platforms.</p>
 <span class="kw">let</span> <span class="ident">command</span> <span class="op">=</span> <span class="ident">Command::new</span>(<span class="string">&quot;ls&quot;</span>)
         .<span class="ident">env_clear</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.current_dir" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#442-445" title="goto source code">[src]</a></div><a href="#method.current_dir" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.current_dir" class="fnname">current_dir</a>&lt;P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;&gt;(&amp;mut self, dir: P) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Sets the working directory for the child process.</p>
-<h1 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h1>
+<h5 id="platform-specific-behavior" class="section-header"><a href="#platform-specific-behavior">Platform-specific behavior</a></h5>
 <p>If the program path is relative (e.g., <code>&quot;./script.sh&quot;</code>), it’s ambiguous
 whether it should be interpreted relative to the parent’s working
 directory or relative to <code>current_dir</code>. The behavior in this case is
 platform specific and unstable, and it’s recommended to use
 <a href="crate::fs::canonicalize()"><code>canonicalize</code></a> to get an absolute program path instead.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -114,7 +114,7 @@ platform specific and unstable, and it’s recommended to use
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.stdin" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#466-469" title="goto source code">[src]</a></div><a href="#method.stdin" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.stdin" class="fnname">stdin</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html" title="struct std::process::Stdio">Stdio</a>&gt;&gt;(&amp;mut self, cfg: T) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Sets configuration for the child process’s standard input (stdin) handle.</p>
 <p>Defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.inherit"><code>inherit</code></a> when used with <code>spawn</code> or <code>status</code>, and
 defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.piped"><code>piped</code></a> when used with <code>output</code>.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::process</span>::{<span class="ident">Stdio</span>};
@@ -125,7 +125,7 @@ defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.stdout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#490-493" title="goto source code">[src]</a></div><a href="#method.stdout" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.stdout" class="fnname">stdout</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html" title="struct std::process::Stdio">Stdio</a>&gt;&gt;(&amp;mut self, cfg: T) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Sets configuration for the child process’s standard output (stdout) handle.</p>
 <p>Defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.inherit"><code>inherit</code></a> when used with <code>spawn</code> or <code>status</code>, and
 defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.piped"><code>piped</code></a> when used with <code>output</code>.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -136,7 +136,7 @@ defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.stderr" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/process/mod.rs.html#514-517" title="goto source code">[src]</a></div><a href="#method.stderr" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.stderr" class="fnname">stderr</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html" title="struct std::process::Stdio">Stdio</a>&gt;&gt;(&amp;mut self, cfg: T) -&gt; &amp;mut <a class="struct" href="struct.Command.html" title="struct tokio::process::Command">Command</a></h4></div></summary><div class="docblock"><p>Sets configuration for the child process’s standard error (stderr) handle.</p>
 <p>Defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.inherit"><code>inherit</code></a> when used with <code>spawn</code> or <code>status</code>, and
 defaults to <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html#method.piped"><code>piped</code></a> when used with <code>output</code>.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -149,7 +149,7 @@ process when its corresponding <code>Child</code> handle is dropped.</p>
 <p>By default, this value is assumed to be <code>false</code>, meaning the next spawned
 process will not be killed on drop, similar to the behavior of the standard
 library.</p>
-<h1 id="caveats" class="section-header"><a href="#caveats">Caveats</a></h1>
+<h5 id="caveats" class="section-header"><a href="#caveats">Caveats</a></h5>
 <p>On Unix platforms processes must be “reaped” by their parent process after
 they have exited in order to release all OS resources. A child process which
 has exited, but has not yet been reaped by its parent is considered a “zombie”
@@ -182,7 +182,7 @@ the spawn was requested.</p>
 their registration. If a closure returns <code>Err</code> then no further closures
 will be called and the spawn operation will immediately return with a
 failure.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>This closure will be run in the context of the child process after a
 <code>fork</code>. This primarily means that any modifications made to memory on
 behalf of this closure will <strong>not</strong> be visible to the parent process.
@@ -205,7 +205,7 @@ the <code>Child</code> has methods to acquire handles to the stdin, stdout, and
 stderr streams.</p>
 <p>All I/O this child does will be associated with the current default
 event loop.</p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -218,14 +218,14 @@ event loop.</p>
         .<span class="kw">await</span>
         .<span class="ident">expect</span>(<span class="string">&quot;ls command failed to run&quot;</span>)
 }</code></pre></div>
-<h1 id="caveats-1" class="section-header"><a href="#caveats-1">Caveats</a></h1><h2 id="droppingcancellation" class="section-header"><a href="#droppingcancellation">Dropping/Cancellation</a></h2>
+<h5 id="caveats-1" class="section-header"><a href="#caveats-1">Caveats</a></h5><h6 id="droppingcancellation" class="section-header"><a href="#droppingcancellation">Dropping/Cancellation</a></h6>
 <p>Similar to the behavior to the standard library, and unlike the futures
 paradigm of dropping-implies-cancellation, a spawned process will, by
 default, continue to execute even after the <code>Child</code> handle has been dropped.</p>
 <p>The <a href="struct.Command.html#method.kill_on_drop"><code>Command::kill_on_drop</code></a> method can be used to modify this behavior
 and kill the child process if the <code>Child</code> wrapper is dropped before it
 has exited.</p>
-<h2 id="unix-processes" class="section-header"><a href="#unix-processes">Unix Processes</a></h2>
+<h6 id="unix-processes" class="section-header"><a href="#unix-processes">Unix Processes</a></h6>
 <p>On Unix platforms processes must be “reaped” by their parent process after
 they have exited in order to release all OS resources. A child process which
 has exited, but has not yet been reaped by its parent is considered a “zombie”
@@ -237,7 +237,7 @@ any process which it has spawned. No additional guarantees are made with regards
 how quickly or how often this procedure will take place.</p>
 <p>It is recommended to avoid dropping a <a href="struct.Child.html"><code>Child</code></a> process handle before it has been
 fully <code>await</code>ed if stricter cleanup guarantees are required.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>On Unix platforms this method will fail with <code>std::io::ErrorKind::WouldBlock</code>
 if the system process limit is reached (which includes other applications
 running on the system).</p>
@@ -250,13 +250,13 @@ closed after the child is spawned.</p>
 event loop.</p>
 <p>The destructor of the future returned by this function will kill
 the child if <a href="struct.Command.html#method.kill_on_drop"><code>kill_on_drop</code></a> is set to true.</p>
-<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<h5 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h5>
 <p>This future will return an error if the child process cannot be spawned
 or if there is an error while awaiting its status.</p>
 <p>On Unix platforms this method will fail with <code>std::io::ErrorKind::WouldBlock</code>
 if the system process limit is reached (which includes other applications
 running on the system).</p>
-<h1 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h1>
+<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;
@@ -285,13 +285,13 @@ process exited.</p>
 event loop.</p>
 <p>The destructor of the future returned by this function will kill
 the child if <a href="struct.Command.html#method.kill_on_drop"><code>kill_on_drop</code></a> is set to true.</p>
-<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
+<h5 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h5>
 <p>This future will return an error if the child process cannot be spawned
 or if there is an error while awaiting its status.</p>
 <p>On Unix platforms this method will fail with <code>std::io::ErrorKind::WouldBlock</code>
 if the system process limit is reached (which includes other applications
 running on the system).</p>
-<h1 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h1>
+<h5 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::process::Command</span>;

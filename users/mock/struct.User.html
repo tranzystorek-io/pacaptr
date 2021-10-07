@@ -4,36 +4,36 @@
 group ID, with the rest of the fields filled with dummy values.</p>
 <p>This method does not actually create a new user on the system — it
 should only be used for comparing users in tests.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::User</span>;
 
 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">User::new</span>(<span class="number">501</span>, <span class="string">&quot;stevedore&quot;</span>, <span class="number">100</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.uid" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/users/base.rs.html#93-95" title="goto source code">[src]</a></div><a href="#method.uid" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.uid" class="fnname">uid</a>(&amp;self) -&gt; <a class="type" href="../type.uid_t.html" title="type users::uid_t">uid_t</a></h4></div></summary><div class="docblock"><p>Returns this user’s ID.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::User</span>;
 
 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">User::new</span>(<span class="number">501</span>, <span class="string">&quot;stevedore&quot;</span>, <span class="number">100</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">user</span>.<span class="ident">uid</span>(), <span class="number">501</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/users/base.rs.html#108-110" title="goto source code">[src]</a></div><a href="#method.name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.name" class="fnname">name</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a></h4></div></summary><div class="docblock"><p>Returns this user’s name.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::ffi::OsStr</span>;
 <span class="kw">use</span> <span class="ident">users::User</span>;
 
 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">User::new</span>(<span class="number">501</span>, <span class="string">&quot;stevedore&quot;</span>, <span class="number">100</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">user</span>.<span class="ident">name</span>(), <span class="ident">OsStr::new</span>(<span class="string">&quot;stevedore&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.primary_group_id" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/users/base.rs.html#122-124" title="goto source code">[src]</a></div><a href="#method.primary_group_id" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.primary_group_id" class="fnname">primary_group_id</a>(&amp;self) -&gt; <a class="type" href="../type.gid_t.html" title="type users::gid_t">gid_t</a></h4></div></summary><div class="docblock"><p>Returns the ID of this user’s primary group.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::User</span>;
 
 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">User::new</span>(<span class="number">501</span>, <span class="string">&quot;stevedore&quot;</span>, <span class="number">100</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">user</span>.<span class="ident">primary_group_id</span>(), <span class="number">100</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.groups" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/users/base.rs.html#143-145" title="goto source code">[src]</a></div><a href="#method.groups" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.groups" class="fnname">groups</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.Group.html" title="struct users::mock::Group">Group</a>&gt;&gt;</h4></div></summary><div class="docblock"><p>Returns a list of groups this user is a member of. This involves
 loading the groups list, as it is <em>not</em> contained within this type.</p>
-<h1 id="libc-functions-used" class="section-header"><a href="#libc-functions-used">libc functions used</a></h1>
+<h5 id="libc-functions-used" class="section-header"><a href="#libc-functions-used">libc functions used</a></h5>
 <ul>
 <li><a href="https://docs.rs/libc/*/libc/fn.getgrouplist.html"><code>getgrouplist</code></a></li>
 </ul>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::User</span>;
 
 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">User::new</span>(<span class="number">501</span>, <span class="string">&quot;stevedore&quot;</span>, <span class="number">100</span>);

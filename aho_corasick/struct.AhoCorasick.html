@@ -13,7 +13,7 @@ various knobs for controlling the space-vs-time trade offs taken when
 building the automaton.</p>
 <p>If you aren’t sure where to start, try beginning with
 <a href="struct.AhoCorasick.html#method.new_auto_configured"><code>AhoCorasick::new_auto_configured</code></a>.</p>
-<h1 id="resource-usage" class="section-header"><a href="#resource-usage">Resource usage</a></h1>
+<h2 id="resource-usage" class="section-header"><a href="#resource-usage">Resource usage</a></h2>
 <p>Aho-Corasick automatons are always constructed in <code>O(p)</code> time, where <code>p</code>
 is the combined length of all patterns being searched. With that said,
 building an automaton can be fairly costly because of high constant
@@ -25,7 +25,7 @@ good idea to build an automaton once and reuse it as much as possible.</p>
 concrete idea of how much memory is being used, try using the
 <a href="struct.AhoCorasick.html#method.heap_bytes"><code>AhoCorasick::heap_bytes</code></a>
 method.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>This example shows how to search for occurrences of multiple patterns
 simultaneously in a case insensitive fashion. Each match includes the
 pattern that matched along with the byte offsets of the match.</p>
@@ -70,7 +70,7 @@ for automatic configuration if you aren’t sure which settings to pick.</p>
 match semantics, which reports a match as soon as it is found. This
 corresponds to the standard match semantics supported by textbook
 descriptions of the Aho-Corasick algorithm.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -91,7 +91,7 @@ this will fall back to slower configurations that use less space.</p>
 <p>If you want auto configuration but with match semantics different from
 the default <code>MatchKind::Standard</code>, then use
 <a href="struct.AhoCorasickBuilder.html#method.auto_configure"><code>AhoCorasickBuilder::auto_configure</code></a>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <p>Basic usage is just like <code>new</code>, except you must provide a slice:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -105,7 +105,7 @@ position.</p>
 <p><code>haystack</code> may be any type that is cheaply convertible to a <code>&amp;[u8]</code>.
 This includes, but is not limited to, <code>String</code>, <code>&amp;str</code>, <code>Vec&lt;u8&gt;</code>, and
 <code>&amp;[u8]</code> itself.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -122,7 +122,7 @@ of this automaton.</p>
 <p><code>haystack</code> may be any type that is cheaply convertible to a <code>&amp;[u8]</code>.
 This includes, but is not limited to, <code>String</code>, <code>&amp;str</code>, <code>Vec&lt;u8&gt;</code>, and
 <code>&amp;[u8]</code> itself.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -145,7 +145,7 @@ or
 <p><code>haystack</code> may be any type that is cheaply convertible to a <code>&amp;[u8]</code>.
 This includes, but is not limited to, <code>String</code>, <code>&amp;str</code>, <code>Vec&lt;u8&gt;</code>, and
 <code>&amp;[u8]</code> itself.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <p>Basic usage, with standard semantics:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -187,7 +187,7 @@ semantics that this automaton was constructed with.</p>
 <p><code>haystack</code> may be any type that is cheaply convertible to a <code>&amp;[u8]</code>.
 This includes, but is not limited to, <code>String</code>, <code>&amp;str</code>, <code>Vec&lt;u8&gt;</code>, and
 <code>&amp;[u8]</code> itself.</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <p>Basic usage, with standard semantics:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -243,11 +243,11 @@ method.</p>
 <p><code>haystack</code> may be any type that is cheaply convertible to a <code>&amp;[u8]</code>.
 This includes, but is not limited to, <code>String</code>, <code>&amp;str</code>, <code>Vec&lt;u8&gt;</code>, and
 <code>&amp;[u8]</code> itself.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
 <p>This panics when <code>AhoCorasick::supports_overlapping</code> returns <code>false</code>.
 That is, this panics when this automaton’s match semantics are not
 <code>MatchKind::Standard</code>.</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <p>Basic usage, with standard semantics:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -267,10 +267,10 @@ slice given. Matches correspond to the same matches as reported by
 <p>Replacements are determined by the index of the matching pattern.
 For example, if the pattern with index <code>2</code> is found, then it is
 replaced by <code>replace_with[2]</code>.</p>
-<h1 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h1>
+<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
 <p>This panics when <code>replace_with.len()</code> does not equal the total number
 of patterns that are matched by this automaton.</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -289,10 +289,10 @@ reported by <a href="struct.AhoCorasick.html#method.find_iter"><code>find_iter</
 <p>Replacements are determined by the index of the matching pattern.
 For example, if the pattern with index <code>2</code> is found, then it is
 replaced by <code>replace_with[2]</code>.</p>
-<h1 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h1>
+<h5 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h5>
 <p>This panics when <code>replace_with.len()</code> does not equal the total number
 of patterns that are matched by this automaton.</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -312,7 +312,7 @@ Matches correspond to the same matches as reported by
 the match and a string buffer with which to write the replaced text
 (if any). If the closure returns <code>true</code>, then it continues to the next
 match. If the closure returns <code>false</code>, then searching is stopped.</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -345,7 +345,7 @@ match. Matches correspond to the same matches as reported by
 the match and a byte buffer with which to write the replaced text
 (if any). If the closure returns <code>true</code>, then it continues to the next
 match. If the closure returns <code>false</code>, then searching is stopped.</p>
-<h1 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h1>
+<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -387,17 +387,17 @@ with leftmost semantics, then this method will panic. To determine
 whether this will panic at runtime, use the
 <a href="struct.AhoCorasick.html#method.supports_stream"><code>AhoCorasick::supports_stream</code></a>
 method.</p>
-<h1 id="memory-usage" class="section-header"><a href="#memory-usage">Memory usage</a></h1>
+<h5 id="memory-usage" class="section-header"><a href="#memory-usage">Memory usage</a></h5>
 <p>In general, searching streams will use a constant amount of memory for
 its internal buffer. The one requirement is that the internal buffer
 must be at least the size of the longest possible match. In most use
 cases, the default buffer size will be much larger than any individual
 match.</p>
-<h1 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h1>
+<h5 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h5>
 <p>This panics when <code>AhoCorasick::supports_stream</code> returns <code>false</code>.
 That is, this panics when this automaton’s match semantics are not
 <code>MatchKind::Standard</code>. This restriction may be lifted in the future.</p>
-<h1 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h1>
+<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -432,17 +432,17 @@ with leftmost semantics, then this method will panic. To determine
 whether this will panic at runtime, use the
 <a href="struct.AhoCorasick.html#method.supports_stream"><code>AhoCorasick::supports_stream</code></a>
 method.</p>
-<h1 id="memory-usage-1" class="section-header"><a href="#memory-usage-1">Memory usage</a></h1>
+<h5 id="memory-usage-1" class="section-header"><a href="#memory-usage-1">Memory usage</a></h5>
 <p>In general, searching streams will use a constant amount of memory for
 its internal buffer. The one requirement is that the internal buffer
 must be at least the size of the longest possible match. In most use
 cases, the default buffer size will be much larger than any individual
 match.</p>
-<h1 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h1>
+<h5 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h5>
 <p>This panics when <code>AhoCorasick::supports_stream</code> returns <code>false</code>.
 That is, this panics when this automaton’s match semantics are not
 <code>MatchKind::Standard</code>. This restriction may be lifted in the future.</p>
-<h1 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h1>
+<h5 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -474,17 +474,17 @@ with leftmost semantics, then this method will panic. To determine
 whether this will panic at runtime, use the
 <a href="struct.AhoCorasick.html#method.supports_stream"><code>AhoCorasick::supports_stream</code></a>
 method.</p>
-<h1 id="memory-usage-2" class="section-header"><a href="#memory-usage-2">Memory usage</a></h1>
+<h5 id="memory-usage-2" class="section-header"><a href="#memory-usage-2">Memory usage</a></h5>
 <p>In general, searching streams will use a constant amount of memory for
 its internal buffer. The one requirement is that the internal buffer
 must be at least the size of the longest possible match. In most use
 cases, the default buffer size will be much larger than any individual
 match.</p>
-<h1 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h1>
+<h5 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h5>
 <p>This panics when <code>AhoCorasick::supports_stream</code> returns <code>false</code>.
 That is, this panics when this automaton’s match semantics are not
 <code>MatchKind::Standard</code>. This restriction may be lifted in the future.</p>
-<h1 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h1>
+<h5 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::io::Write</span>;
@@ -504,7 +504,7 @@ That is, this panics when this automaton’s match semantics are not
 )<span class="question-mark">?</span>;
 <span class="macro">assert_eq!</span>(<span class="string">b&quot;The 2 1 0.&quot;</span>.<span class="ident">to_vec</span>(), <span class="ident">result</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.match_kind" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/aho_corasick/ahocorasick.rs.html#875-877" title="goto source code">[src]</a></div><a href="#method.match_kind" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.match_kind" class="fnname">match_kind</a>(&amp;self) -&gt; &amp;<a class="enum" href="enum.MatchKind.html" title="enum aho_corasick::MatchKind">MatchKind</a></h4></div></summary><div class="docblock"><p>Returns the match kind used by this automaton.</p>
-<h1 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h1>
+<h5 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasick</span>, <span class="ident">MatchKind</span>};
@@ -514,7 +514,7 @@ That is, this panics when this automaton’s match semantics are not
 ]);
 <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">MatchKind::Standard</span>, <span class="ident">ac</span>.<span class="ident">match_kind</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.max_pattern_len" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/aho_corasick/ahocorasick.rs.html#893-895" title="goto source code">[src]</a></div><a href="#method.max_pattern_len" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.max_pattern_len" class="fnname">max_pattern_len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Returns the length of the longest pattern matched by this automaton.</p>
-<h1 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h1>
+<h5 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -530,7 +530,7 @@ example, if
 match semantics are used, and the patterns <code>Sam</code> and <code>Samwise</code> were
 used to build the automaton, then <code>Samwise</code> can never participate in a
 match because <code>Sam</code> will always take priority.</p>
-<h1 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h1>
+<h5 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::AhoCorasick</span>;
@@ -547,7 +547,7 @@ will result in a panic.</p>
 matches, only
 <a href="enum.MatchKind.html#variant.Standard"><code>MatchKind::Standard</code></a>
 supports overlapping matches. This is unlikely to change in the future.</p>
-<h1 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h1>
+<h5 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -567,7 +567,7 @@ then it will result in a panic.</p>
 <p>Currently, only
 <a href="enum.MatchKind.html#variant.Standard"><code>MatchKind::Standard</code></a>
 supports streaming. This may be expanded in the future.</p>
-<h1 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h1>
+<h5 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick</span>::{<span class="ident">AhoCorasickBuilder</span>, <span class="ident">MatchKind</span>};
@@ -583,7 +583,7 @@ supports streaming. This may be expanded in the future.</p>
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ac</span>.<span class="ident">supports_stream</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.heap_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/aho_corasick/ahocorasick.rs.html#1012-1017" title="goto source code">[src]</a></div><a href="#method.heap_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.heap_bytes" class="fnname">heap_bytes</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Returns the approximate total amount of heap used by this automaton, in
 units of bytes.</p>
-<h1 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h1>
+<h5 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h5>
 <p>This example shows the difference in heap usage between a few
 configurations:</p>
 

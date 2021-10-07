@@ -74,7 +74,7 @@
 </div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Build <code>App</code>, <code>Arg</code> and <code>Group</code> with Usage-string like input
 but without the associated parsing runtime cost.</p>
 <p><code>clap_app!</code> also supports several shorthand syntaxes.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="macro">clap_app!</span>(<span class="ident">myapp</span> <span class="op">=</span><span class="op">&gt;</span>
     (<span class="ident">version</span>: <span class="string">&quot;1.0&quot;</span>)
     (<span class="ident">author</span>: <span class="string">&quot;Kevin K. &lt;kbknapp@gmail.com&gt;&quot;</span>)
@@ -95,7 +95,7 @@ but without the associated parsing runtime cost.</p>
     )
 )
 .<span class="ident">get_matches</span>();</code></pre></div>
-<h1 id="shorthand-syntax-for-args" class="section-header"><a href="#shorthand-syntax-for-args">Shorthand Syntax for Args</a></h1>
+<h2 id="shorthand-syntax-for-args" class="section-header"><a href="#shorthand-syntax-for-args">Shorthand Syntax for Args</a></h2>
 <ul>
 <li>A single hyphen followed by a character (such as <code>-c</code>) sets the <a href="struct.Arg.html#method.short"><code>Arg::short</code></a></li>
 <li>A double hyphen followed by a character or word (such as <code>--config</code>) sets <a href="struct.Arg.html#method.long"><code>Arg::long</code></a></li>
@@ -125,7 +125,7 @@ will set that method such as <code>conflicts_with[FOO BAR BAZ]</code> will set
 <code>Arg::conflicts_with(&quot;FOO&quot;)</code>, <code>Arg::conflicts_with(&quot;BAR&quot;)</code>, and <code>Arg::conflicts_with(&quot;BAZ&quot;)</code>
 (note the lack of quotes around the values in the macro)</li>
 </ul>
-<h1 id="shorthand-syntax-for-groups" class="section-header"><a href="#shorthand-syntax-for-groups">Shorthand Syntax for Groups</a></h1>
+<h2 id="shorthand-syntax-for-groups" class="section-header"><a href="#shorthand-syntax-for-groups">Shorthand Syntax for Groups</a></h2>
 <ul>
 <li>Some shorthand syntaxes for <code>Arg</code> are also available for <code>ArgGroup</code>:
 <ul>
@@ -136,7 +136,7 @@ will set that method such as <code>conflicts_with[FOO BAR BAZ]</code> will set
 </ul>
 </li>
 </ul>
-<h1 id="alternative-form-for-non-ident-values" class="section-header"><a href="#alternative-form-for-non-ident-values">Alternative form for non-ident values</a></h1>
+<h2 id="alternative-form-for-non-ident-values" class="section-header"><a href="#alternative-form-for-non-ident-values">Alternative form for non-ident values</a></h2>
 <p>Certain places that normally accept an <code>ident</code> also optionally accept an alternative of <code>(&quot;expr enclosed by parens&quot;)</code></p>
 <ul>
 <li><code>(@arg something: --something)</code> could also be <code>(@arg (&quot;something-else&quot;): --(&quot;something-else&quot;))</code></li>

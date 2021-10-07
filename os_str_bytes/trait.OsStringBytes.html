@@ -6,9 +6,9 @@
 </div></details><h2 id="required-methods" class="small-section-header">Required methods<a href="#required-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><div id="tymethod.from_raw_vec" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/os_str_bytes/lib.rs.html#369" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.from_raw_vec" class="fnname">from_raw_vec</a>(string: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, <a class="struct" href="struct.EncodingError.html" title="struct os_str_bytes::EncodingError">EncodingError</a>&gt;</h4></div></summary><div class="docblock"><p>Converts a byte vector into an equivalent platform-native string.</p>
 <p>Provided byte strings should always be valid for the <a href="index.html#encoding">unspecified
 encoding</a> used by this crate.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>See documentation for <a href="struct.EncodingError.html" title="EncodingError"><code>EncodingError</code></a>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 <span class="kw">use</span> <span class="ident">std::ffi::OsString</span>;
 
@@ -19,7 +19,7 @@ encoding</a> used by this crate.</p>
 <span class="macro">assert_eq!</span>(<span class="ident">os_string</span>, <span class="ident">OsString::from_raw_vec</span>(<span class="ident">os_bytes</span>).<span class="ident">unwrap</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.into_raw_vec" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/os_str_bytes/lib.rs.html#391" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.into_raw_vec" class="fnname">into_raw_vec</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;</h4></div></summary><div class="docblock"><p>Converts a platform-native string into an equivalent byte vector.</p>
 <p>The returned byte string will use an <a href="index.html#encoding">unspecified encoding</a>.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::OsStringBytes</span>;

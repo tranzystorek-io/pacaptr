@@ -19,7 +19,7 @@ have a trailing comma. See <code>Serializer::pretty_array</code></li>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.pretty_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/toml/ser.rs.html#301-308" title="goto source code">[src]</a></div><a href="#method.pretty_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.pretty_string" class="fnname">pretty_string</a>(&amp;mut self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</h4></div></summary><div class="docblock"><p>Enable or Disable pretty strings</p>
 <p>If enabled, literal strings will be used when possible and strings with
 one or more newlines will use triple quotes (i.e.: <code>'''</code> or <code>&quot;&quot;&quot;</code>)</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Instead of:</p>
 <div class="example-wrap"><pre class="language-toml,ignore"><code>single = &quot;no newlines&quot;
 text = &quot;\nfoo\nbar\n&quot;</code></pre></div>
@@ -33,7 +33,7 @@ bar
 one or more newlines will use triple quotes (i.e.: <code>'''</code> or <code>&quot;&quot;&quot;</code>)</p>
 <p>If disabled, literal strings will NEVER be used and strings with one or
 more newlines will use <code>&quot;&quot;&quot;</code></p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Instead of:</p>
 <div class="example-wrap"><pre class="language-toml,ignore"><code>single = &quot;no newlines&quot;
 text = &quot;\nfoo\nbar\n&quot;</code></pre></div>
@@ -51,7 +51,7 @@ than 4.</li>
 <li><code>Serializer::pretty_array_trailing_comma</code>: enable/disable the trailing
 comma on the last item.</li>
 </ul>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <p>Instead of:</p>
 <div class="example-wrap"><pre class="language-toml,ignore"><code>array = [&quot;foo&quot;, &quot;bar&quot;]</code></pre></div>
 <p>You will have:</p>

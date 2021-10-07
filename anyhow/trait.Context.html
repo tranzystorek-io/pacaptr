@@ -5,7 +5,7 @@
 <p>This trait is sealed and cannot be implemented for types outside of
 <code>anyhow</code>.</p>
 <br>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">anyhow</span>::{<span class="ident">Context</span>, <span class="prelude-ty">Result</span>};
 <span class="kw">use</span> <span class="ident">std::fs</span>;
 <span class="kw">use</span> <span class="ident">std::path::PathBuf</span>;
@@ -33,7 +33,7 @@ level underlying causes would be enumerated below.</p>
 
 Caused by:
     No such file or directory (os error 2)</code></pre></div><br>
-<h1 id="effect-on-downcasting" class="section-header"><a href="#effect-on-downcasting">Effect on downcasting</a></h1>
+<h2 id="effect-on-downcasting" class="section-header"><a href="#effect-on-downcasting">Effect on downcasting</a></h2>
 <p>After attaching context of type <code>C</code> onto an error of type <code>E</code>, the resulting
 <code>anyhow::Error</code> may be downcast to <code>C</code> <strong>or</strong> to <code>E</code>.</p>
 <p>That is, in codebases that rely on downcasting, Anyhow’s context supports

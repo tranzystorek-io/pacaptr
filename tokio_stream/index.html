@@ -4,7 +4,7 @@ an asynchronous version of the standard library’s <code>Iterator</code> trait.
 <p>This crate provides helpers to work with them. For examples of usage and a more in-depth
 description of streams you can also refer to the <a href="https://tokio.rs/tokio/tutorial/streams">streams
 tutorial</a> on the tokio website.</p>
-<h1 id="iterating-over-a-stream" class="section-header"><a href="#iterating-over-a-stream">Iterating over a Stream</a></h1>
+<h2 id="iterating-over-a-stream" class="section-header"><a href="#iterating-over-a-stream">Iterating over a Stream</a></h2>
 <p>Due to similarities with the standard library’s <code>Iterator</code> trait, some new
 users may assume that they can use <code>for in</code> syntax to iterate over a
 <code>Stream</code>, but this is unfortunately not possible. Instead, you can use a
@@ -20,13 +20,13 @@ users may assume that they can use <code>for in</code> syntax to iterate over a
         <span class="macro">println!</span>(<span class="string">&quot;Got {}&quot;</span>, <span class="ident">value</span>);
     }
 }</code></pre></div>
-<h1 id="returning-a-stream-from-a-function" class="section-header"><a href="#returning-a-stream-from-a-function">Returning a Stream from a function</a></h1>
+<h2 id="returning-a-stream-from-a-function" class="section-header"><a href="#returning-a-stream-from-a-function">Returning a Stream from a function</a></h2>
 <p>A common way to stream values from a function is to pass in the sender
 half of a channel and use the receiver as the stream. This requires awaiting
 both futures to ensure progress is made. Another alternative is the
 <a href="https://docs.rs/async-stream">async-stream</a> crate, which contains macros that provide a <code>yield</code> keyword
 and allow you to return an <code>impl Stream</code>.</p>
-<h1 id="conversion-to-and-from-asyncreadasyncwrite" class="section-header"><a href="#conversion-to-and-from-asyncreadasyncwrite">Conversion to and from AsyncRead/AsyncWrite</a></h1>
+<h2 id="conversion-to-and-from-asyncreadasyncwrite" class="section-header"><a href="#conversion-to-and-from-asyncreadasyncwrite">Conversion to and from AsyncRead/AsyncWrite</a></h2>
 <p>It is often desirable to convert a <code>Stream</code> into an <a href="https://docs.rs/tokio/1.0/tokio/io/trait.AsyncRead.html"><code>AsyncRead</code></a>,
 especially when dealing with plaintext formats streamed over the network.
 The opposite conversion from an <a href="https://docs.rs/tokio/1.0/tokio/io/trait.AsyncRead.html"><code>AsyncRead</code></a> into a <code>Stream</code> is also

@@ -16,7 +16,7 @@ some type in your program. See the <a href="https://serde.rs/impl-deserialize.ht
 they expose. For example the <code>linked-hash-map</code> crate provides a
 <code>LinkedHashMap&lt;K, V&gt;</code> type that is deserializable by Serde because the crate
 provides an implementation of <code>Deserialize</code> for it.</p>
-<h1 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h1>
+<h2 id="lifetime" class="section-header"><a href="#lifetime">Lifetime</a></h2>
 <p>The <code>'de</code> lifetime of this trait is the lifetime of data that may be
 borrowed by <code>Self</code> when deserialized. See the page <a href="https://serde.rs/lifetimes.html">Understanding
 deserializer lifetimes</a> for a more detailed explanation of these lifetimes.</p>

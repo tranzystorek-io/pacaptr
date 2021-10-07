@@ -5,7 +5,7 @@ used to implement hanging indentation.</p>
 <p>The fragments must already have been split into the desired
 widths, this function will not (and cannot) attempt to split them
 further when arranging them into lines.</p>
-<h1 id="first-fit-algorithm" class="section-header"><a href="#first-fit-algorithm">First-Fit Algorithm</a></h1>
+<h2 id="first-fit-algorithm" class="section-header"><a href="#first-fit-algorithm">First-Fit Algorithm</a></h2>
 <p>This implements a simple “greedy” algorithm: accumulate fragments
 one by one and when a fragment no longer fits, start a new line.
 There is no look-ahead, we simply take first fit of the fragments
@@ -46,7 +46,7 @@ a large gap:</p>
 line breaks. It uses an advanced algorithm which tries to avoid
 short lines. This function is about 4 times faster than
 [<code>wrap_optimal_fit</code>].</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Imagine you’re building a house site and you have a number of
 tasks you need to execute. Things like pour foundation, complete
 framing, install plumbing, electric cabling, install insulation.</p>

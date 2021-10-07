@@ -11,7 +11,7 @@
 <p>Analogously to <code>assert!</code>, <code>ensure!</code> takes a condition and exits the function
 if the condition fails. Unlike <code>assert!</code>, <code>ensure!</code> returns an <code>Error</code>
 rather than panicking.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">ensure!</span>(<span class="ident">user</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;only user 0 is allowed&quot;</span>);</code></pre></div>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Error</span>, <span class="ident">Debug</span>)]</span>

@@ -5,7 +5,7 @@
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.call_site" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/proc_macro_error/lib.rs.html#322-324" title="goto source code">[src]</a></div><a href="#method.call_site" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.call_site" class="fnname">call_site</a>() -&gt; Self</h4></div></summary><div class="docblock"><p>Create a <code>SpanRange</code> resolving at call site.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_tokens" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/proc_macro_error/lib.rs.html#334-340" title="goto source code">[src]</a></div><a href="#method.from_tokens" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_tokens" class="fnname">from_tokens</a>(ts: &amp;dyn <a class="trait" href="../quote/to_tokens/trait.ToTokens.html" title="trait quote::to_tokens::ToTokens">ToTokens</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Construct span range from a <code>TokenStream</code>. This method always preserves all the
 range.</p>
-<h3 id="note" class="section-header"><a href="#note">Note</a></h3>
+<h6 id="note" class="section-header"><a href="#note">Note</a></h6>
 <p>If the stream is empty, the result is <code>SpanRange::call_site()</code>. If the stream
 consists of only one <code>TokenTree</code>, the result is <code>SpanRange::single_span(tt.span())</code>
 that doesn’t lose anything.</p>

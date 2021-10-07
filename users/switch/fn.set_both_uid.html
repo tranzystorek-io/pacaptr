@@ -2,14 +2,14 @@
 process to the ones with the given user IDs.</p>
 <p>Typically, trying to switch to anyone other than the user already running
 the process requires root privileges.</p>
-<h1 id="libc-functions-used" class="section-header"><a href="#libc-functions-used">libc functions used</a></h1>
+<h2 id="libc-functions-used" class="section-header"><a href="#libc-functions-used">libc functions used</a></h2>
 <ul>
 <li><a href="https://docs.rs/libc/*/libc/fn.setreuid.html"><code>setreuid</code></a></li>
 </ul>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
 <p>This function will return <code>Err</code> when an I/O error occurs during the
 <code>setreuid</code> call.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::switch::set_both_uid</span>;
 
 <span class="ident">set_both_uid</span>(<span class="number">1001</span>, <span class="number">1001</span>);

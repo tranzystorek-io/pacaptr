@@ -51,7 +51,7 @@ the delimiter (if found) will be appended to <code>buf</code>.</p>
 operation is completed.</p>
 <p>In the case of an error the buffer and the object will be discarded, with
 the error yielded.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io</span>::{<span class="ident">AsyncBufReadExt</span>, <span class="ident">Cursor</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cursor</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="string">b&quot;lorem-ipsum&quot;</span>);
@@ -84,12 +84,12 @@ up to, and including, the delimiter (if found) will be appended to
 operation is completed.</p>
 <p>In the case of an error the buffer and the object will be discarded, with
 the error yielded.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<h5 id="errors" class="section-header"><a href="#errors">Errors</a></h5>
 <p>This function has the same error semantics as <a href="trait.AsyncBufReadExt.html#method.read_until"><code>read_until</code></a> and will
 also return an error if the read bytes are not valid UTF-8. If an I/O
 error is encountered then <code>buf</code> may contain some bytes already read in
 the event that all data read so far was valid UTF-8.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io</span>::{<span class="ident">AsyncBufReadExt</span>, <span class="ident">Cursor</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cursor</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="string">b&quot;foo\nbar&quot;</span>);
@@ -116,9 +116,9 @@ This method is the async equivalent to <a href="https://doc.rust-lang.org/nightl
 <p>The stream returned from this function will yield instances of
 <a href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html"><code>io::Result</code></a><code>&lt;</code><a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html"><code>String</code></a><code>&gt;</code>. Each string returned will <em>not</em> have a newline
 byte (the 0xA byte) or CRLF (0xD, 0xA bytes) at the end.</p>
-<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<h5 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h5>
 <p>Each line of the stream has the same error semantics as <a href="trait.AsyncBufReadExt.html#method.read_line"><code>AsyncBufReadExt::read_line</code></a>.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io</span>::{<span class="ident">AsyncBufReadExt</span>, <span class="ident">Cursor</span>};
 <span class="kw">use</span> <span class="ident">futures::stream::StreamExt</span>;
 

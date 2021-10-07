@@ -27,7 +27,7 @@ details.</p>
 should point to the index <em>after</em> the split point, i.e., after
 <code>-</code> if splitting on hyphens. This way, <code>word.split_at(idx)</code>
 will break the word into two well-formed pieces.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">textwrap::word_splitters</span>::{<span class="ident">HyphenSplitter</span>, <span class="ident">NoHyphenation</span>, <span class="ident">WordSplitter</span>};
 <span class="macro">assert_eq!</span>(<span class="ident">NoHyphenation</span>.<span class="ident">split_points</span>(<span class="string">&quot;cannot-be-split&quot;</span>), <span class="macro">vec!</span>[]);
 <span class="macro">assert_eq!</span>(<span class="ident">HyphenSplitter</span>.<span class="ident">split_points</span>(<span class="string">&quot;can-be-split&quot;</span>), <span class="macro">vec!</span>[<span class="number">4</span>, <span class="number">7</span>]);</code></pre></div>

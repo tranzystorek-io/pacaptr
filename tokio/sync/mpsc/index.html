@@ -16,21 +16,21 @@ the current task will be notified when a new value is sent. <a href="struct.Send
 channel is at capacity, the send is rejected and the task will be notified
 when additional capacity is available. In other words, the channel provides
 backpressure.</p>
-<h1 id="disconnection" class="section-header"><a href="#disconnection">Disconnection</a></h1>
+<h2 id="disconnection" class="section-header"><a href="#disconnection">Disconnection</a></h2>
 <p>When all <a href="struct.Sender.html"><code>Sender</code></a> handles have been dropped, it is no longer
 possible to send values into the channel. This is considered the termination
 event of the stream. As such, <code>Receiver::poll</code> returns <code>Ok(Ready(None))</code>.</p>
 <p>If the <a href="struct.Receiver.html"><code>Receiver</code></a> handle is dropped, then messages can no longer
 be read out of the channel. In this case, all further attempts to send will
 result in an error.</p>
-<h1 id="clean-shutdown" class="section-header"><a href="#clean-shutdown">Clean Shutdown</a></h1>
+<h2 id="clean-shutdown" class="section-header"><a href="#clean-shutdown">Clean Shutdown</a></h2>
 <p>When the <a href="struct.Receiver.html"><code>Receiver</code></a> is dropped, it is possible for unprocessed messages to
 remain in the channel. Instead, it is usually desirable to perform a “clean”
 shutdown. To do this, the receiver first calls <code>close</code>, which will prevent
 any further messages to be sent into the channel. Then, the receiver
 consumes the channel to completion, at which point the receiver can be
 dropped.</p>
-<h1 id="communicating-between-sync-and-async-code" class="section-header"><a href="#communicating-between-sync-and-async-code">Communicating between sync and async code</a></h1>
+<h2 id="communicating-between-sync-and-async-code" class="section-header"><a href="#communicating-between-sync-and-async-code">Communicating between sync and async code</a></h2>
 <p>When you want to communicate between synchronous and asynchronous code, there
 are two situations to consider:</p>
 <p><strong>Bounded channel</strong>: If you need a bounded channel, you should use a bounded

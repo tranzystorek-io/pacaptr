@@ -140,7 +140,7 @@ and static context:</p>
 <span class="kw">static</span> <span class="ident">BAR</span>: <span class="ident">Options</span><span class="op">&lt;</span><span class="ident">FirstFit</span>, <span class="ident">AsciiSpace</span>, <span class="ident">HyphenSplitter</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">FOO</span>;</code></pre></div>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-2" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/textwrap/lib.rs.html#500-663" title="goto source code">[src]</a></div><a href="#impl-2" class="anchor"></a><h3 class="code-header in-band">impl&lt;'a, WrapAlgo, WordSep, WordSplit&gt; <a class="struct" href="struct.Options.html" title="struct textwrap::Options">Options</a>&lt;'a, WrapAlgo, WordSep, WordSplit&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.initial_indent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/textwrap/lib.rs.html#519-524" title="goto source code">[src]</a></div><a href="#method.initial_indent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.initial_indent" class="fnname">initial_indent</a>(self, indent: &amp;'a <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Change <a href="#structfield.initial_indent"><code>self.initial_indent</code></a>. The initial indentation is
 used on the very first line of output.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Classic paragraph indentation can be achieved by specifying an
 initial indentation and wrapping each paragraph by itself:</p>
 
@@ -152,7 +152,7 @@ initial indentation and wrapping each paragraph by itself:</p>
                 <span class="string">&quot;little example.&quot;</span>]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.subsequent_indent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/textwrap/lib.rs.html#555-560" title="goto source code">[src]</a></div><a href="#method.subsequent_indent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.subsequent_indent" class="fnname">subsequent_indent</a>(self, indent: &amp;'a <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Change <a href="#structfield.subsequent_indent"><code>self.subsequent_indent</code></a>. The subsequent indentation
 is used on lines following the first line of output.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <p>Combining initial and subsequent indentation lets you format a
 single paragraph as a bullet list:</p>
 
@@ -176,7 +176,7 @@ single paragraph as a bullet list:</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.break_words" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/textwrap/lib.rs.html#582-587" title="goto source code">[src]</a></div><a href="#method.break_words" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.break_words" class="fnname">break_words</a>(self, setting: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Change <a href="#structfield.break_words"><code>self.break_words</code></a>. This controls if words longer
 than <code>self.width</code> can be broken, or if they will be left
 sticking out into the right margin.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">textwrap</span>::{<span class="ident">wrap</span>, <span class="ident">Options</span>};
 
 <span class="kw">let</span> <span class="ident">options</span> <span class="op">=</span> <span class="ident">Options::new</span>(<span class="number">4</span>).<span class="ident">break_words</span>(<span class="bool-val">true</span>);

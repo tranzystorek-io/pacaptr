@@ -16,7 +16,7 @@ will report the matching regexes using a <em>single pass through the text</em>.
 If one has hundreds or thousands of regexes to match repeatedly (like a URL
 router for a complex web application or a user agent matcher), then a regex
 set can realize huge performance gains.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <p>This shows how the above two regexes (for matching email addresses and
 domains) might work:</p>
 
@@ -46,7 +46,7 @@ with an expression like:</p>
 which alternates matched. The problem is that it is hard to make this
 approach scale when there are many regexes since the overlap between each
 alternate isn’t always obvious to reason about.</p>
-<h1 id="limitations" class="section-header"><a href="#limitations">Limitations</a></h1>
+<h2 id="limitations" class="section-header"><a href="#limitations">Limitations</a></h2>
 <p>Regex sets are limited to answering the following two questions:</p>
 <ol>
 <li>Does any regex in the set match?</li>
@@ -58,7 +58,7 @@ since the matching engines can stop after the first match is found.</p>
 sub-captures aren’t supported. If you need this functionality, the
 recommended approach is to compile each regex in the set independently and
 selectively match them based on which regexes in the set matched.</p>
-<h1 id="performance" class="section-header"><a href="#performance">Performance</a></h1>
+<h2 id="performance" class="section-header"><a href="#performance">Performance</a></h2>
 <p>A <code>RegexSet</code> has the same performance characteristics as <code>Regex</code>. Namely,
 search takes <code>O(mn)</code> time, where <code>m</code> is proportional to the size of the
 regex set and <code>n</code> is proportional to the length of the search text.</p>
@@ -66,13 +66,13 @@ regex set and <code>n</code> is proportional to the length of the search text.</
 <p>This takes an iterator of <code>S</code>, where <code>S</code> is something that can produce
 a <code>&amp;str</code>. If any of the strings in the iterator are not valid regular
 expressions, then an error is returned.</p>
-<h1 id="example-1" class="section-header"><a href="#example-1">Example</a></h1>
+<h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
 <p>Create a new regex set from an iterator of strings:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">RegexSet::new</span>(<span class="kw-2">&amp;</span>[<span class="string">r&quot;\w+&quot;</span>, <span class="string">r&quot;\d+&quot;</span>]).<span class="ident">unwrap</span>();
 <span class="macro">assert!</span>(<span class="ident">set</span>.<span class="ident">is_match</span>(<span class="string">&quot;foo&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.empty" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/regex/re_set.rs.html#419-446" title="goto source code">[src]</a></div><a href="#method.empty" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.empty" class="fnname">empty</a>() -&gt; <a class="struct" href="struct.RegexSet.html" title="struct regex::RegexSet">RegexSet</a></h4></div></summary><div class="docblock"><p>Create a new empty regex set.</p>
-<h1 id="example-2" class="section-header"><a href="#example-2">Example</a></h1>
+<h5 id="example-2" class="section-header"><a href="#example-2">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">RegexSet::empty</span>();
 <span class="macro">assert!</span>(<span class="ident">set</span>.<span class="ident">is_empty</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_match" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/regex/re_set.rs.html#419-446" title="goto source code">[src]</a></div><a href="#method.is_match" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_match" class="fnname">is_match</a>(&amp;self, text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Returns true if and only if one of the regexes in this set matches
@@ -86,7 +86,7 @@ find all matches.</p>
 by default. That is, if the regex does not start with <code>^</code> or <code>\A</code>, or
 end with <code>$</code> or <code>\z</code>, then it is permitted to match anywhere in the
 text.</p>
-<h1 id="example-3" class="section-header"><a href="#example-3">Example</a></h1>
+<h5 id="example-3" class="section-header"><a href="#example-3">Example</a></h5>
 <p>Tests whether a set matches some text:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">RegexSet::new</span>(<span class="kw-2">&amp;</span>[<span class="string">r&quot;\w+&quot;</span>, <span class="string">r&quot;\d+&quot;</span>]).<span class="ident">unwrap</span>();
@@ -101,7 +101,7 @@ order of regular expressions given to <code>RegexSet</code>’s constructor.</p>
 by default. That is, if the regex does not start with <code>^</code> or <code>\A</code>, or
 end with <code>$</code> or <code>\z</code>, then it is permitted to match anywhere in the
 text.</p>
-<h1 id="example-4" class="section-header"><a href="#example-4">Example</a></h1>
+<h5 id="example-4" class="section-header"><a href="#example-4">Example</a></h5>
 <p>Tests which regular expressions match the given text:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">RegexSet::new</span>(<span class="kw-2">&amp;</span>[
@@ -127,7 +127,7 @@ text.</p>
 slice returned has exactly as many patterns givens to this regex set,
 and the order of the slice is the same as the order of the patterns
 provided to the set.</p>
-<h1 id="example-5" class="section-header"><a href="#example-5">Example</a></h1>
+<h5 id="example-5" class="section-header"><a href="#example-5">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">RegexSet::new</span>(<span class="kw-2">&amp;</span>[
     <span class="string">r&quot;\w+&quot;</span>,
     <span class="string">r&quot;\d+&quot;</span>,

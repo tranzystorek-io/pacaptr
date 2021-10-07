@@ -6,7 +6,7 @@ writes to this <a href="trait.AsyncWrite.html"><code>AsyncWrite</code></a> are g
 you should be aware that writes using <a href="trait.AsyncWriteExt.html#method.write_all"><code>write_all</code></a> are not guaranteed
 to occur as a single write, so multiple threads writing data with
 <a href="trait.AsyncWriteExt.html#method.write_all"><code>write_all</code></a> may result in interleaved output.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">AsyncWriteExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>

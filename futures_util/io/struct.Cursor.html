@@ -11,19 +11,19 @@ are commonly used as a buffer, like <code>Cursor&lt;</code><a href="https://doc.
 <p>Cursor initial position is <code>0</code> even if underlying buffer (e.g., <code>Vec</code>)
 is not empty. So writing to cursor starts with overwriting <code>Vec</code>
 content, not with appending to it.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io::Cursor</span>;
 
 <span class="kw">let</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="ident">Vec::new</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.into_inner" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/cursor.rs.html#62-64" title="goto source code">[src]</a></div><a href="#method.into_inner" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_inner" class="fnname">into_inner</a>(self) -&gt; T</h4></div></summary><div class="docblock"><p>Consumes this cursor, returning the underlying value.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io::Cursor</span>;
 
 <span class="kw">let</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="ident">Vec::new</span>());
 
 <span class="kw">let</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">buff</span>.<span class="ident">into_inner</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get_ref" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/cursor.rs.html#79-81" title="goto source code">[src]</a></div><a href="#method.get_ref" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get_ref" class="fnname">get_ref</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T</h4></div></summary><div class="docblock"><p>Gets a reference to the underlying value in this cursor.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io::Cursor</span>;
 
 <span class="kw">let</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="ident">Vec::new</span>());
@@ -32,14 +32,14 @@ content, not with appending to it.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get_mut" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/cursor.rs.html#99-101" title="goto source code">[src]</a></div><a href="#method.get_mut" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get_mut" class="fnname">get_mut</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T</h4></div></summary><div class="docblock"><p>Gets a mutable reference to the underlying value in this cursor.</p>
 <p>Care should be taken to avoid modifying the internal I/O state of the
 underlying value as it may corrupt this cursor’s position.</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io::Cursor</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="ident">Vec::new</span>());
 
 <span class="kw">let</span> <span class="ident">reference</span> <span class="op">=</span> <span class="ident">buff</span>.<span class="ident">get_mut</span>();</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.position" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/cursor.rs.html#122-124" title="goto source code">[src]</a></div><a href="#method.position" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.position" class="fnname">position</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></h4></div></summary><div class="docblock"><p>Returns the current position of this cursor.</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io</span>::{<span class="ident">AsyncSeekExt</span>, <span class="ident">Cursor</span>, <span class="ident">SeekFrom</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);
@@ -52,7 +52,7 @@ underlying value as it may corrupt this cursor’s position.</p>
 <span class="ident">buff</span>.<span class="ident">seek</span>(<span class="ident">SeekFrom::Current</span>(<span class="op">-</span><span class="number">1</span>)).<span class="kw">await</span><span class="question-mark">?</span>;
 <span class="macro">assert_eq!</span>(<span class="ident">buff</span>.<span class="ident">position</span>(), <span class="number">1</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_position" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/cursor.rs.html#143-145" title="goto source code">[src]</a></div><a href="#method.set_position" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_position" class="fnname">set_position</a>(&amp;mut self, pos: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</h4></div></summary><div class="docblock"><p>Sets the position of this cursor.</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::io::Cursor</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buff</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);

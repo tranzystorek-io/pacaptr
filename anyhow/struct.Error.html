@@ -9,7 +9,7 @@ error type does not provide one.</li>
 size instead of two.</li>
 </ul>
 <br>
-<h1 id="display-representations" class="section-header"><a href="#display-representations">Display representations</a></h1>
+<h2 id="display-representations" class="section-header"><a href="#display-representations">Display representations</a></h2>
 <p>When you print an error object using “{}” or to_string(), only the outermost
 underlying error or context is printed, not any of the lower level causes.
 This is exactly as if you had called the Display impl of the error from
@@ -144,7 +144,7 @@ capturing them all over the place all the time.</p>
 <li>If you want only panics to have backtraces, set <code>RUST_BACKTRACE=1</code> and
 <code>RUST_LIB_BACKTRACE=0</code>.</li>
 </ul>
-<h1 id="stability" class="section-header"><a href="#stability">Stability</a></h1>
+<h5 id="stability" class="section-header"><a href="#stability">Stability</a></h5>
 <p>Standard library backtraces are only available on the nightly channel.
 Tracking issue: <a href="https://github.com/rust-lang/rust/issues/53487">rust-lang/rust#53487</a>.</p>
 <p>On stable compilers, this function is only available if the crate’s
@@ -155,7 +155,7 @@ anyhow = { version = &quot;1.0&quot;, features = [&quot;backtrace&quot;] }</code
 <p>This iterator will visit every error in the cause chain of this error
 object, beginning with the error that this error object was created
 from.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">anyhow::Error</span>;
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
@@ -178,7 +178,7 @@ context has been attached. For details about the interaction between
 context and downcasting, <a href="trait.Context.html#effect-on-downcasting">see here</a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.downcast" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/anyhow/error.rs.html#417-449" title="goto source code">[src]</a></div><a href="#method.downcast" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.downcast" class="fnname">downcast</a>&lt;E&gt;(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;E, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Attempt to downcast the error object to a concrete type.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.downcast_ref" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/anyhow/error.rs.html#487-498" title="goto source code">[src]</a></div><a href="#method.downcast_ref" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.downcast_ref" class="fnname">downcast_ref</a>&lt;E&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>E&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,&nbsp;</span></h4></div></summary><div class="docblock"><p>Downcast this error object by reference.</p>
-<h1 id="example-1" class="section-header"><a href="#example-1">Example</a></h1>
+<h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// If the error was caused by redaction, then return a tombstone instead</span>
 <span class="comment">// of the content.</span>
 <span class="kw">match</span> <span class="ident">root_cause</span>.<span class="ident">downcast_ref</span>::<span class="op">&lt;</span><span class="ident">DataStoreError</span><span class="op">&gt;</span>() {

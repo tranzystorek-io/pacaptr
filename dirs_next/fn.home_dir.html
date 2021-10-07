@@ -5,7 +5,7 @@
 <tr><td>macOS</td><td><code>$HOME</code></td><td>/Users/Alice</td></tr>
 <tr><td>Windows</td><td><code>{FOLDERID_Profile}</code></td><td>C:\Users\Alice</td></tr>
 </tbody></table>
-</div><h3 id="linux-and-macos" class="section-header"><a href="#linux-and-macos">Linux and macOS:</a></h3>
+</div><h4 id="linux-and-macos" class="section-header"><a href="#linux-and-macos">Linux and macOS:</a></h4>
 <ul>
 <li>Use <code>$HOME</code> if it is set and not empty.</li>
 <li>If <code>$HOME</code> is not set or empty, then the function <code>getpwuid_r</code> is used to determine
@@ -13,7 +13,7 @@ the home directory of the current user.</li>
 <li>If <code>getpwuid_r</code> lacks an entry for the current user id or the home directory field is empty,
 then the function returns <code>None</code>.</li>
 </ul>
-<h3 id="windows" class="section-header"><a href="#windows">Windows:</a></h3>
+<h4 id="windows" class="section-header"><a href="#windows">Windows:</a></h4>
 <p>This function retrieves the user profile folder using <code>SHGetKnownFolderPath</code>.</p>
 <p>All the examples on this page mentioning <code>$HOME</code> use this behavior.</p>
 <p><em>Note:</em> This function’s behavior differs from <a href="https://doc.rust-lang.org/std/env/fn.home_dir.html"><code>std::env::home_dir</code></a>,

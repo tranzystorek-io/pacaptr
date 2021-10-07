@@ -3,7 +3,7 @@
 match semantics (either leftmost-first or leftmost-longest), then one can
 use the <a href="struct.Config.html"><code>Config</code></a> and/or
 <a href="struct.Builder.html"><code>Builder</code></a> types for more fine grained control.</p>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <p>This example shows how to create a searcher from an iterator of patterns.
 By default, leftmost-first match semantics are used.</p>
 
@@ -20,7 +20,7 @@ of things that can be converted to a <code>&amp;[u8]</code>.</p>
 <p>If a searcher could not be constructed (either because of an
 unsupported CPU or because there are too many patterns), then <code>None</code>
 is returned.</p>
-<h1 id="example-1" class="section-header"><a href="#example-1">Example</a></h1>
+<h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -36,7 +36,7 @@ according to its match semantics, in the given haystack. The <code>Match</code>
 returned will include the identifier of the pattern that matched, which
 corresponds to the index of the pattern (starting from <code>0</code>) in which it
 was added.</p>
-<h1 id="example-2" class="section-header"><a href="#example-2">Example</a></h1>
+<h5 id="example-2" class="section-header"><a href="#example-2">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -53,7 +53,7 @@ the given position.</p>
 matched, which corresponds to the index of the pattern (starting from
 <code>0</code>) in which it was added. The offsets in the <code>Match</code> will be relative
 to the start of <code>haystack</code> (and not <code>at</code>).</p>
-<h1 id="example-3" class="section-header"><a href="#example-3">Example</a></h1>
+<h5 id="example-3" class="section-header"><a href="#example-3">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -65,7 +65,7 @@ to the start of <code>haystack</code> (and not <code>at</code>).</p>
 <span class="macro">assert_eq!</span>(<span class="number">9</span>, <span class="ident">mat</span>.<span class="ident">end</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.find_iter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/aho_corasick/packed/api.rs.html#532-537" title="goto source code">[src]</a></div><a href="#method.find_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.find_iter" class="fnname">find_iter</a>&lt;'a, 'b, B:&nbsp;?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;'a self, <br>&nbsp;&nbsp;&nbsp;&nbsp;haystack: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'b </a>B<br>) -&gt; <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'a, 'b&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'s, 'h&gt;</div><code class="content"><span class="where fmt-newline">impl&lt;'s, 'h&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'s, 'h&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="type">Item</a> = <a class="struct" href="../struct.Match.html" title="struct aho_corasick::Match">Match</a>;</span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Return an iterator of non-overlapping occurrences of the patterns in
 this searcher, according to its match semantics, in the given haystack.</p>
-<h1 id="example-4" class="section-header"><a href="#example-4">Example</a></h1>
+<h5 id="example-4" class="section-header"><a href="#example-4">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -77,7 +77,7 @@ this searcher, according to its match semantics, in the given haystack.</p>
     .<span class="ident">collect</span>();
 <span class="macro">assert_eq!</span>(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], <span class="ident">matches</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.match_kind" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/aho_corasick/packed/api.rs.html#559-561" title="goto source code">[src]</a></div><a href="#method.match_kind" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.match_kind" class="fnname">match_kind</a>(&amp;self) -&gt; &amp;<a class="enum" href="enum.MatchKind.html" title="enum aho_corasick::packed::MatchKind">MatchKind</a></h4></div></summary><div class="docblock"><p>Returns the match kind used by this packed searcher.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};

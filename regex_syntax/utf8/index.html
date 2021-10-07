@@ -4,7 +4,7 @@ to embed UTF-8 decoding. The most common use of this module is in conjunction
 with the <a href="../hir/struct.ClassUnicodeRange.html"><code>hir::ClassUnicodeRange</code></a> type.</p>
 <p>See the documentation on the <code>Utf8Sequences</code> iterator for more details and
 an example.</p>
-<h1 id="wait-what-is-this" class="section-header"><a href="#wait-what-is-this">Wait, what is this?</a></h1>
+<h2 id="wait-what-is-this" class="section-header"><a href="#wait-what-is-this">Wait, what is this?</a></h2>
 <p>This is simplest to explain with an example. Let’s say you wanted to test
 whether a particular byte sequence was a Cyrillic character. One possible
 scalar value range is <code>[0400-04FF]</code>. The set of allowed bytes for this
@@ -45,7 +45,7 @@ UTF-8, including encodings of surrogate codepoints.</p>
 [F4][80-8F][80-BF][80-BF]</code></pre></div>
 <p>This module automates the process of creating these byte ranges from ranges of
 Unicode scalar values.</p>
-<h1 id="lineage" class="section-header"><a href="#lineage">Lineage</a></h1>
+<h2 id="lineage" class="section-header"><a href="#lineage">Lineage</a></h2>
 <p>I got the idea and general implementation strategy from Russ Cox in his
 <a href="https://web.archive.org/web/20160404141123/https://swtch.com/%7Ersc/regexp/regexp3.html">article on regexps</a> and RE2.
 Russ Cox got it from Ken Thompson’s <code>grep</code> (no source, folk lore?).

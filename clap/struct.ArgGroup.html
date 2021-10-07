@@ -19,7 +19,7 @@ and simply incrementing one of the three numbers. So you create three flags <cod
 specify that <em>at least one</em> of them is used. For this, you can create a group.</p>
 <p>Finally, you may use <code>ArgGroup</code>s to pull a value from a group of arguments when you don’t care
 exactly which argument was actually used at runtime.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>The following example demonstrates using an <code>ArgGroup</code> to ensure that one, and only one, of
 the arguments from the specified group is present at runtime.</p>
 
@@ -54,13 +54,13 @@ the arguments from the specified group is present at runtime.</p>
 <span class="comment">// we could also alternatively check each arg individually (not shown here)</span></code></pre></div>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#89-410" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl&lt;'help&gt; <a class="struct" href="struct.ArgGroup.html" title="struct clap::ArgGroup">ArgGroup</a>&lt;'help&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#107-109" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>&lt;S:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;&amp;'help <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;(n: S) -&gt; Self</h4></div></summary><div class="docblock"><p>Creates a new instance of <code>ArgGroup</code> using a unique string name. The name will be used to
 get values from the group or refer to the group inside of conflict and requirement rules.</p>
-<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>
+<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgGroup::new</span>(<span class="string">&quot;config&quot;</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#120-124" title="goto source code">[src]</a></div><a href="#method.name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.name" class="fnname">name</a>&lt;S:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;&amp;'help <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;(self, n: S) -&gt; Self</h4></div></summary><div class="docblock"><p>Sets the group name.</p>
-<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>
+<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">ArgGroup::default</span>().<span class="ident">name</span>(<span class="string">&quot;config&quot;</span>)</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.arg" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#147-150" title="goto source code">[src]</a></div><a href="#method.arg" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.arg" class="fnname">arg</a>&lt;T:&nbsp;Key&gt;(self, arg_id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Adds an <a href="struct.Arg.html">argument</a> to this group by name</p>
-<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>
+<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -75,7 +75,7 @@ get values from the group or refer to the group inside of conflict and requireme
 <span class="comment">// but we can also check individually if needed</span>
 <span class="macro">assert!</span>(<span class="ident">m</span>.<span class="ident">is_present</span>(<span class="string">&quot;flag&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.args" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#172-177" title="goto source code">[src]</a></div><a href="#method.args" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.args" class="fnname">args</a>&lt;T:&nbsp;Key&gt;(self, ns: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[T]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Adds multiple <a href="struct.Arg.html">arguments</a> to this group by name</p>
-<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>
+<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -89,7 +89,7 @@ get values from the group or refer to the group inside of conflict and requireme
 <span class="comment">// but we can also check individually if needed</span>
 <span class="macro">assert!</span>(<span class="ident">m</span>.<span class="ident">is_present</span>(<span class="string">&quot;flag&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.multiple" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#221-224" title="goto source code">[src]</a></div><a href="#method.multiple" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.multiple" class="fnname">multiple</a>(self, m: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Allows more than one of the <a href="struct.Arg.html"><code>Arg</code></a>s in this group to be used. (Default: <code>false</code>)</p>
-<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>
+<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
 <p>Notice in this example we use <em>both</em> the <code>-f</code> and <code>-c</code> flags which are both part of the
 group</p>
 
@@ -129,7 +129,7 @@ globally.</p>
 <code>ArgGroup::required(true)</code> states, “One and <em>only one</em> arg must be used from this group.
 Use of more than one arg is an error.” Vice setting <code>ArgGroup::multiple(true)</code> which
 states, ’<em>At least</em> one arg from this group must be used. Using multiple is OK.“</p>
-<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>
+<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -148,7 +148,7 @@ states, ’<em>At least</em> one arg from this group must be used. Using multipl
 can name other arguments or groups that must be present when any one of the arguments from
 this group is used.</p>
 <p><strong>NOTE:</strong> The name provided may be an argument, or group name</p>
-<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
+<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -170,7 +170,7 @@ this group is used.</p>
 can name other arguments or groups that must be present when one of the arguments from this
 group is used.</p>
 <p><strong>NOTE:</strong> The names provided may be an argument, or group name</p>
-<h1 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h1>
+<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -193,7 +193,7 @@ group is used.</p>
 <a href="struct.Arg.html#method.conflicts_with">argument exclusion rules</a>, you can name other arguments or groups that must <em>not</em> be
 present when one of the arguments from this group are used.</p>
 <p><strong>NOTE:</strong> The name provided may be an argument, or group name</p>
-<h1 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h1>
+<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))
@@ -213,7 +213,7 @@ present when one of the arguments from this group are used.</p>
 <a href="struct.Arg.html#method.conflicts_with_all">argument exclusion rules</a>, you can name other arguments or groups that must <em>not</em> be
 present when one of the arguments from this group are used.</p>
 <p><strong>NOTE:</strong> The names provided may be an argument, or group name</p>
-<h1 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h1>
+<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;flag&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>))

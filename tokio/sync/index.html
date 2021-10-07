@@ -3,7 +3,7 @@
 operates independently and may be executed on separate physical threads. The
 synchronization primitives provided in this module permit these independent
 tasks to communicate together.</p>
-<h1 id="message-passing" class="section-header"><a href="#message-passing">Message passing</a></h1>
+<h2 id="message-passing" class="section-header"><a href="#message-passing">Message passing</a></h2>
 <p>The most common form of synchronization in a Tokio program is message
 passing. Two tasks operate independently and send messages to each other to
 synchronize. Doing so has the advantage of avoiding shared state.</p>
@@ -16,7 +16,7 @@ supports multiple consumers, many different separate tasks may <strong>receive</
 messages.</p>
 <p>Tokio provides many different channel flavors as different message passing
 patterns are best handled with different implementations.</p>
-<h2 id="oneshot-channel" class="section-header"><a href="#oneshot-channel"><code>oneshot</code> channel</a></h2>
+<h3 id="oneshot-channel" class="section-header"><a href="#oneshot-channel"><code>oneshot</code> channel</a></h3>
 <p>The <a href="oneshot/index.html"><code>oneshot</code> channel</a> supports sending a <strong>single</strong> value from a
 single producer to a single consumer. This channel is usually used to send
 the result of a computation to a waiter.</p>
@@ -66,7 +66,7 @@ cause.</p>
     <span class="comment">// Wait for the computation result</span>
     <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">join_handle</span>.<span class="kw">await</span>.<span class="ident">unwrap</span>();
 }</code></pre></div>
-<h2 id="mpsc-channel" class="section-header"><a href="#mpsc-channel"><code>mpsc</code> channel</a></h2>
+<h3 id="mpsc-channel" class="section-header"><a href="#mpsc-channel"><code>mpsc</code> channel</a></h3>
 <p>The <a href="mpsc/index.html"><code>mpsc</code> channel</a> supports sending <strong>many</strong> values from <strong>many</strong>
 producers to a single consumer. This channel is often used to send work to a
 task or to receive the result of many computations.</p>
@@ -196,7 +196,7 @@ sent over the provided <code>oneshot</code> channel.</p>
         <span class="ident">join_handle</span>.<span class="kw">await</span>.<span class="ident">unwrap</span>();
     }
 }</code></pre></div>
-<h2 id="broadcast-channel" class="section-header"><a href="#broadcast-channel"><code>broadcast</code> channel</a></h2>
+<h3 id="broadcast-channel" class="section-header"><a href="#broadcast-channel"><code>broadcast</code> channel</a></h3>
 <p>The <a href="broadcast/index.html"><code>broadcast</code> channel</a> supports sending <strong>many</strong> values from
 <strong>many</strong> producers to <strong>many</strong> consumers. Each consumer will receive
 <strong>each</strong> value. This channel can be used to implement “fan out” style
@@ -225,7 +225,7 @@ has its use cases.</p>
     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="number">20</span>).<span class="ident">unwrap</span>();
 }</code></pre></div>
-<h2 id="watch-channel" class="section-header"><a href="#watch-channel"><code>watch</code> channel</a></h2>
+<h3 id="watch-channel" class="section-header"><a href="#watch-channel"><code>watch</code> channel</a></h3>
 <p>The <a href="watch/index.html"><code>watch</code> channel</a> supports sending <strong>many</strong> values from a <strong>single</strong>
 producer to <strong>many</strong> consumers. However, only the <strong>most recent</strong> value is
 stored in the channel. Consumers are notified when a new value is sent, but
@@ -344,7 +344,7 @@ the file changes, the configuration changes are signalled to consumers.</p>
         <span class="ident">handle</span>.<span class="kw">await</span>.<span class="ident">unwrap</span>();
     }
 }</code></pre></div>
-<h1 id="state-synchronization" class="section-header"><a href="#state-synchronization">State synchronization</a></h1>
+<h2 id="state-synchronization" class="section-header"><a href="#state-synchronization">State synchronization</a></h2>
 <p>The remaining synchronization primitives focus on synchronizing state.
 These are asynchronous equivalents to versions provided by <code>std</code>. They
 operate in a similar way as their <code>std</code> counterparts but will wait

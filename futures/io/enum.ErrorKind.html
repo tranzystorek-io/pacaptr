@@ -141,7 +141,7 @@ New <a href="enum.ErrorKind.html" title="ErrorKind"><code>ErrorKind</code></a>s 
 the heap (for normal construction via Error::new) is too costly.</p>
 </div><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/std/io/error.rs.html#382" title="goto source code">[src]</a></div><a href="#method.from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from" class="fnname">from</a>(kind: <a class="enum" href="enum.ErrorKind.html" title="enum futures::io::ErrorKind">ErrorKind</a>) -&gt; <a class="struct" href="struct.Error.html" title="struct futures::io::Error">Error</a></h4></div></summary><div class="docblock"><p>Converts an <a href="enum.ErrorKind.html" title="ErrorKind"><code>ErrorKind</code></a> into an <a href="struct.Error.html" title="Error"><code>Error</code></a>.</p>
 <p>This conversion allocates a new error with a simple representation of error kind.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::io</span>::{<span class="ident">Error</span>, <span class="ident">ErrorKind</span>};
 
 <span class="kw">let</span> <span class="ident">not_found</span> <span class="op">=</span> <span class="ident">ErrorKind::NotFound</span>;

@@ -18,7 +18,7 @@ an async fn in a trait produces the following error:</p>
 analysis of how this implementation differs from what the compiler and
 language hope to deliver in the future.</p>
 <br>
-<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
 <p>This example implements the core of a highly effective advertising platform
 using async fn in a trait.</p>
 <p>The only thing to notice here is that we write an <code>#[async_trait]</code> macro on
@@ -59,7 +59,7 @@ top of traits and trait impls that contain async fn, and then they work.</p>
     }
 }</code></pre></div>
 <p><br><br></p>
-<h1 id="supported-features" class="section-header"><a href="#supported-features">Supported features</a></h1>
+<h2 id="supported-features" class="section-header"><a href="#supported-features">Supported features</a></h2>
 <p>It is the intention that all features of Rust traits should work nicely with
 #[async_trait], but the edge cases are numerous. Please file an issue if
 you see unexpected borrow checker errors, type errors, or warnings. There is
@@ -76,7 +76,7 @@ compiles it can’t be that badly broken.</p>
 ☑ Dyn-capable traits.<br></p>
 </blockquote>
 <br>
-<h1 id="explanation" class="section-header"><a href="#explanation">Explanation</a></h1>
+<h2 id="explanation" class="section-header"><a href="#explanation">Explanation</a></h2>
 <p>Async fns get transformed into methods that return <code>Pin&lt;Box&lt;dyn Future + Send + 'async&gt;&gt;</code> and delegate to a private async freestanding function.</p>
 <p>For example the <code>impl Advertisement for AutoplayingVideo</code> above would be
 expanded as:</p>
@@ -96,13 +96,13 @@ expanded as:</p>
     }
 }</code></pre></div>
 <p><br><br></p>
-<h1 id="non-threadsafe-futures" class="section-header"><a href="#non-threadsafe-futures">Non-threadsafe futures</a></h1>
+<h2 id="non-threadsafe-futures" class="section-header"><a href="#non-threadsafe-futures">Non-threadsafe futures</a></h2>
 <p>Not all async traits need futures that are <code>dyn Future + Send</code>. To avoid
 having Send and Sync bounds placed on the async trait methods, invoke the
 async trait macro as <code>#[async_trait(?Send)]</code> on both the trait and the impl
 blocks.</p>
 <br>
-<h1 id="elided-lifetimes" class="section-header"><a href="#elided-lifetimes">Elided lifetimes</a></h1>
+<h2 id="elided-lifetimes" class="section-header"><a href="#elided-lifetimes">Elided lifetimes</a></h2>
 <p>Be aware that async fn syntax does not allow lifetime elision outside of <code>&amp;</code>
 and <code>&amp;mut</code> references. (This is true even when not using #[async_trait].)
 Lifetimes must be named or marked by the placeholder <code>'_</code>.</p>
@@ -130,7 +130,7 @@ error message.</p>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">test</span>(<span class="ident">elided</span>: <span class="ident">Elided</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {}
 }</code></pre></div>
 <p><br><br></p>
-<h1 id="dyn-traits" class="section-header"><a href="#dyn-traits">Dyn traits</a></h1>
+<h2 id="dyn-traits" class="section-header"><a href="#dyn-traits">Dyn traits</a></h2>
 <p>Traits with async methods can be used as trait objects as long as they meet
 the usual requirements for dyn – no methods with type parameters, no self
 by value, no associated types, etc.</p>
