@@ -469,6 +469,7 @@
 <span id="469">469</span>
 <span id="470">470</span>
 <span id="471">471</span>
+<span id="472">472</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Definitions for command line argument mapping and dispatching.</span>
 
 <span class="kw">use</span> <span class="ident">std::iter::FromIterator</span>;
@@ -491,6 +492,7 @@
 <span class="attribute">#[<span class="ident">clap</span>(
     <span class="ident">version</span> <span class="op">=</span> <span class="macro">clap::crate_version!</span>(),
     <span class="ident">author</span> <span class="op">=</span> <span class="macro">clap::crate_authors!</span>(),
+    <span class="ident">about</span> <span class="op">=</span> <span class="macro">clap::crate_description!</span>(),
     <span class="ident">global_setting</span> <span class="op">=</span> <span class="ident">AppSettings::ColoredHelp</span>,
     <span class="ident">setting</span> <span class="op">=</span> <span class="ident">AppSettings::SubcommandRequiredElseHelp</span>,
 )]</span>
