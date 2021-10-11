@@ -523,11 +523,11 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// - [`Error::CmdStatusCodeError`], when `status` is `Some(n)` where `n != 0`.</span>
 <span class="doccomment">/// - [`Error::CmdInterruptedError`], when `status` is `None`.</span>
-<span class="kw">fn</span> <span class="ident">exit_result</span>(<span class="ident">code</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">StatusCode</span><span class="op">&gt;</span>, <span class="ident">output</span>: <span class="ident">Output</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">exit_result</span>(<span class="ident">code</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">StatusCode</span><span class="op">&gt;</span>, <span class="ident">output</span>: <span class="ident">Output</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">code</span> {
-        <span class="prelude-val">Some</span>(<span class="number">0</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">output</span>),
-        <span class="prelude-val">Some</span>(<span class="ident">code</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error::CmdStatusCodeError</span> { <span class="ident">code</span>, <span class="ident">output</span> }),
-        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error::CmdInterruptedError</span>),
+        <span class="prelude-val">Some</span>(<span class="number">0</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">output</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">code</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">Error::CmdStatusCodeError</span> { <span class="ident">code</span>, <span class="ident">output</span> }),
+        <span class="prelude-val">None</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">Error::CmdInterruptedError</span>),
     }
 }
 
@@ -555,7 +555,7 @@
 
 <span class="kw">impl</span> <span class="ident">Cmd</span> {
     <span class="doccomment">/// Makes a new [`Cmd`] instance with the given [`cmd`](Cmd::cmd) part.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
             <span class="ident">cmd</span>: <span class="ident">cmd</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="ident">Cmd::default</span>()
@@ -564,12 +564,12 @@
 
     <span class="doccomment">/// Makes a new [`Cmd`] instance with the given [`cmd`](Cmd::cmd) part,</span>
     <span class="doccomment">/// setting [`sudo`](field@Cmd::sudo) to `true`.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_sudo</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_sudo</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident">Cmd::new</span>(<span class="ident">cmd</span>).<span class="ident">sudo</span>(<span class="bool-val">true</span>)
     }
 
     <span class="doccomment">/// Overrides the value of [`flags`](field@Cmd::flags).</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">flags</span>(<span class="self">self</span>, <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">flags</span>(<span class="self">self</span>, <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
             <span class="ident">flags</span>: <span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="self">self</span>
@@ -577,7 +577,7 @@
     }
 
     <span class="doccomment">/// Overrides the value of [`kws`](field@Cmd::kws).</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">kws</span>(<span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">kws</span>(<span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident">Cmd</span> {
             <span class="ident">kws</span>: <span class="ident">kws</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>(),
             ..<span class="self">self</span>
@@ -585,7 +585,7 @@
     }
 
     <span class="doccomment">/// Overrides the value of [`sudo`](field@Cmd::sudo).</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">sudo</span>(<span class="self">self</span>, <span class="ident">sudo</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">sudo</span>(<span class="self">self</span>, <span class="ident">sudo</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Cmd</span> { <span class="ident">sudo</span>, ..<span class="self">self</span> }
     }
 
@@ -594,13 +594,13 @@
     <span class="doccomment">/// If a **normal admin** needs to run it with `sudo`, and we are not</span>
     <span class="doccomment">/// `root`, then this is the case.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">should_sudo</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">should_sudo</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">sudo</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">is_root</span>()
     }
 
     <span class="doccomment">/// Converts a [`Cmd`] object into an [`Exec`].</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Exec</span> {
+    <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">Exec</span> {
         <span class="comment">// ! Special fix for `zypper`: `zypper install -y curl` is accepted,</span>
         <span class="comment">// ! but not `zypper install curl -y`.</span>
         <span class="comment">// ! So we place the flags first, and then keywords.</span>
@@ -633,7 +633,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// * `src` - The input stream to read from.</span>
 <span class="doccomment">/// * `out` - The optional output stream to write to.</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_tee</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span><span class="op">&gt;</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">S</span>, <span class="ident">out</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_tee</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span><span class="op">&gt;</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">S</span>, <span class="ident">out</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>
 <span class="kw">where</span>
     <span class="ident">S</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Unpin</span>,
     <span class="ident">O</span>: <span class="ident">AsyncWrite</span> <span class="op">+</span> <span class="ident">Unpin</span>,
@@ -654,7 +654,7 @@
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">docs_errors_exec</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="macro">indoc!</span> {<span class="string">&quot;
             # Errors
             This function might return one of the following errors:
@@ -675,36 +675,36 @@
     <span class="doccomment">/// The exact behavior depends on the [`Mode`] passed in (see the definition</span>
     <span class="doccomment">/// of [`Mode`] for more info).</span>
     <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_exec!</span>()]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec</span>(<span class="self">self</span>, <span class="ident">mode</span>: <span class="ident">Mode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec</span>(<span class="self">self</span>, <span class="ident">mode</span>: <span class="ident">Mode</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">mode</span> {
-            <span class="ident">Mode::PrintCmd</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Mode::PrintCmd</span> =&gt; {
                 <span class="ident">print_cmd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">PROMPT_CANCELED</span>);
                 <span class="prelude-val">Ok</span>(<span class="ident">Output::default</span>())
             }
-            <span class="ident">Mode::Mute</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">exec_checkall</span>(<span class="bool-val">true</span>).<span class="kw">await</span>,
-            <span class="ident">Mode::CheckAll</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Mode::Mute</span> =&gt; <span class="self">self</span>.<span class="ident">exec_checkall</span>(<span class="bool-val">true</span>).<span class="kw">await</span>,
+            <span class="ident">Mode::CheckAll</span> =&gt; {
                 <span class="ident">print_cmd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">PROMPT_RUN</span>);
                 <span class="self">self</span>.<span class="ident">exec_checkall</span>(<span class="bool-val">false</span>).<span class="kw">await</span>
             }
-            <span class="ident">Mode::CheckErr</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Mode::CheckErr</span> =&gt; {
                 <span class="ident">print_cmd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">PROMPT_RUN</span>);
                 <span class="self">self</span>.<span class="ident">exec_checkerr</span>(<span class="bool-val">false</span>).<span class="kw">await</span>
             }
-            <span class="ident">Mode::Prompt</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">exec_prompt</span>(<span class="bool-val">false</span>).<span class="kw">await</span>,
+            <span class="ident">Mode::Prompt</span> =&gt; <span class="self">self</span>.<span class="ident">exec_prompt</span>(<span class="bool-val">false</span>).<span class="kw">await</span>,
         }
     }
 
     <span class="doccomment">/// Inner implementation of [`Cmd::exec_checkerr`] (if `merge` is `false`)</span>
     <span class="doccomment">/// and [`Cmd::exec_checkall`] (otherwise).</span>
     <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_exec!</span>()]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_check_output</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>, <span class="ident">merge</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_check_output</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>, <span class="ident">merge</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">tokio_stream::StreamExt</span>;
         <span class="kw">use</span> <span class="ident">Error</span>::{<span class="ident">CmdJoinError</span>, <span class="ident">CmdNoHandleError</span>, <span class="ident">CmdSpawnError</span>, <span class="ident">CmdWaitError</span>};
 
         <span class="kw">fn</span> <span class="ident">make_reader</span>(
             <span class="ident">src</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsyncRead</span><span class="op">&gt;</span>,
             <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
             <span class="ident">src</span>.<span class="ident">map</span>(<span class="ident">into_bytes</span>).<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">CmdNoHandleError</span> {
                 <span class="ident">handle</span>: <span class="ident">name</span>.<span class="ident">into</span>(),
             })
@@ -750,7 +750,7 @@
     <span class="doccomment">/// If `mute` is `false`, then normal `stdout/stderr` output will be printed</span>
     <span class="doccomment">/// to `stdout` too.</span>
     <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_exec!</span>()]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_checkall</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_checkall</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">exec_check_output</span>(<span class="ident">mute</span>, <span class="bool-val">true</span>).<span class="kw">await</span>
     }
 
@@ -759,7 +759,7 @@
     <span class="doccomment">/// If `mute` is `false`, then its `stderr` output will be printed to</span>
     <span class="doccomment">/// `stderr` too.</span>
     <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_exec!</span>()]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_checkerr</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_checkerr</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">exec_check_output</span>(<span class="ident">mute</span>, <span class="bool-val">false</span>).<span class="kw">await</span>
     }
 
@@ -772,7 +772,7 @@
     <span class="doccomment">/// but in addition, the user will be prompted if (s)he wishes to</span>
     <span class="doccomment">/// continue with the command execution.</span>
     <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_exec!</span>()]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_prompt</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">exec_prompt</span>(<span class="self">self</span>, <span class="ident">mute</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
         <span class="doccomment">/// If the user has skipped all the prompts with `yes`.</span>
         <span class="kw">static</span> <span class="ident">ALL</span>: <span class="ident">AtomicBool</span> <span class="op">=</span> <span class="ident">AtomicBool::new</span>(<span class="bool-val">false</span>);
 
@@ -789,16 +789,16 @@
             });
             <span class="kw">match</span> <span class="ident">answer</span> {
                 <span class="comment">// The default answer is `Yes`.</span>
-                <span class="string">&quot;y&quot;</span> <span class="op">|</span> <span class="string">&quot;yes&quot;</span> <span class="op">|</span> <span class="string">&quot;&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+                <span class="string">&quot;y&quot;</span> <span class="op">|</span> <span class="string">&quot;yes&quot;</span> <span class="op">|</span> <span class="string">&quot;&quot;</span> =&gt; <span class="bool-val">true</span>,
                 <span class="comment">// You can also say `All` to answer `Yes` to all the other questions that follow.</span>
-                <span class="string">&quot;a&quot;</span> <span class="op">|</span> <span class="string">&quot;all&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="string">&quot;a&quot;</span> <span class="op">|</span> <span class="string">&quot;all&quot;</span> =&gt; {
                     <span class="ident">ALL</span>.<span class="ident">store</span>(<span class="bool-val">true</span>, <span class="ident">Ordering::SeqCst</span>);
                     <span class="bool-val">true</span>
                 }
                 <span class="comment">// Or you can say `No`.</span>
-                <span class="string">&quot;n&quot;</span> <span class="op">|</span> <span class="string">&quot;no&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+                <span class="string">&quot;n&quot;</span> <span class="op">|</span> <span class="string">&quot;no&quot;</span> =&gt; <span class="bool-val">false</span>,
                 <span class="comment">// ! I didn&#39;t put a `None` option because you can just Ctrl-C it if you want.</span>
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable!</span>(),
+                <span class="kw">_</span> =&gt; <span class="macro">unreachable!</span>(),
             }
         };
         <span class="kw">let</span> <span class="ident">proceed</span> <span class="op">=</span> <span class="ident">ALL</span>.<span class="ident">load</span>(<span class="ident">Ordering::SeqCst</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">answer</span>();
@@ -811,7 +811,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">std::fmt::Display</span> <span class="kw">for</span> <span class="ident">Cmd</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">sudo</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">should_sudo</span>().<span class="ident">then</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;sudo -S &quot;</span>).<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>);
         <span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="macro">chain!</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cmd</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">flags</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">kws</span>).<span class="ident">join</span>(<span class="string">&quot; &quot;</span>);
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}{}&quot;</span>, <span class="ident">sudo</span>, <span class="ident">cmd</span>)
@@ -830,7 +830,7 @@
     <span class="ident">options</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">expected</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>],
     <span class="ident">case_sensitive</span>: <span class="ident">bool</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
+) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
     <span class="kw">use</span> <span class="ident">std::io</span>::{<span class="self">self</span>, <span class="ident">Write</span>};
 
     <span class="ident">std::iter::repeat_with</span>(<span class="op">|</span><span class="op">|</span> {
@@ -848,13 +848,13 @@
     })
     .<span class="ident">find_map</span>(<span class="op">|</span><span class="ident">answer</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="ident">answer</span> <span class="op">=</span> <span class="ident">answer</span>.<span class="ident">trim</span>();
-        <span class="ident">expected</span>.<span class="ident">iter</span>().<span class="ident">find</span>(<span class="op">|</span><span class="op">&amp;&amp;</span><span class="ident">pat</span><span class="op">|</span> <span class="ident">pat</span> <span class="op">=</span><span class="op">=</span> <span class="ident">answer</span>)
+        <span class="ident">expected</span>.<span class="ident">iter</span>().<span class="ident">find</span>(<span class="op">|</span><span class="op">&amp;&amp;</span><span class="ident">pat</span><span class="op">|</span> <span class="ident">pat</span> <span class="op">==</span> <span class="ident">answer</span>)
     })
     .<span class="ident">unwrap</span>() <span class="comment">// It&#39;s impossible to find nothing out of an infinite loop.</span>
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">docs_errors_grep</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="macro">indoc!</span> {<span class="string">&quot;
             # Errors
             Returns an [`Error::OtherError`] when any of the
@@ -868,7 +868,7 @@
 <span class="doccomment">/// We suppose that all patterns are legal regular expressions.</span>
 <span class="doccomment">/// An error message will be returned if this is not the case.</span>
 <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_grep!</span>()]</span>
-<span class="kw">fn</span> <span class="ident">grep</span><span class="op">&lt;</span><span class="lifetime">&#39;t</span><span class="op">&gt;</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;t</span> <span class="ident">str</span>, <span class="ident">patterns</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;t</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">grep</span><span class="op">&lt;</span><span class="lifetime">&#39;t</span><span class="op">&gt;</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;t</span> <span class="ident">str</span>, <span class="ident">patterns</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;t</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">patterns</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Regex</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">patterns</span>
         .<span class="ident">iter</span>()
         .<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">pat</span><span class="op">|</span> {
@@ -884,7 +884,7 @@
 
 <span class="doccomment">/// Prints the result of [`grep`] line by line.</span>
 <span class="attribute">#[<span class="ident">doc</span> <span class="op">=</span> <span class="macro">docs_errors_grep!</span>()]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">grep_print</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">patterns</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">grep_print</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">patterns</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="ident">grep</span>(<span class="ident">text</span>, <span class="ident">patterns</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">lns</span><span class="op">|</span> <span class="ident">lns</span>.<span class="ident">iter</span>().<span class="ident">for_each</span>(<span class="op">|</span><span class="ident">ln</span><span class="op">|</span> <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">ln</span>)))
 }
 
@@ -892,14 +892,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// To check by one parameter only, pass `&quot;&quot;` to the other one.</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">is_exe</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">is_exe</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     (<span class="op">!</span><span class="ident">path</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">which</span>(<span class="ident">path</span>).<span class="ident">is_ok</span>()) <span class="op">|</span><span class="op">|</span> (<span class="op">!</span><span class="ident">name</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">which</span>(<span class="ident">name</span>).<span class="ident">is_ok</span>())
 }
 
 <span class="doccomment">/// Turns an [`AsyncRead`] into a [`Stream`].</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// _Shamelessly copied from [`StackOverflow`](https://stackoverflow.com/a/59327560)._</span>
-<span class="kw">fn</span> <span class="ident">into_bytes</span>(<span class="ident">reader</span>: <span class="kw">impl</span> <span class="ident">AsyncRead</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">into_bytes</span>(<span class="ident">reader</span>: <span class="kw">impl</span> <span class="ident">AsyncRead</span>) -&gt; <span class="kw">impl</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">FramedRead::new</span>(<span class="ident">reader</span>, <span class="ident">BytesCodec::new</span>()).<span class="ident">map_ok</span>(<span class="ident">BytesMut::freeze</span>)
 }
 </code></pre></div>

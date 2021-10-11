@@ -344,12 +344,12 @@
 <span class="kw">impl</span> <span class="ident">IntegerBase</span> {
     <span class="doccomment">/// Returns the literal prefix that indicates this base, i.e. `&quot;0b&quot;`,</span>
     <span class="doccomment">/// `&quot;0o&quot;`, `&quot;&quot;` and `&quot;0x&quot;`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prefix</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prefix</span>(<span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Binary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0b&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::Octal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0o&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::Decimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::Hexadecimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;0x&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Binary</span> =&gt; <span class="string">&quot;0b&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Octal</span> =&gt; <span class="string">&quot;0o&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Decimal</span> =&gt; <span class="string">&quot;&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Hexadecimal</span> =&gt; <span class="string">&quot;0x&quot;</span>,
         }
     }
 }
@@ -357,10 +357,10 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Buffer</span><span class="op">&gt;</span> <span class="ident">IntegerLit</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Parses the input as an integer literal. Returns an error if the input is</span>
     <span class="doccomment">/// invalid or represents a different kind of literal.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">B</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">first_byte_or_empty</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>)<span class="question-mark">?</span> {
-            <span class="ident">digit</span> @ <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::parse_impl</span>(<span class="ident">input</span>, <span class="ident">digit</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="number">0</span>, <span class="ident">DoesNotStartWithDigit</span>)),
+            <span class="ident">digit</span> @ <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> =&gt; <span class="ident"><span class="self">Self</span>::parse_impl</span>(<span class="ident">input</span>, <span class="ident">digit</span>),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="number">0</span>, <span class="ident">DoesNotStartWithDigit</span>)),
         }
     }
 
@@ -369,17 +369,17 @@
     <span class="doccomment">/// method**. This means `N` does not need to match the type suffix!</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `None` if the literal overflows `N`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value</span><span class="op">&lt;</span><span class="ident">N</span>: <span class="ident">FromIntegerLiteral</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">N</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value</span><span class="op">&lt;</span><span class="ident">N</span>: <span class="ident">FromIntegerLiteral</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">N</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">base</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">base</span> {
-            <span class="ident">IntegerBase::Binary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">N::from_small_number</span>(<span class="number">2</span>),
-            <span class="ident">IntegerBase::Octal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">N::from_small_number</span>(<span class="number">8</span>),
-            <span class="ident">IntegerBase::Decimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">N::from_small_number</span>(<span class="number">10</span>),
-            <span class="ident">IntegerBase::Hexadecimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">N::from_small_number</span>(<span class="number">16</span>),
+            <span class="ident">IntegerBase::Binary</span> =&gt; <span class="ident">N::from_small_number</span>(<span class="number">2</span>),
+            <span class="ident">IntegerBase::Octal</span> =&gt; <span class="ident">N::from_small_number</span>(<span class="number">8</span>),
+            <span class="ident">IntegerBase::Decimal</span> =&gt; <span class="ident">N::from_small_number</span>(<span class="number">10</span>),
+            <span class="ident">IntegerBase::Hexadecimal</span> =&gt; <span class="ident">N::from_small_number</span>(<span class="number">16</span>),
         };
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">acc</span> <span class="op">=</span> <span class="ident">N::from_small_number</span>(<span class="number">0</span>);
         <span class="kw">for</span> <span class="ident">digit</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">main_part</span>.<span class="ident">bytes</span>() {
-            <span class="kw">if</span> <span class="ident">digit</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;_&#39;</span> {
+            <span class="kw">if</span> <span class="ident">digit</span> <span class="op">==</span> <span class="string">b&#39;_&#39;</span> {
                 <span class="kw">continue</span>;
             }
 
@@ -396,28 +396,28 @@
     }
 
     <span class="doccomment">/// The base of this integer literal.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">base</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IntegerBase</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">base</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IntegerBase</span> {
         <span class="self">self</span>.<span class="ident">base</span>
     }
 
     <span class="doccomment">/// The main part containing the digits and potentially `_`. Do not try to</span>
     <span class="doccomment">/// parse this directly as that would ignore the base!</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_main_part</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_main_part</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">main_part</span>
     }
 
     <span class="doccomment">/// The type suffix, if specified.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_suffix</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IntegerType</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_suffix</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IntegerType</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">type_suffix</span>
     }
 
     <span class="doccomment">/// Precondition: first byte of string has to be in `b&#39;0&#39;..=b&#39;9&#39;`.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">parse_impl</span>(<span class="ident">input</span>: <span class="ident">B</span>, <span class="ident">first</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">parse_impl</span>(<span class="ident">input</span>: <span class="ident">B</span>, <span class="ident">first</span>: <span class="ident">u8</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="comment">// Figure out base and strip prefix base, if it exists.</span>
         <span class="kw">let</span> (<span class="ident">end_prefix</span>, <span class="ident">base</span>) <span class="op">=</span> <span class="kw">match</span> (<span class="ident">first</span>, <span class="ident">input</span>.<span class="ident">as_bytes</span>().<span class="ident">get</span>(<span class="number">1</span>)) {
-            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;b&#39;</span>)) <span class="op">=</span><span class="op">&gt;</span> (<span class="number">2</span>, <span class="ident">IntegerBase::Binary</span>),
-            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;o&#39;</span>)) <span class="op">=</span><span class="op">&gt;</span> (<span class="number">2</span>, <span class="ident">IntegerBase::Octal</span>),
-            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;x&#39;</span>)) <span class="op">=</span><span class="op">&gt;</span> (<span class="number">2</span>, <span class="ident">IntegerBase::Hexadecimal</span>),
+            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;b&#39;</span>)) =&gt; (<span class="number">2</span>, <span class="ident">IntegerBase::Binary</span>),
+            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;o&#39;</span>)) =&gt; (<span class="number">2</span>, <span class="ident">IntegerBase::Octal</span>),
+            (<span class="string">b&#39;0&#39;</span>, <span class="prelude-val">Some</span>(<span class="string">b&#39;x&#39;</span>)) =&gt; (<span class="number">2</span>, <span class="ident">IntegerBase::Hexadecimal</span>),
 
             <span class="comment">// Everything else is treated as decimal. Several cases are caught</span>
             <span class="comment">// by this:</span>
@@ -425,7 +425,7 @@
             <span class="comment">// - &quot;0&quot;</span>
             <span class="comment">// - &quot;0u8&quot;</span>
             <span class="comment">// - &quot;0r&quot; -&gt; this will error later</span>
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span>, <span class="ident">IntegerBase::Decimal</span>),
+            <span class="kw">_</span> =&gt; (<span class="number">0</span>, <span class="ident">IntegerBase::Decimal</span>),
         };
         <span class="kw">let</span> <span class="ident">without_prefix</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">end_prefix</span>..];
 
@@ -437,40 +437,40 @@
 
         <span class="comment">// Check for invalid digits and make sure there is at least one valid digit.</span>
         <span class="kw">let</span> <span class="ident">invalid_digit_pos</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">base</span> {
-            <span class="ident">IntegerBase::Binary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">main_part</span>.<span class="ident">bytes</span>()
+            <span class="ident">IntegerBase::Binary</span> =&gt; <span class="ident">main_part</span>.<span class="ident">bytes</span>()
                 .<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="op">!</span><span class="macro">matches!</span>(<span class="ident">b</span>, <span class="string">b&#39;0&#39;</span> <span class="op">|</span> <span class="string">b&#39;1&#39;</span> <span class="op">|</span> <span class="string">b&#39;_&#39;</span>)),
-            <span class="ident">IntegerBase::Octal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">main_part</span>.<span class="ident">bytes</span>()
+            <span class="ident">IntegerBase::Octal</span> =&gt; <span class="ident">main_part</span>.<span class="ident">bytes</span>()
                 .<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="op">!</span><span class="macro">matches!</span>(<span class="ident">b</span>, <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;7&#39;</span> <span class="op">|</span> <span class="string">b&#39;_&#39;</span>)),
-            <span class="ident">IntegerBase::Decimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">main_part</span>.<span class="ident">bytes</span>()
+            <span class="ident">IntegerBase::Decimal</span> =&gt; <span class="ident">main_part</span>.<span class="ident">bytes</span>()
                 .<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="op">!</span><span class="macro">matches!</span>(<span class="ident">b</span>, <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> <span class="op">|</span> <span class="string">b&#39;_&#39;</span>)),
-            <span class="ident">IntegerBase::Hexadecimal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">IntegerBase::Hexadecimal</span> =&gt; <span class="prelude-val">None</span>,
         };
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">pos</span>) <span class="op">=</span> <span class="ident">invalid_digit_pos</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">end_prefix</span> <span class="op">+</span> <span class="ident">pos</span>, <span class="ident">InvalidDigit</span>));
         }
 
-        <span class="kw">if</span> <span class="ident">main_part</span>.<span class="ident">bytes</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">!</span><span class="op">=</span> <span class="string">b&#39;_&#39;</span>).<span class="ident">count</span>() <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
+        <span class="kw">if</span> <span class="ident">main_part</span>.<span class="ident">bytes</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">!</span><span class="op">=</span> <span class="string">b&#39;_&#39;</span>).<span class="ident">count</span>() <span class="op">==</span> <span class="number">0</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">end_prefix</span>..<span class="ident">end_prefix</span> <span class="op">+</span> <span class="ident">end_main</span>, <span class="ident">NoDigits</span>));
         }
 
 
         <span class="comment">// Parse type suffix</span>
         <span class="kw">let</span> <span class="ident">type_suffix</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">type_suffix</span> {
-            <span class="string">&quot;&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
-            <span class="string">&quot;u8&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U8</span>),
-            <span class="string">&quot;u16&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U16</span>),
-            <span class="string">&quot;u32&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U32</span>),
-            <span class="string">&quot;u64&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U64</span>),
-            <span class="string">&quot;u128&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U128</span>),
-            <span class="string">&quot;usize&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Usize</span>),
-            <span class="string">&quot;i8&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I8</span>),
-            <span class="string">&quot;i16&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I16</span>),
-            <span class="string">&quot;i32&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I32</span>),
-            <span class="string">&quot;i64&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I64</span>),
-            <span class="string">&quot;i128&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I128</span>),
-            <span class="string">&quot;isize&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Isize</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">end_main</span> <span class="op">+</span> <span class="ident">end_prefix</span>..<span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">InvalidIntegerTypeSuffix</span>)),
+            <span class="string">&quot;&quot;</span> =&gt; <span class="prelude-val">None</span>,
+            <span class="string">&quot;u8&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U8</span>),
+            <span class="string">&quot;u16&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U16</span>),
+            <span class="string">&quot;u32&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U32</span>),
+            <span class="string">&quot;u64&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U64</span>),
+            <span class="string">&quot;u128&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U128</span>),
+            <span class="string">&quot;usize&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Usize</span>),
+            <span class="string">&quot;i8&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I8</span>),
+            <span class="string">&quot;i16&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I16</span>),
+            <span class="string">&quot;i32&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I32</span>),
+            <span class="string">&quot;i64&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I64</span>),
+            <span class="string">&quot;i128&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I128</span>),
+            <span class="string">&quot;isize&quot;</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Isize</span>),
+            <span class="kw">_</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">end_main</span> <span class="op">+</span> <span class="ident">end_prefix</span>..<span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">InvalidIntegerTypeSuffix</span>)),
         };
 
         <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
@@ -484,7 +484,7 @@
 <span class="kw">impl</span> <span class="ident">IntegerLit</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Makes a copy of the underlying buffer and returns the owned version of</span>
     <span class="doccomment">/// `Self`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_owned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IntegerLit</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_owned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">IntegerLit</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="ident">IntegerLit</span> {
             <span class="ident">base</span>: <span class="self">self</span>.<span class="ident">base</span>,
             <span class="ident">main_part</span>: <span class="self">self</span>.<span class="ident">main_part</span>.<span class="ident">to_owned</span>(),
@@ -494,21 +494,21 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Buffer</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">IntegerLit</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">suffix</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">type_suffix</span> {
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U8</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;u8&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U16</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;u16&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U32</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;u32&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U64</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;u64&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U128</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;u128&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Usize</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;usize&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I8</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;i8&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I16</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;i16&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I32</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;i32&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I64</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;i64&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I128</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;i128&quot;</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Isize</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;isize&quot;</span>,
+            <span class="prelude-val">None</span> =&gt; <span class="string">&quot;&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U8</span>) =&gt; <span class="string">&quot;u8&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U16</span>) =&gt; <span class="string">&quot;u16&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U32</span>) =&gt; <span class="string">&quot;u32&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U64</span>) =&gt; <span class="string">&quot;u64&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::U128</span>) =&gt; <span class="string">&quot;u128&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Usize</span>) =&gt; <span class="string">&quot;usize&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I8</span>) =&gt; <span class="string">&quot;i8&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I16</span>) =&gt; <span class="string">&quot;i16&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I32</span>) =&gt; <span class="string">&quot;i32&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I64</span>) =&gt; <span class="string">&quot;i64&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::I128</span>) =&gt; <span class="string">&quot;i128&quot;</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">IntegerType::Isize</span>) =&gt; <span class="string">&quot;isize&quot;</span>,
         };
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}{}{}&quot;</span>, <span class="self">self</span>.<span class="ident">base</span>.<span class="ident">prefix</span>(), <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>.<span class="ident">main_part</span>, <span class="ident">suffix</span>)
     }
@@ -522,33 +522,33 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromIntegerLiteral</span>: <span class="ident"><span class="self">self</span>::sealed::Sealed</span> <span class="op">+</span> <span class="ident">Copy</span> {
     <span class="doccomment">/// Creates itself from the given number. `n` is guaranteed to be `&lt;= 16`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+    <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span>;
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">checked_add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">checked_add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">checked_mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">checked_mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">ty</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IntegerType</span>;
+    <span class="kw">fn</span> <span class="ident">ty</span>() -&gt; <span class="ident">IntegerType</span>;
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">impl_from_int_literal</span> {
-    ($( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ty</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> ,)<span class="op">*</span> ) <span class="op">=</span><span class="op">&gt;</span> {
+    ($( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ty</span> =&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> ,)<span class="op">*</span> ) =&gt; {
         $(
             <span class="kw">impl</span> <span class="ident"><span class="self">self</span>::sealed::Sealed</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span> {}
             <span class="kw">impl</span> <span class="ident">FromIntegerLiteral</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span> {
-                <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                <span class="kw">fn</span> <span class="ident">from_small_number</span>(<span class="ident">n</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span> {
                     <span class="ident">n</span> <span class="kw">as</span> <span class="self">Self</span>
                 }
-                <span class="kw">fn</span> <span class="ident">checked_add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">checked_add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                     <span class="self">self</span>.<span class="ident">checked_add</span>(<span class="ident">rhs</span>)
                 }
-                <span class="kw">fn</span> <span class="ident">checked_mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">checked_mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                     <span class="self">self</span>.<span class="ident">checked_mul</span>(<span class="ident">rhs</span>)
                 }
-                <span class="kw">fn</span> <span class="ident">ty</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IntegerType</span> {
+                <span class="kw">fn</span> <span class="ident">ty</span>() -&gt; <span class="ident">IntegerType</span> {
                     <span class="ident">IntegerType</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>
                 }
             }
@@ -557,8 +557,8 @@
 }
 
 <span class="macro">impl_from_int_literal!</span>(
-    <span class="ident">u8</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">U8</span>, <span class="ident">u16</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">U16</span>, <span class="ident">u32</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">U32</span>, <span class="ident">u64</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">U64</span>, <span class="ident">u128</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">U128</span>, <span class="ident">usize</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Usize</span>,
-    <span class="ident">i8</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">I8</span>, <span class="ident">i16</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">I16</span>, <span class="ident">i32</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">I32</span>, <span class="ident">i64</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">I64</span>, <span class="ident">i128</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">I128</span>, <span class="ident">isize</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Isize</span>,
+    <span class="ident">u8</span> =&gt; <span class="ident">U8</span>, <span class="ident">u16</span> =&gt; <span class="ident">U16</span>, <span class="ident">u32</span> =&gt; <span class="ident">U32</span>, <span class="ident">u64</span> =&gt; <span class="ident">U64</span>, <span class="ident">u128</span> =&gt; <span class="ident">U128</span>, <span class="ident">usize</span> =&gt; <span class="ident">Usize</span>,
+    <span class="ident">i8</span> =&gt; <span class="ident">I8</span>, <span class="ident">i16</span> =&gt; <span class="ident">I16</span>, <span class="ident">i32</span> =&gt; <span class="ident">I32</span>, <span class="ident">i64</span> =&gt; <span class="ident">I64</span>, <span class="ident">i128</span> =&gt; <span class="ident">I128</span>, <span class="ident">isize</span> =&gt; <span class="ident">Isize</span>,
 );
 
 <span class="kw">mod</span> <span class="ident">sealed</span> {

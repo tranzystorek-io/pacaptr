@@ -257,21 +257,21 @@
 
 
 <span class="doccomment">/// Must start with `\`</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">unescape</span><span class="op">&lt;</span><span class="ident">E</span>: <span class="ident">Escapee</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">offset</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">E</span>, <span class="ident">usize</span>), <span class="ident">ParseError</span><span class="op">&gt;</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">unescape</span><span class="op">&lt;</span><span class="ident">E</span>: <span class="ident">Escapee</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">offset</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">E</span>, <span class="ident">usize</span>), <span class="ident">ParseError</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">first</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>().<span class="ident">get</span>(<span class="number">1</span>)
         .<span class="ident">ok_or</span>(<span class="ident">perr</span>(<span class="ident">offset</span>, <span class="ident">UnterminatedEscape</span>))<span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="ident">out</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">first</span> {
         <span class="comment">// Quote escapes</span>
-        <span class="string">b&#39;\&#39;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\&#39;&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;&quot;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;&quot;&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;\&#39;&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\&#39;&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;&quot;&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;&quot;&#39;</span>), <span class="number">2</span>),
 
         <span class="comment">// Ascii escapes</span>
-        <span class="string">b&#39;n&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\n&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;r&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\r&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;t&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\t&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;\\&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\\&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;0&#39;</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\0&#39;</span>), <span class="number">2</span>),
-        <span class="string">b&#39;x&#39;</span> <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="string">b&#39;n&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\n&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;r&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\r&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;t&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\t&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;\\&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\\&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;0&#39;</span> =&gt; (<span class="ident">E::from_byte</span>(<span class="string">b&#39;\0&#39;</span>), <span class="number">2</span>),
+        <span class="string">b&#39;x&#39;</span> =&gt; {
             <span class="kw">let</span> <span class="ident">hex_string</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">get</span>(<span class="number">2</span>..<span class="number">4</span>)
                 .<span class="ident">ok_or</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">UnterminatedEscape</span>))<span class="question-mark">?</span>
                 .<span class="ident">as_bytes</span>();
@@ -289,7 +289,7 @@
         },
 
         <span class="comment">// Unicode escape</span>
-        <span class="string">b&#39;u&#39;</span> <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="string">b&#39;u&#39;</span> =&gt; {
             <span class="kw">if</span> <span class="op">!</span><span class="ident">E::SUPPORTS_UNICODE</span> {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="number">2</span>, <span class="ident">UnicodeEscapeInByteLiteral</span>));
             }
@@ -298,25 +298,25 @@
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="number">2</span>, <span class="ident">UnicodeEscapeWithoutBrace</span>));
             }
 
-            <span class="kw">let</span> <span class="ident">closing_pos</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">bytes</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;}&#39;</span>)
+            <span class="kw">let</span> <span class="ident">closing_pos</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">bytes</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;}&#39;</span>)
                 .<span class="ident">ok_or</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">UnterminatedUnicodeEscape</span>))<span class="question-mark">?</span>;
 
             <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="number">3</span>..<span class="ident">closing_pos</span>];
-            <span class="kw">if</span> <span class="ident">inner</span>.<span class="ident">as_bytes</span>().<span class="ident">first</span>() <span class="op">=</span><span class="op">=</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;_&#39;</span>) {
+            <span class="kw">if</span> <span class="ident">inner</span>.<span class="ident">as_bytes</span>().<span class="ident">first</span>() <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;_&#39;</span>) {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="number">4</span>, <span class="ident">InvalidStartOfUnicodeEscape</span>));
             }
 
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0</span>;
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">digit_count</span> <span class="op">=</span> <span class="number">0</span>;
             <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">b</span>) <span class="kw">in</span> <span class="ident">inner</span>.<span class="ident">bytes</span>().<span class="ident">enumerate</span>() {
-                <span class="kw">if</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;_&#39;</span>{
+                <span class="kw">if</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;_&#39;</span>{
                     <span class="kw">continue</span>;
                 }
 
                 <span class="kw">let</span> <span class="ident">digit</span> <span class="op">=</span> <span class="ident">hex_digit_value</span>(<span class="ident">b</span>)
                     .<span class="ident">ok_or</span>(<span class="ident">perr</span>(<span class="ident">offset</span> <span class="op">+</span> <span class="number">3</span> <span class="op">+</span> <span class="ident">i</span>, <span class="ident">NonHexDigitInUnicodeEscape</span>))<span class="question-mark">?</span>;
 
-                <span class="kw">if</span> <span class="ident">digit_count</span> <span class="op">=</span><span class="op">=</span> <span class="number">6</span> {
+                <span class="kw">if</span> <span class="ident">digit_count</span> <span class="op">==</span> <span class="number">6</span> {
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">offset</span> <span class="op">+</span> <span class="number">3</span> <span class="op">+</span> <span class="ident">i</span>, <span class="ident">TooManyDigitInUnicodeEscape</span>));
                 }
                 <span class="ident">digit_count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
@@ -329,7 +329,7 @@
             (<span class="ident">E::from_char</span>(<span class="ident">c</span>), <span class="ident">closing_pos</span> <span class="op">+</span> <span class="number">1</span>)
         }
 
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="number">2</span>, <span class="ident">UnknownEscape</span>)),
+        <span class="kw">_</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">offset</span>..<span class="ident">offset</span> <span class="op">+</span> <span class="number">2</span>, <span class="ident">UnknownEscape</span>)),
     };
 
     <span class="prelude-val">Ok</span>(<span class="ident">out</span>)
@@ -337,48 +337,48 @@
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait</span> <span class="ident">Escapee</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span> {
     <span class="kw">const</span> <span class="ident">SUPPORTS_UNICODE</span>: <span class="ident">bool</span>;
-    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
-    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
+    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span>;
+    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">Escapee</span> <span class="kw">for</span> <span class="ident">u8</span> {
     <span class="kw">const</span> <span class="ident">SUPPORTS_UNICODE</span>: <span class="ident">bool</span> <span class="op">=</span> <span class="bool-val">false</span>;
-    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">b</span>
     }
-    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="kw">_</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="kw">_</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">panic!</span>(<span class="string">&quot;bug: `&lt;u8 as Escapee&gt;::from_char` was called&quot;</span>);
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Escapee</span> <span class="kw">for</span> <span class="ident">char</span> {
     <span class="kw">const</span> <span class="ident">SUPPORTS_UNICODE</span>: <span class="ident">bool</span> <span class="op">=</span> <span class="bool-val">true</span>;
-    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from_byte</span>(<span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">b</span>.<span class="ident">into</span>()
     }
-    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from_char</span>(<span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">c</span>
     }
 }
 
 <span class="doccomment">/// Checks whether the character is skipped after a string continue start</span>
 <span class="doccomment">/// (unescaped backlash followed by `\n`).</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">is_string_continue_skipable_whitespace</span>(<span class="ident">b</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-    <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39; &#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\t&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\n&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\r&#39;</span>
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">is_string_continue_skipable_whitespace</span>(<span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="ident">bool</span> {
+    <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39; &#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;\t&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;\n&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;\r&#39;</span>
 }
 
 <span class="doccomment">/// Unescapes a whole string or byte string.</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">unescape_string</span><span class="op">&lt;</span><span class="ident">E</span>: <span class="ident">Escapee</span><span class="op">&gt;</span>(
     <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">offset</span>: <span class="ident">usize</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">i</span> <span class="op">=</span> <span class="ident">offset</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">end_last_escape</span> <span class="op">=</span> <span class="ident">offset</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="kw">while</span> <span class="ident">i</span> <span class="op">&lt;</span> <span class="ident">input</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span> {
         <span class="kw">match</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span>] {
             <span class="comment">// Handle &quot;string continue&quot;.</span>
-            <span class="string">b&#39;\\&#39;</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\n&#39;</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="string">b&#39;\\&#39;</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">==</span> <span class="string">b&#39;\n&#39;</span> =&gt; {
                 <span class="ident">value</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">end_last_escape</span>..<span class="ident">i</span>]);
 
                 <span class="comment">// Find the first non-whitespace character.</span>
@@ -389,15 +389,15 @@
                 <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">2</span> <span class="op">+</span> <span class="ident">end_escape</span>;
                 <span class="ident">end_last_escape</span> <span class="op">=</span> <span class="ident">i</span>;
             }
-            <span class="string">b&#39;\\&#39;</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="string">b&#39;\\&#39;</span> =&gt; {
                 <span class="kw">let</span> (<span class="ident">c</span>, <span class="ident">len</span>) <span class="op">=</span> <span class="ident">unescape</span>::<span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">i</span>..<span class="ident">input</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>], <span class="ident">i</span>)<span class="question-mark">?</span>;
                 <span class="ident">value</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">end_last_escape</span>..<span class="ident">i</span>]);
                 <span class="ident">value</span>.<span class="ident">push</span>(<span class="ident">c</span>.<span class="ident">into</span>());
                 <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="ident">len</span>;
                 <span class="ident">end_last_escape</span> <span class="op">=</span> <span class="ident">i</span>;
             }
-            <span class="string">b&#39;\r&#39;</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\n&#39;</span> {
+            <span class="string">b&#39;\r&#39;</span> =&gt; {
+                <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">==</span> <span class="string">b&#39;\n&#39;</span> {
                     <span class="ident">value</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">end_last_escape</span>..<span class="ident">i</span>]);
                     <span class="ident">value</span>.<span class="ident">push</span>(<span class="string">&#39;\n&#39;</span>);
                     <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">2</span>;
@@ -406,14 +406,14 @@
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">i</span>, <span class="ident">IsolatedCr</span>))
                 }
             }
-            <span class="string">b&#39;&quot;&#39;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>..<span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">UnexpectedChar</span>)),
+            <span class="string">b&#39;&quot;&#39;</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>..<span class="ident">input</span>.<span class="ident">len</span>(), <span class="ident">UnexpectedChar</span>)),
             <span class="ident">b</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">E::SUPPORTS_UNICODE</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">b</span>.<span class="ident">is_ascii</span>()
-                <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">i</span>, <span class="ident">NonAsciiInByteLiteral</span>)),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>,
+                =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="ident">i</span>, <span class="ident">NonAsciiInByteLiteral</span>)),
+            <span class="kw">_</span> =&gt; <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>,
         }
     }
 
-    <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">input</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>] <span class="op">!</span><span class="op">=</span> <span class="string">b&#39;&quot;&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">input</span>.<span class="ident">len</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">offset</span> {
+    <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">input</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>] <span class="op">!</span><span class="op">=</span> <span class="string">b&#39;&quot;&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">input</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="ident">offset</span> {
         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">perr</span>(<span class="prelude-val">None</span>, <span class="ident">UnterminatedString</span>));
     }
 
@@ -438,7 +438,7 @@
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">scan_raw_string</span><span class="op">&lt;</span><span class="ident">E</span>: <span class="ident">Escapee</span><span class="op">&gt;</span>(
     <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">offset</span>: <span class="ident">usize</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">u32</span>), <span class="ident">ParseError</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">u32</span>), <span class="ident">ParseError</span><span class="op">&gt;</span> {
     <span class="comment">// Raw string literal</span>
     <span class="kw">let</span> <span class="ident">num_hashes</span> <span class="op">=</span> <span class="ident">input</span>[<span class="ident">offset</span>..].<span class="ident">bytes</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">!</span><span class="op">=</span> <span class="string">b&#39;#&#39;</span>)
         .<span class="ident">ok_or</span>(<span class="ident">perr</span>(<span class="prelude-val">None</span>, <span class="ident">InvalidLiteral</span>))<span class="question-mark">?</span>;
@@ -455,17 +455,17 @@
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="kw">while</span> <span class="ident">i</span> <span class="op">&lt;</span> <span class="ident">input</span>.<span class="ident">len</span>() {
         <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>()[<span class="ident">i</span>];
-        <span class="kw">if</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;&quot;&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">input</span>[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>..].<span class="ident">starts_with</span>(<span class="ident">hashes</span>) {
+        <span class="kw">if</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;&quot;&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">input</span>[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>..].<span class="ident">starts_with</span>(<span class="ident">hashes</span>) {
             <span class="ident">closing_quote_pos</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">i</span>);
             <span class="kw">break</span>;
         }
 
-        <span class="kw">if</span> <span class="ident">b</span> <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;\r&#39;</span> {
+        <span class="kw">if</span> <span class="ident">b</span> <span class="op">==</span> <span class="string">b&#39;\r&#39;</span> {
             <span class="comment">// Convert `\r\n` into `\n`. This is currently not well documented</span>
             <span class="comment">// in the Rust reference, but is done even for raw strings. That&#39;s</span>
             <span class="comment">// because rustc simply converts all line endings when reading</span>
             <span class="comment">// source files.</span>
-            <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>().<span class="ident">get</span>(<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>) <span class="op">=</span><span class="op">=</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;\n&#39;</span>) {
+            <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">as_bytes</span>().<span class="ident">get</span>(<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>) <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;\n&#39;</span>) {
                 <span class="ident">value</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="ident">end_last_escape</span>..<span class="ident">i</span>]);
                 <span class="ident">value</span>.<span class="ident">push</span>(<span class="string">&#39;\n&#39;</span>);
                 <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">2</span>;

@@ -70,14 +70,14 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">RangeBounds</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Disable</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Column</span>(<span class="ident">range</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Column</span>(<span class="ident">range</span>) =&gt; {
                 <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span>
                     <span class="ident">bounds_to_usize</span>(<span class="ident">range</span>.<span class="ident">start_bound</span>(), <span class="ident">range</span>.<span class="ident">end_bound</span>(), <span class="ident">grid</span>.<span class="ident">count_columns</span>());
                 <span class="kw">for</span> (<span class="ident">shifted</span>, <span class="ident">i</span>) <span class="kw">in</span> (<span class="ident">x</span>..<span class="ident">y</span>).<span class="ident">enumerate</span>() {
                     <span class="ident">grid</span>.<span class="ident">remove_column</span>(<span class="ident">i</span> <span class="op">-</span> <span class="ident">shifted</span>);
                 }
             }
-            <span class="ident"><span class="self">Self</span>::Row</span>(<span class="ident">range</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Row</span>(<span class="ident">range</span>) =&gt; {
                 <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span>
                     <span class="ident">bounds_to_usize</span>(<span class="ident">range</span>.<span class="ident">start_bound</span>(), <span class="ident">range</span>.<span class="ident">end_bound</span>(), <span class="ident">grid</span>.<span class="ident">count_rows</span>());
 

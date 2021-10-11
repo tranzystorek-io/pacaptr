@@ -39,7 +39,7 @@ event source that generated the event.</p>
     <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">None</span>)<span class="question-mark">?</span>;
 
     <span class="kw">for</span> <span class="ident">event</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">events</span> {
-        <span class="kw">if</span> <span class="ident">event</span>.<span class="ident">token</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">Token</span>(<span class="number">0</span>) <span class="op">&amp;&amp;</span> <span class="ident">event</span>.<span class="ident">is_writable</span>() {
+        <span class="kw">if</span> <span class="ident">event</span>.<span class="ident">token</span>() <span class="op">==</span> <span class="ident">Token</span>(<span class="number">0</span>) <span class="op">&amp;&amp;</span> <span class="ident">event</span>.<span class="ident">is_writable</span>() {
             <span class="comment">// The socket connected (probably, it could still be a spurious</span>
             <span class="comment">// wakeup)</span>
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
@@ -200,7 +200,7 @@ of Mio would automatically retry the poll call if it was interrupted
     <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">None</span>)<span class="question-mark">?</span>;
 
     <span class="kw">for</span> <span class="ident">event</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">events</span> {
-        <span class="kw">if</span> <span class="ident">event</span>.<span class="ident">token</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">Token</span>(<span class="number">0</span>) <span class="op">&amp;&amp;</span> <span class="ident">event</span>.<span class="ident">is_writable</span>() {
+        <span class="kw">if</span> <span class="ident">event</span>.<span class="ident">token</span>() <span class="op">==</span> <span class="ident">Token</span>(<span class="number">0</span>) <span class="op">&amp;&amp;</span> <span class="ident">event</span>.<span class="ident">is_writable</span>() {
             <span class="comment">// The socket connected (probably, it could still be a spurious</span>
             <span class="comment">// wakeup)</span>
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
@@ -217,8 +217,8 @@ with the error.</p>
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">poll</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">Poll::new</span>() {
-    <span class="prelude-val">Ok</span>(<span class="ident">poll</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">poll</span>,
-    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic!</span>(<span class="string">&quot;failed to create Poll instance; err={:?}&quot;</span>, <span class="ident">e</span>),
+    <span class="prelude-val">Ok</span>(<span class="ident">poll</span>) =&gt; <span class="ident">poll</span>,
+    <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;failed to create Poll instance; err={:?}&quot;</span>, <span class="ident">e</span>),
 };
 
 <span class="comment">// Create a structure to receive polled events</span>

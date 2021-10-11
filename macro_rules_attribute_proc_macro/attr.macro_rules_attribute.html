@@ -20,7 +20,7 @@ able to modify it</em>!).</p>
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_name</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_ty</span>:<span class="ident">ty</span>
         ),<span class="op">*</span> $(,)<span class="question-mark">?</span>
     }
-) <span class="op">=</span><span class="op">&gt;</span> (
+) =&gt; (
     <span class="comment">// First, generate the struct definition we have been given, but with</span>
     <span class="comment">// private fields instead.</span>
     $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_meta</span>]</span>)<span class="op">*</span>
@@ -39,7 +39,7 @@ able to modify it</em>!).</p>
             <span class="attribute">#[<span class="ident">inline</span>]</span>
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_vis</span>
             <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_name</span> (<span class="self">self</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="self">Self</span>)
-                <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_ty</span>
+                -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_ty</span>
             {
                 <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field_name</span>
             }
@@ -62,11 +62,11 @@ able to modify it</em>!).</p>
 <span class="kw">use</span> <span class="ident">example::Person</span>;
 
 <span class="kw">fn</span> <span class="ident">is_new_born</span> (<span class="ident">person</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;_</span> <span class="ident">Person</span>)
-    <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+    -&gt; <span class="ident">bool</span>
 {
     <span class="comment">// person.age == 0</span>
     <span class="comment">// ^ error[E0616]: field `age` of struct `example::Person` is private</span>
-    <span class="kw-2">*</span><span class="ident">person</span>.<span class="ident">age</span>() <span class="op">=</span><span class="op">=</span> <span class="number">0</span>
+    <span class="kw-2">*</span><span class="ident">person</span>.<span class="ident">age</span>() <span class="op">==</span> <span class="number">0</span>
 }</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="macro_rules_attribute_proc_macro" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
     <script src="../main.js"></script>

@@ -446,7 +446,7 @@
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::module_name_repetitions</span>)]</span>
 
 <span class="macro">macro_rules!</span> <span class="ident">mods</span> {
-    ( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span>:<span class="ident">vis</span> <span class="macro-nonterminal">$</span><span class="kw">mod</span>:<span class="macro-nonterminal">ident</span>; )<span class="op">+</span> ) <span class="op">=</span><span class="op">&gt;</span> {
+    ( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span>:<span class="ident">vis</span> <span class="macro-nonterminal">$</span><span class="kw">mod</span>:<span class="macro-nonterminal">ident</span>; )<span class="op">+</span> ) =&gt; {
         $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span> <span class="kw">mod</span> <span class="macro-nonterminal">$</span><span class="kw">mod</span>; )<span class="op">+</span>
     }
 }
@@ -485,7 +485,7 @@
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="macro">macro_rules!</span> <span class="ident">methods</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>:<span class="ident">tt</span>) =&gt; {
         <span class="macro">tt_call::tt_return!</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">caller</span>
             <span class="ident">methods</span> <span class="op">=</span> [{
@@ -587,7 +587,7 @@
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">make_op_body</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">self</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {{
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">self</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>) =&gt; {{
         <span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::error::Error::OperationUnimplementedError</span> {
             <span class="ident">op</span>: <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>).<span class="ident">into</span>(),
             <span class="ident">pm</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">self</span>.<span class="ident">name</span>().<span class="ident">into</span>(),
@@ -606,14 +606,14 @@
         $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta1</span>:<span class="ident">meta</span>]</span> )<span class="op">*</span>
         <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>;
     )<span class="op">*</span> }]
-) <span class="op">=</span><span class="op">&gt;</span> {
+) =&gt; {
     $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta0</span>]</span> )<span class="op">*</span>
     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vis</span> <span class="kw">trait</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">supert</span> {
         $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">inner</span> )<span class="op">*</span>
 
         <span class="comment">// * Automatically generated methods below... *</span>
         $( $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta1</span>]</span> )<span class="op">*</span>
-        <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">_flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+        <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">_flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
             <span class="macro">make_op_body!</span>(<span class="self">self</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>)
         } )<span class="op">*</span>
     }
@@ -628,7 +628,7 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="macro">macro_rules!</span> <span class="ident">decor_pm</span> {
-    ( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">def</span>:<span class="ident">tt</span> )<span class="op">*</span> ) <span class="op">=</span><span class="op">&gt;</span> {
+    ( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">def</span>:<span class="ident">tt</span> )<span class="op">*</span> ) =&gt; {
         <span class="macro">tt_call!</span> {
             <span class="kw">macro</span> <span class="op">=</span> [{ <span class="ident">methods</span> }]
             ~~<span class="op">&gt;</span> <span class="macro">_decor_pm!</span> {
@@ -647,13 +647,13 @@
 <span class="attribute">#[<span class="ident">async_trait</span>]</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait</span> <span class="ident">Pm</span>: <span class="ident">Sync</span> {
     <span class="doccomment">/// Gets the name of the package manager.</span>
-    <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span>;
+    <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span>;
 
     <span class="doccomment">/// Gets the config of the package manager.</span>
-    <span class="kw">fn</span> <span class="ident">cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Config</span>;
+    <span class="kw">fn</span> <span class="ident">cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Config</span>;
 
     <span class="doccomment">/// Wraps the [`Pm`] instance in a [`Box`].</span>
-    <span class="kw">fn</span> <span class="ident">boxed</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Pm</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">boxed</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="self">self</span>) -&gt; <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Pm</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
     {
@@ -668,8 +668,8 @@
 <span class="kw">trait</span> <span class="ident">PmHelper</span>: <span class="ident">Pm</span> {
     <span class="doccomment">/// Executes a command in the context of the [`Pm`] implementation. Returns</span>
     <span class="doccomment">/// the [`Output`] of this command.</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">check_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cmd</span>: <span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
-        <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run</span>(<span class="ident">cfg</span>: <span class="kw-2">&amp;</span><span class="ident">Config</span>, <span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">check_output</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cmd</span>: <span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
+        <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run</span>(<span class="ident">cfg</span>: <span class="kw-2">&amp;</span><span class="ident">Config</span>, <span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">curr_cmd</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">clone</span>();
             <span class="kw">let</span> <span class="ident">no_confirm</span> <span class="op">=</span> <span class="ident">cfg</span>.<span class="ident">no_confirm</span>;
             <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">no_cache</span> {
@@ -678,16 +678,16 @@
                 }
             }
             <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">strat</span>.<span class="ident">prompt</span> {
-                <span class="ident">PromptStrategy::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">mode</span>.<span class="ident">into</span>()).<span class="kw">await</span>,
-                <span class="ident">PromptStrategy::CustomPrompt</span> <span class="kw">if</span> <span class="ident">no_confirm</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">mode</span>.<span class="ident">into</span>()).<span class="kw">await</span>,
-                <span class="ident">PromptStrategy::CustomPrompt</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">Mode::Prompt</span>).<span class="kw">await</span>,
-                <span class="ident">PromptStrategy::NativeNoConfirm</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">PromptStrategy::None</span> =&gt; <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">mode</span>.<span class="ident">into</span>()).<span class="kw">await</span>,
+                <span class="ident">PromptStrategy::CustomPrompt</span> <span class="kw">if</span> <span class="ident">no_confirm</span> =&gt; <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">mode</span>.<span class="ident">into</span>()).<span class="kw">await</span>,
+                <span class="ident">PromptStrategy::CustomPrompt</span> =&gt; <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">Mode::Prompt</span>).<span class="kw">await</span>,
+                <span class="ident">PromptStrategy::NativeNoConfirm</span>(<span class="ident">v</span>) =&gt; {
                     <span class="kw">if</span> <span class="ident">no_confirm</span> {
                         <span class="ident">curr_cmd</span>.<span class="ident">flags</span>.<span class="ident">extend</span>(<span class="ident">v</span>.<span class="ident">clone</span>());
                     }
                     <span class="ident">curr_cmd</span>.<span class="ident">exec</span>(<span class="ident">mode</span>.<span class="ident">into</span>()).<span class="kw">await</span>
                 }
-                <span class="ident">PromptStrategy::NativeConfirm</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">PromptStrategy::NativeConfirm</span>(<span class="ident">v</span>) =&gt; {
                     <span class="kw">if</span> <span class="op">!</span><span class="ident">no_confirm</span> {
                         <span class="ident">curr_cmd</span>.<span class="ident">flags</span>.<span class="ident">extend</span>(<span class="ident">v</span>.<span class="ident">clone</span>());
                     }
@@ -700,24 +700,24 @@
 
         <span class="comment">// `--dry-run` should apply to both the main command and the cleanup.</span>
         <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">strat</span>.<span class="ident">dry_run</span> {
-            <span class="ident">DryRunStrategy::PrintCmd</span> <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">dry_run</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cmd</span>.<span class="ident">clone</span>().<span class="ident">exec</span>(<span class="ident">Mode::PrintCmd</span>).<span class="kw">await</span><span class="question-mark">?</span>,
-            <span class="ident">DryRunStrategy::WithFlags</span>(<span class="ident">v</span>) <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">dry_run</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">DryRunStrategy::PrintCmd</span> <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">dry_run</span> =&gt; <span class="ident">cmd</span>.<span class="ident">clone</span>().<span class="ident">exec</span>(<span class="ident">Mode::PrintCmd</span>).<span class="kw">await</span><span class="question-mark">?</span>,
+            <span class="ident">DryRunStrategy::WithFlags</span>(<span class="ident">v</span>) <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">dry_run</span> =&gt; {
                 <span class="ident">cmd</span>.<span class="ident">flags</span>.<span class="ident">extend</span>(<span class="ident">v</span>.<span class="ident">clone</span>());
                 <span class="comment">// -- A dry run with extra flags does not need `sudo`. --</span>
                 <span class="ident">cmd</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">sudo</span>(<span class="bool-val">false</span>);
                 <span class="ident">run</span>(<span class="ident">cfg</span>, <span class="kw-2">&amp;</span><span class="ident">cmd</span>, <span class="ident">mode</span>, <span class="ident">strat</span>).<span class="kw">await</span><span class="question-mark">?</span>
             }
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">run</span>(<span class="ident">cfg</span>, <span class="kw-2">&amp;</span><span class="ident">cmd</span>, <span class="ident">mode</span>, <span class="ident">strat</span>).<span class="kw">await</span><span class="question-mark">?</span>,
+            <span class="kw">_</span> =&gt; <span class="ident">run</span>(<span class="ident">cfg</span>, <span class="kw-2">&amp;</span><span class="ident">cmd</span>, <span class="ident">mode</span>, <span class="ident">strat</span>).<span class="kw">await</span><span class="question-mark">?</span>,
         };
 
         <span class="comment">// Perform the cleanup.</span>
         <span class="kw">if</span> <span class="ident">cfg</span>.<span class="ident">no_cache</span> {
             <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">str</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
             <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">strat</span>.<span class="ident">no_cache</span> {
-                <span class="ident">NoCacheStrategy::Sc</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">sc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
-                <span class="ident">NoCacheStrategy::Scc</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">scc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
-                <span class="ident">NoCacheStrategy::Sccc</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">sccc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> (),
+                <span class="ident">NoCacheStrategy::Sc</span> =&gt; <span class="self">self</span>.<span class="ident">sc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
+                <span class="ident">NoCacheStrategy::Scc</span> =&gt; <span class="self">self</span>.<span class="ident">scc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
+                <span class="ident">NoCacheStrategy::Sccc</span> =&gt; <span class="self">self</span>.<span class="ident">sccc</span>(<span class="kw-2">&amp;</span>[], <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span><span class="question-mark">?</span>,
+                <span class="kw">_</span> =&gt; (),
             };
         }
 
@@ -726,13 +726,13 @@
 
     <span class="doccomment">/// Executes a command in the context of the [`Pm`] implementation,</span>
     <span class="doccomment">/// with custom [`PmMode`] and [`Strategy`].</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run_with</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run_with</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="ident">Cmd</span>, <span class="ident">mode</span>: <span class="ident">PmMode</span>, <span class="ident">strat</span>: <span class="kw-2">&amp;</span><span class="ident">Strategy</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">check_output</span>(<span class="ident">cmd</span>, <span class="ident">mode</span>, <span class="ident">strat</span>).<span class="kw">await</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
     }
 
     <span class="doccomment">/// Executes a command in the context of the [`Pm`] implementation with</span>
     <span class="doccomment">/// default settings.</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="ident">Cmd</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="ident">Cmd</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">run_with</span>(<span class="ident">cmd</span>, <span class="ident">PmMode::default</span>(), <span class="kw-2">&amp;</span><span class="ident">Strategy::default</span>())
             .<span class="kw">await</span>
     }
@@ -759,17 +759,17 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">PmMode</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
         <span class="ident">PmMode::CheckErr</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">PmMode</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Mode</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">pm_mode</span>: <span class="ident">PmMode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">pm_mode</span>: <span class="ident">PmMode</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">pm_mode</span> {
-            <span class="ident">PmMode::Mute</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Mode::Mute</span>,
-            <span class="ident">PmMode::CheckAll</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Mode::CheckAll</span>,
-            <span class="ident">PmMode::CheckErr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Mode::CheckErr</span>,
+            <span class="ident">PmMode::Mute</span> =&gt; <span class="ident">Mode::Mute</span>,
+            <span class="ident">PmMode::CheckAll</span> =&gt; <span class="ident">Mode::CheckAll</span>,
+            <span class="ident">PmMode::CheckErr</span> =&gt; <span class="ident">Mode::CheckErr</span>,
         }
     }
 }
@@ -800,13 +800,13 @@
 <span class="kw">impl</span> <span class="ident">DryRunStrategy</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">DryRunStrategy</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
         <span class="ident">DryRunStrategy::PrintCmd</span>
     }
 }
@@ -830,20 +830,20 @@
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be disabled with a flag.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">native_no_confirm</span>(<span class="ident">no_confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::NativeNoConfirm</span>(<span class="ident">no_confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="doccomment">/// There is a native prompt provided by the package manager</span>
     <span class="doccomment">/// that can be enabled with a flag.</span>
-    <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">native_confirm</span>(<span class="ident">confirm</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::NativeConfirm</span>(<span class="ident">confirm</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">PromptStrategy</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
         <span class="ident">PromptStrategy::None</span>
     }
 }
@@ -868,13 +868,13 @@
 <span class="kw">impl</span> <span class="ident">NoCacheStrategy</span> {
     <span class="doccomment">/// Invokes the corresponding package manager with the flags given.</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">with_flags</span>(<span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>]) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::WithFlags</span>(<span class="ident">flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">into</span>()).<span class="ident">collect</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">NoCacheStrategy</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
         <span class="ident">NoCacheStrategy::None</span>
     }
 }

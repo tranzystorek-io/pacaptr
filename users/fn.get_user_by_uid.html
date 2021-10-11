@@ -8,8 +8,8 @@ Returns it if one is found, otherwise returns <code>None</code>.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::get_user_by_uid</span>;
 
 <span class="kw">match</span> <span class="ident">get_user_by_uid</span>(<span class="number">501</span>) {
-    <span class="prelude-val">Some</span>(<span class="ident">user</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Found user {:?}&quot;</span>, <span class="ident">user</span>.<span class="ident">name</span>()),
-    <span class="prelude-val">None</span>       <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;User not found&quot;</span>),
+    <span class="prelude-val">Some</span>(<span class="ident">user</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;Found user {:?}&quot;</span>, <span class="ident">user</span>.<span class="ident">name</span>()),
+    <span class="prelude-val">None</span>       =&gt; <span class="macro">println!</span>(<span class="string">&quot;User not found&quot;</span>),
 }</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="users" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
     <script src="../main.js"></script>

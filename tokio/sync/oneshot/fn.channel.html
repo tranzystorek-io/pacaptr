@@ -18,8 +18,8 @@ used by the consumer to receive the value.</p>
     });
 
     <span class="kw">match</span> <span class="ident">rx</span>.<span class="kw">await</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
+        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
     }
 }</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="tokio" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>

@@ -19,7 +19,7 @@ used.</p>
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncReadExt</span>, <span class="ident">AsyncWriteExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">TcpListener::bind</span>(<span class="string">&quot;127.0.0.1:8080&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
     <span class="kw">loop</span> {
@@ -32,9 +32,9 @@ used.</p>
             <span class="kw">loop</span> {
                 <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">socket</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>).<span class="kw">await</span> {
                     <span class="comment">// socket closed</span>
-                    <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="kw">if</span> <span class="ident">n</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span>,
-                    <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">n</span>,
-                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="kw">if</span> <span class="ident">n</span> <span class="op">==</span> <span class="number">0</span> =&gt; <span class="kw">return</span>,
+                    <span class="prelude-val">Ok</span>(<span class="ident">n</span>) =&gt; <span class="ident">n</span>,
+                    <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
                         <span class="macro">println!</span>(<span class="string">&quot;failed to read from socket; err = {:?}&quot;</span>, <span class="ident">e</span>);
                         <span class="kw">return</span>;
                     }
@@ -58,7 +58,7 @@ executed on the same thread pool used by the <a href="struct.Runtime.html"><code
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncReadExt</span>, <span class="ident">AsyncWriteExt</span>};
 <span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
-<span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="comment">// Create the runtime</span>
     <span class="kw">let</span> <span class="ident">rt</span>  <span class="op">=</span> <span class="ident">Runtime::new</span>()<span class="question-mark">?</span>;
 
@@ -76,9 +76,9 @@ executed on the same thread pool used by the <a href="struct.Runtime.html"><code
                 <span class="kw">loop</span> {
                     <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">socket</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>).<span class="kw">await</span> {
                         <span class="comment">// socket closed</span>
-                        <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="kw">if</span> <span class="ident">n</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span>,
-                        <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">n</span>,
-                        <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="prelude-val">Ok</span>(<span class="ident">n</span>) <span class="kw">if</span> <span class="ident">n</span> <span class="op">==</span> <span class="number">0</span> =&gt; <span class="kw">return</span>,
+                        <span class="prelude-val">Ok</span>(<span class="ident">n</span>) =&gt; <span class="ident">n</span>,
+                        <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
                             <span class="macro">println!</span>(<span class="string">&quot;failed to read from socket; err = {:?}&quot;</span>, <span class="ident">e</span>);
                             <span class="kw">return</span>;
                         }

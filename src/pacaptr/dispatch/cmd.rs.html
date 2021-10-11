@@ -469,12 +469,11 @@
 <span id="469">469</span>
 <span id="470">470</span>
 <span id="471">471</span>
-<span id="472">472</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Definitions for command line argument mapping and dispatching.</span>
 
 <span class="kw">use</span> <span class="ident">std::iter::FromIterator</span>;
 
-<span class="kw">use</span> <span class="ident">clap</span>::{<span class="self">self</span>, <span class="ident">AppSettings</span>, <span class="ident">Clap</span>};
+<span class="kw">use</span> <span class="ident">clap</span>::{<span class="self">self</span>, <span class="ident">AppSettings</span>, <span class="ident">Parser</span>};
 <span class="kw">use</span> <span class="ident">itertools::Itertools</span>;
 <span class="kw">use</span> <span class="ident">tap::prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">tokio::task</span>;
@@ -488,12 +487,11 @@
 };
 
 <span class="doccomment">/// The command line options to be collected.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clap</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Parser</span>)]</span>
 <span class="attribute">#[<span class="ident">clap</span>(
     <span class="ident">version</span> <span class="op">=</span> <span class="macro">clap::crate_version!</span>(),
     <span class="ident">author</span> <span class="op">=</span> <span class="macro">clap::crate_authors!</span>(),
     <span class="ident">about</span> <span class="op">=</span> <span class="macro">clap::crate_description!</span>(),
-    <span class="ident">global_setting</span> <span class="op">=</span> <span class="ident">AppSettings::ColoredHelp</span>,
     <span class="ident">setting</span> <span class="op">=</span> <span class="ident">AppSettings::SubcommandRequiredElseHelp</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::struct_excessive_bools</span>)]</span>
@@ -543,7 +541,7 @@
 }
 
 <span class="comment">// For details on operations, flags and flagcounters, see: https://www.archlinux.org/pacman/pacman.8.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clap</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Parser</span>)]</span>
 <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">about</span> <span class="op">=</span> <span class="macro">clap::crate_description!</span>())]</span>
 <span class="kw">enum</span> <span class="ident">Operations</span> {
     <span class="doccomment">/// Query the package database.</span>
@@ -671,7 +669,7 @@
     <span class="doccomment">/// Generates current [`Config`] by merging current command line arguments</span>
     <span class="doccomment">/// and options obtained with [`clap`] with the dotfile [`Config`], which</span>
     <span class="doccomment">/// has a lower precedence.</span>
-    <span class="kw">fn</span> <span class="ident">merge_cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dotfile</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Config</span> {
+    <span class="kw">fn</span> <span class="ident">merge_cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dotfile</span>: <span class="ident">Config</span>) -&gt; <span class="ident">Config</span> {
         <span class="ident">Config</span> {
             <span class="ident">dry_run</span>: <span class="self">self</span>.<span class="ident">dry_run</span> <span class="op">|</span><span class="op">|</span> <span class="ident">dotfile</span>.<span class="ident">dry_run</span>,
             <span class="ident">needed</span>: <span class="self">self</span>.<span class="ident">needed</span> <span class="op">|</span><span class="op">|</span> <span class="ident">dotfile</span>.<span class="ident">dry_run</span>,
@@ -687,7 +685,7 @@
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">/// See [`Error`](crate::error::Error) for a  list of possible errors.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cfg</span>: <span class="ident">Config</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cfg</span>: <span class="ident">Config</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="comment">// Collect options as a `String`, eg. `-S -y -u =&gt; &quot;Suy&quot;`.</span>
         <span class="comment">// ! HACK: In `Pm` we ensure the Pacman methods are all named with flags in</span>
         <span class="comment">// ! ASCII order, ! eg. `Suy` instead of `Syu`.</span>
@@ -695,16 +693,16 @@
         <span class="comment">// ! should be `suy`.</span>
         <span class="macro">macro_rules!</span> <span class="ident">collect_options</span> {(
             $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">op</span>:<span class="ident">ident</span> {
-                $( <span class="ident">mappings</span>: [$( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span>:<span class="ident">ident</span> <span class="op">-</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span>:<span class="ident">ident</span> ), <span class="kw-2">*</span>], )<span class="question-mark">?</span>
+                $( <span class="ident">mappings</span>: [$( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span>:<span class="ident">ident</span> -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span>:<span class="ident">ident</span> ), <span class="kw-2">*</span>], )<span class="question-mark">?</span>
                 $( <span class="ident">flags</span>: [$( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">flag</span>:<span class="ident">ident</span> ), <span class="kw-2">*</span>], )<span class="question-mark">?</span>
             }, )<span class="op">*</span>
-        ) <span class="op">=</span><span class="op">&gt;</span> {{
+        ) =&gt; {{
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">options</span> <span class="op">=</span> <span class="ident">String::new</span>();
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">ops</span> {
                 $( <span class="ident">Operations</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">op</span> {
                     $( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span>, )<span class="op">*</span> )<span class="question-mark">?</span>
                     $( $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">flag</span>, )<span class="op">*</span> )<span class="question-mark">?</span>
-                } <span class="op">=</span><span class="op">&gt;</span> {
+                } =&gt; {
                     <span class="ident">options</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">op</span>)[<span class="number">0</span>..<span class="number">1</span>]);
                     $( $(<span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span> {
                         <span class="ident">cfg</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span> <span class="op">=</span> <span class="bool-val">true</span>;
@@ -722,15 +720,15 @@
                 <span class="ident">flags</span>: [<span class="ident">c</span>, <span class="ident">e</span>, <span class="ident">i</span>, <span class="ident">k</span>, <span class="ident">l</span>, <span class="ident">m</span>, <span class="ident">o</span>, <span class="ident">p</span>, <span class="ident">s</span>, <span class="ident">u</span>],
             },
             <span class="ident">Remove</span> {
-                <span class="ident">mappings</span>: [<span class="ident">p</span> <span class="op">-</span><span class="op">&gt;</span> <span class="ident">dry_run</span>],
+                <span class="ident">mappings</span>: [<span class="ident">p</span> -&gt; <span class="ident">dry_run</span>],
                 <span class="ident">flags</span>: [<span class="ident">n</span>, <span class="ident">s</span>],
             },
             <span class="ident">Sync</span> {
-                <span class="ident">mappings</span>: [<span class="ident">p</span> <span class="op">-</span><span class="op">&gt;</span> <span class="ident">dry_run</span>],
+                <span class="ident">mappings</span>: [<span class="ident">p</span> -&gt; <span class="ident">dry_run</span>],
                 <span class="ident">flags</span>: [<span class="ident">c</span>, <span class="ident">g</span>, <span class="ident">i</span>, <span class="ident">l</span>, <span class="ident">s</span>, <span class="ident">u</span>, <span class="ident">w</span>, <span class="ident">y</span>],
             },
             <span class="ident">Update</span> {
-                <span class="ident">mappings</span>: [<span class="ident">p</span> <span class="op">-</span><span class="op">&gt;</span> <span class="ident">dry_run</span>],
+                <span class="ident">mappings</span>: [<span class="ident">p</span> -&gt; <span class="ident">dry_run</span>],
             },
         };
 
@@ -751,10 +749,10 @@
                 $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta</span>:<span class="ident">meta</span>]</span> )<span class="op">*</span>
                 <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>;
             )<span class="op">*</span> }]
-        ) <span class="op">=</span><span class="op">&gt;</span> {
+        ) =&gt; {
             <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">options</span>.<span class="ident">to_lowercase</span>() <span class="kw">as</span> <span class="kw">_</span> {
-                $(<span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">pm</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="ident">kws</span>, <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span>,)<span class="op">*</span>
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error::ArgParseError</span> {
+                $(<span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>) =&gt; <span class="ident">pm</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="ident">kws</span>, <span class="kw-2">&amp;</span><span class="ident">flags</span>).<span class="kw">await</span>,)<span class="op">*</span>
+                <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">Error::ArgParseError</span> {
                     <span class="ident">msg</span>: <span class="macro">format!</span>(<span class="string">&quot;Invalid flag combination `-{}`&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">options</span>),
                 }),
             }
@@ -774,7 +772,7 @@
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">/// See [`Error`](crate::error::Error) for a  list of possible errors.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">dotfile</span> <span class="op">=</span> <span class="ident">task::block_in_place</span>(<span class="ident">Config::try_load</span>);
         <span class="kw">let</span> <span class="ident">cfg</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">merge_cfg</span>(<span class="ident">dotfile</span><span class="question-mark">?</span>);
         <span class="self">self</span>.<span class="ident">dispatch_from</span>(<span class="ident">cfg</span>).<span class="kw">await</span>
@@ -795,7 +793,7 @@
     }
 
     <span class="macro">macro_rules!</span> <span class="ident">make_mock_op_body</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">self</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">kws</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">flags</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {{
+        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">self</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">kws</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">flags</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>) =&gt; {{
             <span class="kw">let</span> <span class="ident">kws</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">kws</span>.<span class="ident">iter</span>().<span class="ident">chain</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">flags</span>).<span class="ident">collect</span>();
             <span class="macro">panic!</span>(<span class="string">&quot;should run: {} {:?}&quot;</span>, <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>), <span class="kw-2">&amp;</span><span class="ident">kws</span>)
         }};
@@ -806,20 +804,20 @@
             $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta</span>:<span class="ident">meta</span>]</span> )<span class="op">*</span>
             <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>;
         )<span class="op">*</span> }]
-    ) <span class="op">=</span><span class="op">&gt;</span> {
+    ) =&gt; {
         <span class="attribute">#[<span class="ident">async_trait</span>]</span>
         <span class="kw">impl</span> <span class="ident">Pm</span> <span class="kw">for</span> <span class="ident">MockPm</span> {
             <span class="doccomment">/// Gets the name of the package manager.</span>
-            <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+            <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
                 <span class="string">&quot;mockpm&quot;</span>
             }
 
-            <span class="kw">fn</span> <span class="ident">cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Config</span> {
+            <span class="kw">fn</span> <span class="ident">cfg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Config</span> {
                 <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cfg</span>
             }
 
             <span class="comment">// * Automatically generated methods below... *</span>
-            $( <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+            $( <span class="kw">async</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kws</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>], <span class="ident">flags</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
                     <span class="macro">make_mock_op_body!</span>(<span class="self">self</span>, <span class="ident">kws</span>, <span class="ident">flags</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>)
             } )<span class="op">*</span>
         }
@@ -935,7 +933,7 @@
         <span class="kw">let</span> <span class="ident">subcmd</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">opt</span>.<span class="ident">ops</span>;
 
         <span class="macro">assert!</span>(<span class="ident">opt</span>.<span class="ident">no_confirm</span>);
-        <span class="macro">assert!</span>(<span class="macro">matches!</span>(<span class="ident">subcmd</span>, <span class="kw-2">&amp;</span><span class="ident">Operations::Sync</span> { <span class="ident">i</span>, .. } <span class="kw">if</span> <span class="ident">i</span> <span class="op">=</span><span class="op">=</span> <span class="number">1</span>));
+        <span class="macro">assert!</span>(<span class="macro">matches!</span>(<span class="ident">subcmd</span>, <span class="kw-2">&amp;</span><span class="ident">Operations::Sync</span> { <span class="ident">i</span>, .. } <span class="kw">if</span> <span class="ident">i</span> <span class="op">==</span> <span class="number">1</span>));
         <span class="macro">assert_eq!</span>(<span class="ident">opt</span>.<span class="ident">keywords</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;docker&quot;</span>]);
         <span class="macro">assert_eq!</span>(<span class="ident">opt</span>.<span class="ident">extra_flags</span>, <span class="kw-2">&amp;</span>[<span class="string">&quot;--proxy=localhost:1234&quot;</span>]);
 

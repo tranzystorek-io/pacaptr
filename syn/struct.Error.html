@@ -11,7 +11,7 @@ conversion to <code>compile_error!</code> automatically.</p>
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">parse_macro_input</span>, <span class="ident">AttributeArgs</span>, <span class="ident">ItemFn</span>};
 
 <span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">my_attr</span>(<span class="ident">args</span>: <span class="ident">TokenStream</span>, <span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">my_attr</span>(<span class="ident">args</span>: <span class="ident">TokenStream</span>, <span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">args</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">args</span> <span class="kw">as</span> <span class="ident">AttributeArgs</span>);
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">ItemFn</span>);
 
@@ -22,7 +22,7 @@ conversion to <code>compile_error!</code> automatically.</p>
 to <code>compile_error!</code>.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">MyDerive</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">my_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">my_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
 
     <span class="comment">// fn(DeriveInput) -&gt; syn::Result&lt;proc_macro2::TokenStream&gt;</span>
@@ -42,7 +42,7 @@ than where the parse stream is currently positioned.</p>
 <span class="comment">// Parses input that looks like `name = &quot;string&quot;` where the key must be</span>
 <span class="comment">// the identifier `name` and the value may be any string literal.</span>
 <span class="comment">// Returns the string literal.</span>
-<span class="kw">fn</span> <span class="ident">parse_name</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">parse_name</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">name_token</span>: <span class="ident">Ident</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
     <span class="kw">if</span> <span class="ident">name_token</span> <span class="op">!</span><span class="op">=</span> <span class="string">&quot;name&quot;</span> {
         <span class="comment">// Trigger an error not on the current position of the stream,</span>
@@ -77,7 +77,7 @@ this method correctly in a procedural macro.</p>
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">parse_macro_input</span>, <span class="ident">DeriveInput</span>, <span class="ident">Error</span>};
 
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">MyTrait</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_my_trait</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_my_trait</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
     <span class="ident">my_trait::expand</span>(<span class="ident">input</span>)
         .<span class="ident">unwrap_or_else</span>(<span class="ident">Error::into_compile_error</span>)
@@ -88,7 +88,7 @@ this method correctly in a procedural macro.</p>
     <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
     <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">DeriveInput</span>, <span class="prelude-ty">Result</span>};
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">expand</span>(<span class="ident">input</span>: <span class="ident">DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">expand</span>(<span class="ident">input</span>: <span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span> {
         <span class="comment">/* ... */</span>
     }
 }</code></pre></div>

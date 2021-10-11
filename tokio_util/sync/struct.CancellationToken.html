@@ -15,11 +15,11 @@ obtain a Future which will be resolved when cancellation is requested.</p>
     <span class="kw">let</span> <span class="ident">join_handle</span> <span class="op">=</span> <span class="ident">tokio::spawn</span>(<span class="kw">async</span> <span class="kw">move</span> {
         <span class="comment">// Wait for either cancellation or a very long time</span>
         <span class="macro">select!</span> {
-            <span class="kw">_</span> <span class="op">=</span> <span class="ident">cloned_token</span>.<span class="ident">cancelled</span>() <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span> <span class="ident">cloned_token</span>.<span class="ident">cancelled</span>() =&gt; {
                 <span class="comment">// The token was cancelled</span>
                 <span class="number">5</span>
             }
-            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tokio::time::sleep</span>(<span class="ident">std::time::Duration::from_secs</span>(<span class="number">9999</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tokio::time::sleep</span>(<span class="ident">std::time::Duration::from_secs</span>(<span class="number">9999</span>)) =&gt; {
                 <span class="number">99</span>
             }
         }
@@ -49,11 +49,11 @@ returned in cancelled state.</p>
     <span class="kw">let</span> <span class="ident">join_handle</span> <span class="op">=</span> <span class="ident">tokio::spawn</span>(<span class="kw">async</span> <span class="kw">move</span> {
         <span class="comment">// Wait for either cancellation or a very long time</span>
         <span class="macro">select!</span> {
-            <span class="kw">_</span> <span class="op">=</span> <span class="ident">child_token</span>.<span class="ident">cancelled</span>() <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span> <span class="ident">child_token</span>.<span class="ident">cancelled</span>() =&gt; {
                 <span class="comment">// The token was cancelled</span>
                 <span class="number">5</span>
             }
-            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tokio::time::sleep</span>(<span class="ident">std::time::Duration::from_secs</span>(<span class="number">9999</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tokio::time::sleep</span>(<span class="ident">std::time::Duration::from_secs</span>(<span class="number">9999</span>)) =&gt; {
                 <span class="number">99</span>
             }
         }

@@ -92,21 +92,21 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExecutableChecker</span>;
 
 <span class="kw">impl</span> <span class="ident">ExecutableChecker</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ExecutableChecker</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">ExecutableChecker</span> {
         <span class="ident">ExecutableChecker</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Checker</span> <span class="kw">for</span> <span class="ident">ExecutableChecker</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span> {
         <span class="ident">CString::new</span>(<span class="ident">path</span>.<span class="ident">as_os_str</span>().<span class="ident">as_bytes</span>())
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="kw">unsafe</span> { <span class="ident">libc::access</span>(<span class="ident">c</span>.<span class="ident">as_ptr</span>(), <span class="ident">libc::X_OK</span>) <span class="op">=</span><span class="op">=</span> <span class="number">0</span> }))
+            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="kw">unsafe</span> { <span class="ident">libc::access</span>(<span class="ident">c</span>.<span class="ident">as_ptr</span>(), <span class="ident">libc::X_OK</span>) <span class="op">==</span> <span class="number">0</span> }))
             .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span> {
         <span class="bool-val">true</span>
     }
 }
@@ -114,14 +114,14 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExistedChecker</span>;
 
 <span class="kw">impl</span> <span class="ident">ExistedChecker</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ExistedChecker</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">ExistedChecker</span> {
         <span class="ident">ExistedChecker</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Checker</span> <span class="kw">for</span> <span class="ident">ExistedChecker</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;windows&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span> {
         <span class="ident">fs::symlink_metadata</span>(<span class="ident">path</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">metadata</span><span class="op">|</span> {
                 <span class="kw">let</span> <span class="ident">file_type</span> <span class="op">=</span> <span class="ident">metadata</span>.<span class="ident">file_type</span>();
@@ -131,7 +131,7 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;windows&quot;</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span> {
         <span class="ident">fs::metadata</span>(<span class="ident">path</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">metadata</span><span class="op">|</span> <span class="ident">metadata</span>.<span class="ident">is_file</span>())
             .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
@@ -143,20 +143,20 @@
 }
 
 <span class="kw">impl</span> <span class="ident">CompositeChecker</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompositeChecker</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">CompositeChecker</span> {
         <span class="ident">CompositeChecker</span> {
             <span class="ident">checkers</span>: <span class="ident">Vec::new</span>(),
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_checker</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">checker</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Checker</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompositeChecker</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_checker</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">checker</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Checker</span><span class="op">&gt;</span>) -&gt; <span class="ident">CompositeChecker</span> {
         <span class="self">self</span>.<span class="ident">checkers</span>.<span class="ident">push</span>(<span class="ident">checker</span>);
         <span class="self">self</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Checker</span> <span class="kw">for</span> <span class="ident">CompositeChecker</span> {
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">checkers</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">checker</span><span class="op">|</span> <span class="ident">checker</span>.<span class="ident">is_valid</span>(<span class="ident">path</span>))
     }
 }

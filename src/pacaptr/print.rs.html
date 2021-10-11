@@ -96,25 +96,25 @@
 <span class="kw">static</span> <span class="ident">PROMPT_INDENT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">9</span>;
 
 <span class="macro">macro_rules!</span> <span class="ident">prompt_format</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="string">&quot;{:&gt;indent$}&quot;</span>
     };
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">cmd_format</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="macro">concat!</span>(<span class="macro">prompt_format!</span>(), <span class="string">&quot; `{}`&quot;</span>)
     };
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">msg_format</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="macro">concat!</span>(<span class="macro">prompt_format!</span>(), <span class="string">&quot; {}&quot;</span>)
     };
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">question_format</span> {
-    () <span class="op">=</span><span class="op">&gt;</span> {
+    () =&gt; {
         <span class="macro">concat!</span>(<span class="macro">prompt_format!</span>(), <span class="string">&quot; {}? &quot;</span>)
     };
 }

@@ -551,12 +551,12 @@
 };
 
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Tabled</span>, <span class="ident">attributes</span>(<span class="ident">header</span>, <span class="ident">field</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tabled</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tabled</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
     <span class="ident">impl_tabled</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">impl_tabled</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">impl_tabled</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">data_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>);
     <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">get_headers</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>);
     <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">get_fields</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>);
@@ -566,11 +566,11 @@
 
     <span class="kw">let</span> <span class="ident">expanded</span> <span class="op">=</span> <span class="macro">quote!</span> {
         <span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">Tabled</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
-            <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
                 #<span class="ident">fields</span>
             }
 
-            <span class="kw">fn</span> <span class="ident">headers</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">headers</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
                 #<span class="ident">headers</span>
             }
         }
@@ -579,11 +579,11 @@
     <span class="ident">TokenStream::from</span>(<span class="ident">expanded</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">get_headers</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">get_headers</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">get_st_headers</span>(<span class="ident">st</span>, <span class="ident">attrs</span>),
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">get_enum_headers</span>(<span class="ident">e</span>, <span class="ident">attrs</span>).<span class="ident">concat</span>(),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
+        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; <span class="ident">get_st_headers</span>(<span class="ident">st</span>, <span class="ident">attrs</span>),
+        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">get_enum_headers</span>(<span class="ident">e</span>, <span class="ident">attrs</span>).<span class="ident">concat</span>(),
+        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
     };
 
     <span class="macro">quote!</span>({
@@ -595,11 +595,11 @@
     })
 }
 
-<span class="kw">fn</span> <span class="ident">data_attributes</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Attr</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">data_attributes</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Attr</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">attrs_of_fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]<span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">st</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">e</span>.<span class="ident">variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
+        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; <span class="ident">st</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
+        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">e</span>.<span class="ident">variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
+        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
     };
 
     <span class="ident">attrs_of_fields</span>
@@ -608,7 +608,7 @@
         .<span class="ident">collect</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">get_st_headers</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">get_st_headers</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
     <span class="ident">st</span>.<span class="ident">fields</span>
         .<span class="ident">iter</span>()
         .<span class="ident">enumerate</span>()
@@ -622,7 +622,7 @@
     <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>,
     <span class="ident">index</span>: <span class="ident">usize</span>,
     <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
         <span class="ident">inline_header</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>, <span class="ident">attr</span>, <span class="ident">prefix</span>)
     } <span class="kw">else</span> {
@@ -635,7 +635,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">inline_header</span>(<span class="ident">t</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">inline_header</span>(<span class="ident">t</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">inline_prefix</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">inline_prefix</span>;
     <span class="kw">if</span> <span class="ident">inline_prefix</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">prefix</span>.<span class="ident">is_empty</span>() {
         <span class="macro">quote!</span> {
@@ -650,7 +650,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">get_enum_headers</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">get_enum_headers</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">e</span>.<span class="ident">variants</span>
         .<span class="ident">iter</span>()
         .<span class="ident">enumerate</span>()
@@ -659,7 +659,7 @@
         .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">variant_headers</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">variant_headers</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
         <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">inline_prefix</span>;
 
@@ -680,9 +680,9 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">get_fields</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">get_fields</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; {
             <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">get_st_fields</span>(<span class="ident">st</span>, <span class="ident">attrs</span>);
             <span class="macro">quote!</span> {
                 {
@@ -694,12 +694,12 @@
                 }
             }
         }
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">get_enum_fields</span>(<span class="ident">e</span>, <span class="ident">attrs</span>),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
+        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">get_enum_fields</span>(<span class="ident">e</span>, <span class="ident">attrs</span>),
+        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">get_st_fields</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">get_st_fields</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
     <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">field</span>) <span class="kw">in</span> <span class="ident">st</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
         <span class="kw">if</span> <span class="ident">attrs</span>[<span class="ident">i</span>].<span class="ident">is_ignored</span>() {
@@ -715,7 +715,7 @@
     <span class="ident">v</span>
 }
 
-<span class="kw">fn</span> <span class="ident">get_field_fields</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">get_field_fields</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
         <span class="kw">return</span> <span class="macro">quote!</span> { #<span class="ident">field</span>.<span class="ident">fields</span>() };
     }
@@ -728,20 +728,20 @@
     <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, #<span class="ident">field</span>)])
 }
 
-<span class="kw">fn</span> <span class="ident">use_function_for</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">function</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">use_function_for</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">function</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">path</span>: <span class="ident">syn::Result</span><span class="op">&lt;</span><span class="ident">syn::ExprPath</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="ident">function</span>);
     <span class="kw">match</span> <span class="ident">path</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">path</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="prelude-val">Ok</span>(<span class="ident">path</span>) =&gt; {
             <span class="macro">quote!</span> { #<span class="ident">path</span>(<span class="kw-2">&amp;</span>#<span class="ident">field</span>) }
         }
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="kw">_</span> =&gt; {
             <span class="kw">let</span> <span class="ident">function</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="ident">function</span>, <span class="ident">proc_macro2::Span::call_site</span>());
             <span class="macro">quote!</span> { #<span class="ident">function</span>(<span class="kw-2">&amp;</span>#<span class="ident">field</span>) }
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">field_var_name</span>(<span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">field_var_name</span>(<span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>().<span class="ident">map_or_else</span>(
         <span class="op">|</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="macro">quote!</span>(<span class="self">self</span>.);
@@ -752,7 +752,7 @@
     )
 }
 
-<span class="kw">fn</span> <span class="ident">get_enum_fields</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">get_enum_fields</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">e</span>
         .<span class="ident">variants</span>
         .<span class="ident">iter</span>()
@@ -785,7 +785,7 @@
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
     <span class="kw">for</span> (<span class="ident">i</span>, (<span class="ident">branch</span>, <span class="ident">fields</span>)) <span class="kw">in</span> <span class="ident">branches</span>.<span class="ident">into_iter</span>().<span class="ident">zip</span>(<span class="ident">fields</span>).<span class="ident">enumerate</span>() {
         <span class="kw">let</span> <span class="ident">branch</span> <span class="op">=</span> <span class="macro">quote!</span> {
-            <span class="self">Self</span>::#<span class="ident">branch</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="self">Self</span>::#<span class="ident">branch</span> =&gt; {
                 <span class="kw">let</span> <span class="ident">offset</span> <span class="op">=</span> <span class="ident">offsets</span>[#<span class="ident">i</span>];
                 <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[#(#<span class="ident">fields</span>),<span class="kw-2">*</span>].<span class="ident">concat</span>();
 
@@ -825,14 +825,14 @@
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_variables</span>)]</span>
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span> {
             #<span class="ident">stream</span>
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="macro">vec!</span>[], <span class="comment">// variant is hidden so we return an empty vector</span>
+            <span class="kw">_</span> =&gt; <span class="kw">return</span> <span class="macro">vec!</span>[], <span class="comment">// variant is hidden so we return an empty vector</span>
         };
 
         <span class="ident">out_vec</span>
     }
 }
 
-<span class="kw">fn</span> <span class="ident">variant_fields</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">variant_fields</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">inline</span> {
         <span class="kw">return</span> <span class="macro">vec!</span>[<span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="string">&quot;+&quot;</span>.<span class="ident">to_string</span>()])];
     }
@@ -849,7 +849,7 @@
         .<span class="ident">collect</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ident</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ident</span><span class="op">&gt;</span> {
     <span class="ident">v</span>.<span class="ident">fields</span>
         .<span class="ident">iter</span>()
         .<span class="ident">enumerate</span>()
@@ -868,7 +868,7 @@
         .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">variant_match_branches</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">variant_match_branches</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">token</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
     <span class="ident">token</span>.<span class="ident">append_all</span>(<span class="ident">v</span>.<span class="ident">ident</span>.<span class="ident">to_token_stream</span>());
 
@@ -880,28 +880,28 @@
     };
 
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">fields</span> {
-        <span class="ident">Fields::Named</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Fields::Named</span>(<span class="kw">_</span>) =&gt; {
             <span class="ident">token::Brace::default</span>().<span class="ident">surround</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">token</span>, <span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
                 <span class="ident">s</span>.<span class="ident">append_all</span>(<span class="ident">fields</span>);
             });
         }
-        <span class="ident">Fields::Unnamed</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Fields::Unnamed</span>(<span class="kw">_</span>) =&gt; {
             <span class="ident">token::Paren::default</span>().<span class="ident">surround</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">token</span>, <span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
                 <span class="ident">s</span>.<span class="ident">append_all</span>(<span class="ident">fields</span>);
             });
         }
-        <span class="ident">Fields::Unit</span> <span class="op">=</span><span class="op">&gt;</span> {}
+        <span class="ident">Fields::Unit</span> =&gt; {}
     };
 
     <span class="ident">token</span>
 }
 
-<span class="kw">fn</span> <span class="ident">field_header_name</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">field_header_name</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">name</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">name</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">name</span>.<span class="ident">to_string</span>(),
-        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="ident">f</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">name</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">name</span>.<span class="ident">to_string</span>(),
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">index</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">name</span>) =&gt; <span class="ident">name</span>.<span class="ident">to_string</span>(),
+        <span class="prelude-val">None</span> =&gt; <span class="kw">match</span> <span class="ident">f</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>() {
+            <span class="prelude-val">Some</span>(<span class="ident">name</span>) =&gt; <span class="ident">name</span>.<span class="ident">to_string</span>(),
+            <span class="prelude-val">None</span> =&gt; <span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">index</span>),
         },
     }
 }
@@ -917,7 +917,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Attr</span> {
-    <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">is_ignored</span> <span class="op">=</span> <span class="ident">attrs_has_ignore_sign</span>(<span class="ident">attrs</span>);
         <span class="kw">let</span> <span class="ident">should_be_inlined</span> <span class="op">=</span> <span class="ident">should_be_inlined</span>(<span class="ident">attrs</span>);
         <span class="kw">let</span> <span class="ident">inline_prefix</span> <span class="op">=</span> <span class="ident">look_for_inline_prefix</span>(<span class="ident">attrs</span>);
@@ -933,21 +933,21 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">is_ignored</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_ignored</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">hidden</span>
     }
 }
 
-<span class="kw">fn</span> <span class="ident">override_header_name</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">override_header_name</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;header&quot;</span>, <span class="string">&quot;name&quot;</span>, <span class="ident">look_up_nested_meta_str</span>)
         .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;header&quot;</span>, <span class="string">&quot;name&quot;</span>, <span class="ident">look_up_nested_meta_flag_str</span>))
 }
 
-<span class="kw">fn</span> <span class="ident">check_display_with_func</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">check_display_with_func</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;field&quot;</span>, <span class="string">&quot;display_with&quot;</span>, <span class="ident">look_up_nested_meta_str</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">should_be_inlined</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">fn</span> <span class="ident">should_be_inlined</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="ident">bool</span> {
     <span class="kw">let</span> <span class="ident">inline_attr</span> <span class="op">=</span> <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;header&quot;</span>, <span class="string">&quot;inline&quot;</span>, <span class="ident">look_up_nested_meta_bool</span>)
         .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;field&quot;</span>, <span class="string">&quot;inline&quot;</span>, <span class="ident">look_up_nested_meta_bool</span>))
         .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> {
@@ -958,23 +958,23 @@
             <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;field&quot;</span>, <span class="string">&quot;inline&quot;</span>, <span class="ident">look_up_nested_flag_str_in_attr</span>)
                 .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="bool-val">true</span>)
         });
-    <span class="ident">inline_attr</span> <span class="op">=</span><span class="op">=</span> <span class="prelude-val">Some</span>(<span class="bool-val">true</span>)
+    <span class="ident">inline_attr</span> <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="bool-val">true</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">look_for_inline_prefix</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">look_for_inline_prefix</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="ident">String</span> {
     <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;header&quot;</span>, <span class="string">&quot;inline&quot;</span>, <span class="ident">look_up_nested_flag_str_in_attr</span>)
         .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;field&quot;</span>, <span class="string">&quot;inline&quot;</span>, <span class="ident">look_up_nested_flag_str_in_attr</span>))
         .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;&quot;</span>.<span class="ident">to_owned</span>())
 }
 
-<span class="kw">fn</span> <span class="ident">attrs_has_ignore_sign</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">fn</span> <span class="ident">attrs_has_ignore_sign</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="ident">bool</span> {
     <span class="kw">let</span> <span class="ident">is_ignored</span> <span class="op">=</span> <span class="ident">find_name_attribute</span>(<span class="ident">attrs</span>, <span class="string">&quot;header&quot;</span>, <span class="string">&quot;hidden&quot;</span>, <span class="ident">look_up_nested_meta_bool</span>);
-    <span class="ident">is_ignored</span> <span class="op">=</span><span class="op">=</span> <span class="prelude-val">Some</span>(<span class="bool-val">true</span>)
+    <span class="ident">is_ignored</span> <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="bool-val">true</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">parse_name_attribute</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attribute</span>, <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">lookup</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
+<span class="kw">fn</span> <span class="ident">parse_name_attribute</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attribute</span>, <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">lookup</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span>,
 {
     <span class="kw">if</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">method</span>) {
         <span class="kw">return</span> <span class="prelude-val">None</span>;
@@ -997,9 +997,9 @@
     <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup</span>: <span class="ident">F</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
+) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span>,
 {
     <span class="kw">for</span> <span class="ident">nested_meta</span> <span class="kw">in</span> <span class="ident">nested</span> {
         <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">lookup</span>(<span class="ident">nested_meta</span>, <span class="ident">name</span>).<span class="ident">unwrap_or_else</span>(
@@ -1013,59 +1013,59 @@
     <span class="prelude-val">None</span>
 }
 
-<span class="kw">fn</span> <span class="ident">look_up_nested_meta_str</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">look_up_nested_meta_str</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::NameValue</span>(<span class="ident">value</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::NameValue</span>(<span class="ident">value</span>)) =&gt; {
             <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">name</span>) {
                 <span class="ident">check_str_literal</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">lit</span>)
             } <span class="kw">else</span> {
                 <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
             }
         }
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="kw">_</span> =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">look_up_nested_meta_flag_str</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">look_up_nested_meta_flag_str</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="ident">NestedMeta::Lit</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">check_str_literal</span>(<span class="ident">lit</span>),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="ident">NestedMeta::Lit</span>(<span class="ident">lit</span>) =&gt; <span class="ident">check_str_literal</span>(<span class="ident">lit</span>),
+        <span class="kw">_</span> =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">check_str_literal</span>(<span class="ident">lit</span>: <span class="kw-2">&amp;</span><span class="ident">Lit</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">check_str_literal</span>(<span class="ident">lit</span>: <span class="kw-2">&amp;</span><span class="ident">Lit</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">lit</span> {
-        <span class="ident">Lit::Str</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>.<span class="ident">value</span>())),
-        <span class="ident">Lit::ByteStr</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">value</span>())
+        <span class="ident">Lit::Str</span>(<span class="ident">value</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>.<span class="ident">value</span>())),
+        <span class="ident">Lit::ByteStr</span>(<span class="ident">value</span>) =&gt; <span class="ident">str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">value</span>())
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_owned</span>())
             .<span class="ident">map</span>(<span class="prelude-val">Some</span>)
             .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="string">&quot;Expected a valid UTF-8 string for a field&quot;</span>.<span class="ident">to_owned</span>()),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="kw">_</span> =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">look_up_nested_meta_bool</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">look_up_nested_meta_bool</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::Path</span>(<span class="ident">path</span>)) <span class="kw">if</span> <span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">name</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="bool-val">true</span>)),
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::NameValue</span>(<span class="ident">value</span>)) <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">name</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">lit</span> {
-            <span class="ident">Lit::Bool</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>.<span class="ident">value</span>())),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="string">&quot;A parameter should be a bool value&quot;</span>.<span class="ident">to_string</span>()),
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::Path</span>(<span class="ident">path</span>)) <span class="kw">if</span> <span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">name</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="bool-val">true</span>)),
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::NameValue</span>(<span class="ident">value</span>)) <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">name</span>) =&gt; <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">value</span>.<span class="ident">lit</span> {
+            <span class="ident">Lit::Bool</span>(<span class="ident">value</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">value</span>.<span class="ident">value</span>())),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="string">&quot;A parameter should be a bool value&quot;</span>.<span class="ident">to_string</span>()),
         },
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="kw">_</span> =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     }
 }
 
 <span class="kw">fn</span> <span class="ident">look_up_nested_flag_str_in_attr</span>(
     <span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>,
     <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::List</span>(<span class="ident">list</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">Meta::List</span>(<span class="ident">list</span>)) =&gt; {
             <span class="ident">parse_name_attribute_nested</span>(<span class="ident">list</span>.<span class="ident">nested</span>.<span class="ident">iter</span>(), <span class="string">&quot;&quot;</span>, <span class="ident">name</span>, <span class="ident">look_up_nested_meta_flag_str</span>)
                 .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="string">&quot;An attribute doesn&#39;t have expected value&quot;</span>.<span class="ident">to_string</span>())
                 .<span class="ident">map</span>(<span class="prelude-val">Some</span>)
         }
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="kw">_</span> =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     }
 }
 
@@ -1074,9 +1074,9 @@
     <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup</span>: <span class="ident">F</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
+) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span>,
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">String</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Clone</span>,
 {
     <span class="ident">attributes</span>
         .<span class="ident">iter</span>()

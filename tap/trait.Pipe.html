@@ -21,14 +21,14 @@
 <p>This trait provides methods that allow any closure or free function to be placed
 as a suffix-position call, by writing them as</p>
 
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn</span> <span class="ident">not_a_method</span>(<span class="ident">x</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> { <span class="ident">x</span> <span class="kw">as</span> <span class="ident">u8</span> }
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn</span> <span class="ident">not_a_method</span>(<span class="ident">x</span>: <span class="ident">i32</span>) -&gt; <span class="ident">u8</span> { <span class="ident">x</span> <span class="kw">as</span> <span class="ident">u8</span> }
 <span class="ident">receiver</span>.<span class="ident">pipe</span>(<span class="ident">not_a_method</span>);</code></pre></div>
 <p>Piping into functions that take more than one argument still requires writing a
 closure with ordinary function-call syntax. This is after all only a library,
 not a syntax transformation:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tap::pipe::Pipe</span>;
-<span class="kw">fn</span> <span class="ident">add</span>(<span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> { <span class="ident">x</span> <span class="op">+</span> <span class="ident">y</span> }
+<span class="kw">fn</span> <span class="ident">add</span>(<span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i32</span> { <span class="ident">x</span> <span class="op">+</span> <span class="ident">y</span> }
 
 <span class="kw">let</span> <span class="ident">out</span> <span class="op">=</span> <span class="number">5</span>.<span class="ident">pipe</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">add</span>(<span class="ident">x</span>, <span class="number">10</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">out</span>, <span class="number">15</span>);</code></pre></div>
@@ -43,7 +43,7 @@ the value. Piping is a transformation, not merely an inspection or modification.
 <h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tap::pipe::Pipe</span>;
 
-<span class="kw">fn</span> <span class="ident">triple</span>(<span class="ident">x</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span> {
+<span class="kw">fn</span> <span class="ident">triple</span>(<span class="ident">x</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i64</span> {
   <span class="ident">x</span> <span class="kw">as</span> <span class="ident">i64</span> <span class="op">*</span> <span class="number">3</span>
 }
 
@@ -55,7 +55,7 @@ the value. Piping is a transformation, not merely an inspection or modification.
 <h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tap::pipe::Pipe</span>;
 
-<span class="kw">fn</span> <span class="ident">fold</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+<span class="kw">fn</span> <span class="ident">fold</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>) -&gt; <span class="ident">i32</span> {
   <span class="ident">v</span>.<span class="ident">iter</span>().<span class="ident">copied</span>().<span class="ident">sum</span>()
 }
 <span class="kw">let</span> <span class="ident">vec</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];

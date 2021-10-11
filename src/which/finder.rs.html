@@ -206,23 +206,23 @@
 <span class="kw">use</span> <span class="ident">std::path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
 
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Checker</span> {
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">bool</span>;
 }
 
 <span class="kw">trait</span> <span class="ident">PathExt</span> {
-    <span class="kw">fn</span> <span class="ident">has_separator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">has_separator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>;
 
-    <span class="kw">fn</span> <span class="ident">to_absolute</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">cwd</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathBuf</span>
+    <span class="kw">fn</span> <span class="ident">to_absolute</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">cwd</span>: <span class="ident">P</span>) -&gt; <span class="ident">PathBuf</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">PathExt</span> <span class="kw">for</span> <span class="ident">PathBuf</span> {
-    <span class="kw">fn</span> <span class="ident">has_separator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_separator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">components</span>().<span class="ident">count</span>() <span class="op">&gt;</span> <span class="number">1</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">to_absolute</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">cwd</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathBuf</span>
+    <span class="kw">fn</span> <span class="ident">to_absolute</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">cwd</span>: <span class="ident">P</span>) -&gt; <span class="ident">PathBuf</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span>,
     {
@@ -239,7 +239,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Finder</span>;
 
 <span class="kw">impl</span> <span class="ident">Finder</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Finder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">Finder</span> {
         <span class="ident">Finder</span>
     }
 
@@ -249,7 +249,7 @@
         <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span>,
         <span class="ident">cwd</span>: <span class="ident">V</span>,
         <span class="ident">binary_checker</span>: <span class="ident">CompositeChecker</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
         <span class="ident">U</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
@@ -277,7 +277,7 @@
         <span class="ident">binary_regex</span>: <span class="ident">Regex</span>,
         <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
         <span class="ident">binary_checker</span>: <span class="ident">CompositeChecker</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
     {
@@ -302,7 +302,7 @@
         <span class="prelude-val">Ok</span>(<span class="ident">matching_re</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">cwd_search_candidates</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">PathBuf</span>, <span class="ident">cwd</span>: <span class="ident">C</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">cwd_search_candidates</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">PathBuf</span>, <span class="ident">cwd</span>: <span class="ident">C</span>) -&gt; <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">C</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span>,
     {
@@ -314,7 +314,7 @@
     <span class="kw">fn</span> <span class="ident">path_search_candidates</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(
         <span class="ident">binary_name</span>: <span class="ident">PathBuf</span>,
         <span class="ident">paths</span>: <span class="ident">P</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
+    ) -&gt; <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>,
     {
@@ -324,7 +324,7 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">append_extension</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">paths</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">append_extension</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">paths</span>: <span class="ident">P</span>) -&gt; <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>,
     {
@@ -332,7 +332,7 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">append_extension</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">paths</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">append_extension</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">paths</span>: <span class="ident">P</span>) -&gt; <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">PathBuf</span><span class="op">&gt;</span>,
     {
@@ -346,7 +346,7 @@
                     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">pathext</span><span class="op">|</span> {
                         <span class="ident">pathext</span>.<span class="ident">split</span>(<span class="string">&#39;;&#39;</span>)
                             .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
-                                <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>] <span class="op">=</span><span class="op">=</span> <span class="string">b&#39;.&#39;</span> {
+                                <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>] <span class="op">==</span> <span class="string">b&#39;.&#39;</span> {
                                     <span class="prelude-val">Some</span>(<span class="ident">s</span>.<span class="ident">to_owned</span>())
                                 } <span class="kw">else</span> {
                                     <span class="comment">// Invalid segment; just ignore it.</span>
@@ -362,7 +362,7 @@
 
         <span class="ident">paths</span>
             .<span class="ident">into_iter</span>()
-            .<span class="ident">flat_map</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+            .<span class="ident">flat_map</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">p</span><span class="op">|</span> -&gt; <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
                 <span class="comment">// Check if path already have executable extension</span>
                 <span class="kw">if</span> <span class="ident">has_executable_extension</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>, <span class="kw-2">&amp;</span><span class="ident">PATH_EXTENSIONS</span>) {
                     <span class="ident">Box::new</span>(<span class="ident">iter::once</span>(<span class="ident">p</span>))

@@ -16,11 +16,11 @@ decorates: instead, it only generates code on top of it.</p>
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Variant</span>:<span class="ident">ident</span> $(<span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">expr</span>)<span class="question-mark">?</span>
         ),<span class="op">*</span> $(,)<span class="question-mark">?</span>
     }
-) <span class="op">=</span><span class="op">&gt;</span> (
+) =&gt; (
     <span class="kw">impl</span> <span class="ident">::core::convert::From</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">Enum</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Int</span> {
         <span class="attribute">#[<span class="ident">inline</span>]</span>
         <span class="kw">fn</span> <span class="ident">from</span> (<span class="ident">x</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Enum</span>)
-            <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+            -&gt; <span class="self">Self</span>
         {
             <span class="ident">x</span> <span class="kw">as</span> <span class="kw">_</span>
         }

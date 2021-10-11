@@ -50,7 +50,7 @@ simply cannot represent bool literals.</p>
 <span class="kw">use</span> <span class="ident">litrs::FloatLit</span>;
 
 <span class="attribute">#[<span class="ident">proc_macro</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">foo</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">foo</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
      <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">input</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">into_iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
      <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">len</span>() <span class="op">!</span><span class="op">=</span> <span class="number">1</span> {
          <span class="comment">// Please do proper error handling in your real code!</span>
@@ -59,8 +59,8 @@ simply cannot represent bool literals.</p>
      <span class="kw">let</span> <span class="ident">token</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">remove</span>(<span class="number">0</span>);
 
      <span class="kw">match</span> <span class="ident">FloatLit::try_from</span>(<span class="ident">token</span>) {
-         <span class="prelude-val">Ok</span>(<span class="ident">float_lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* do something */</span> }
-         <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>(),
+         <span class="prelude-val">Ok</span>(<span class="ident">float_lit</span>) =&gt; { <span class="comment">/* do something */</span> }
+         <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>(),
      }
 
      <span class="comment">// Dummy output</span>
@@ -80,13 +80,13 @@ simply cannot represent bool literals.</p>
 <span class="comment">// and decide what to do in each case.</span>
 <span class="kw">let</span> <span class="ident">lit</span> <span class="op">=</span> <span class="ident">Literal::parse</span>(<span class="string">&quot;0xff80&quot;</span>).<span class="ident">expect</span>(<span class="string">&quot;failed to parse literal&quot;</span>);
 <span class="kw">match</span> <span class="ident">lit</span> {
-    <span class="ident">Literal::Integer</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::Float</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::Bool</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::Char</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::String</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::Byte</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
-    <span class="ident">Literal::ByteString</span>(<span class="ident">lit</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::Integer</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::Float</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::Bool</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::Char</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::String</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::Byte</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
+    <span class="ident">Literal::ByteString</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
 }</code></pre></div>
 <h2 id="crate-features" class="section-header"><a href="#crate-features">Crate features</a></h2>
 <ul>

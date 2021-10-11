@@ -41,7 +41,7 @@ version of it.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::future</span>::{<span class="ident">Future</span>, <span class="ident">TryFutureExt</span>};
 <span class="kw">use</span> <span class="ident">futures::sink::Sink</span>;
 
-<span class="kw">fn</span> <span class="ident">make_sink_async</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>
+<span class="kw">fn</span> <span class="ident">make_sink_async</span>() -&gt; <span class="kw">impl</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>
     <span class="kw">impl</span> <span class="ident">Sink</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span><span class="op">&gt;</span>,
     <span class="ident">E</span>,
 <span class="op">&gt;</span><span class="op">&gt;</span> { <span class="comment">// ... }</span>
@@ -245,7 +245,7 @@ compiler.</p>
 <h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::future</span>::{<span class="ident">Future</span>, <span class="ident">TryFuture</span>, <span class="ident">TryFutureExt</span>};
 
-<span class="kw">fn</span> <span class="ident">make_try_future</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">TryFuture</span><span class="op">&lt;</span><span class="prelude-val">Ok</span> <span class="op">=</span> <span class="ident">T</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span><span class="op">&gt;</span> { <span class="comment">// ... }</span>
+<span class="kw">fn</span> <span class="ident">make_try_future</span>() -&gt; <span class="kw">impl</span> <span class="ident">TryFuture</span><span class="op">&lt;</span><span class="prelude-val">Ok</span> <span class="op">=</span> <span class="ident">T</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span><span class="op">&gt;</span> { <span class="comment">// ... }</span>
 <span class="kw">fn</span> <span class="ident">take_future</span>(<span class="ident">future</span>: <span class="kw">impl</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>) { <span class="comment">/* ... */</span> }
 
 <span class="ident">take_future</span>(<span class="ident">make_try_future</span>().<span class="ident">into_future</span>());</code></pre></div>

@@ -34,7 +34,7 @@ in the stream, or <code>None</code> if the underlying stream terminates.</p>
 
 <span class="comment">// Peek into the stream and modify the value which will be returned next</span>
 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">p</span>) <span class="op">=</span> <span class="ident">stream</span>.<span class="ident">as_mut</span>().<span class="ident">peek_mut</span>().<span class="kw">await</span> {
-    <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">p</span> <span class="op">=</span><span class="op">=</span> <span class="number">2</span> {
+    <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">p</span> <span class="op">==</span> <span class="number">2</span> {
         <span class="kw-2">*</span><span class="ident">p</span> <span class="op">=</span> <span class="number">5</span>;
     }
 }
@@ -54,9 +54,9 @@ return it. Otherwise, return <code>None</code>.</p>
 <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">stream::iter</span>(<span class="number">0</span>..<span class="number">5</span>).<span class="ident">peekable</span>();
 <span class="macro">pin_mut!</span>(<span class="ident">stream</span>);
 <span class="comment">// The first item of the stream is 0; consume it.</span>
-<span class="macro">assert_eq!</span>(<span class="ident">stream</span>.<span class="ident">as_mut</span>().<span class="ident">next_if</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span>).<span class="kw">await</span>, <span class="prelude-val">Some</span>(<span class="number">0</span>));
+<span class="macro">assert_eq!</span>(<span class="ident">stream</span>.<span class="ident">as_mut</span>().<span class="ident">next_if</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="op">==</span> <span class="number">0</span>).<span class="kw">await</span>, <span class="prelude-val">Some</span>(<span class="number">0</span>));
 <span class="comment">// The next item returned is now 1, so `consume` will return `false`.</span>
-<span class="macro">assert_eq!</span>(<span class="ident">stream</span>.<span class="ident">as_mut</span>().<span class="ident">next_if</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span>).<span class="kw">await</span>, <span class="prelude-val">None</span>);
+<span class="macro">assert_eq!</span>(<span class="ident">stream</span>.<span class="ident">as_mut</span>().<span class="ident">next_if</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="op">==</span> <span class="number">0</span>).<span class="kw">await</span>, <span class="prelude-val">None</span>);
 <span class="comment">// `next_if` saves the value of the next item if it was not equal to `expected`.</span>
 <span class="macro">assert_eq!</span>(<span class="ident">stream</span>.<span class="ident">next</span>().<span class="kw">await</span>, <span class="prelude-val">Some</span>(<span class="number">1</span>));</code></pre></div>
 <p>Consume any number less than 10.</p>

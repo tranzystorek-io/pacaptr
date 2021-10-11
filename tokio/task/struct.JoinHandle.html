@@ -45,7 +45,7 @@ to be double chained to extract the returned value:</p>
 <span class="kw">use</span> <span class="ident">std::io</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">join_handle</span>: <span class="ident">task::JoinHandle</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">io::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">tokio::spawn</span>(<span class="kw">async</span> {
         <span class="prelude-val">Ok</span>(<span class="number">5</span> <span class="op">+</span> <span class="number">3</span>)
     });
@@ -61,7 +61,7 @@ to be double chained to extract the returned value:</p>
 <span class="kw">use</span> <span class="ident">std::panic</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">join_handle</span>: <span class="ident">task::JoinHandle</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">io::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">tokio::spawn</span>(<span class="kw">async</span> {
         <span class="macro">panic!</span>(<span class="string">&quot;boom&quot;</span>);
     });

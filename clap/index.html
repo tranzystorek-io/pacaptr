@@ -4,7 +4,7 @@
 <a href="https://crates.io/crates/clap"><img src="https://img.shields.io/crates/d/clap?style=flat-square" alt="Crates.io" /></a>
 <a href="https://github.com/clap-rs/clap/blob/master/LICENSE-APACHE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="License" /></a>
 <a href="https://github.com/clap-rs/clap/blob/master/LICENSE-MIT"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License" /></a>
-<a href="https://github.com/clap-rs/clap/actions/workflows/ci.yml?query=branch%3Amaster"><img src="https://img.shields.io/github/workflow/status/clap-rs/clap/CI/master?style=flat-square" alt="Build Status" /></a>
+<a href="https://github.com/clap-rs/clap/actions/workflows/ci.yml?query=branch%3Astaging"><img src="https://img.shields.io/github/workflow/status/clap-rs/clap/CI/staging?style=flat-square" alt="Build Status" /></a>
 <a href="https://coveralls.io/github/clap-rs/clap?branch=master"><img src="https://img.shields.io/coveralls/github/clap-rs/clap/master?style=flat-square" alt="Coverage Status" /></a>
 <a href="https://github.com/clap-rs/clap/graphs/contributors"><img src="https://img.shields.io/github/contributors/clap-rs/clap?style=flat-square" alt="Contributors" /></a></p>
 <p>Command Line Argument Parser for Rust</p>
@@ -43,6 +43,7 @@
 <ol>
 <li><a href="#features-enabled-by-default">Features enabled by default</a></li>
 <li><a href="#opt-in-features">Opt-in features</a></li>
+<li><a href="#experimental-features">Experimental features</a></li>
 </ol>
 </li>
 <li><a href="#more-information">More Information</a></li>
@@ -78,7 +79,7 @@
 <li>Can optionally be fully, or partially overridden if you want a custom help, version, or usage statements</li>
 </ul>
 </li>
-<li><strong>Auto-generated completion scripts (Bash, Zsh, Fish, Elvish and PowerShell)</strong>
+<li><strong>Auto-generated completion scripts (Bash, Zsh, Fish, Fig, Elvish and PowerShell)</strong>
 <ul>
 <li>Using <a href="https://github.com/clap-rs/clap/tree/master/clap_generate"><code>clap_generate</code></a></li>
 <li>Even works through many multiple levels of subcommands</li>
@@ -165,13 +166,12 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div><h5 id="using-derive-macros" c
 <span class="comment">//</span>
 <span class="comment">// This example demonstrates clap&#39;s full &#39;custom derive&#39; style of creating arguments which is the</span>
 <span class="comment">// simplest method of use, but sacrifices some flexibility.</span>
-<span class="kw">use</span> <span class="ident">clap</span>::{<span class="ident">AppSettings</span>, <span class="ident">Clap</span>};
+<span class="kw">use</span> <span class="ident">clap</span>::{<span class="ident">AppSettings</span>, <span class="ident">Parser</span>};
 
 <span class="doccomment">/// This doc string acts as a help message when the user runs &#39;--help&#39;</span>
 <span class="doccomment">/// as do all doc strings on fields</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clap</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Parser</span>)]</span>
 <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">version</span> <span class="op">=</span> <span class="string">&quot;1.0&quot;</span>, <span class="ident">author</span> <span class="op">=</span> <span class="string">&quot;Kevin K. &lt;kbknapp@gmail.com&gt;&quot;</span>)]</span>
-<span class="attribute">#[<span class="ident">clap</span>(<span class="ident">setting</span> <span class="op">=</span> <span class="ident">AppSettings::ColoredHelp</span>)]</span>
 <span class="kw">struct</span> <span class="ident">Opts</span> {
     <span class="doccomment">/// Sets a custom config file. Could have been an Option&lt;T&gt; with no default too</span>
     <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">short</span>, <span class="ident">long</span>, <span class="ident">default_value</span> <span class="op">=</span> <span class="string">&quot;default.conf&quot;</span>)]</span>
@@ -185,14 +185,14 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div><h5 id="using-derive-macros" c
     <span class="ident">subcmd</span>: <span class="ident">SubCommand</span>,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clap</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Parser</span>)]</span>
 <span class="kw">enum</span> <span class="ident">SubCommand</span> {
     <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">version</span> <span class="op">=</span> <span class="string">&quot;1.3&quot;</span>, <span class="ident">author</span> <span class="op">=</span> <span class="string">&quot;Someone E. &lt;someone_else@other.com&gt;&quot;</span>)]</span>
     <span class="ident">Test</span>(<span class="ident">Test</span>),
 }
 
 <span class="doccomment">/// A subcommand for controlling testing</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clap</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Parser</span>)]</span>
 <span class="kw">struct</span> <span class="ident">Test</span> {
     <span class="doccomment">/// Print debug info</span>
     <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">short</span>)]</span>
@@ -209,16 +209,16 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div><h5 id="using-derive-macros" c
     <span class="comment">// Vary the output based on how many times the user used the &quot;verbose&quot; flag</span>
     <span class="comment">// (i.e. &#39;myprog -v -v -v&#39; or &#39;myprog -vvv&#39; vs &#39;myprog -v&#39;</span>
     <span class="kw">match</span> <span class="ident">opts</span>.<span class="ident">verbose</span> {
-        <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;No verbose info&quot;</span>),
-        <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Some verbose info&quot;</span>),
-        <span class="number">2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Tons of verbose info&quot;</span>),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Don&#39;t be ridiculous&quot;</span>),
+        <span class="number">0</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;No verbose info&quot;</span>),
+        <span class="number">1</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Some verbose info&quot;</span>),
+        <span class="number">2</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Tons of verbose info&quot;</span>),
+        <span class="kw">_</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Don&#39;t be ridiculous&quot;</span>),
     }
 
     <span class="comment">// You can handle information about subcommands by requesting their matches by name</span>
     <span class="comment">// (as below), requesting just the name used, or both at the same time</span>
     <span class="kw">match</span> <span class="ident">opts</span>.<span class="ident">subcmd</span> {
-        <span class="ident">SubCommand::Test</span>(<span class="ident">t</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">SubCommand::Test</span>(<span class="ident">t</span>) =&gt; {
             <span class="kw">if</span> <span class="ident">t</span>.<span class="ident">debug</span> {
                 <span class="macro">println!</span>(<span class="string">&quot;Printing debug info...&quot;</span>);
             } <span class="kw">else</span> {
@@ -279,10 +279,10 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div><h5 id="using-derive-macros" c
     <span class="comment">// You can see how many times a particular flag or argument occurred</span>
     <span class="comment">// Note, only flags can have multiple occurrences</span>
     <span class="kw">match</span> <span class="ident">matches</span>.<span class="ident">occurrences_of</span>(<span class="string">&quot;v&quot;</span>) {
-        <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is off&quot;</span>),
-        <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is kind of on&quot;</span>),
-        <span class="number">2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is on&quot;</span>),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;Don&#39;t be crazy&quot;</span>),
+        <span class="number">0</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is off&quot;</span>),
+        <span class="number">1</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is kind of on&quot;</span>),
+        <span class="number">2</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Verbose mode is on&quot;</span>),
+        <span class="kw">_</span> =&gt; <span class="macro">println!</span>(<span class="string">&quot;Don&#39;t be crazy&quot;</span>),
     }
 
     <span class="comment">// You can check for the existence of subcommands, and if found use their</span>
@@ -383,14 +383,14 @@ builder pattern (the first example), but without all the verbosity.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">clap::clap_app</span>;
 
 <span class="kw">fn</span> <span class="ident">main</span>() {
-    <span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="macro">clap_app!</span>(<span class="ident">myapp</span> <span class="op">=</span><span class="op">&gt;</span>
+    <span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="macro">clap_app!</span>(<span class="ident">myapp</span> =&gt;
         (<span class="ident">version</span>: <span class="string">&quot;1.0&quot;</span>)
         (<span class="ident">author</span>: <span class="string">&quot;Kevin K. &lt;kbknapp@gmail.com&gt;&quot;</span>)
         (<span class="ident">about</span>: <span class="string">&quot;Does awesome things&quot;</span>)
         (@<span class="ident">arg</span> <span class="ident">CONFIG</span>: <span class="op">-</span><span class="ident">c</span> <span class="op">-</span><span class="op">-</span><span class="ident">config</span> [<span class="ident">FILE</span>] <span class="string">&quot;Sets a custom config file&quot;</span>)
         (@<span class="ident">arg</span> <span class="ident">INPUT</span>: <span class="op">+</span><span class="ident">required</span> <span class="string">&quot;Sets the input file to use&quot;</span>)
         (@<span class="ident">arg</span> <span class="ident">verbose</span>: <span class="op">-</span><span class="ident">v</span> <span class="op">-</span><span class="op">-</span><span class="ident">verbose</span> <span class="string">&quot;Sets the level of verbosity&quot;</span>)
-        (@<span class="ident">subcommand</span> <span class="ident">test</span> <span class="op">=</span><span class="op">&gt;</span>
+        (@<span class="ident">subcommand</span> <span class="ident">test</span> =&gt;
             (<span class="ident">about</span>: <span class="string">&quot;controls testing features&quot;</span>)
             (<span class="ident">version</span>: <span class="string">&quot;1.3&quot;</span>)
             (<span class="ident">author</span>: <span class="string">&quot;Someone E. &lt;someone_else@other.com&gt;&quot;</span>)
@@ -453,12 +453,12 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div>
 <h5 id="features-enabled-by-default" class="section-header"><a href="#features-enabled-by-default">Features enabled by default</a></h5>
 <ul>
 <li><strong>std</strong>: <em>Not Currently Used.</em> Placeholder for supporting <code>no_std</code> environments in a backwards compatible manner.</li>
-<li><strong>derive</strong>: Enables the custom derive (i.e. <code>#[derive(Clap)]</code>). Without this you must use one of the other methods of creating a <code>clap</code> CLI listed above. (builds dependency <code>clap_derive</code>)</li>
+<li><strong>derive</strong>: Enables the custom derive (i.e. <code>#[derive(Parser)]</code>). Without this you must use one of the other methods of creating a <code>clap</code> CLI listed above. (builds dependency <code>clap_derive</code>)</li>
 <li><strong>cargo</strong>: Turns on macros that read values from <code>CARGO_*</code> environment variables.</li>
-<li><strong>color</strong>: Turns on colored error messages. You still have to turn on colored help by setting <code>AppSettings::ColoredHelp</code>. (builds dependency <code>termcolor</code>)</li>
+<li><strong>color</strong>: Turns on colored error messages. (builds dependency <code>termcolor</code>)</li>
 <li><strong>env</strong>: Turns on the usage of environment variables during parsing.</li>
 <li><strong>suggestions</strong>: Turns on the <code>Did you mean '--myoption'?</code> feature for when users make typos. (builds dependency <code>strsim</code>)</li>
-<li><strong>unicode_help</strong>: Turns on support for unicode characters in help messages. (builds dependency <code>textwrap</code>)</li>
+<li><strong>unicode</strong>: Turns on support for unicode characters in arguments and help messages. (builds dependency <code>textwrap</code>, <code>unicase</code>)</li>
 </ul>
 <p>To disable these, add this to your <code>Cargo.toml</code>:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
@@ -475,6 +475,11 @@ features = [&quot;std&quot;, &quot;suggestions&quot;, &quot;color&quot;]</code><
 <li><strong>regex</strong>: Enables regex validators. (builds dependency <code>regex</code>)</li>
 <li><strong>wrap_help</strong>: Turns on the help text wrapping feature, based on the terminal size. (builds dependency <code>term-size</code>)</li>
 <li><strong>yaml</strong>: Enables building CLIs from YAML documents. (builds dependency <code>yaml-rust</code>)</li>
+</ul>
+<h5 id="experimental-features" class="section-header"><a href="#experimental-features">Experimental features</a></h5>
+<p>These features are opt-in. But be wary that they can contain breaking changes between minor releases.</p>
+<ul>
+<li><strong>unstable-replace</strong>: Enable <a href="https://github.com/clap-rs/clap/issues/2836"><code>App::replace</code></a></li>
 </ul>
 <h4 id="more-information" class="section-header"><a href="#more-information">More Information</a></h4>
 <p>You can find complete documentation on the <a href="https://docs.rs/clap">docs.rs</a> for this project.</p>
@@ -577,9 +582,9 @@ methods <a href="struct.Arg.html#method.setting"><code>Arg::setting</code></a>, 
 </div></div></div><h2 id="traits" class="section-header"><a href="#traits">Traits</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.ArgEnum.html" title="clap::ArgEnum trait">ArgEnum</a></div><div class="item-right docblock-short"><p>Parse arguments into enums.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Args.html" title="clap::Args trait">Args</a></div><div class="item-right docblock-short"><p>Parse arguments into a user-defined container.</p>
-</div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Clap.html" title="clap::Clap trait">Clap</a></div><div class="item-right docblock-short"><p>Parse command-line arguments into <code>Self</code>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.FromArgMatches.html" title="clap::FromArgMatches trait">FromArgMatches</a></div><div class="item-right docblock-short"><p>Converts an instance of <a href="struct.ArgMatches.html" title="ArgMatches"><code>ArgMatches</code></a> to a user-defined container.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.IntoApp.html" title="clap::IntoApp trait">IntoApp</a></div><div class="item-right docblock-short"><p>Build an <a href="struct.App.html" title="App"><code>App</code></a> relevant for a user-defined container.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Parser.html" title="clap::Parser trait">Parser</a></div><div class="item-right docblock-short"><p>Parse command-line arguments into <code>Self</code>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Subcommand.html" title="clap::Subcommand trait">Subcommand</a></div><div class="item-right docblock-short"><p>Parse a sub-command into a user-defined enum.</p>
 </div></div></div><h2 id="types" class="section-header"><a href="#types">Type Definitions</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.Result.html" title="clap::Result type">Result</a></div><div class="item-right docblock-short"><p>Short hand for <a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html"><code>Result</code></a> type</p>

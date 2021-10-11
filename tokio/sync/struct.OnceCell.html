@@ -5,7 +5,7 @@ in Tokio allows the initialization procedure to be asynchronous.</p>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::OnceCell</span>;
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">some_computation</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">some_computation</span>() -&gt; <span class="ident">u32</span> {
     <span class="number">1</span> <span class="op">+</span> <span class="number">1</span>
 }
 
@@ -22,7 +22,7 @@ in Tokio allows the initialization procedure to be asynchronous.</p>
 
 <span class="kw">static</span> <span class="ident">ONCE</span>: <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">OnceCell::const_new</span>();
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">get_global_integer</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">u32</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">get_global_integer</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">u32</span> {
     <span class="ident">ONCE</span>.<span class="ident">get_or_init</span>(<span class="op">|</span><span class="op">|</span> <span class="kw">async</span> {
         <span class="number">1</span> <span class="op">+</span> <span class="number">1</span>
     }).<span class="kw">await</span>

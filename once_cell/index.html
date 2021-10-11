@@ -4,9 +4,9 @@ might store arbitrary non-<code>Copy</code> types, can be assigned to at most on
 to the stored contents. The core API looks <em>roughly</em> like this (and there’s much more inside, read on!):</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> { ... }
-    <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">value</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">T</span><span class="op">&gt;</span> { ... }
-    <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">T</span><span class="op">&gt;</span> { ... }
+    <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> { ... }
+    <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">value</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">T</span><span class="op">&gt;</span> { ... }
+    <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">T</span><span class="op">&gt;</span> { ... }
 }</code></pre></div>
 <p>Note that, like with <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html"><code>RefCell</code></a> and <a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html"><code>Mutex</code></a>, the <code>set</code> method requires only a shared reference.
 Because of the single assignment restriction <code>get</code> can return a <code>&amp;T</code> instead of <code>Ref&lt;T&gt;</code>
@@ -26,11 +26,11 @@ or <code>MutexGuard&lt;T&gt;</code>.</p>
 <span class="kw">static</span> <span class="ident">INSTANCE</span>: <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">Logger</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">OnceCell::new</span>();
 
 <span class="kw">impl</span> <span class="ident">Logger</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">global</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Logger</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">global</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Logger</span> {
         <span class="ident">INSTANCE</span>.<span class="ident">get</span>().<span class="ident">expect</span>(<span class="string">&quot;logger is not initialized&quot;</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">from_cli</span>(<span class="ident">args</span>: <span class="ident">env::Args</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Logger</span>, <span class="ident">std::io::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_cli</span>(<span class="ident">args</span>: <span class="ident">env::Args</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Logger</span>, <span class="ident">std::io::Error</span><span class="op">&gt;</span> {
        <span class="comment">// ...</span>
     }
 }
@@ -47,7 +47,7 @@ or <code>MutexGuard&lt;T&gt;</code>.</p>
 
 <span class="kw">use</span> <span class="ident">once_cell::sync::OnceCell</span>;
 
-<span class="kw">fn</span> <span class="ident">global_data</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">global_data</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">static</span> <span class="ident">INSTANCE</span>: <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">OnceCell::new</span>();
     <span class="ident">INSTANCE</span>.<span class="ident">get_or_init</span>(<span class="op">|</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">HashMap::new</span>();
@@ -98,7 +98,7 @@ directly, because that will allow you to access <code>self</code> during initial
 }
 
 <span class="kw">impl</span> <span class="ident">Ctx</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_config</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">std::io::Error</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_config</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">std::io::Error</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">cfg</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">get_or_try_init</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="ident">fs::read_to_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">config_path</span>)
         })<span class="question-mark">?</span>;
@@ -110,7 +110,7 @@ directly, because that will allow you to access <code>self</code> during initial
 <em>expression</em> that evaluates to a <code>&amp;'static Regex</code>:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">macro_rules!</span> <span class="ident">regex</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">re</span>:<span class="ident">literal</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {{
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">re</span>:<span class="ident">literal</span> $(,)<span class="question-mark">?</span>) =&gt; {{
         <span class="kw">static</span> <span class="ident">RE</span>: <span class="ident">once_cell::sync::OnceCell</span><span class="op">&lt;</span><span class="ident">regex::Regex</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">once_cell::sync::OnceCell::new</span>();
         <span class="ident">RE</span>.<span class="ident">get_or_init</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">regex::Regex::new</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">re</span>).<span class="ident">unwrap</span>())
     }};
@@ -131,10 +131,10 @@ runtime:</p>
 }
 
 <span class="kw">impl</span> <span class="ident">TestResource</span> {
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TestResource</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="ident">TestResource</span> {
         <span class="ident">TestResource</span> { <span class="ident">path</span>, <span class="ident">cell</span>: <span class="ident">OnceCell::new</span>() }
     }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
         <span class="self">self</span>.<span class="ident">cell</span>.<span class="ident">get_or_init</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">dir</span> <span class="op">=</span> <span class="ident">std::env::var</span>(<span class="string">&quot;CARGO_MANIFEST_DIR&quot;</span>).<span class="ident">unwrap</span>();
             <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">Path::new</span>(<span class="ident">dir</span>.<span class="ident">as_str</span>()).<span class="ident">join</span>(<span class="self">self</span>.<span class="ident">path</span>);
@@ -168,12 +168,12 @@ runtime:</p>
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">LateInit</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="ident">LateInit</span> { <span class="ident">cell</span>: <span class="ident">OnceCell::default</span>() } }
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> { <span class="ident">LateInit</span> { <span class="ident">cell</span>: <span class="ident">OnceCell::default</span>() } }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">std::ops::Deref</span> <span class="kw">for</span> <span class="ident">LateInit</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">T</span>;
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">T</span> {
+    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">T</span> {
         <span class="self">self</span>.<span class="ident">cell</span>.<span class="ident">get</span>().<span class="ident">unwrap</span>()
     }
 }

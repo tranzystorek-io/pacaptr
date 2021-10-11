@@ -33,10 +33,10 @@ any special logic to handle creation.</p>
 
 <span class="doccomment">/// `MyConfig` implements `Default`</span>
 <span class="kw">impl</span> <span class="ident">::std::default::Default</span> <span class="kw">for</span> <span class="ident">MyConfig</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="self">Self</span> { <span class="ident">version</span>: <span class="number">0</span>, <span class="ident">api_key</span>: <span class="string">&quot;&quot;</span>.<span class="ident">into</span>() } }
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> { <span class="self">Self</span> { <span class="ident">version</span>: <span class="number">0</span>, <span class="ident">api_key</span>: <span class="string">&quot;&quot;</span>.<span class="ident">into</span>() } }
 }
 
-<span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">confy::ConfyError</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">confy::ConfyError</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">cfg</span> <span class="op">=</span> <span class="ident">confy::load</span>(<span class="string">&quot;my-app-name&quot;</span>)<span class="question-mark">?</span>;
     <span class="prelude-val">Ok</span>(())
 }</code></pre></div>

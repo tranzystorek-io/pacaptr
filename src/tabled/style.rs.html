@@ -342,7 +342,7 @@
     <span class="doccomment">///     | 3  | Endeavouros  | https://endeavouros.com/  |</span>
     <span class="doccomment">///     +----+--------------+---------------------------+</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">line</span> <span class="op">=</span> <span class="ident">Line::bordered</span>(<span class="string">&#39;-&#39;</span>, <span class="string">&#39;+&#39;</span>, <span class="string">&#39;+&#39;</span>, <span class="string">&#39;+&#39;</span>);
 
         <span class="ident"><span class="self">Self</span>::new</span>(
@@ -366,7 +366,7 @@
     <span class="doccomment">///      2      OpenSUSE     https://www.opensuse.org/</span>
     <span class="doccomment">///      3    Endeavouros    https://endeavouros.com/</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">noborder</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">noborder</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">Frame::default</span>(), <span class="prelude-val">None</span>, <span class="prelude-val">None</span>, <span class="string">&#39; &#39;</span>)
     }
 
@@ -379,7 +379,7 @@
     <span class="doccomment">///      2  |   OpenSUSE   | https://www.opensuse.org/</span>
     <span class="doccomment">///      3  | Endeavouros  | https://endeavouros.com/</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">psql</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">psql</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">Frame::default</span>(), <span class="prelude-val">Some</span>(<span class="ident">Line::short</span>(<span class="string">&#39;-&#39;</span>, <span class="string">&#39;+&#39;</span>)), <span class="prelude-val">None</span>, <span class="string">&#39;|&#39;</span>)
     }
 
@@ -392,7 +392,7 @@
     <span class="doccomment">///     | 2  |   OpenSUSE   | https://www.opensuse.org/ |</span>
     <span class="doccomment">///     | 3  | Endeavouros  | https://endeavouros.com/  |</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">github_markdown</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">github_markdown</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::new</span>(
             <span class="ident">Frame</span> {
                 <span class="ident">left</span>: <span class="prelude-val">Some</span>(<span class="string">&#39;|&#39;</span>),
@@ -417,7 +417,7 @@
     <span class="doccomment">///     │ 3  │ Endeavouros  │ https://endeavouros.com/  │</span>
     <span class="doccomment">///     └────┴──────────────┴───────────────────────────┘</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pseudo</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pseudo</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::new</span>(
             <span class="ident">Frame</span> {
                 <span class="ident">left</span>: <span class="prelude-val">Some</span>(<span class="string">&#39;│&#39;</span>),
@@ -442,20 +442,20 @@
     <span class="doccomment">///     │ 3  │ Endeavouros  │ https://endeavouros.com/  │</span>
     <span class="doccomment">///     └────┴──────────────┴───────────────────────────┘</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pseudo_clean</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pseudo_clean</span>() -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pseudo</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::pseudo</span>();
         <span class="ident">pseudo</span>.<span class="ident">split</span> <span class="op">=</span> <span class="prelude-val">None</span>;
         <span class="ident">pseudo</span>
     }
 
     <span class="doccomment">/// Left frame character.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">frame</span>.<span class="ident">left</span> <span class="op">=</span> <span class="ident">frame</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Right frame character.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">frame</span>.<span class="ident">right</span> <span class="op">=</span> <span class="ident">frame</span>;
         <span class="self">self</span>
     }
@@ -463,7 +463,7 @@
     <span class="doccomment">/// The header&#39;s top line.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It&#39;s suppose that [Self::frame_bottom] and [Self::split]  has the same type of [Line] short or bordered.  </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_top</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_top</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">frame</span>.<span class="ident">top</span> <span class="op">=</span> <span class="ident">frame</span>;
         <span class="self">self</span>
     }
@@ -471,13 +471,13 @@
     <span class="doccomment">/// The footer&#39;s bottom line.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It&#39;s suppose that [Self::frame_top] and [Self::split] has the same type of [Line] short or bordered.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_bottom</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_bottom</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">frame</span>.<span class="ident">bottom</span> <span class="op">=</span> <span class="ident">frame</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// The header&#39;s bottom line.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">line</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">line</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">header_split_line</span> <span class="op">=</span> <span class="ident">line</span>;
         <span class="self">self</span>
     }
@@ -485,19 +485,19 @@
     <span class="doccomment">/// Row split line.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [Self::frame_top] and [Self::frame_bottom]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">split</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">line</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">split</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">line</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">header_split_line</span> <span class="op">=</span> <span class="ident">line</span>.<span class="ident">clone</span>();
         <span class="self">self</span>.<span class="ident">split</span> <span class="op">=</span> <span class="ident">line</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Inner split character.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inner</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inner</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">inner_split_char</span> <span class="op">=</span> <span class="ident">c</span>;
         <span class="self">self</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">frame</span>: <span class="ident">Frame</span>, <span class="ident">header</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>, <span class="ident">split</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>, <span class="ident">inner</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">frame</span>: <span class="ident">Frame</span>, <span class="ident">header</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>, <span class="ident">split</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Line</span><span class="op">&gt;</span>, <span class="ident">inner</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">frame</span>,
             <span class="ident">split</span>,
@@ -518,7 +518,7 @@
 
 <span class="kw">impl</span> <span class="ident">Line</span> {
     <span class="doccomment">/// A line for frame styles.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bordered</span>(<span class="ident">main</span>: <span class="ident">char</span>, <span class="ident">intersection</span>: <span class="ident">char</span>, <span class="ident">left</span>: <span class="ident">char</span>, <span class="ident">right</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bordered</span>(<span class="ident">main</span>: <span class="ident">char</span>, <span class="ident">intersection</span>: <span class="ident">char</span>, <span class="ident">left</span>: <span class="ident">char</span>, <span class="ident">right</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">intersection</span>,
             <span class="ident">main</span>,
@@ -528,7 +528,7 @@
     }
 
     <span class="doccomment">/// A line for no-frame styles.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">short</span>(<span class="ident">main</span>: <span class="ident">char</span>, <span class="ident">intersection</span>: <span class="ident">char</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">short</span>(<span class="ident">main</span>: <span class="ident">char</span>, <span class="ident">intersection</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">main</span>,
             <span class="ident">intersection</span>,
@@ -550,7 +550,7 @@
         <span class="kw">let</span> <span class="ident">count_rows</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">count_rows</span>();
         <span class="kw">for</span> <span class="ident">row</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">count_rows</span> {
             <span class="kw">let</span> <span class="ident">border</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">get_border_mut</span>(<span class="ident">row</span>);
-            <span class="ident">make_style</span>(<span class="self">self</span>, <span class="ident">border</span>, <span class="ident">row</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span>, <span class="ident">row</span> <span class="op">=</span><span class="op">=</span> <span class="ident">count_rows</span> <span class="op">-</span> <span class="number">1</span>);
+            <span class="ident">make_style</span>(<span class="self">self</span>, <span class="ident">border</span>, <span class="ident">row</span> <span class="op">==</span> <span class="number">0</span>, <span class="ident">row</span> <span class="op">==</span> <span class="ident">count_rows</span> <span class="op">-</span> <span class="number">1</span>);
         }
     }
 }

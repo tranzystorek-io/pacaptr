@@ -377,13 +377,13 @@
     <span class="doccomment">/// Returns a token stream representing `compile_error!(&quot;msg&quot;);` where</span>
     <span class="doccomment">/// `&quot;msg&quot;` is the output of `self.to_string()`. **Panics if called outside</span>
     <span class="doccomment">/// of a proc-macro context!**</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_compile_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_compile_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
         <span class="kw">use</span> <span class="ident">proc_macro</span>::{<span class="ident">Delimiter</span>, <span class="ident">Ident</span>, <span class="ident">Group</span>, <span class="ident">Punct</span>, <span class="ident">Spacing</span>, <span class="ident">TokenTree</span>};
 
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">span</span> {
-            <span class="ident">Span::One</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>,
+            <span class="ident">Span::One</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>,
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;proc-macro2&quot;</span>)]</span>
-            <span class="ident">Span::Two</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>.<span class="ident">unwrap</span>(),
+            <span class="ident">Span::Two</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>.<span class="ident">unwrap</span>(),
         };
         <span class="kw">let</span> <span class="ident">msg</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">to_string</span>();
         <span class="kw">let</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">vec!</span>[
@@ -403,12 +403,12 @@
     <span class="doccomment">/// stream from `proc_macro2` and does not panic outside of a proc-macro</span>
     <span class="doccomment">/// context.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;proc-macro2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_compile_error2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_compile_error2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
         <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Delimiter</span>, <span class="ident">Ident</span>, <span class="ident">Group</span>, <span class="ident">Punct</span>, <span class="ident">Spacing</span>, <span class="ident">TokenTree</span>};
 
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">span</span> {
-            <span class="ident">Span::One</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">proc_macro2::Span::from</span>(<span class="ident">s</span>),
-            <span class="ident">Span::Two</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>,
+            <span class="ident">Span::One</span>(<span class="ident">s</span>) =&gt; <span class="ident">proc_macro2::Span::from</span>(<span class="ident">s</span>),
+            <span class="ident">Span::Two</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>,
         };
         <span class="kw">let</span> <span class="ident">msg</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">to_string</span>();
         <span class="kw">let</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">vec!</span>[
@@ -428,20 +428,20 @@
 <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">InvalidToken</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">InvalidToken</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="kw">fn</span> <span class="ident">kind_desc</span>(<span class="ident">kind</span>: <span class="ident">TokenKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">kind_desc</span>(<span class="ident">kind</span>: <span class="ident">TokenKind</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
             <span class="kw">match</span> <span class="ident">kind</span> {
-                <span class="ident">TokenKind::Punct</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a punctuation character&quot;</span>,
-                <span class="ident">TokenKind::Ident</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;an identifier&quot;</span>,
-                <span class="ident">TokenKind::Group</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a group&quot;</span>,
-                <span class="ident">TokenKind::Literal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a literal&quot;</span>,
-                <span class="ident">TokenKind::BoolLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a bool literal (`true` or `false`)&quot;</span>,
-                <span class="ident">TokenKind::ByteLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a byte literal (e.g. `b&#39;r&#39;)&quot;</span>,
-                <span class="ident">TokenKind::ByteStringLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r#&quot;a byte string literal (e.g. `b&quot;fox&quot;`)&quot;#</span>,
-                <span class="ident">TokenKind::CharLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a character literal (e.g. `&#39;P&#39;`)&quot;</span>,
-                <span class="ident">TokenKind::FloatLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;a float literal (e.g. `3.14`)&quot;</span>,
-                <span class="ident">TokenKind::IntegerLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;an integer literal (e.g. `27`)&quot;</span>,
-                <span class="ident">TokenKind::StringLit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r#&quot;a string literal (e.g. &quot;Ferris&quot;)&quot;#</span>,
+                <span class="ident">TokenKind::Punct</span> =&gt; <span class="string">&quot;a punctuation character&quot;</span>,
+                <span class="ident">TokenKind::Ident</span> =&gt; <span class="string">&quot;an identifier&quot;</span>,
+                <span class="ident">TokenKind::Group</span> =&gt; <span class="string">&quot;a group&quot;</span>,
+                <span class="ident">TokenKind::Literal</span> =&gt; <span class="string">&quot;a literal&quot;</span>,
+                <span class="ident">TokenKind::BoolLit</span> =&gt; <span class="string">&quot;a bool literal (`true` or `false`)&quot;</span>,
+                <span class="ident">TokenKind::ByteLit</span> =&gt; <span class="string">&quot;a byte literal (e.g. `b&#39;r&#39;)&quot;</span>,
+                <span class="ident">TokenKind::ByteStringLit</span> =&gt; <span class="string">r#&quot;a byte string literal (e.g. `b&quot;fox&quot;`)&quot;#</span>,
+                <span class="ident">TokenKind::CharLit</span> =&gt; <span class="string">&quot;a character literal (e.g. `&#39;P&#39;`)&quot;</span>,
+                <span class="ident">TokenKind::FloatLit</span> =&gt; <span class="string">&quot;a float literal (e.g. `3.14`)&quot;</span>,
+                <span class="ident">TokenKind::IntegerLit</span> =&gt; <span class="string">&quot;an integer literal (e.g. `27`)&quot;</span>,
+                <span class="ident">TokenKind::StringLit</span> =&gt; <span class="string">r#&quot;a string literal (e.g. &quot;Ferris&quot;)&quot;#</span>,
             }
         }
 
@@ -473,14 +473,14 @@
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">proc_macro::Span</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Span</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">src</span>: <span class="ident">proc_macro::Span</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">src</span>: <span class="ident">proc_macro::Span</span>) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::One</span>(<span class="ident">src</span>)
     }
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;proc-macro2&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">proc_macro2::Span</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Span</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">src</span>: <span class="ident">proc_macro2::Span</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">src</span>: <span class="ident">proc_macro2::Span</span>) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::Two</span>(<span class="ident">src</span>)
     }
 }
@@ -523,7 +523,7 @@
     <span class="doccomment">/// Returns a span of this error, if available. **Note**: the returned span</span>
     <span class="doccomment">/// might change in future versions of this library. See [the documentation</span>
     <span class="doccomment">/// of this type][ParseError] for more information.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">span</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">span</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">span</span>.<span class="ident">clone</span>()
     }
 }
@@ -531,7 +531,7 @@
 <span class="doccomment">/// This is a free standing function instead of an associated one to reduce</span>
 <span class="doccomment">/// noise around parsing code. There are lots of places that create errors, we</span>
 <span class="doccomment">/// I wanna keep them as short as possible.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">perr</span>(<span class="ident">span</span>: <span class="kw">impl</span> <span class="ident">SpanLike</span>, <span class="ident">kind</span>: <span class="ident">ParseErrorKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseError</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">perr</span>(<span class="ident">span</span>: <span class="kw">impl</span> <span class="ident">SpanLike</span>, <span class="ident">kind</span>: <span class="ident">ParseErrorKind</span>) -&gt; <span class="ident">ParseError</span> {
     <span class="ident">ParseError</span> {
         <span class="ident">span</span>: <span class="ident">span</span>.<span class="ident">into_span</span>(),
         <span class="ident">kind</span>,
@@ -539,21 +539,21 @@
 }
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait</span> <span class="ident">SpanLike</span> {
-    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">SpanLike</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>
     }
 }
 <span class="kw">impl</span> <span class="ident">SpanLike</span> <span class="kw">for</span> <span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="prelude-val">Some</span>(<span class="self">self</span>)
     }
 }
 <span class="kw">impl</span> <span class="ident">SpanLike</span> <span class="kw">for</span> <span class="ident">usize</span> {
-    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">into_span</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="prelude-val">Some</span>(<span class="self">self</span>..<span class="self">self</span> <span class="op">+</span> <span class="number">1</span>)
     }
 }
@@ -674,46 +674,46 @@
 <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">ParseError</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ParseError</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">use</span> <span class="ident">ParseErrorKind</span>::<span class="kw-2">*</span>;
 
         <span class="kw">let</span> <span class="ident">description</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">Empty</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;input is empty&quot;</span>,
-            <span class="ident">UnexpectedChar</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;unexpected character&quot;</span>,
-            <span class="ident">InvalidLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid literal&quot;</span>,
-            <span class="ident">DoesNotStartWithDigit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;number literal does not start with decimal digit&quot;</span>,
-            <span class="ident">InvalidDigit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;integer literal contains a digit invalid for its base&quot;</span>,
-            <span class="ident">NoDigits</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;integer literal does not contain any digits&quot;</span>,
-            <span class="ident">InvalidIntegerTypeSuffix</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid integer type suffix&quot;</span>,
-            <span class="ident">InvalidFloatTypeSuffix</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid floating point type suffix&quot;</span>,
-            <span class="ident">NoExponentDigits</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;exponent of floating point literal does not contain any digits&quot;</span>,
-            <span class="ident">UnknownEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;unknown escape&quot;</span>,
-            <span class="ident">UnterminatedEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;unterminated escape: input ended too soon&quot;</span>,
-            <span class="ident">InvalidXEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;invalid `\x` escape: not followed by two hex digits&quot;</span>,
-            <span class="ident">NonAsciiXEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;`\x` escape in char/string literal exceed ASCII range&quot;</span>,
-            <span class="ident">UnicodeEscapeInByteLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;`\u{...}` escape in byte (string) literal not allowed&quot;</span>,
-            <span class="ident">InvalidStartOfUnicodeEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;invalid start of `\u{...}` escape&quot;</span>,
-            <span class="ident">UnicodeEscapeWithoutBrace</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;`Unicode \u{...}` escape without opening brace&quot;</span>,
-            <span class="ident">NonHexDigitInUnicodeEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;non-hex digit found in `\u{...}` escape&quot;</span>,
-            <span class="ident">TooManyDigitInUnicodeEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;more than six digits in `\u{...}` escape&quot;</span>,
-            <span class="ident">InvalidUnicodeEscapeChar</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;value specified in `\u{...}` escape is not a valid char&quot;</span>,
-            <span class="ident">UnterminatedUnicodeEscape</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;unterminated `\u{...}` escape&quot;</span>,
-            <span class="ident">UnterminatedCharLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;character literal is not terminated&quot;</span>,
-            <span class="ident">OverlongCharLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;character literal contains more than one character&quot;</span>,
-            <span class="ident">EmptyCharLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;empty character literal&quot;</span>,
-            <span class="ident">UnterminatedByteLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;byte literal is not terminated&quot;</span>,
-            <span class="ident">OverlongByteLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;byte literal contains more than one byte&quot;</span>,
-            <span class="ident">EmptyByteLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;empty byte literal&quot;</span>,
-            <span class="ident">NonAsciiInByteLiteral</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;non ASCII character in byte (string) literal&quot;</span>,
-            <span class="ident">UnescapedSingleQuote</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;character literal contains unescaped &#39; character&quot;</span>,
-            <span class="ident">UnescapedSpecialWhitespace</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;unescaped newline (\n), tab (\t) or cr (\r) character&quot;</span>,
-            <span class="ident">DoesNotStartWithQuote</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid start for char/byte/string literal&quot;</span>,
-            <span class="ident">UnterminatedRawString</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;unterminated raw (byte) string literal&quot;</span>,
-            <span class="ident">UnterminatedString</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;unterminated (byte) string literal&quot;</span>,
-            <span class="ident">InvalidStringLiteralStart</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid start for string literal&quot;</span>,
-            <span class="ident">InvalidByteLiteralStart</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid start for byte literal&quot;</span>,
-            <span class="ident">InvalidByteStringLiteralStart</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;invalid start for byte string literal&quot;</span>,
-            <span class="ident">IsolatedCr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">r&quot;`\r` not immediately followed by `\n` in string&quot;</span>,
+            <span class="ident">Empty</span> =&gt; <span class="string">&quot;input is empty&quot;</span>,
+            <span class="ident">UnexpectedChar</span> =&gt; <span class="string">&quot;unexpected character&quot;</span>,
+            <span class="ident">InvalidLiteral</span> =&gt; <span class="string">&quot;invalid literal&quot;</span>,
+            <span class="ident">DoesNotStartWithDigit</span> =&gt; <span class="string">&quot;number literal does not start with decimal digit&quot;</span>,
+            <span class="ident">InvalidDigit</span> =&gt; <span class="string">&quot;integer literal contains a digit invalid for its base&quot;</span>,
+            <span class="ident">NoDigits</span> =&gt; <span class="string">&quot;integer literal does not contain any digits&quot;</span>,
+            <span class="ident">InvalidIntegerTypeSuffix</span> =&gt; <span class="string">&quot;invalid integer type suffix&quot;</span>,
+            <span class="ident">InvalidFloatTypeSuffix</span> =&gt; <span class="string">&quot;invalid floating point type suffix&quot;</span>,
+            <span class="ident">NoExponentDigits</span> =&gt; <span class="string">&quot;exponent of floating point literal does not contain any digits&quot;</span>,
+            <span class="ident">UnknownEscape</span> =&gt; <span class="string">&quot;unknown escape&quot;</span>,
+            <span class="ident">UnterminatedEscape</span> =&gt; <span class="string">&quot;unterminated escape: input ended too soon&quot;</span>,
+            <span class="ident">InvalidXEscape</span> =&gt; <span class="string">r&quot;invalid `\x` escape: not followed by two hex digits&quot;</span>,
+            <span class="ident">NonAsciiXEscape</span> =&gt; <span class="string">r&quot;`\x` escape in char/string literal exceed ASCII range&quot;</span>,
+            <span class="ident">UnicodeEscapeInByteLiteral</span> =&gt; <span class="string">r&quot;`\u{...}` escape in byte (string) literal not allowed&quot;</span>,
+            <span class="ident">InvalidStartOfUnicodeEscape</span> =&gt; <span class="string">r&quot;invalid start of `\u{...}` escape&quot;</span>,
+            <span class="ident">UnicodeEscapeWithoutBrace</span> =&gt; <span class="string">r&quot;`Unicode \u{...}` escape without opening brace&quot;</span>,
+            <span class="ident">NonHexDigitInUnicodeEscape</span> =&gt; <span class="string">r&quot;non-hex digit found in `\u{...}` escape&quot;</span>,
+            <span class="ident">TooManyDigitInUnicodeEscape</span> =&gt; <span class="string">r&quot;more than six digits in `\u{...}` escape&quot;</span>,
+            <span class="ident">InvalidUnicodeEscapeChar</span> =&gt; <span class="string">r&quot;value specified in `\u{...}` escape is not a valid char&quot;</span>,
+            <span class="ident">UnterminatedUnicodeEscape</span> =&gt; <span class="string">r&quot;unterminated `\u{...}` escape&quot;</span>,
+            <span class="ident">UnterminatedCharLiteral</span> =&gt; <span class="string">&quot;character literal is not terminated&quot;</span>,
+            <span class="ident">OverlongCharLiteral</span> =&gt; <span class="string">&quot;character literal contains more than one character&quot;</span>,
+            <span class="ident">EmptyCharLiteral</span> =&gt; <span class="string">&quot;empty character literal&quot;</span>,
+            <span class="ident">UnterminatedByteLiteral</span> =&gt; <span class="string">&quot;byte literal is not terminated&quot;</span>,
+            <span class="ident">OverlongByteLiteral</span> =&gt; <span class="string">&quot;byte literal contains more than one byte&quot;</span>,
+            <span class="ident">EmptyByteLiteral</span> =&gt; <span class="string">&quot;empty byte literal&quot;</span>,
+            <span class="ident">NonAsciiInByteLiteral</span> =&gt; <span class="string">&quot;non ASCII character in byte (string) literal&quot;</span>,
+            <span class="ident">UnescapedSingleQuote</span> =&gt; <span class="string">&quot;character literal contains unescaped &#39; character&quot;</span>,
+            <span class="ident">UnescapedSpecialWhitespace</span> =&gt; <span class="string">r&quot;unescaped newline (\n), tab (\t) or cr (\r) character&quot;</span>,
+            <span class="ident">DoesNotStartWithQuote</span> =&gt; <span class="string">&quot;invalid start for char/byte/string literal&quot;</span>,
+            <span class="ident">UnterminatedRawString</span> =&gt; <span class="string">&quot;unterminated raw (byte) string literal&quot;</span>,
+            <span class="ident">UnterminatedString</span> =&gt; <span class="string">&quot;unterminated (byte) string literal&quot;</span>,
+            <span class="ident">InvalidStringLiteralStart</span> =&gt; <span class="string">&quot;invalid start for string literal&quot;</span>,
+            <span class="ident">InvalidByteLiteralStart</span> =&gt; <span class="string">&quot;invalid start for byte literal&quot;</span>,
+            <span class="ident">InvalidByteStringLiteralStart</span> =&gt; <span class="string">&quot;invalid start for byte string literal&quot;</span>,
+            <span class="ident">IsolatedCr</span> =&gt; <span class="string">r&quot;`\r` not immediately followed by `\n` in string&quot;</span>,
         };
 
         <span class="ident">description</span>.<span class="ident">fmt</span>(<span class="ident">f</span>)<span class="question-mark">?</span>;

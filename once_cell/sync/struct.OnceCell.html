@@ -95,7 +95,7 @@ deadlocks, but this may be changed to a panic in the future.</p>
 <span class="kw">let</span> <span class="ident">cell</span> <span class="op">=</span> <span class="ident">OnceCell::new</span>();
 <span class="macro">assert_eq!</span>(<span class="ident">cell</span>.<span class="ident">get_or_try_init</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Err</span>(())), <span class="prelude-val">Err</span>(()));
 <span class="macro">assert!</span>(<span class="ident">cell</span>.<span class="ident">get</span>().<span class="ident">is_none</span>());
-<span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">cell</span>.<span class="ident">get_or_try_init</span>(<span class="op">|</span><span class="op">|</span> <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, ()<span class="op">&gt;</span> {
+<span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">cell</span>.<span class="ident">get_or_try_init</span>(<span class="op">|</span><span class="op">|</span> -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, ()<span class="op">&gt;</span> {
     <span class="prelude-val">Ok</span>(<span class="number">92</span>)
 });
 <span class="macro">assert_eq!</span>(<span class="ident">value</span>, <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="number">92</span>));

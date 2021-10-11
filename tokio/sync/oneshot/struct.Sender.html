@@ -31,8 +31,8 @@ after this function returns <code>Ok</code>.</p>
     });
 
     <span class="kw">match</span> <span class="ident">rx</span>.<span class="kw">await</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
+        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
     }
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.closed" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../../src/tokio/sync/oneshot.rs.html#393-397" title="goto source code">[src]</a></div><a href="#method.closed" class="anchor"></a><h4 class="code-header">pub async fn <a href="#method.closed" class="fnname">closed</a>(&amp;mut self)</h4></div></summary><div class="docblock"><p>Waits for the associated <a href="struct.Receiver.html"><code>Receiver</code></a> handle to close.</p>
@@ -63,7 +63,7 @@ computation when the receiver is no longer interested in the result.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::oneshot</span>;
 <span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="self">self</span>, <span class="ident">Duration</span>};
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">compute</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">compute</span>() -&gt; <span class="ident">String</span> {
     <span class="comment">// Complex computation returning a `String`</span>
 }
 
@@ -73,10 +73,10 @@ computation when the receiver is no longer interested in the result.</p>
 
     <span class="ident">tokio::spawn</span>(<span class="kw">async</span> <span class="kw">move</span> {
         <span class="macro">tokio::select!</span> {
-            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tx</span>.<span class="ident">closed</span>() <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span> <span class="ident">tx</span>.<span class="ident">closed</span>() =&gt; {
                 <span class="comment">// The receiver dropped, no need to do any further work</span>
             }
-            <span class="ident">value</span> <span class="op">=</span> <span class="ident">compute</span>() <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">value</span> <span class="op">=</span> <span class="ident">compute</span>() =&gt; {
                 <span class="comment">// The send can fail if the channel was closed at the exact same</span>
                 <span class="comment">// time as when compute() finished, so just ignore the failure.</span>
                 <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">value</span>);

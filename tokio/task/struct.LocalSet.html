@@ -111,7 +111,7 @@ and communicate with it using an <a href="../sync/mpsc/index.html"><code>mpsc</c
 }
 
 <span class="kw">impl</span> <span class="ident">LocalSpawner</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> (<span class="ident">send</span>, <span class="kw-2">mut</span> <span class="ident">recv</span>) <span class="op">=</span> <span class="ident">mpsc::unbounded_channel</span>();
 
         <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">Builder::new_current_thread</span>()
@@ -152,10 +152,10 @@ and communicate with it using an <a href="../sync/mpsc/index.html"><code>mpsc</c
 <span class="comment">// of operations.</span>
 <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run_task</span>(<span class="ident">task</span>: <span class="ident">Task</span>) {
     <span class="kw">match</span> <span class="ident">task</span> {
-        <span class="ident">Task::PrintNumber</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Task::PrintNumber</span>(<span class="ident">n</span>) =&gt; {
             <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">n</span>);
         },
-        <span class="ident">Task::AddOne</span>(<span class="ident">n</span>, <span class="ident">response</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Task::AddOne</span>(<span class="ident">n</span>, <span class="ident">response</span>) =&gt; {
             <span class="comment">// We ignore failures to send the response.</span>
             <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">send</span>(<span class="ident">n</span> <span class="op">+</span> <span class="number">1</span>);
         },

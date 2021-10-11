@@ -89,42 +89,42 @@
 
 <span class="kw">impl</span> <span class="ident">Alignment</span> {
     <span class="doccomment">/// Top constructs a vertical alignment to [AlignmentVertical::Top]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">top</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">top</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::vertical</span>(<span class="ident">AlignmentVertical::Top</span>)
     }
 
     <span class="doccomment">/// Bottom constructs a vertical alignment to [AlignmentVertical::Bottom]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bottom</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bottom</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::vertical</span>(<span class="ident">AlignmentVertical::Bottom</span>)
     }
 
     <span class="doccomment">/// Center_vertical constructs a vertical alignment to [AlignmentVertical::Center]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">center_vertical</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">center_vertical</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::vertical</span>(<span class="ident">AlignmentVertical::Center</span>)
     }
 
     <span class="doccomment">/// Left constructs a horizontal alignment to [AlignmentHorizontal::Left]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">left</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">left</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::horizontal</span>(<span class="ident">AlignmentHorizontal::Left</span>)
     }
 
     <span class="doccomment">/// Right constructs a horizontal alignment to [AlignmentHorizontal::Right]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">right</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">right</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::horizontal</span>(<span class="ident">AlignmentHorizontal::Right</span>)
     }
 
     <span class="doccomment">/// Center_horizontal constructs a horizontal alignment to [AlignmentHorizontal::Center]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">center_horizontal</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">center_horizontal</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::horizontal</span>(<span class="ident">AlignmentHorizontal::Center</span>)
     }
 
     <span class="doccomment">/// Returns an alignment with the given horizontal alignment.</span>
-    <span class="kw">fn</span> <span class="ident">horizontal</span>(<span class="ident">alignment</span>: <span class="ident">AlignmentHorizontal</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">horizontal</span>(<span class="ident">alignment</span>: <span class="ident">AlignmentHorizontal</span>) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::Horizontal</span>(<span class="ident">alignment</span>)
     }
 
     <span class="doccomment">/// Returns an alignment with the given vertical alignment.</span>
-    <span class="kw">fn</span> <span class="ident">vertical</span>(<span class="ident">alignment</span>: <span class="ident">AlignmentVertical</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">vertical</span>(<span class="ident">alignment</span>: <span class="ident">AlignmentVertical</span>) -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::Vertical</span>(<span class="ident">alignment</span>)
     }
 }
@@ -133,8 +133,8 @@
     <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>) {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">used</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">get_cell_settings</span>(<span class="ident">row</span>, <span class="ident">column</span>);
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Horizontal</span>(<span class="ident">a</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">used</span> <span class="op">=</span> <span class="ident">used</span>.<span class="ident">alignment</span>(<span class="kw-2">*</span><span class="ident">a</span>),
-            <span class="ident"><span class="self">Self</span>::Vertical</span>(<span class="ident">a</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">used</span> <span class="op">=</span> <span class="ident">used</span>.<span class="ident">vertical_alignment</span>(<span class="kw-2">*</span><span class="ident">a</span>),
+            <span class="ident"><span class="self">Self</span>::Horizontal</span>(<span class="ident">a</span>) =&gt; <span class="ident">used</span> <span class="op">=</span> <span class="ident">used</span>.<span class="ident">alignment</span>(<span class="kw-2">*</span><span class="ident">a</span>),
+            <span class="ident"><span class="self">Self</span>::Vertical</span>(<span class="ident">a</span>) =&gt; <span class="ident">used</span> <span class="op">=</span> <span class="ident">used</span>.<span class="ident">vertical_alignment</span>(<span class="kw-2">*</span><span class="ident">a</span>),
         }
 
         <span class="ident">grid</span>.<span class="ident">set</span>(<span class="ident">Entity::Cell</span>(<span class="ident">row</span>, <span class="ident">column</span>), <span class="ident">used</span>)

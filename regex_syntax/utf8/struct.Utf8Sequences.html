@@ -12,7 +12,7 @@ scalar values.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">regex_syntax::utf8</span>::{<span class="ident">Utf8Sequences</span>, <span class="ident">Utf8Sequence</span>};
 
-<span class="kw">fn</span> <span class="ident">matches</span>(<span class="ident">seqs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Utf8Sequence</span>], <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">fn</span> <span class="ident">matches</span>(<span class="ident">seqs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Utf8Sequence</span>], <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">bool</span> {
     <span class="kw">for</span> <span class="ident">range</span> <span class="kw">in</span> <span class="ident">seqs</span> {
         <span class="kw">if</span> <span class="ident">range</span>.<span class="ident">matches</span>(<span class="ident">bytes</span>) {
             <span class="kw">return</span> <span class="bool-val">true</span>;

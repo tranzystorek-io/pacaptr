@@ -285,7 +285,7 @@
 <span class="kw">impl</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Rotate</span> {
     <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Left</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Left</span> =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new</span> <span class="op">=</span> <span class="ident">Grid::new</span>(<span class="ident">grid</span>.<span class="ident">count_columns</span>(), <span class="ident">grid</span>.<span class="ident">count_rows</span>());
                 <span class="kw">for</span> <span class="ident">row</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">grid</span>.<span class="ident">count_rows</span>() {
                     <span class="kw">for</span> (<span class="ident">lhs_column</span>, <span class="ident">rhs_column</span>) <span class="kw">in</span>
@@ -298,7 +298,7 @@
 
                 <span class="kw-2">*</span><span class="ident">grid</span> <span class="op">=</span> <span class="ident">new</span>;
             }
-            <span class="ident"><span class="self">Self</span>::Right</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Right</span> =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new</span> <span class="op">=</span> <span class="ident">Grid::new</span>(<span class="ident">grid</span>.<span class="ident">count_columns</span>(), <span class="ident">grid</span>.<span class="ident">count_rows</span>());
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">last_row</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">count_rows</span>();
                 <span class="kw">for</span> <span class="ident">row</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">grid</span>.<span class="ident">count_rows</span>() {
@@ -311,7 +311,7 @@
 
                 <span class="kw-2">*</span><span class="ident">grid</span> <span class="op">=</span> <span class="ident">new</span>;
             }
-            <span class="ident"><span class="self">Self</span>::Bottom</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident"><span class="self">Self</span>::Bottom</span> =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new</span> <span class="op">=</span> <span class="ident">Grid::new</span>(<span class="ident">grid</span>.<span class="ident">count_rows</span>(), <span class="ident">grid</span>.<span class="ident">count_columns</span>());
                 <span class="kw">for</span> <span class="ident">column</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">grid</span>.<span class="ident">count_columns</span>() {
                     <span class="kw">for</span> <span class="ident">row</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">grid</span>.<span class="ident">count_rows</span>() {
@@ -323,7 +323,7 @@
 
                 <span class="kw-2">*</span><span class="ident">grid</span> <span class="op">=</span> <span class="ident">new</span>;
             }
-            <span class="ident"><span class="self">Self</span>::Top</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Bottom</span>.<span class="ident">change</span>(<span class="ident">grid</span>),
+            <span class="ident"><span class="self">Self</span>::Top</span> =&gt; <span class="ident"><span class="self">Self</span>::Bottom</span>.<span class="ident">change</span>(<span class="ident">grid</span>),
         }
     }
 }

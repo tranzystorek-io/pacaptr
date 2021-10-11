@@ -66,7 +66,7 @@
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">AsyncReadExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">10</span>];
 
@@ -88,7 +88,7 @@ output of <code>next</code>.</p>
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">AsyncReadExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">f1</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="ident">f2</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;bar.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
@@ -104,7 +104,7 @@ output of <code>next</code>.</p>
 returning how many bytes were read.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
 <p>This method does not provide any guarantees about whether it
 completes immediately or asynchronously.</p>
 <h5 id="return" class="section-header"><a href="#return">Return</a></h5>
@@ -143,7 +143,7 @@ completes first, then it is guaranteed that no data was read.</p>
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">AsyncReadExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">10</span>];
 
@@ -157,7 +157,7 @@ completes first, then it is guaranteed that no data was read.</p>
 advancing the buffer’s internal cursor.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_buf</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BufMut</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_buf</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BufMut</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">B</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
 <p>Usually, only a single <code>read</code> syscall is issued, even if there is
 more space in the supplied buffer.</p>
 <p>This method does not provide any guarantees about whether it
@@ -189,7 +189,7 @@ completes first, then it is guaranteed that no data was read.</p>
 <span class="kw">use</span> <span class="ident">bytes::BytesMut</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">BytesMut::with_capacity</span>(<span class="number">10</span>);
 
@@ -206,7 +206,7 @@ completes first, then it is guaranteed that no data was read.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.read_exact" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_read_ext.rs.html#304-309" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.read_exact" class="fnname">read_exact</a>&lt;'a&gt;(&amp;'a mut self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; ReadExact&lt;'a, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Reads the exact number of bytes required to fill <code>buf</code>.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_exact</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_exact</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
 <p>This function reads as many bytes as necessary to completely fill
 the specified buffer <code>buf</code>.</p>
 <h5 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h5>
@@ -232,7 +232,7 @@ read into <code>buf</code>.</p>
 <span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="self">self</span>, <span class="ident">AsyncReadExt</span>};
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">10</span>];
 
@@ -243,7 +243,7 @@ read into <code>buf</code>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.read_u8" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_read_ext.rs.html#311-1153" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.read_u8" class="fnname">read_u8</a>&lt;'a&gt;(&amp;'a mut self) -&gt; ReadU8&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a mut </a>Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Reads an unsigned 8 bit integer from the underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h5>
@@ -256,7 +256,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">2</span>, <span class="number">5</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">2</span>, <span class="ident">reader</span>.<span class="ident">read_u8</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -267,7 +267,7 @@ syscalls.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.read_i8" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_read_ext.rs.html#311-1153" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.read_i8" class="fnname">read_i8</a>&lt;'a&gt;(&amp;'a mut self) -&gt; ReadI8&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a mut </a>Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Reads a signed 8 bit integer from the underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-4" class="section-header"><a href="#errors-4">Errors</a></h5>
@@ -280,7 +280,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x02</span>, <span class="number">0xfb</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">2</span>, <span class="ident">reader</span>.<span class="ident">read_i8</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -292,7 +292,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-5" class="section-header"><a href="#errors-5">Errors</a></h5>
@@ -305,7 +305,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">517</span>, <span class="ident">reader</span>.<span class="ident">read_u16</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -316,7 +316,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i16</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i16</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-6" class="section-header"><a href="#errors-6">Errors</a></h5>
@@ -329,7 +329,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0xff</span>, <span class="number">0x7c</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">193</span>, <span class="ident">reader</span>.<span class="ident">read_i16</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -340,7 +340,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-7" class="section-header"><a href="#errors-7">Errors</a></h5>
@@ -353,7 +353,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>, <span class="number">0x0b</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">267</span>, <span class="ident">reader</span>.<span class="ident">read_u32</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -363,7 +363,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-8" class="section-header"><a href="#errors-8">Errors</a></h5>
@@ -376,7 +376,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0x7a</span>, <span class="number">0x33</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="op">-</span><span class="number">34253</span>, <span class="ident">reader</span>.<span class="ident">read_i32</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -386,7 +386,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-9" class="section-header"><a href="#errors-9">Errors</a></h5>
@@ -399,7 +399,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>
     ]);
@@ -411,7 +411,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-10" class="section-header"><a href="#errors-10">Errors</a></h5>
@@ -424,7 +424,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x80</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="ident">i64::MIN</span>, <span class="ident">reader</span>.<span class="ident">read_i64</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -434,7 +434,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-11" class="section-header"><a href="#errors-11">Errors</a></h5>
@@ -447,7 +447,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>,
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>
@@ -460,7 +460,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i128</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i128</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-12" class="section-header"><a href="#errors-12">Errors</a></h5>
@@ -473,7 +473,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x80</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,
         <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>
@@ -486,7 +486,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-13" class="section-header"><a href="#errors-13">Errors</a></h5>
@@ -499,7 +499,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0xff</span>, <span class="number">0x7f</span>, <span class="number">0xff</span>, <span class="number">0xff</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="ident">f32::MIN</span>, <span class="ident">reader</span>.<span class="ident">read_f32</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -509,7 +509,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-14" class="section-header"><a href="#errors-14">Errors</a></h5>
@@ -522,7 +522,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0xff</span>, <span class="number">0xef</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>
     ]);
@@ -534,7 +534,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-15" class="section-header"><a href="#errors-15">Errors</a></h5>
@@ -547,7 +547,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">1282</span>, <span class="ident">reader</span>.<span class="ident">read_u16_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -558,7 +558,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i16</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i16</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-16" class="section-header"><a href="#errors-16">Errors</a></h5>
@@ -571,7 +571,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0xff</span>, <span class="number">0x7c</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="op">-</span><span class="number">16128</span>, <span class="ident">reader</span>.<span class="ident">read_i16_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -582,7 +582,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-17" class="section-header"><a href="#errors-17">Errors</a></h5>
@@ -595,7 +595,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x01</span>, <span class="number">0x0b</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">184614912</span>, <span class="ident">reader</span>.<span class="ident">read_u32_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -605,7 +605,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-18" class="section-header"><a href="#errors-18">Errors</a></h5>
@@ -618,7 +618,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0x7a</span>, <span class="number">0x33</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">863698943</span>, <span class="ident">reader</span>.<span class="ident">read_i32_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -628,7 +628,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-19" class="section-header"><a href="#errors-19">Errors</a></h5>
@@ -641,7 +641,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>
     ]);
@@ -653,7 +653,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-20" class="section-header"><a href="#errors-20">Errors</a></h5>
@@ -666,7 +666,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0x80</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="number">128</span>, <span class="ident">reader</span>.<span class="ident">read_i64_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -676,7 +676,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_u128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-21" class="section-header"><a href="#errors-21">Errors</a></h5>
@@ -689,7 +689,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>,
         <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x43</span>, <span class="number">0x95</span>, <span class="number">0x4d</span>, <span class="number">0x60</span>, <span class="number">0x86</span>, <span class="number">0x83</span>
@@ -702,7 +702,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i128</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_i128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">i128</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-22" class="section-header"><a href="#errors-22">Errors</a></h5>
@@ -715,7 +715,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0x80</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,
         <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>
@@ -728,7 +728,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-23" class="section-header"><a href="#errors-23">Errors</a></h5>
@@ -741,7 +741,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0x7f</span>, <span class="number">0xff</span>]);
 
     <span class="macro">assert_eq!</span>(<span class="ident">f32::MIN</span>, <span class="ident">reader</span>.<span class="ident">read_f32_le</span>().<span class="kw">await</span><span class="question-mark">?</span>);
@@ -751,7 +751,7 @@ syscalls.</p>
 underlying reader.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_f64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>It is recommended to use a buffered reader to avoid excessive
 syscalls.</p>
 <h5 id="errors-24" class="section-header"><a href="#errors-24">Errors</a></h5>
@@ -764,7 +764,7 @@ syscalls.</p>
 <span class="kw">use</span> <span class="ident">std::io::Cursor</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[
         <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xff</span>, <span class="number">0xef</span>, <span class="number">0xff</span>
     ]);
@@ -775,7 +775,7 @@ syscalls.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.read_to_end" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_read_ext.rs.html#1200-1205" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.read_to_end" class="fnname">read_to_end</a>&lt;'a&gt;(&amp;'a mut self, buf: &amp;'a mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;) -&gt; ReadToEnd&lt;'a, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Reads all bytes until EOF in this source, placing them into <code>buf</code>.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_to_end</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_to_end</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
 <p>All bytes read from this source will be appended to the specified
 buffer <code>buf</code>. This function will continuously call <a href="trait.AsyncReadExt.html#method.read"><code>read()</code></a> to
 append more data to <code>buf</code> until <a href="trait.AsyncReadExt.html#method.read"><code>read()</code></a> returns <code>Ok(0)</code>.</p>
@@ -791,7 +791,7 @@ be appended to <code>buf</code>.</p>
 <span class="kw">use</span> <span class="ident">tokio::fs::File</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
 
@@ -804,7 +804,7 @@ file.)</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.read_to_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_read_ext.rs.html#1247-1252" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.read_to_string" class="fnname">read_to_string</a>&lt;'a&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;'a mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;dst: &amp;'a mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a><br>) -&gt; ReadToString&lt;'a, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Reads all bytes until EOF in this source, appending them to <code>buf</code>.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_to_string</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">read_to_string</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>;</code></pre></div>
 <p>If successful, the number of bytes which were read and appended to
 <code>buf</code> is returned.</p>
 <h5 id="errors-26" class="section-header"><a href="#errors-26">Errors</a></h5>
@@ -818,7 +818,7 @@ returned and <code>buf</code> is unchanged.</p>
 <span class="kw">use</span> <span class="ident">tokio::fs::File</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">String::new</span>();
 
@@ -839,7 +839,7 @@ bytes read and future calls to <a href="trait.AsyncReadExt.html#method.read"><co
 <span class="kw">use</span> <span class="ident">tokio::fs::File</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">5</span>];
 

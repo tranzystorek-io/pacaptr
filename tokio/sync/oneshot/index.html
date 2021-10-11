@@ -18,8 +18,8 @@ The <code>Receiver</code> handle is used by the consumer to receive the value.</
     });
 
     <span class="kw">match</span> <span class="ident">rx</span>.<span class="kw">await</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
+        <span class="prelude-val">Ok</span>(<span class="ident">v</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;got = {:?}&quot;</span>, <span class="ident">v</span>),
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
     }
 }</code></pre></div>
 <p>If the sender is dropped without sending, the receiver will fail with
@@ -36,8 +36,8 @@ The <code>Receiver</code> handle is used by the consumer to receive the value.</
     });
 
     <span class="kw">match</span> <span class="ident">rx</span>.<span class="kw">await</span> {
-        <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic!</span>(<span class="string">&quot;This doesn&#39;t happen&quot;</span>),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
+        <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;This doesn&#39;t happen&quot;</span>),
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">println!</span>(<span class="string">&quot;the sender dropped&quot;</span>),
     }
 }</code></pre></div>
 </div></details><h2 id="modules" class="section-header"><a href="#modules">Modules</a></h2>

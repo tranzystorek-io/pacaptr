@@ -61,26 +61,26 @@ TCP server.</p>
         <span class="comment">// We can use the token we previously provided to `register` to</span>
         <span class="comment">// determine for which type the event is.</span>
         <span class="kw">match</span> <span class="ident">event</span>.<span class="ident">token</span>() {
-            <span class="ident">SERVER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">loop</span> {
+            <span class="ident">SERVER</span> =&gt; <span class="kw">loop</span> {
                 <span class="comment">// One or more connections are ready, so we&#39;ll attempt to</span>
                 <span class="comment">// accept them (in a loop).</span>
                 <span class="kw">match</span> <span class="ident">listener</span>.<span class="ident">accept</span>() {
-                    <span class="prelude-val">Ok</span>((<span class="ident">connection</span>, <span class="ident">address</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="prelude-val">Ok</span>((<span class="ident">connection</span>, <span class="ident">address</span>)) =&gt; {
                         <span class="macro">println!</span>(<span class="string">&quot;Got a connection from: {}&quot;</span>, <span class="ident">address</span>);
                     },
                     <span class="comment">// A &quot;would block error&quot; is returned if the operation</span>
                     <span class="comment">// is not ready, so we&#39;ll stop trying to accept</span>
                     <span class="comment">// connections.</span>
-                    <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">err</span>) <span class="kw">if</span> <span class="ident">would_block</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">break</span>,
-                    <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>),
+                    <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">err</span>) <span class="kw">if</span> <span class="ident">would_block</span>(<span class="ident">err</span>) =&gt; <span class="kw">break</span>,
+                    <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>),
                 }
             }
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">would_block</span>(<span class="ident">err</span>: <span class="kw-2">&amp;</span><span class="ident">io::Error</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-    <span class="ident">err</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">io::ErrorKind::WouldBlock</span>
+<span class="kw">fn</span> <span class="ident">would_block</span>(<span class="ident">err</span>: <span class="kw-2">&amp;</span><span class="ident">io::Error</span>) -&gt; <span class="ident">bool</span> {
+    <span class="ident">err</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">io::ErrorKind::WouldBlock</span>
 }</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="mio" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
     <script src="../../main.js"></script>
