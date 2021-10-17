@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;cd00a94&#x2F;src&#x2F;build&#x2F;app&#x2F;settings.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>settings.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;33d86ef&#x2F;src&#x2F;build&#x2F;app&#x2F;settings.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>settings.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1080,6 +1080,95 @@
 <span id="1080">1080</span>
 <span id="1081">1081</span>
 <span id="1082">1082</span>
+<span id="1083">1083</span>
+<span id="1084">1084</span>
+<span id="1085">1085</span>
+<span id="1086">1086</span>
+<span id="1087">1087</span>
+<span id="1088">1088</span>
+<span id="1089">1089</span>
+<span id="1090">1090</span>
+<span id="1091">1091</span>
+<span id="1092">1092</span>
+<span id="1093">1093</span>
+<span id="1094">1094</span>
+<span id="1095">1095</span>
+<span id="1096">1096</span>
+<span id="1097">1097</span>
+<span id="1098">1098</span>
+<span id="1099">1099</span>
+<span id="1100">1100</span>
+<span id="1101">1101</span>
+<span id="1102">1102</span>
+<span id="1103">1103</span>
+<span id="1104">1104</span>
+<span id="1105">1105</span>
+<span id="1106">1106</span>
+<span id="1107">1107</span>
+<span id="1108">1108</span>
+<span id="1109">1109</span>
+<span id="1110">1110</span>
+<span id="1111">1111</span>
+<span id="1112">1112</span>
+<span id="1113">1113</span>
+<span id="1114">1114</span>
+<span id="1115">1115</span>
+<span id="1116">1116</span>
+<span id="1117">1117</span>
+<span id="1118">1118</span>
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+<span id="1123">1123</span>
+<span id="1124">1124</span>
+<span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
+<span id="1132">1132</span>
+<span id="1133">1133</span>
+<span id="1134">1134</span>
+<span id="1135">1135</span>
+<span id="1136">1136</span>
+<span id="1137">1137</span>
+<span id="1138">1138</span>
+<span id="1139">1139</span>
+<span id="1140">1140</span>
+<span id="1141">1141</span>
+<span id="1142">1142</span>
+<span id="1143">1143</span>
+<span id="1144">1144</span>
+<span id="1145">1145</span>
+<span id="1146">1146</span>
+<span id="1147">1147</span>
+<span id="1148">1148</span>
+<span id="1149">1149</span>
+<span id="1150">1150</span>
+<span id="1151">1151</span>
+<span id="1152">1152</span>
+<span id="1153">1153</span>
+<span id="1154">1154</span>
+<span id="1155">1155</span>
+<span id="1156">1156</span>
+<span id="1157">1157</span>
+<span id="1158">1158</span>
+<span id="1159">1159</span>
+<span id="1160">1160</span>
+<span id="1161">1161</span>
+<span id="1162">1162</span>
+<span id="1163">1163</span>
+<span id="1164">1164</span>
+<span id="1165">1165</span>
+<span id="1166">1166</span>
+<span id="1167">1167</span>
+<span id="1168">1168</span>
+<span id="1169">1169</span>
+<span id="1170">1170</span>
+<span id="1171">1171</span>
 </pre><pre class="rust"><code><span class="comment">// Std</span>
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">ops::BitOr</span>, <span class="ident">str::FromStr</span>};
 
@@ -1127,6 +1216,8 @@
         <span class="kw">const</span> <span class="ident">USE_LONG_FORMAT_FOR_HELP_SC</span>    <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">42</span>;
         <span class="kw">const</span> <span class="ident">INFER_LONG_ARGS</span>                <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">43</span>;
         <span class="kw">const</span> <span class="ident">IGNORE_ERRORS</span>                  <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">44</span>;
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unstable-multicall&quot;</span>)]</span>
+        <span class="kw">const</span> <span class="ident">MULTICALL</span>                      <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">45</span>;
     }
 }
 
@@ -1177,6 +1268,9 @@
         =&gt; <span class="ident">Flags::HELP_REQUIRED</span>,
     <span class="ident">Hidden</span>(<span class="string">&quot;hidden&quot;</span>)
         =&gt; <span class="ident">Flags::HIDDEN</span>,
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unstable-multicall&quot;</span>)]</span>
+    <span class="ident">Multicall</span>(<span class="string">&quot;multicall&quot;</span>)
+        =&gt; <span class="ident">Flags::MULTICALL</span>,
     <span class="ident">NoAutoHelp</span>(<span class="string">&quot;noautohelp&quot;</span>)
         =&gt; <span class="ident">Flags::NO_AUTO_HELP</span>,
     <span class="ident">NoAutoVersion</span>(<span class="string">&quot;noautoversion&quot;</span>)
@@ -1659,6 +1753,89 @@
     <span class="doccomment">/// [`subcommands`]: crate::App::subcommand()</span>
     <span class="ident">DeriveDisplayOrder</span>,
 
+    <span class="doccomment">/// Parse the bin name (argv[0]) as a subcommand</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This adds a small performance penalty to startup</span>
+    <span class="doccomment">/// as it requires comparing the bin name against every subcommand name.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// A &quot;multicall&quot; executable is a single executable</span>
+    <span class="doccomment">/// that contains a variety of applets,</span>
+    <span class="doccomment">/// and decides which applet to run based on the name of the file.</span>
+    <span class="doccomment">/// The executable can be called from different names by creating hard links</span>
+    <span class="doccomment">/// or symbolic links to it.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is desirable when it is convenient to store code</span>
+    <span class="doccomment">/// for many programs in the same file,</span>
+    <span class="doccomment">/// such as deduplicating code across multiple programs</span>
+    <span class="doccomment">/// without loading a shared library at runtime.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Multicall can&#39;t be used with [`NoBinaryName`] since they interpret</span>
+    <span class="doccomment">/// the command name in incompatible ways.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Multicall applets are defined as subcommands</span>
+    <span class="doccomment">/// to an app which has the Multicall setting enabled.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Busybox is a common example of a &quot;multicall&quot; executable</span>
+    <span class="doccomment">/// with a subcommmand for each applet that can be run directly,</span>
+    <span class="doccomment">/// e.g. with the `cat` applet being run by running `busybox cat`,</span>
+    <span class="doccomment">/// or with `cat` as a link to the `busybox` binary.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is desirable when the launcher program has additional options</span>
+    <span class="doccomment">/// or it is useful to run the applet without installing a symlink</span>
+    <span class="doccomment">/// e.g. to test the applet without installing it</span>
+    <span class="doccomment">/// or there may already be a command of that name installed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use clap::{App, AppSettings};</span>
+    <span class="doccomment">/// let mut app = App::new(&quot;busybox&quot;)</span>
+    <span class="doccomment">///     .setting(AppSettings::Multicall)</span>
+    <span class="doccomment">///     .subcommand(App::new(&quot;true&quot;))</span>
+    <span class="doccomment">///     .subcommand(App::new(&quot;false&quot;));</span>
+    <span class="doccomment">/// // When called from the executable&#39;s canonical name</span>
+    <span class="doccomment">/// // its applets can be matched as subcommands.</span>
+    <span class="doccomment">/// let m = app.try_get_matches_from_mut(&amp;[&quot;busybox&quot;, &quot;true&quot;]).unwrap();</span>
+    <span class="doccomment">/// assert_eq!(m.subcommand_name(), Some(&quot;true&quot;));</span>
+    <span class="doccomment">/// // When called from a link named after an applet that applet is matched.</span>
+    <span class="doccomment">/// let m = app.get_matches_from(&amp;[&quot;true&quot;]);</span>
+    <span class="doccomment">/// assert_eq!(m.subcommand_name(), Some(&quot;true&quot;));</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `hostname` is another example of a multicall executable.</span>
+    <span class="doccomment">/// It differs from busybox by not supporting running applets via subcommand</span>
+    <span class="doccomment">/// and is instead only runnable via links.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is desirable when the executable has a primary purpose</span>
+    <span class="doccomment">/// rather than being a collection of varied applets,</span>
+    <span class="doccomment">/// so it is appropriate to name the executable after its purpose,</span>
+    <span class="doccomment">/// but there is other related functionality that would be convenient to provide</span>
+    <span class="doccomment">/// and it is convenient for the code to implement it to be in the same executable.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This behaviour can be opted-into</span>
+    <span class="doccomment">/// by naming a subcommand with the same as the program</span>
+    <span class="doccomment">/// as applet names take priority.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use clap::{App, AppSettings, ErrorKind};</span>
+    <span class="doccomment">/// let mut app = App::new(&quot;hostname&quot;)</span>
+    <span class="doccomment">///     .setting(AppSettings::Multicall)</span>
+    <span class="doccomment">///     .subcommand(App::new(&quot;hostname&quot;))</span>
+    <span class="doccomment">///     .subcommand(App::new(&quot;dnsdomainname&quot;));</span>
+    <span class="doccomment">/// let m = app.try_get_matches_from_mut(&amp;[&quot;hostname&quot;, &quot;dnsdomainname&quot;]);</span>
+    <span class="doccomment">/// assert!(m.is_err());</span>
+    <span class="doccomment">/// assert_eq!(m.unwrap_err().kind, ErrorKind::UnknownArgument);</span>
+    <span class="doccomment">/// let m = app.get_matches_from(&amp;[&quot;hostname&quot;]);</span>
+    <span class="doccomment">/// assert_eq!(m.subcommand_name(), Some(&quot;hostname&quot;));</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`subcommands`]: crate::App::subcommand()</span>
+    <span class="doccomment">/// [`panic!`]: https://doc.rust-lang.org/std/macro.panic!.html</span>
+    <span class="doccomment">/// [`NoBinaryName`]: crate::AppSettings::NoBinaryName</span>
+    <span class="doccomment">/// [`try_get_matches_from_mut`]: crate::App::try_get_matches_from_mut()</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unstable-multicall&quot;</span>)]</span>
+    <span class="ident">Multicall</span>,
+
     <span class="doccomment">/// Specifies to use the version of the current command for all [`subcommands`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Defaults to `false`; subcommands have independent version strings from their parents.</span>
@@ -1824,6 +2001,7 @@
     <span class="doccomment">/// let cmds: Vec&lt;&amp;str&gt; = m.values_of(&quot;cmd&quot;).unwrap().collect();</span>
     <span class="doccomment">/// assert_eq!(cmds, [&quot;command&quot;, &quot;set&quot;]);</span>
     <span class="doccomment">/// ```</span>
+    <span class="doccomment">/// [`try_get_matches_from_mut`]: crate::App::try_get_matches_from_mut()</span>
     <span class="ident">NoBinaryName</span>,
 
     <span class="doccomment">/// Places the help string for all arguments on the line after the argument.</span>

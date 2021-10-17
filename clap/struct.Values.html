@@ -4,9 +4,9 @@ method.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;output&quot;</span>)
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
-        .<span class="ident">multiple_values</span>(<span class="bool-val">true</span>)
+        .<span class="ident">multiple_occurrences</span>(<span class="bool-val">true</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
-    .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val1&quot;</span>, <span class="string">&quot;val2&quot;</span>]);
+    .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val1&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val2&quot;</span>]);
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">values</span> <span class="op">=</span> <span class="ident">m</span>.<span class="ident">values_of</span>(<span class="string">&quot;output&quot;</span>).<span class="ident">unwrap</span>();
 

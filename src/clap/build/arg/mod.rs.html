@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;cd00a94&#x2F;src&#x2F;build&#x2F;arg&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;33d86ef&#x2F;src&#x2F;build&#x2F;arg&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -5315,6 +5315,114 @@
 <span id="5315">5315</span>
 <span id="5316">5316</span>
 <span id="5317">5317</span>
+<span id="5318">5318</span>
+<span id="5319">5319</span>
+<span id="5320">5320</span>
+<span id="5321">5321</span>
+<span id="5322">5322</span>
+<span id="5323">5323</span>
+<span id="5324">5324</span>
+<span id="5325">5325</span>
+<span id="5326">5326</span>
+<span id="5327">5327</span>
+<span id="5328">5328</span>
+<span id="5329">5329</span>
+<span id="5330">5330</span>
+<span id="5331">5331</span>
+<span id="5332">5332</span>
+<span id="5333">5333</span>
+<span id="5334">5334</span>
+<span id="5335">5335</span>
+<span id="5336">5336</span>
+<span id="5337">5337</span>
+<span id="5338">5338</span>
+<span id="5339">5339</span>
+<span id="5340">5340</span>
+<span id="5341">5341</span>
+<span id="5342">5342</span>
+<span id="5343">5343</span>
+<span id="5344">5344</span>
+<span id="5345">5345</span>
+<span id="5346">5346</span>
+<span id="5347">5347</span>
+<span id="5348">5348</span>
+<span id="5349">5349</span>
+<span id="5350">5350</span>
+<span id="5351">5351</span>
+<span id="5352">5352</span>
+<span id="5353">5353</span>
+<span id="5354">5354</span>
+<span id="5355">5355</span>
+<span id="5356">5356</span>
+<span id="5357">5357</span>
+<span id="5358">5358</span>
+<span id="5359">5359</span>
+<span id="5360">5360</span>
+<span id="5361">5361</span>
+<span id="5362">5362</span>
+<span id="5363">5363</span>
+<span id="5364">5364</span>
+<span id="5365">5365</span>
+<span id="5366">5366</span>
+<span id="5367">5367</span>
+<span id="5368">5368</span>
+<span id="5369">5369</span>
+<span id="5370">5370</span>
+<span id="5371">5371</span>
+<span id="5372">5372</span>
+<span id="5373">5373</span>
+<span id="5374">5374</span>
+<span id="5375">5375</span>
+<span id="5376">5376</span>
+<span id="5377">5377</span>
+<span id="5378">5378</span>
+<span id="5379">5379</span>
+<span id="5380">5380</span>
+<span id="5381">5381</span>
+<span id="5382">5382</span>
+<span id="5383">5383</span>
+<span id="5384">5384</span>
+<span id="5385">5385</span>
+<span id="5386">5386</span>
+<span id="5387">5387</span>
+<span id="5388">5388</span>
+<span id="5389">5389</span>
+<span id="5390">5390</span>
+<span id="5391">5391</span>
+<span id="5392">5392</span>
+<span id="5393">5393</span>
+<span id="5394">5394</span>
+<span id="5395">5395</span>
+<span id="5396">5396</span>
+<span id="5397">5397</span>
+<span id="5398">5398</span>
+<span id="5399">5399</span>
+<span id="5400">5400</span>
+<span id="5401">5401</span>
+<span id="5402">5402</span>
+<span id="5403">5403</span>
+<span id="5404">5404</span>
+<span id="5405">5405</span>
+<span id="5406">5406</span>
+<span id="5407">5407</span>
+<span id="5408">5408</span>
+<span id="5409">5409</span>
+<span id="5410">5410</span>
+<span id="5411">5411</span>
+<span id="5412">5412</span>
+<span id="5413">5413</span>
+<span id="5414">5414</span>
+<span id="5415">5415</span>
+<span id="5416">5416</span>
+<span id="5417">5417</span>
+<span id="5418">5418</span>
+<span id="5419">5419</span>
+<span id="5420">5420</span>
+<span id="5421">5421</span>
+<span id="5422">5422</span>
+<span id="5423">5423</span>
+<span id="5424">5424</span>
+<span id="5425">5425</span>
 </pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">arg_value</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">debug_asserts</span>;
@@ -5659,6 +5767,25 @@
             <span class="ident">unified_ord</span>: <span class="number">999</span>,
             ..<span class="ident">Default::default</span>()
         }
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::new`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::new`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_name</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">n</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">n</span>)
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::from`]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;yaml&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::from`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_yaml</span>(<span class="ident">y</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">Yaml</span>) -&gt; <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::from</span>(<span class="ident">y</span>)
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::from`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::from`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_usage</span>(<span class="ident">u</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="ident"><span class="self">Self</span>::from</span>(<span class="ident">u</span>)
     }
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">generated</span>(<span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
@@ -6006,6 +6133,12 @@
         <span class="self">self</span>
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::about`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::about`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">help</span>(<span class="self">self</span>, <span class="ident">h</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">about</span>(<span class="ident">h</span>)
+    }
+
     <span class="doccomment">/// Sets the long help text of the argument that will be displayed to the user when they print</span>
     <span class="doccomment">/// the help information with `--help`. Typically this a more detailed (multi-line) message</span>
     <span class="doccomment">/// that describes the arg.</span>
@@ -6078,6 +6211,12 @@
         <span class="self">self</span>
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::long_about`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::long_about`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">long_help</span>(<span class="self">self</span>, <span class="ident">h</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">long_about</span>(<span class="ident">h</span>)
+    }
+
     <span class="doccomment">/// Set this arg as [required] as long as the specified argument is not present at runtime.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **Pro Tip:** Using `Arg::required_unless_present` implies [`Arg::required`] and is therefore not</span>
@@ -6133,6 +6272,12 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_present</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">r_unless</span>.<span class="ident">push</span>(<span class="ident">arg_id</span>.<span class="ident">into</span>());
         <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::required_unless_present`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">required_unless_present</span>(<span class="ident">arg_id</span>)
     }
 
     <span class="doccomment">/// Sets this arg as [required] unless *all* of the specified arguments are present at runtime.</span>
@@ -6209,6 +6354,19 @@
         <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::RequiredUnlessAll</span>)
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::required_unless_present_all`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(
+        <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
+        <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present_all`&quot;</span>
+    )]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_all</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
+    <span class="kw">where</span>
+        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
+        <span class="ident">T</span>: <span class="ident">Key</span>,
+    {
+        <span class="self">self</span>.<span class="ident">required_unless_present_all</span>(<span class="ident">names</span>)
+    }
+
     <span class="doccomment">/// Sets this arg as [required] unless *any* of the specified arguments are present at runtime.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// In other words, parsing will succeed only if user either</span>
@@ -6283,6 +6441,19 @@
     {
         <span class="self">self</span>.<span class="ident">r_unless</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">into_iter</span>().<span class="ident">map</span>(<span class="ident">Id::from</span>));
         <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::required_unless_present_any`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(
+        <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
+        <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present_any`&quot;</span>
+    )]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_any</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
+    <span class="kw">where</span>
+        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
+        <span class="ident">T</span>: <span class="ident">Key</span>,
+    {
+        <span class="self">self</span>.<span class="ident">required_unless_present_any</span>(<span class="ident">names</span>)
     }
 
     <span class="doccomment">/// Sets a conflicting argument by name. I.e. when using this argument,</span>
@@ -6851,6 +7022,12 @@
         <span class="self">self</span>
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::required_if_eq`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_if_eq`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_if</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">required_if_eq</span>(<span class="ident">arg_id</span>, <span class="ident">val</span>)
+    }
+
     <span class="doccomment">/// Allows specifying that this argument is [required] based on multiple conditions. The</span>
     <span class="doccomment">/// conditions are set up in a `(arg, val)` style tuple. The requirement will only become valid</span>
     <span class="doccomment">/// if one of the specified `arg`&#39;s value equals its corresponding `val`.</span>
@@ -6935,6 +7112,12 @@
         <span class="self">self</span>.<span class="ident">r_ifs</span>
             .<span class="ident">extend</span>(<span class="ident">ifs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">id</span>, <span class="ident">val</span>)<span class="op">|</span> (<span class="ident">Id::from_ref</span>(<span class="ident">id</span>), <span class="kw-2">*</span><span class="ident">val</span>)));
         <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::required_if_eq_any`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_if_eq_any`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_ifs</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>)]) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">required_if_eq_any</span>(<span class="ident">ifs</span>)
     }
 
     <span class="doccomment">/// Allows specifying that this argument is [required] based on multiple conditions. The</span>
@@ -7599,6 +7782,7 @@
     <span class="doccomment">/// automatically via [`RegexRef`]&#39;s `Into` implementation.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **NOTE:** If using YAML then a single vector with two entries should be provided:</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```yaml</span>
     <span class="doccomment">/// validator_regex: [remove-all-files, needs the exact phrase &#39;remove-all-files&#39; to continue]</span>
     <span class="doccomment">/// ```</span>
@@ -7609,7 +7793,9 @@
     <span class="doccomment">/// provided regular expression.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// You can use the classical `&quot;\d+&quot;` regular expression to match digits only:</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
     <span class="doccomment">/// # use clap::{App, Arg};</span>
     <span class="doccomment">/// use regex::Regex;</span>
@@ -7626,7 +7812,9 @@
     <span class="doccomment">/// assert!(res.is_ok());</span>
     <span class="doccomment">/// assert_eq!(res.unwrap().value_of(&quot;digits&quot;), Some(&quot;12345&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// However, any valid `Regex` can be used:</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
     <span class="doccomment">/// # use clap::{App, Arg, ErrorKind};</span>
     <span class="doccomment">/// use regex::Regex;</span>
@@ -9521,6 +9709,12 @@
         }
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::forbid_empty_values`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::forbid_empty_values`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">empty_values</span>(<span class="self">self</span>, <span class="ident">empty</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">forbid_empty_values</span>(<span class="op">!</span><span class="ident">empty</span>)
+    }
+
     <span class="doccomment">/// Specifies that the argument may have an unknown number of multiple values. Without any other</span>
     <span class="doccomment">/// settings, this argument may appear only *once*.</span>
     <span class="doccomment">///</span>
@@ -9760,6 +9954,16 @@
         }
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::multiple_occurrences`] (most likely what you want) and</span>
+    <span class="doccomment">/// [`Arg::multiple_values`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(
+        <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
+        <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Split into `Arg::multiple_occurrences` (most likely what you want)  and `Arg::multiple_values`&quot;</span>
+    )]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">multiple</span>(<span class="self">self</span>, <span class="ident">multi</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">multiple_occurrences</span>(<span class="ident">multi</span>).<span class="ident">multiple_values</span>(<span class="ident">multi</span>)
+    }
+
     <span class="doccomment">/// Indicates that all parameters passed after this should not be parsed</span>
     <span class="doccomment">/// individually, but rather passed in their entirety. It is worth noting</span>
     <span class="doccomment">/// that setting this requires all values to come after a `--` to indicate they</span>
@@ -9981,6 +10185,12 @@
         <span class="self">self</span>
     }
 
+    <span class="doccomment">/// Deprecated, see [`Arg::setting`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::setting`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set</span>(<span class="self">self</span>, <span class="ident">s</span>: <span class="ident">ArgSettings</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">s</span>)
+    }
+
     <span class="doccomment">/// Disables a single setting for the current (this `Arg` instance) argument.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See [`ArgSettings`] for a full list of possibilities and examples.</span>
@@ -10008,6 +10218,12 @@
     {
         <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">remove</span>(<span class="ident">setting</span>.<span class="ident">into</span>());
         <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Deprecated, see [`Arg::unset_setting`]</span>
+    <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::unset_setting`&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset</span>(<span class="self">self</span>, <span class="ident">s</span>: <span class="ident">ArgSettings</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">unset_setting</span>(<span class="ident">s</span>)
     }
 
     <span class="doccomment">/// Set a custom heading for this arg to be printed under</span>

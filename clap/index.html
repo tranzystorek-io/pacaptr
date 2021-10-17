@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="clap"><meta name="keywords" content="rust, rustlang, rust-lang, clap"><title>clap - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a><h2 class="location">Crate clap</h2><div class="block version"><div class="narrow-helper"></div><p>Version 3.0.0-beta.4</p></div><div class="sidebar-elems"><a id="all-types" href="all.html"><p>See all clap's items</p></a><div class="block items"><ul><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><div id="sidebar-vars" data-name="clap" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">clap</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/clap/lib.rs.html#6-66" title="goto source code">[src]</a></span></h1><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><!-- omit in TOC -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="clap"><meta name="keywords" content="rust, rustlang, rust-lang, clap"><title>clap - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a><h2 class="location">Crate clap</h2><div class="block version"><div class="narrow-helper"></div><p>Version 3.0.0-beta.5</p></div><div class="sidebar-elems"><a id="all-types" href="all.html"><p>See all clap's items</p></a><div class="block items"><ul><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><div id="sidebar-vars" data-name="clap" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">clap</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/clap/lib.rs.html#6-85" title="goto source code">[src]</a></span></h1><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><!-- omit in TOC -->
 <h2 id="clap" class="section-header"><a href="#clap">clap</a></h2>
 <p><a href="https://crates.io/crates/clap"><img src="https://img.shields.io/crates/v/clap?style=flat-square" alt="Crates.io" /></a>
 <a href="https://crates.io/crates/clap"><img src="https://img.shields.io/crates/d/clap?style=flat-square" alt="Crates.io" /></a>
@@ -14,7 +14,7 @@
 <li><a href="https://github.com/clap-rs/clap/discussions">Questions &amp; Discussions</a></li>
 <li><a href="https://clap.rs/">Website</a></li>
 </ul>
-<p>We are currently hard at work trying to release <code>3.0</code>. We have a <code>3.0.0-beta.4</code> prerelease out but we do not give any guarantees that its API is stable. We do not have a changelog yet which will be written down after we are sure about the API stability. We recommend users to not update to the prerelease version yet and to wait for the official <code>3.0</code>.</p>
+<p>We are currently hard at work trying to release <code>3.0</code>. We have a <code>3.0.0-beta.5</code> prerelease out but we do not give any guarantees that its API is stable. We do not have a changelog yet which will be written down after we are sure about the API stability. We recommend users to not update to the prerelease version yet and to wait for the official <code>3.0</code>.</p>
 <blockquote>
 <p>If you’re looking for the readme &amp; examples for <code>clap v2.33</code> - find it on <a href="https://github.com/clap-rs/clap/tree/v2.33.0">github</a>, <a href="https://crates.io/crates/clap/2.33.0">crates.io</a>, <a href="https://docs.rs/clap/2.33.0/clap/">docs.rs</a>.</p>
 </blockquote>
@@ -27,7 +27,6 @@
 <li><a href="#using-derive-macros">Using Derive Macros</a></li>
 <li><a href="#using-builder-pattern">Using Builder Pattern</a></li>
 <li><a href="#using-yaml">Using YAML</a></li>
-<li><a href="#using-macros">Using Macros</a></li>
 <li><a href="#running-it">Running it</a></li>
 </ol>
 </li>
@@ -159,7 +158,7 @@
 <p><strong>NOTE:</strong> All of these examples are functionally the same, but show different styles in which to use <code>clap</code>. These different styles are purely a matter of personal preference.</p>
 <p>Add <code>clap</code> to your <code>Cargo.toml</code></p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = &quot;3.0.0-beta.4&quot;</code></pre></div><h5 id="using-derive-macros" class="section-header"><a href="#using-derive-macros">Using Derive Macros</a></h5>
+clap = &quot;3.0.0-beta.5&quot;</code></pre></div><h5 id="using-derive-macros" class="section-header"><a href="#using-derive-macros">Using Derive Macros</a></h5>
 <p>The first example shows the simplest way to use <code>clap</code>, by defining a struct. If you’re familiar with the <code>structopt</code> crate you’re in luck, it’s the same! (In fact it’s the exact same code running under the covers!)</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="comment">// (Full example with detailed comments in examples/01d_quick_example.rs)</span>
@@ -360,7 +359,7 @@ subcommands:
 <p>Since this feature requires additional dependencies that not everyone may want, it is <em>not</em> compiled in by default and we need to enable a feature flag in Cargo.toml:</p>
 <p>Simply add the <code>yaml</code> feature flag to your <code>Cargo.toml</code>.</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = { version = &quot;3.0.0-beta.4&quot;, features = [&quot;yaml&quot;] }</code></pre></div>
+clap = { version = &quot;3.0.0-beta.5&quot;, features = [&quot;yaml&quot;] }</code></pre></div>
 <p>Finally we create our <code>main.rs</code> file just like we would have with the previous two examples:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="comment">// (Full example with detailed comments in examples/17_yaml.rs)</span>
@@ -419,7 +418,7 @@ SUBCOMMANDS:
 <h3 id="usage" class="section-header"><a href="#usage">Usage</a></h3>
 <p>For full usage, add <code>clap</code> as a dependency in your <code>Cargo.toml</code> to use from crates.io:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = &quot;3.0.0-beta.4&quot;</code></pre></div>
+clap = &quot;3.0.0-beta.5&quot;</code></pre></div>
 <p>Define a list of valid arguments for your program (see the <a href="https://docs.rs/clap">documentation</a> or <a href="https://github.com/clap-rs/clap/tree/master/examples">examples</a> directory of this repo)</p>
 <p>Then run <code>cargo build</code> or <code>cargo update &amp;&amp; cargo build</code> for your project.</p>
 <h4 id="optional-dependencies--features" class="section-header"><a href="#optional-dependencies--features">Optional Dependencies / Features</a></h4>
@@ -436,12 +435,12 @@ clap = &quot;3.0.0-beta.4&quot;</code></pre></div>
 </ul>
 <p>To disable these, add this to your <code>Cargo.toml</code>:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
-version = &quot;3.0.0-beta.4&quot;
+version = &quot;3.0.0-beta.5&quot;
 default-features = false
 features = [&quot;std&quot;]</code></pre></div>
 <p>You can also selectively enable only the features you’d like to include, by adding:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies.clap]
-version = &quot;3.0.0-beta.4&quot;
+version = &quot;3.0.0-beta.5&quot;
 default-features = false
 
 features = [&quot;std&quot;, &quot;suggestions&quot;, &quot;color&quot;]</code></pre></div><h5 id="opt-in-features" class="section-header"><a href="#opt-in-features">Opt-in features</a></h5>
@@ -454,6 +453,7 @@ features = [&quot;std&quot;, &quot;suggestions&quot;, &quot;color&quot;]</code><
 <p>These features are opt-in. But be wary that they can contain breaking changes between minor releases.</p>
 <ul>
 <li><strong>unstable-replace</strong>: Enable <a href="https://github.com/clap-rs/clap/issues/2836"><code>App::replace</code></a></li>
+<li><strong>unstable-multicall</strong>: Enable <a href="https://github.com/clap-rs/clap/issues/2861"><code>AppSettings::Multicall</code></a></li>
 </ul>
 <h4 id="more-information" class="section-header"><a href="#more-information">More Information</a></h4>
 <p>You can find complete documentation on the <a href="https://docs.rs/clap">docs.rs</a> for this project.</p>
@@ -477,7 +477,7 @@ features = [&quot;std&quot;, &quot;suggestions&quot;, &quot;color&quot;]</code><
 <p><code>clap</code> will pin the minimum required version of Rust to the CI builds. Bumping the minimum version of Rust is considered a minor breaking change, meaning <em>at a minimum</em> the minor version of <code>clap</code> will be bumped.</p>
 <p>In order to keep from being surprised of breaking changes, it is <strong>highly</strong> recommended to use the <code>~major.minor.patch</code> style in your <code>Cargo.toml</code> only if you wish to target a version of Rust that is <em>older</em> than current stable minus two releases:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
-clap = &quot;~3.0.0-beta.4&quot;</code></pre></div>
+clap = &quot;~3.0.0-beta.5&quot;</code></pre></div>
 <p>This will cause <em>only</em> the patch version to be updated upon a <code>cargo update</code> call, and therefore cannot break due to new features, or bumped minimum versions of Rust.</p>
 <h5 id="minimum-supported-version-of-rust-msrv" class="section-header"><a href="#minimum-supported-version-of-rust-msrv">Minimum Supported Version of Rust (MSRV)</a></h5>
 <p>The following is a list of the minimum required version of Rust to compile <code>clap</code> by our <code>MAJOR.MINOR</code> version number:</p>
@@ -521,6 +521,10 @@ returned.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.crate_name.html" title="clap::crate_name macro">crate_name</a></div><div class="item-right docblock-short"><p>Allows you to pull the name from your Cargo.toml at compile time.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.crate_version.html" title="clap::crate_version macro">crate_version</a></div><div class="item-right docblock-short"><p>Allows you to pull the version from your Cargo.toml at compile time as
 <code>MAJOR.MINOR.PATCH_PKGVERSION_PRE</code></p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.value_t.html" title="clap::value_t macro">value_t</a><span class="stab deprecated" title="">Deprecated</span></div><div class="item-right docblock-short"><p>Deprecated, see [<code>ArgMatches::value_of_t</code>]</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.value_t_or_exit.html" title="clap::value_t_or_exit macro">value_t_or_exit</a><span class="stab deprecated" title="">Deprecated</span></div><div class="item-right docblock-short"><p>Deprecated, see [<code>ArgMatches::value_of_t_or_exit</code>]</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.values_t.html" title="clap::values_t macro">values_t</a><span class="stab deprecated" title="">Deprecated</span></div><div class="item-right docblock-short"><p>Deprecated, see [<code>ArgMatches::values_of_t</code>]</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.values_t_or_exit.html" title="clap::values_t_or_exit macro">values_t_or_exit</a><span class="stab deprecated" title="">Deprecated</span></div><div class="item-right docblock-short"><p>Deprecated, see [<code>ArgMatches::values_of_t_or_exit</code>]</p>
 </div></div></div><h2 id="structs" class="section-header"><a href="#structs">Structs</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.App.html" title="clap::App struct">App</a></div><div class="item-right docblock-short"><p>Represents a command line interface which is made up of all possible
 command line arguments and subcommands. Interface arguments and settings are
@@ -544,6 +548,7 @@ method.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.OsValues.html" title="clap::OsValues struct">OsValues</a></div><div class="item-right docblock-short"><p>An iterator for getting multiple values out of an argument via the [<code>ArgMatches::values_of_os</code>]
 method. Usage of this iterator allows values which contain invalid UTF-8 code points unlike
 <a href="struct.Values.html" title="Values"><code>Values</code></a>.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.SubCommand.html" title="clap::SubCommand struct">SubCommand</a></div><div class="item-right docblock-short"><p>Deprecated, see <a href="struct.App.html" title="App"><code>App</code></a></p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Values.html" title="clap::Values struct">Values</a></div><div class="item-right docblock-short"><p>An iterator for getting multiple values out of an argument via the <a href="struct.ArgMatches.html#method.values_of"><code>ArgMatches::values_of</code></a>
 method.</p>
 </div></div></div><h2 id="enums" class="section-header"><a href="#enums">Enums</a></h2>
