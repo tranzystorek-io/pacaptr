@@ -1067,7 +1067,7 @@ possible values.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.possible_value" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#2098-2104" title="goto source code">[src]</a></div><a href="#method.possible_value" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.possible_value" class="fnname">possible_value</a>&lt;T&gt;(self, value: T) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="struct.ArgValue.html" title="struct clap::ArgValue">ArgValue</a>&lt;'help&gt;&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Specifies a possible value for this argument, one at a time. At runtime, <code>clap</code> verifies
 that only one of the specified values was used, or fails with error message.</p>
 <p><strong>NOTE:</strong> This setting only applies to <a href="struct.Arg.html#method.takes_value">options</a> and <a href="struct.Arg.html#method.index">positional arguments</a></p>
-<p><strong>NOTE:</strong> You can use both strings directly or use <a href="struct.ArgValue.html" title="ArgValue"><code>ArgValue</code></a> if you want more controll
+<p><strong>NOTE:</strong> You can use both strings directly or use <a href="struct.ArgValue.html" title="ArgValue"><code>ArgValue</code></a> if you want more control
 over single possible values.</p>
 <h5 id="examples-36" class="section-header"><a href="#examples-36">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">Arg::new</span>(<span class="string">&quot;mode&quot;</span>)
@@ -2037,7 +2037,7 @@ where the user <em>uses</em> the global argument.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">Arg::new</span>(<span class="string">&quot;debug&quot;</span>)
     .<span class="ident">short</span>(<span class="string">&#39;d&#39;</span>)
     .<span class="ident">global</span>(<span class="bool-val">true</span>)</code></pre></div>
-<p>For example, assume an appliction with two subcommands, and you’d like to define a
+<p>For example, assume an application with two subcommands, and you’d like to define a
 <code>--verbose</code> flag that can be called on any of the subcommands and parent, but you don’t
 want to clutter the source with three duplicate <a href="struct.Arg.html" title="Arg"><code>Arg</code></a> definitions.</p>
 

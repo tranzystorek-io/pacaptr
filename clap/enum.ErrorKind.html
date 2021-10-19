@@ -80,7 +80,7 @@ values.</p>
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--color=&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
 <span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::EmptyValue</span>);</code></pre></div>
-</div><div id="variant.NoEquals" class="variant small-section-header"><a href="#variant.NoEquals" class="anchor field"></a><code>NoEquals</code></div><div class="docblock"><p>Occurs when the user doesn’t use equals for an option that requres equal
+</div><div id="variant.NoEquals" class="variant small-section-header"><a href="#variant.NoEquals" class="anchor field"></a><code>NoEquals</code></div><div class="docblock"><p>Occurs when the user doesn’t use equals for an option that requires equal
 sign to provide values.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)

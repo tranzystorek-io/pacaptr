@@ -304,8 +304,8 @@ in an <code>ArgMatches</code> struct for querying.</p>
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-f&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1    ^2    ^3</span>
-            <span class="comment">// clap idices:          ^1          ^3</span>
+           <span class="comment">// ARGV indices: ^0       ^1    ^2    ^3</span>
+           <span class="comment">// clap indices:          ^1          ^3</span>
 
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">1</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;option&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">3</span>));</code></pre></div>
@@ -318,8 +318,8 @@ in an <code>ArgMatches</code> struct for querying.</p>
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-f&quot;</span>, <span class="string">&quot;-o=val&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1    ^2</span>
-            <span class="comment">// clap idices:          ^1       ^3</span>
+           <span class="comment">// ARGV indices: ^0       ^1    ^2</span>
+           <span class="comment">// clap indices:          ^1       ^3</span>
 
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">1</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;option&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">3</span>));</code></pre></div>
@@ -337,11 +337,11 @@ flags. Let’s also throw in the final option style for good measure.</p>
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-fzF&quot;</span>, <span class="string">&quot;-oval&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0      ^1       ^2</span>
-            <span class="comment">// clap idices:         ^1,2,3    ^5</span>
-            <span class="comment">//</span>
-            <span class="comment">// clap sees the above as &#39;myapp -f -z -F -o val&#39;</span>
-            <span class="comment">//                         ^0    ^1 ^2 ^3 ^4 ^5</span>
+           <span class="comment">// ARGV indices: ^0      ^1       ^2</span>
+           <span class="comment">// clap indices:         ^1,2,3    ^5</span>
+           <span class="comment">//</span>
+           <span class="comment">// clap sees the above as &#39;myapp -f -z -F -o val&#39;</span>
+           <span class="comment">//                         ^0    ^1 ^2 ^3 ^4 ^5</span>
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">1</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag2&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">3</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag3&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">2</span>));
@@ -359,11 +359,11 @@ flags. Let’s also throw in the final option style for good measure.</p>
         .<span class="ident">short</span>(<span class="string">&#39;o&#39;</span>)
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-fzFoval&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1</span>
-            <span class="comment">// clap idices:          ^1,2,3^5</span>
-            <span class="comment">//</span>
-            <span class="comment">// clap sees the above as &#39;myapp -f -z -F -o val&#39;</span>
-            <span class="comment">//                         ^0    ^1 ^2 ^3 ^4 ^5</span>
+           <span class="comment">// ARGV indices: ^0       ^1</span>
+           <span class="comment">// clap indices:          ^1,2,3^5</span>
+           <span class="comment">//</span>
+           <span class="comment">// clap sees the above as &#39;myapp -f -z -F -o val&#39;</span>
+           <span class="comment">//                         ^0    ^1 ^2 ^3 ^4 ^5</span>
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">1</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag2&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">3</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;flag3&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">2</span>));
@@ -376,11 +376,11 @@ flags. Let’s also throw in the final option style for good measure.</p>
         .<span class="ident">use_delimiter</span>(<span class="bool-val">true</span>)
         .<span class="ident">multiple_values</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o=val1,val2,val3&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1</span>
-            <span class="comment">// clap idices:             ^2   ^3   ^4</span>
-            <span class="comment">//</span>
-            <span class="comment">// clap sees the above as &#39;myapp -o val1 val2 val3&#39;</span>
-            <span class="comment">//                         ^0    ^1 ^2   ^3   ^4</span>
+           <span class="comment">// ARGV indices: ^0       ^1</span>
+           <span class="comment">// clap indices:             ^2   ^3   ^4</span>
+           <span class="comment">//</span>
+           <span class="comment">// clap sees the above as &#39;myapp -o val1 val2 val3&#39;</span>
+           <span class="comment">//                         ^0    ^1 ^2   ^3   ^4</span>
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">index_of</span>(<span class="string">&quot;option&quot;</span>), <span class="prelude-val">Some</span>(<span class="number">2</span>));
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">indices_of</span>(<span class="string">&quot;option&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span>[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.indices_of" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#808-812" title="goto source code">[src]</a></div><a href="#method.indices_of" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.indices_of" class="fnname">indices_of</a>&lt;T:&nbsp;Key&gt;(&amp;self, id: T) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.Indices.html" title="struct clap::Indices">Indices</a>&lt;'_&gt;&gt;</h4></div></summary><div class="docblock"><p>Gets all indices of the argument in respect to all other arguments. Indices are
@@ -398,11 +398,11 @@ index for <code>val</code> would be recorded. This is by design.</p>
         .<span class="ident">use_delimiter</span>(<span class="bool-val">true</span>)
         .<span class="ident">multiple_values</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o=val1,val2,val3&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1</span>
-            <span class="comment">// clap idices:             ^2   ^3   ^4</span>
-            <span class="comment">//</span>
-            <span class="comment">// clap sees the above as &#39;myapp -o val1 val2 val3&#39;</span>
-            <span class="comment">//                         ^0    ^1 ^2   ^3   ^4</span>
+           <span class="comment">// ARGV indices: ^0       ^1</span>
+           <span class="comment">// clap indices:             ^2   ^3   ^4</span>
+           <span class="comment">//</span>
+           <span class="comment">// clap sees the above as &#39;myapp -o val1 val2 val3&#39;</span>
+           <span class="comment">//                         ^0    ^1 ^2   ^3   ^4</span>
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">indices_of</span>(<span class="string">&quot;option&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span>[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</code></pre></div>
 <p>Another quick example is when flags and options are used together</p>
 
@@ -415,8 +415,8 @@ index for <code>val</code> would be recorded. This is by design.</p>
         .<span class="ident">short</span>(<span class="string">&#39;f&#39;</span>)
         .<span class="ident">multiple_occurrences</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val1&quot;</span>, <span class="string">&quot;-f&quot;</span>, <span class="string">&quot;-o&quot;</span>, <span class="string">&quot;val2&quot;</span>, <span class="string">&quot;-f&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1    ^2      ^3    ^4    ^5      ^6</span>
-            <span class="comment">// clap idices:                ^2      ^3          ^5      ^6</span>
+           <span class="comment">// ARGV indices: ^0       ^1    ^2      ^3    ^4    ^5      ^6</span>
+           <span class="comment">// clap indices:                ^2      ^3          ^5      ^6</span>
 
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">indices_of</span>(<span class="string">&quot;option&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span>[<span class="number">2</span>, <span class="number">5</span>]);
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">indices_of</span>(<span class="string">&quot;flag&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span>[<span class="number">3</span>, <span class="number">6</span>]);</code></pre></div>
@@ -431,11 +431,11 @@ index.</p>
         .<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
         .<span class="ident">multiple_values</span>(<span class="bool-val">true</span>))
     .<span class="ident">get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myapp&quot;</span>, <span class="string">&quot;-o=val1,val2,val3&quot;</span>]);
-            <span class="comment">// ARGV idices: ^0       ^1</span>
-            <span class="comment">// clap idices:             ^2</span>
-            <span class="comment">//</span>
-            <span class="comment">// clap sees the above as &#39;myapp -o &quot;val1,val2,val3&quot;&#39;</span>
-            <span class="comment">//                         ^0    ^1  ^2</span>
+           <span class="comment">// ARGV indices: ^0       ^1</span>
+           <span class="comment">// clap indices:             ^2</span>
+           <span class="comment">//</span>
+           <span class="comment">// clap sees the above as &#39;myapp -o &quot;val1,val2,val3&quot;&#39;</span>
+           <span class="comment">//                         ^0    ^1  ^2</span>
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">indices_of</span>(<span class="string">&quot;option&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span>[<span class="number">2</span>]);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.subcommand_matches" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/parse/matches/arg_matches.rs.html#845-852" title="goto source code">[src]</a></div><a href="#method.subcommand_matches" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.subcommand_matches" class="fnname">subcommand_matches</a>&lt;T:&nbsp;Key&gt;(&amp;self, id: T) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.ArgMatches.html" title="struct clap::ArgMatches">ArgMatches</a>&gt;</h4></div></summary><div class="docblock"><p>Because <a href="trait.Subcommand.html"><code>Subcommand</code></a>s are essentially “sub-<a href="struct.App.html"><code>App</code></a>s” they have their own <a href="struct.ArgMatches.html" title="ArgMatches"><code>ArgMatches</code></a>
 as well. This method returns the <a href="struct.ArgMatches.html" title="ArgMatches"><code>ArgMatches</code></a> for a particular subcommand or <code>None</code> if
