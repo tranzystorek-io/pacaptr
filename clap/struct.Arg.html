@@ -1430,7 +1430,7 @@ still return <code>true</code>. If you wish to determine whether the argument wa
 not, consider <a href="struct.ArgMatches.html#method.occurrences_of"><code>ArgMatches::occurrences_of</code></a> which will return <code>0</code> if the argument was <em>not</em>
 used at runtime.</p>
 <p><strong>NOTE:</strong> This setting is perfectly compatible with <a href="struct.Arg.html#method.default_value_if"><code>Arg::default_value_if</code></a> but slightly
-different. <code>Arg::default_value</code> <em>only</em> takes affect when the user has not provided this arg
+different. <code>Arg::default_value</code> <em>only</em> takes effect when the user has not provided this arg
 at runtime. <code>Arg::default_value_if</code> however only takes effect when the user has not provided
 a value at runtime <strong>and</strong> these other conditions are met as well. If you have set
 <code>Arg::default_value</code> and <code>Arg::default_value_if</code>, and the user <strong>did not</strong> provide this arg
@@ -1540,8 +1540,8 @@ only using <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsSt
 <code>None</code>, <code>arg</code> only needs to be present. If <code>val</code> is set to <code>&quot;some-val&quot;</code> then <code>arg</code> must be
 present at runtime <strong>and</strong> have the value <code>val</code>.</p>
 <p><strong>NOTE:</strong> This setting is perfectly compatible with <a href="struct.Arg.html#method.default_value"><code>Arg::default_value</code></a> but slightly
-different. <code>Arg::default_value</code> <em>only</em> takes affect when the user has not provided this arg
-at runtime. This setting however only takes affect when the user has not provided a value at
+different. <code>Arg::default_value</code> <em>only</em> takes effect when the user has not provided this arg
+at runtime. This setting however only takes effect when the user has not provided a value at
 runtime <strong>and</strong> these other conditions are met as well. If you have set <code>Arg::default_value</code>
 and <code>Arg::default_value_if</code>, and the user <strong>did not</strong> provide this arg at runtime, nor were
 the conditions met for <code>Arg::default_value_if</code>, the <code>Arg::default_value</code> will be applied.</p>
@@ -1846,7 +1846,7 @@ the <code>--</code> syntax is otherwise not possible.</p>
 <code>ARG</code> is marked as <code>.last(true)</code>.</p>
 <p><strong>NOTE:</strong> This setting will imply <a href="enum.AppSettings.html#variant.DontCollapseArgsInUsage" title="crate::AppSettings::DontCollapseArgsInUsage"><code>crate::AppSettings::DontCollapseArgsInUsage</code></a> because failing
 to set this can make the usage string very confusing.</p>
-<p><strong>NOTE</strong>: This setting only applies to positional arguments, and has no affect on OPTIONS</p>
+<p><strong>NOTE</strong>: This setting only applies to positional arguments, and has no effect on OPTIONS</p>
 <p><strong>NOTE:</strong> Setting this requires <a href="enum.ArgSettings.html#variant.TakesValue" title="crate::ArgSettings::TakesValue"><code>crate::ArgSettings::TakesValue</code></a></p>
 <p><strong>CAUTION:</strong> Using this setting <em>and</em> having child subcommands is not
 recommended with the exception of <em>also</em> using <a href="enum.AppSettings.html#variant.ArgsNegateSubcommands" title="crate::AppSettings::ArgsNegateSubcommands"><code>crate::AppSettings::ArgsNegateSubcommands</code></a>
