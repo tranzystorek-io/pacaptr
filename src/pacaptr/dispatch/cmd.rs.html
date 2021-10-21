@@ -467,11 +467,7 @@
 <span id="467">467</span>
 <span id="468">468</span>
 <span id="469">469</span>
-<span id="470">470</span>
-<span id="471">471</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Definitions for command line argument mapping and dispatching.</span>
-
-<span class="kw">use</span> <span class="ident">std::iter::FromIterator</span>;
 
 <span class="kw">use</span> <span class="ident">clap</span>::{<span class="self">self</span>, <span class="ident">AppSettings</span>, <span class="ident">Parser</span>};
 <span class="kw">use</span> <span class="ident">itertools::Itertools</span>;
@@ -734,8 +730,8 @@
 
         <span class="kw">let</span> <span class="ident">pm</span> <span class="op">=</span> <span class="ident">cfg</span>.<span class="ident">conv</span>::<span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Pm</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
-        <span class="kw">let</span> <span class="ident">kws</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">keywords</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">str</span>).<span class="ident">collect_vec</span>();
-        <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">extra_flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">str</span>).<span class="ident">collect_vec</span>();
+        <span class="kw">let</span> <span class="ident">kws</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">keywords</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">collect_vec</span>();
+        <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">extra_flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">collect_vec</span>();
 
         <span class="comment">// Call the method indicated by `options` on `pm`. That is:</span>
         <span class="comment">// ```rust</span>
