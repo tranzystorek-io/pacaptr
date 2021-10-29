@@ -1778,7 +1778,7 @@
     <span class="doccomment">/// assert_eq!(stream.next().await, None);</span>
     <span class="doccomment">/// # });</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Next</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Next</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -2309,7 +2309,7 @@
     <span class="doccomment">/// ```</span>
     <span class="kw">fn</span> <span class="ident">scan</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">B</span>, <span class="ident">Fut</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">initial_state</span>: <span class="ident">S</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">Scan</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">S</span>, <span class="ident">Fut</span>, <span class="ident">F</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">S</span>, <span class="ident"><span class="self">Self</span>::Item</span>) -&gt; <span class="ident">Fut</span>,
+        <span class="ident">F</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">S</span>, <span class="ident"><span class="self">Self</span>::Item</span>) -&gt; <span class="ident">Fut</span>,
         <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="self">Self</span>: <span class="ident">Sized</span>,
     {
@@ -2641,7 +2641,7 @@
     <span class="doccomment">/// assert_eq!(sum, 7);</span>
     <span class="doccomment">/// # });</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">by_ref</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">by_ref</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>
     }
 
@@ -2998,7 +2998,7 @@
 
     <span class="doccomment">/// A convenience method for calling [`Stream::poll_next`] on [`Unpin`]</span>
     <span class="doccomment">/// stream types.</span>
-    <span class="kw">fn</span> <span class="ident">poll_next_unpin</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">poll_next_unpin</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -3053,7 +3053,7 @@
     <span class="doccomment">/// assert_eq!(total, 6);</span>
     <span class="doccomment">/// # });</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">select_next_some</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">SelectNextSome</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">select_next_some</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">SelectNextSome</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span> <span class="op">+</span> <span class="ident">FusedStream</span>,
     {

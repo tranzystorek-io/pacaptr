@@ -320,7 +320,7 @@
 <span class="attribute">#[<span class="ident">target_feature</span>(<span class="ident">enable</span> <span class="op">=</span> <span class="string">&quot;sse2&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">loadu128</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">at</span>: <span class="ident">usize</span>) -&gt; <span class="ident">__m128i</span> {
     <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">slice</span>.<span class="ident">get_unchecked</span>(<span class="ident">at</span>..).<span class="ident">as_ptr</span>();
-    <span class="ident">_mm_loadu_si128</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">__m128i</span>)
+    <span class="ident">_mm_loadu_si128</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">__m128i</span>)
 }
 
 <span class="doccomment">/// Load a 256-bit vector from slice at the given position. The slice does</span>
@@ -334,7 +334,7 @@
 <span class="attribute">#[<span class="ident">target_feature</span>(<span class="ident">enable</span> <span class="op">=</span> <span class="string">&quot;avx2&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">loadu256</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">at</span>: <span class="ident">usize</span>) -&gt; <span class="ident">__m256i</span> {
     <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">slice</span>.<span class="ident">get_unchecked</span>(<span class="ident">at</span>..).<span class="ident">as_ptr</span>();
-    <span class="ident">_mm256_loadu_si256</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">__m256i</span>)
+    <span class="ident">_mm256_loadu_si256</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">__m256i</span>)
 }
 
 <span class="doccomment">/// Returns a 128-bit vector with all bits set to 0.</span>

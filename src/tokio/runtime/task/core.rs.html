@@ -396,7 +396,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Future</span><span class="op">&gt;</span> <span class="ident">CoreStage</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">with_mut</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">Stage</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">R</span>) -&gt; <span class="ident">R</span> {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">with_mut</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">*mut</span> <span class="ident">Stage</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">R</span>) -&gt; <span class="ident">R</span> {
         <span class="self">self</span>.<span class="ident">stage</span>.<span class="ident">with_mut</span>(<span class="ident">f</span>)
     }
 
@@ -417,7 +417,7 @@
         <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> {
             <span class="self">self</span>.<span class="ident">stage</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> {
                 <span class="comment">// Safety: The caller ensures mutual exclusion to the field.</span>
-                <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span> } {
+                <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ptr</span> } {
                     <span class="ident">Stage::Running</span>(<span class="ident">future</span>) =&gt; <span class="ident">future</span>,
                     <span class="kw">_</span> =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;unexpected stage&quot;</span>),
                 };
@@ -425,7 +425,7 @@
                 <span class="comment">// Safety: The caller ensures the future is pinned.</span>
                 <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">Pin::new_unchecked</span>(<span class="ident">future</span>) };
 
-                <span class="ident">future</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cx</span>)
+                <span class="ident">future</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;mut</span> <span class="ident">cx</span>)
             })
         };
 
@@ -470,7 +470,7 @@
 
         <span class="self">self</span>.<span class="ident">stage</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> {
             <span class="comment">// Safety:: the caller ensures mutual exclusion to the field.</span>
-            <span class="kw">match</span> <span class="ident">mem::replace</span>(<span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span> }, <span class="ident">Stage::Consumed</span>) {
+            <span class="kw">match</span> <span class="ident">mem::replace</span>(<span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ptr</span> }, <span class="ident">Stage::Consumed</span>) {
                 <span class="ident">Stage::Finished</span>(<span class="ident">output</span>) =&gt; <span class="ident">output</span>,
                 <span class="kw">_</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;JoinHandle polled after completion&quot;</span>),
             }
@@ -530,7 +530,7 @@
 <span class="kw">fn</span> <span class="ident">header_lte_cache_line</span>() {
     <span class="kw">use</span> <span class="ident">std::mem::size_of</span>;
 
-    <span class="macro">assert!</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">Header</span><span class="op">&gt;</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="number">8</span> <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="kw-2">*</span><span class="kw">const</span> ()<span class="op">&gt;</span>());
+    <span class="macro">assert!</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">Header</span><span class="op">&gt;</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="number">8</span> <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> ()<span class="op">&gt;</span>());
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="tokio" data-search-index-js="../../../../search-index.js" data-search-js="../../../../search.js"></div>

@@ -6119,7 +6119,7 @@ This module provides a regular expression parser.
     <span class="doccomment">/// depth of `1`. In general, a nest limit is not something that manifests</span>
     <span class="doccomment">/// in an obvious way in the concrete syntax, therefore, it should not be</span>
     <span class="doccomment">/// used in a granular way.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nest_limit</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">limit</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ParserBuilder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nest_limit</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">limit</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">ParserBuilder</span> {
         <span class="self">self</span>.<span class="ident">nest_limit</span> <span class="op">=</span> <span class="ident">limit</span>;
         <span class="self">self</span>
     }
@@ -6139,7 +6139,7 @@ This module provides a regular expression parser.
     <span class="doccomment">/// message will explicitly mention that backreferences aren&#39;t supported.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Octal syntax is disabled by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">octal</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ParserBuilder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">octal</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">ParserBuilder</span> {
         <span class="self">self</span>.<span class="ident">octal</span> <span class="op">=</span> <span class="ident">yes</span>;
         <span class="self">self</span>
     }
@@ -6152,7 +6152,7 @@ This module provides a regular expression parser.
     <span class="doccomment">///</span>
     <span class="doccomment">/// By default, this is disabled. It may be selectively enabled in the</span>
     <span class="doccomment">/// regular expression by using the `x` flag regardless of this setting.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_whitespace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ParserBuilder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_whitespace</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">ParserBuilder</span> {
         <span class="self">self</span>.<span class="ident">ignore_whitespace</span> <span class="op">=</span> <span class="ident">yes</span>;
         <span class="self">self</span>
     }
@@ -6278,14 +6278,14 @@ This module provides a regular expression parser.
     }
 
     <span class="doccomment">/// Parse the regular expression into an abstract syntax tree.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pattern</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Ast</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pattern</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Ast</span><span class="op">&gt;</span> {
         <span class="ident">ParserI::new</span>(<span class="self">self</span>, <span class="ident">pattern</span>).<span class="ident">parse</span>()
     }
 
     <span class="doccomment">/// Parse the regular expression and return an abstract syntax tree with</span>
     <span class="doccomment">/// all of the comments found in the pattern.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_with_comments</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">pattern</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ast::WithComments</span><span class="op">&gt;</span> {
         <span class="ident">ParserI::new</span>(<span class="self">self</span>, <span class="ident">pattern</span>).<span class="ident">parse_with_comments</span>()
@@ -6603,7 +6603,7 @@ This module provides a regular expression parser.
         <span class="kw">use</span> <span class="ident"><span class="self">self</span>::GroupState</span>::<span class="kw-2">*</span>;
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stack</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">stack_group</span>.<span class="ident">borrow_mut</span>();
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Alternation</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">alts</span>)) <span class="op">=</span> <span class="ident">stack</span>.<span class="ident">last_mut</span>() {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;mut</span> <span class="ident">Alternation</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">alts</span>)) <span class="op">=</span> <span class="ident">stack</span>.<span class="ident">last_mut</span>() {
             <span class="ident">alts</span>.<span class="ident">asts</span>.<span class="ident">push</span>(<span class="ident">concat</span>.<span class="ident">into_ast</span>());
             <span class="kw">return</span>;
         }
@@ -6956,7 +6956,7 @@ This module provides a regular expression parser.
         <span class="prelude-val">Ok</span>(<span class="ident">ast::WithComments</span> {
             <span class="ident">ast</span>: <span class="ident">ast</span>,
             <span class="ident">comments</span>: <span class="ident">mem::replace</span>(
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">comments</span>.<span class="ident">borrow_mut</span>(),
+                <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">parser</span>().<span class="ident">comments</span>.<span class="ident">borrow_mut</span>(),
                 <span class="macro">vec!</span>[],
             ),
         })
@@ -8098,7 +8098,7 @@ This module provides a regular expression parser.
         <span class="ident">ast::visit</span>(<span class="ident">ast</span>, <span class="self">self</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">increment_depth</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">span</span>: <span class="kw-2">&amp;</span><span class="ident">Span</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">increment_depth</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">span</span>: <span class="kw-2">&amp;</span><span class="ident">Span</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">new</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">depth</span>.<span class="ident">checked_add</span>(<span class="number">1</span>).<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="self">self</span>.<span class="ident">p</span>.<span class="ident">error</span>(
                 <span class="ident">span</span>.<span class="ident">clone</span>(),
@@ -8116,7 +8116,7 @@ This module provides a regular expression parser.
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">decrement_depth</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">decrement_depth</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// Assuming the correctness of the visitor, this should never drop</span>
         <span class="comment">// below 0.</span>
         <span class="self">self</span>.<span class="ident">depth</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">depth</span>.<span class="ident">checked_sub</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
@@ -8131,7 +8131,7 @@ This module provides a regular expression parser.
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">visit_pre</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">Ast</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">visit_pre</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">Ast</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ast</span> {
             <span class="ident">Ast::Empty</span>(<span class="kw">_</span>)
             <span class="op">|</span> <span class="ident">Ast::Flags</span>(<span class="kw">_</span>)
@@ -8152,7 +8152,7 @@ This module provides a regular expression parser.
         <span class="self">self</span>.<span class="ident">increment_depth</span>(<span class="ident">span</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">visit_post</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">Ast</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">visit_post</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">Ast</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ast</span> {
             <span class="ident">Ast::Empty</span>(<span class="kw">_</span>)
             <span class="op">|</span> <span class="ident">Ast::Flags</span>(<span class="kw">_</span>)
@@ -8176,7 +8176,7 @@ This module provides a regular expression parser.
     }
 
     <span class="kw">fn</span> <span class="ident">visit_class_set_item_pre</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">ast::ClassSetItem</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ast</span> {
@@ -8196,7 +8196,7 @@ This module provides a regular expression parser.
     }
 
     <span class="kw">fn</span> <span class="ident">visit_class_set_item_post</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">ast::ClassSetItem</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ast</span> {
@@ -8217,14 +8217,14 @@ This module provides a regular expression parser.
     }
 
     <span class="kw">fn</span> <span class="ident">visit_class_set_binary_op_pre</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">ast::ClassSetBinaryOp</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">increment_depth</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">span</span>)
     }
 
     <span class="kw">fn</span> <span class="ident">visit_class_set_binary_op_post</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">_ast</span>: <span class="kw-2">&amp;</span><span class="ident">ast::ClassSetBinaryOp</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">decrement_depth</span>();

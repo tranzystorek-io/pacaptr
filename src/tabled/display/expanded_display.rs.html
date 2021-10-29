@@ -237,7 +237,7 @@
     <span class="doccomment">/// Default formating is &quot;-[ RECORD {} ]-&quot;.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// At least one &#39;\n&#39; char will be printed at the end regardless if you set it or not.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header_template</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="kw">fn</span>(<span class="ident">usize</span>) -&gt; <span class="ident">String</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header_template</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="kw">fn</span>(<span class="ident">usize</span>) -&gt; <span class="ident">String</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">format_record_splitter</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">f</span>);
         <span class="self">self</span>
     }
@@ -245,14 +245,14 @@
     <span class="doccomment">/// Sets a value formatter.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This method overrides others formatters like [ExpandedDisplay::truncate] and [ExpandedDisplay::wrap].</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">formatter</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">String</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">formatter</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">String</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">format_value</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box::new</span>(<span class="ident">f</span>));
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Sets max width of value.</span>
     <span class="doccomment">/// The rest will be trunceted.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">truncate</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>, <span class="ident">tail</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">truncate</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>, <span class="ident">tail</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">tail</span> <span class="op">=</span> <span class="ident">tail</span>.<span class="ident">as_ref</span>().<span class="ident">to_string</span>();
         <span class="self">self</span>.<span class="ident">format_value</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">trucated</span> <span class="op">=</span> <span class="ident">truncate</span>(<span class="ident">s</span>, <span class="ident">max</span>);
@@ -267,14 +267,14 @@
 
     <span class="doccomment">/// Sets max width of value,</span>
     <span class="doccomment">/// when limit is reached next chars will be placed on the next line.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">format_value</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">wrap</span>(<span class="ident">s</span>, <span class="ident">max</span>)));
         <span class="self">self</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">std::fmt::Display</span> <span class="kw">for</span> <span class="ident">ExpandedDisplay</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">format_value</span> <span class="op">=</span> <span class="op">|</span><span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">String</span><span class="op">|</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">format_value</span> {
             <span class="prelude-val">Some</span>(<span class="ident">f</span>) =&gt; (<span class="ident">f</span>)(<span class="ident">value</span>),
             <span class="prelude-val">None</span> =&gt; <span class="ident">value</span>.<span class="ident">to_string</span>(),
@@ -345,7 +345,7 @@
 }
 
 <span class="kw">fn</span> <span class="ident">write_header_template</span>(
-    <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+    <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
     <span class="ident">index</span>: <span class="ident">usize</span>,
     <span class="ident">max_field_width</span>: <span class="ident">usize</span>,
     <span class="ident">max_values_length</span>: <span class="ident">usize</span>,
@@ -382,7 +382,7 @@
 }
 
 <span class="kw">fn</span> <span class="ident">write_record_line</span>(
-    <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+    <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
     <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">max_field_width</span>: <span class="ident">usize</span>,

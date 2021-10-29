@@ -346,12 +346,12 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">park</span>();
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="comment">// Only parking with zero is supported...</span>
         <span class="macro">assert_eq!</span>(<span class="ident">duration</span>, <span class="ident">Duration::from_millis</span>(<span class="number">0</span>));
 
@@ -362,7 +362,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">shutdown</span>();
     }
 }
@@ -391,7 +391,7 @@
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">mut</span> <span class="ident">driver</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">driver</span>.<span class="ident">try_lock</span>() {
-            <span class="self">self</span>.<span class="ident">park_driver</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">driver</span>);
+            <span class="self">self</span>.<span class="ident">park_driver</span>(<span class="kw-2">&amp;mut</span> <span class="ident">driver</span>);
         } <span class="kw">else</span> {
             <span class="self">self</span>.<span class="ident">park_condvar</span>();
         }
@@ -437,7 +437,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">park_driver</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">driver</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Driver</span>) {
+    <span class="kw">fn</span> <span class="ident">park_driver</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">driver</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Driver</span>) {
         <span class="kw">match</span> <span class="self">self</span>
             .<span class="ident">state</span>
             .<span class="ident">compare_exchange</span>(<span class="ident">EMPTY</span>, <span class="ident">PARKED_DRIVER</span>, <span class="ident">SeqCst</span>, <span class="ident">SeqCst</span>)

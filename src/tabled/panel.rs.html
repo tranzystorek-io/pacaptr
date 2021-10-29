@@ -54,7 +54,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Panel</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw">pub</span> <span class="ident">S</span>, <span class="kw">pub</span> <span class="ident">usize</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Panel</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>) {
         <span class="ident">grid</span>.<span class="ident">insert_row</span>(<span class="self">self</span>.<span class="number">1</span>);
         <span class="ident">grid</span>.<span class="ident">set</span>(
             <span class="ident">Entity::Cell</span>(<span class="self">self</span>.<span class="number">1</span>, <span class="number">0</span>),
@@ -71,7 +71,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Header</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw">pub</span> <span class="ident">S</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Header</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>) {
         <span class="ident">Panel</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>(), <span class="number">0</span>).<span class="ident">change</span>(<span class="ident">grid</span>)
     }
 }
@@ -82,7 +82,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Footer</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw">pub</span> <span class="ident">S</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Footer</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>) {
         <span class="ident">Panel</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>(), <span class="ident">grid</span>.<span class="ident">count_rows</span>()).<span class="ident">change</span>(<span class="ident">grid</span>)
     }
 }

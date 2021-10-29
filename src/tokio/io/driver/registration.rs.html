@@ -330,7 +330,7 @@
     <span class="doccomment">/// - `Ok` if the registration happened successfully</span>
     <span class="doccomment">/// - `Err` if an error was encountered during registration</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new_with_interest_and_handle</span>(
-        <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw">impl</span> <span class="ident">Source</span>,
+        <span class="ident">io</span>: <span class="kw-2">&amp;mut</span> <span class="kw">impl</span> <span class="ident">Source</span>,
         <span class="ident">interest</span>: <span class="ident">Interest</span>,
         <span class="ident">handle</span>: <span class="ident">Handle</span>,
     ) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">Registration</span><span class="op">&gt;</span> {
@@ -362,7 +362,7 @@
     <span class="doccomment">/// no longer result in notifications getting sent for this registration.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `Err` is returned if an error is encountered.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">deregister</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw">impl</span> <span class="ident">Source</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">deregister</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;mut</span> <span class="kw">impl</span> <span class="ident">Source</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">inner</span>() {
             <span class="prelude-val">Some</span>(<span class="ident">inner</span>) =&gt; <span class="ident">inner</span>,
             <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(<span class="ident">io::ErrorKind::Other</span>, <span class="string">&quot;reactor gone&quot;</span>)),
@@ -376,13 +376,13 @@
 
     <span class="comment">// Uses the poll path, requiring the caller to ensure mutual exclusion for</span>
     <span class="comment">// correctness. Only the last task to call this function is notified.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_read_ready</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_read_ready</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_ready</span>(<span class="ident">cx</span>, <span class="ident">Direction::Read</span>)
     }
 
     <span class="comment">// Uses the poll path, requiring the caller to ensure mutual exclusion for</span>
     <span class="comment">// correctness. Only the last task to call this function is notified.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_write_ready</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_write_ready</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_ready</span>(<span class="ident">cx</span>, <span class="ident">Direction::Write</span>)
     }
 
@@ -390,7 +390,7 @@
     <span class="comment">// correctness. Only the last task to call this function is notified.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_read_io</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+        <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
         <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnMut</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>,
     ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_io</span>(<span class="ident">cx</span>, <span class="ident">Direction::Read</span>, <span class="ident">f</span>)
@@ -400,7 +400,7 @@
     <span class="comment">// correctness. Only the last task to call this function is notified.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_write_io</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+        <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
         <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnMut</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>,
     ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_io</span>(<span class="ident">cx</span>, <span class="ident">Direction::Write</span>, <span class="ident">f</span>)
@@ -412,7 +412,7 @@
     <span class="doccomment">/// received.</span>
     <span class="kw">fn</span> <span class="ident">poll_ready</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+        <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
         <span class="ident">direction</span>: <span class="ident">Direction</span>,
     ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">ReadyEvent</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// Keep track of task budget</span>
@@ -429,7 +429,7 @@
 
     <span class="kw">fn</span> <span class="ident">poll_io</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+        <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
         <span class="ident">direction</span>: <span class="ident">Direction</span>,
         <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnMut</span>() -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>,
     ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span><span class="op">&gt;</span> {
@@ -471,7 +471,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Registration</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// It is possible for a cycle to be created between wakers stored in</span>
         <span class="comment">// `ScheduledIo` instances and `Arc&lt;driver::Inner&gt;`. To break this</span>
         <span class="comment">// cycle, wakers are cleared. This is an imperfect solution as it is</span>
@@ -504,7 +504,7 @@
                     )));
                 }
 
-                <span class="ident">Pin::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fut</span>).<span class="ident">poll</span>(<span class="ident">cx</span>).<span class="ident">map</span>(<span class="prelude-val">Ok</span>)
+                <span class="ident">Pin::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">fut</span>).<span class="ident">poll</span>(<span class="ident">cx</span>).<span class="ident">map</span>(<span class="prelude-val">Ok</span>)
             }).<span class="kw">await</span>
         }
 

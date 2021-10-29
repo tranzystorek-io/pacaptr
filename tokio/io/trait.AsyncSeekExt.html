@@ -18,7 +18,7 @@
     <span class="ident">cursor</span>.<span class="ident">seek</span>(<span class="ident">SeekFrom::Start</span>(<span class="number">3</span>)).<span class="kw">await</span><span class="question-mark">?</span>;
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">1</span>];
-    <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+    <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="macro">assert_eq!</span>(<span class="ident">n</span>, <span class="number">1</span>);
     <span class="macro">assert_eq!</span>(<span class="ident">buf</span>, [<span class="string">b&#39;d&#39;</span>]);
 
@@ -29,7 +29,7 @@
 new position in the object and the object itself.</p>
 <p>Equivalent to:</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">SeekFrom</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">async</span> <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">SeekFrom</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>;</code></pre></div>
 <p>In the case of an error the buffer and the object will be discarded, with
 the error yielded.</p>
 <h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
@@ -42,7 +42,7 @@ the error yielded.</p>
 <span class="ident">file</span>.<span class="ident">seek</span>(<span class="ident">SeekFrom::Start</span>(<span class="number">6</span>)).<span class="kw">await</span><span class="question-mark">?</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">contents</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">10</span>];
-<span class="ident">file</span>.<span class="ident">read_exact</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">contents</span>).<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>
+<span class="ident">file</span>.<span class="ident">read_exact</span>(<span class="kw-2">&amp;mut</span> <span class="ident">contents</span>).<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.rewind" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_seek_ext.rs.html#73-78" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.rewind" class="fnname">rewind</a>(&amp;mut self) -&gt; Seek&lt;'_, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Creates a future which will rewind to the beginning of the stream.</p>
 <p>This is convenience method, equivalent to to <code>self.seek(SeekFrom::Start(0))</code>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.stream_position" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/tokio/io/util/async_seek_ext.rs.html#84-89" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.stream_position" class="fnname">stream_position</a>(&amp;mut self) -&gt; Seek&lt;'_, Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html" title="trait core::marker::Unpin">Unpin</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Creates a future which will return the current seek position from the

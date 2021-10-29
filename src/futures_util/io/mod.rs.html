@@ -887,7 +887,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// A buffer is always initialized if `read-initializer` feature is disabled.</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">initialize</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">AsyncRead</span><span class="op">&gt;</span>(<span class="ident">_reader</span>: <span class="kw-2">&amp;</span><span class="ident">R</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) {
+<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">initialize</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">AsyncRead</span><span class="op">&gt;</span>(<span class="ident">_reader</span>: <span class="kw-2">&amp;</span><span class="ident">R</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;read-initializer&quot;</span>)]</span>
     {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">_reader</span>.<span class="ident">initializer</span>().<span class="ident">should_initialize</span>() {
@@ -1270,7 +1270,7 @@
     <span class="doccomment">/// assert_eq!(output, [1, 2, 3, 4, 0]);</span>
     <span class="doccomment">/// # Ok::&lt;(), Box&lt;dyn std::error::Error&gt;&gt;(()) }).unwrap();</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Flush</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Flush</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -1278,7 +1278,7 @@
     }
 
     <span class="doccomment">/// Creates a future which will entirely close this `AsyncWrite`.</span>
-    <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Close</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Close</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -1447,7 +1447,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// In the case of an error the buffer and the object will be discarded, with</span>
     <span class="doccomment">/// the error yielded.</span>
-    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">SeekFrom</span>) -&gt; <span class="ident">Seek</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">SeekFrom</span>) -&gt; <span class="ident">Seek</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -1458,7 +1458,7 @@
     <span class="doccomment">/// start of the stream.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is equivalent to `self.seek(SeekFrom::Current(0))`.</span>
-    <span class="kw">fn</span> <span class="ident">stream_position</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Seek</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">stream_position</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Seek</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -1493,7 +1493,7 @@
     <span class="doccomment">/// assert_eq!(stream.fill_buf().await?, vec![]);</span>
     <span class="doccomment">/// # Ok::&lt;(), Box&lt;dyn std::error::Error&gt;&gt;(()) }).unwrap();</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">FillBuf</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">FillBuf</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {
@@ -1517,7 +1517,7 @@
     <span class="doccomment">/// assert_eq!(stream.fill_buf().await?, vec![]);</span>
     <span class="doccomment">/// # Ok::&lt;(), Box&lt;dyn std::error::Error&gt;&gt;(()) }).unwrap();</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">consume_unpin</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">amt</span>: <span class="ident">usize</span>)
+    <span class="kw">fn</span> <span class="ident">consume_unpin</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">amt</span>: <span class="ident">usize</span>)
     <span class="kw">where</span>
         <span class="self">Self</span>: <span class="ident">Unpin</span>,
     {

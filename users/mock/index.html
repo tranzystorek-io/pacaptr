@@ -31,16 +31,16 @@ trait. Then, you can pass in a value of either Cache or Mock type.</p>
 <span class="kw">use</span> <span class="ident">users::os::unix::UserExt</span>;
 <span class="kw">use</span> <span class="ident">users::mock::MockUsers</span>;
 
-<span class="kw">fn</span> <span class="ident">print_current_username</span><span class="op">&lt;</span><span class="ident">U</span>: <span class="ident">Users</span><span class="op">&gt;</span>(<span class="ident">users</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span>) {
+<span class="kw">fn</span> <span class="ident">print_current_username</span><span class="op">&lt;</span><span class="ident">U</span>: <span class="ident">Users</span><span class="op">&gt;</span>(<span class="ident">users</span>: <span class="kw-2">&amp;mut</span> <span class="ident">U</span>) {
     <span class="macro">println!</span>(<span class="string">&quot;Current user: {:?}&quot;</span>, <span class="ident">users</span>.<span class="ident">get_current_username</span>());
 }
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">users</span> <span class="op">=</span> <span class="ident">MockUsers::with_current_uid</span>(<span class="number">1001</span>);
 <span class="ident">users</span>.<span class="ident">add_user</span>(<span class="ident">User::new</span>(<span class="number">1001</span>, <span class="string">&quot;fred&quot;</span>, <span class="number">101</span>));
-<span class="ident">print_current_username</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">users</span>);
+<span class="ident">print_current_username</span>(<span class="kw-2">&amp;mut</span> <span class="ident">users</span>);
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">actual_users</span> <span class="op">=</span> <span class="ident">UsersCache::new</span>();
-<span class="ident">print_current_username</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">actual_users</span>);</code></pre></div>
+<span class="ident">print_current_username</span>(<span class="kw-2">&amp;mut</span> <span class="ident">actual_users</span>);</code></pre></div>
 </div></details><h2 id="structs" class="section-header"><a href="#structs">Structs</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Group.html" title="users::mock::Group struct">Group</a></div><div class="item-right docblock-short"><p>Information about a particular group.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.MockUsers.html" title="users::mock::MockUsers struct">MockUsers</a></div><div class="item-right docblock-short"><p>A mocking users table that you can add your own users and groups to.</p>

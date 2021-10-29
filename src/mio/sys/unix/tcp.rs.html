@@ -554,7 +554,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_REUSEADDR</span>,
-        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_int</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_int</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -568,8 +568,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_REUSEADDR</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">optval</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
@@ -583,7 +583,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_REUSEPORT</span>,
-        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_int</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_int</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -598,8 +598,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_REUSEPORT</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">optval</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
@@ -611,8 +611,8 @@
 
     <span class="macro">syscall!</span>(<span class="ident">getsockname</span>(
         <span class="ident">socket</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">addr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">length</span>
+        <span class="kw-2">&amp;mut</span> <span class="ident">addr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">length</span>
     ))<span class="question-mark">?</span>;
 
     <span class="kw">unsafe</span> { <span class="ident">to_socket_addr</span>(<span class="kw-2">&amp;</span><span class="ident">addr</span>) }
@@ -632,7 +632,7 @@
         <span class="ident">libc::SO_LINGER_SEC</span>,
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">target_vendor</span> <span class="op">=</span> <span class="string">&quot;apple&quot;</span>))]</span>
         <span class="ident">libc::SO_LINGER</span>,
-        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::linger</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::linger</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::linger</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>,
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -649,8 +649,8 @@
         <span class="ident">libc::SO_LINGER_SEC</span>,
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">target_vendor</span> <span class="op">=</span> <span class="string">&quot;apple&quot;</span>))]</span>
         <span class="ident">libc::SO_LINGER</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">len</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">len</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="kw">if</span> <span class="ident">val</span>.<span class="ident">l_onoff</span> <span class="op">==</span> <span class="number">0</span> {
@@ -666,7 +666,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_RCVBUF</span>,
-        <span class="kw-2">&amp;</span><span class="ident">size</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">size</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -679,8 +679,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_RCVBUF</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">optval</span> <span class="kw">as</span> <span class="ident">u32</span>)
@@ -692,7 +692,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_SNDBUF</span>,
-        <span class="kw-2">&amp;</span><span class="ident">size</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">size</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -706,8 +706,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_SNDBUF</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">optval</span> <span class="kw">as</span> <span class="ident">u32</span>)
@@ -719,7 +719,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_KEEPALIVE</span>,
-        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span><span class="ident">val</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -733,8 +733,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::SOL_SOCKET</span>,
         <span class="ident">libc::SO_KEEPALIVE</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">optval</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
@@ -776,7 +776,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">KEEPALIVE_TIME</span>,
-        <span class="kw-2">&amp;</span>(<span class="ident">time_secs</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span>(<span class="ident">time_secs</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -793,8 +793,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">KEEPALIVE_TIME</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">Duration::from_secs</span>(<span class="ident">optval</span> <span class="kw">as</span> <span class="ident">u64</span>)))
@@ -826,7 +826,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">libc::TCP_KEEPINTVL</span>,
-        <span class="kw-2">&amp;</span>(<span class="ident">interval_secs</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span>(<span class="ident">interval_secs</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -850,8 +850,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">libc::TCP_KEEPINTVL</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">Duration::from_secs</span>(<span class="ident">optval</span> <span class="kw">as</span> <span class="ident">u64</span>)))
@@ -879,7 +879,7 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">libc::TCP_KEEPCNT</span>,
-        <span class="kw-2">&amp;</span>(<span class="ident">retries</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">libc::c_void</span>,
+        <span class="kw-2">&amp;</span>(<span class="ident">retries</span> <span class="kw">as</span> <span class="ident">libc::c_int</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">libc::c_void</span>,
         <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">libc::c_int</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">libc::socklen_t</span>
     ))
     .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())
@@ -903,8 +903,8 @@
         <span class="ident">socket</span>,
         <span class="ident">libc::IPPROTO_TCP</span>,
         <span class="ident">libc::TCP_KEEPCNT</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">optlen</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optval</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+        <span class="kw-2">&amp;mut</span> <span class="ident">optlen</span>,
     ))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">optval</span> <span class="kw">as</span> <span class="ident">u32</span>))
@@ -933,8 +933,8 @@
     <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> {
         <span class="macro">syscall!</span>(<span class="ident">accept4</span>(
             <span class="ident">listener</span>.<span class="ident">as_raw_fd</span>(),
-            <span class="ident">addr</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">length</span>,
+            <span class="ident">addr</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+            <span class="kw-2">&amp;mut</span> <span class="ident">length</span>,
             <span class="ident">libc::SOCK_CLOEXEC</span> <span class="op">|</span> <span class="ident">libc::SOCK_NONBLOCK</span>,
         ))
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">socket</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">net::TcpStream::from_raw_fd</span>(<span class="ident">socket</span>) })
@@ -955,8 +955,8 @@
     <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> {
         <span class="macro">syscall!</span>(<span class="ident">accept</span>(
             <span class="ident">listener</span>.<span class="ident">as_raw_fd</span>(),
-            <span class="ident">addr</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">length</span>
+            <span class="ident">addr</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+            <span class="kw-2">&amp;mut</span> <span class="ident">length</span>
         ))
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">socket</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">net::TcpStream::from_raw_fd</span>(<span class="ident">socket</span>) })
         .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> {

@@ -66,11 +66,11 @@
 <span class="kw">use</span> <span class="ident">core::ptr::null</span>;
 <span class="kw">use</span> <span class="ident">core::task</span>::{<span class="ident">RawWaker</span>, <span class="ident">RawWakerVTable</span>, <span class="ident">Waker</span>};
 
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">noop_clone</span>(<span class="ident">_data</span>: <span class="kw-2">*</span><span class="kw">const</span> ()) -&gt; <span class="ident">RawWaker</span> {
+<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">noop_clone</span>(<span class="ident">_data</span>: <span class="kw-2">*const</span> ()) -&gt; <span class="ident">RawWaker</span> {
     <span class="ident">noop_raw_waker</span>()
 }
 
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">noop</span>(<span class="ident">_data</span>: <span class="kw-2">*</span><span class="kw">const</span> ()) {}
+<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">noop</span>(<span class="ident">_data</span>: <span class="kw-2">*const</span> ()) {}
 
 <span class="kw">const</span> <span class="ident">NOOP_WAKER_VTABLE</span>: <span class="ident">RawWakerVTable</span> <span class="op">=</span> <span class="ident">RawWakerVTable::new</span>(<span class="ident">noop_clone</span>, <span class="ident">noop</span>, <span class="ident">noop</span>, <span class="ident">noop</span>);
 
@@ -112,7 +112,7 @@
     <span class="kw">static</span> <span class="ident">NOOP_WAKER_INSTANCE</span>: <span class="ident">SyncRawWaker</span> <span class="op">=</span> <span class="ident">SyncRawWaker</span>(<span class="ident">noop_raw_waker</span>());
 
     <span class="comment">// SAFETY: `Waker` is #[repr(transparent)] over its `RawWaker`.</span>
-    <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="kw-2">&amp;</span><span class="ident">NOOP_WAKER_INSTANCE</span>.<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">RawWaker</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Waker</span>) }
+    <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="kw-2">&amp;</span><span class="ident">NOOP_WAKER_INSTANCE</span>.<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">RawWaker</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">Waker</span>) }
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>

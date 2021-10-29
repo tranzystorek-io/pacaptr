@@ -6,7 +6,7 @@
 <span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">BufMut</span>, <span class="ident">BytesMut</span>};
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">codec</span> <span class="op">=</span> <span class="ident">AnyDelimiterCodec::new</span>(<span class="string">b&quot;,;\r\n&quot;</span>.<span class="ident">to_vec</span>(),<span class="string">b&quot;;&quot;</span>.<span class="ident">to_vec</span>());
-<span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BytesMut::new</span>();
+<span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">BytesMut::new</span>();
 <span class="ident">buf</span>.<span class="ident">reserve</span>(<span class="number">200</span>);
 <span class="ident">buf</span>.<span class="ident">put_slice</span>(<span class="string">b&quot;chunk 1,chunk 2;chunk 3\n\r&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="string">&quot;chunk 1&quot;</span>, <span class="ident">codec</span>.<span class="ident">decode</span>(<span class="ident">buf</span>).<span class="ident">unwrap</span>().<span class="ident">unwrap</span>());

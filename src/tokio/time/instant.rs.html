@@ -410,7 +410,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ops::AddAssign</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Instant</span> {
-    <span class="kw">fn</span> <span class="ident">add_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) {
+    <span class="kw">fn</span> <span class="ident">add_assign</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) {
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">+</span> <span class="ident">rhs</span>;
     }
 }
@@ -432,13 +432,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ops::SubAssign</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Instant</span> {
-    <span class="kw">fn</span> <span class="ident">sub_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) {
+    <span class="kw">fn</span> <span class="ident">sub_assign</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) {
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">-</span> <span class="ident">rhs</span>;
     }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Instant</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="self">self</span>.<span class="ident">std</span>.<span class="ident">fmt</span>(<span class="ident">fmt</span>)
     }
 }

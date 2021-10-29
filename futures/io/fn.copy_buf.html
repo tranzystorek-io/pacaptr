@@ -10,7 +10,7 @@ provided.</p>
 <span class="kw">let</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">Cursor::new</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">writer</span> <span class="op">=</span> <span class="ident">Cursor::new</span>(<span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">5</span>]);
 
-<span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">io::copy_buf</span>(<span class="ident">reader</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">writer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">io::copy_buf</span>(<span class="ident">reader</span>, <span class="kw-2">&amp;mut</span> <span class="ident">writer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 <span class="ident">writer</span>.<span class="ident">close</span>().<span class="kw">await</span><span class="question-mark">?</span>;
 
 <span class="macro">assert_eq!</span>(<span class="ident">bytes</span>, <span class="number">4</span>);

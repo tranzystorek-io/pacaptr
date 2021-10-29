@@ -805,7 +805,7 @@
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> (<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>);
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>)<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>)<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">iter</span>.<span class="ident">next</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> (<span class="ident">s</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">start_offset</span>, <span class="ident">s</span>))
     }
 
@@ -817,7 +817,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">DoubleEndedIterator</span> <span class="kw">for</span> <span class="ident">GraphemeIndices</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">next_back</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>)<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next_back</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>)<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">iter</span>.<span class="ident">next_back</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> (<span class="ident">s</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">start_offset</span>, <span class="ident">s</span>))
     }
 }
@@ -866,7 +866,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cursor</span>.<span class="ident">cur_cursor</span>();
         <span class="kw">if</span> <span class="ident">start</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">cursor_back</span>.<span class="ident">cur_cursor</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
@@ -878,7 +878,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">DoubleEndedIterator</span> <span class="kw">for</span> <span class="ident">Graphemes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">next_back</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next_back</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cursor_back</span>.<span class="ident">cur_cursor</span>();
         <span class="kw">if</span> <span class="ident">end</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">cursor</span>.<span class="ident">cur_cursor</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
@@ -1052,7 +1052,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">grapheme_category</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ch</span>: <span class="ident">char</span>) -&gt; <span class="ident">GraphemeCat</span> {
+    <span class="kw">fn</span> <span class="ident">grapheme_category</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ch</span>: <span class="ident">char</span>) -&gt; <span class="ident">GraphemeCat</span> {
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme::GraphemeCat</span>::<span class="kw-2">*</span>;
 
@@ -1092,7 +1092,7 @@
     <span class="doccomment">/// cursor.set_cursor(2);</span>
     <span class="doccomment">/// assert_eq!(cursor.cur_cursor(), 2);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">usize</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">usize</span>) {
         <span class="kw">if</span> <span class="ident">offset</span> <span class="op">!</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">offset</span> {
             <span class="self">self</span>.<span class="ident">offset</span> <span class="op">=</span> <span class="ident">offset</span>;
             <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">offset</span> <span class="op">==</span> <span class="number">0</span> <span class="op">|</span><span class="op">|</span> <span class="ident">offset</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">len</span> {
@@ -1144,7 +1144,7 @@
     <span class="doccomment">/// // That&#39;s enough to decide (it always is when context goes to the start of the string)</span>
     <span class="doccomment">/// assert_eq!(cursor.is_boundary(&amp;flags[8..], 8), Ok(true));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">provide_context</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">provide_context</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="macro">assert!</span>(<span class="ident">chunk_start</span> <span class="op">+</span> <span class="ident">chunk</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="self">self</span>.<span class="ident">pre_context_offset</span>.<span class="ident">unwrap</span>());
         <span class="self">self</span>.<span class="ident">pre_context_offset</span> <span class="op">=</span> <span class="prelude-val">None</span>;
@@ -1166,7 +1166,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">decide</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">is_break</span>: <span class="ident">bool</span>) {
+    <span class="kw">fn</span> <span class="ident">decide</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">is_break</span>: <span class="ident">bool</span>) {
         <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">is_break</span> {
             <span class="ident">GraphemeState::Break</span>
         } <span class="kw">else</span> {
@@ -1175,7 +1175,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">decision</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">is_break</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">decision</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">is_break</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">decide</span>(<span class="ident">is_break</span>);
         <span class="prelude-val">Ok</span>(<span class="ident">is_break</span>)
     }
@@ -1194,7 +1194,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">handle_regional</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">handle_regional</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ris_count</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ris_count</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>);
         <span class="kw">for</span> <span class="ident">ch</span> <span class="kw">in</span> <span class="ident">chunk</span>.<span class="ident">chars</span>().<span class="ident">rev</span>() {
@@ -1215,7 +1215,7 @@
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">handle_emoji</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">handle_emoji</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) {
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">chunk</span>.<span class="ident">chars</span>().<span class="ident">rev</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ch</span>) <span class="op">=</span> <span class="ident">iter</span>.<span class="ident">next</span>() {
@@ -1269,7 +1269,7 @@
     <span class="doccomment">/// cursor.set_cursor(12);</span>
     <span class="doccomment">/// assert_eq!(cursor.is_boundary(flags, 0), Ok(false));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_boundary</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::tables::grapheme</span> <span class="kw">as</span> <span class="ident">gr</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">GraphemeState::Break</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>)
@@ -1360,7 +1360,7 @@
     <span class="doccomment">/// assert_eq!(cursor.next_boundary(&amp;s[2..4], 2), Ok(Some(4)));</span>
     <span class="doccomment">/// assert_eq!(cursor.next_boundary(&amp;s[2..4], 2), Ok(None));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_boundary</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">offset</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">len</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>);
         }
@@ -1435,7 +1435,7 @@
     <span class="doccomment">/// assert_eq!(cursor.prev_boundary(&amp;s[0..2], 0), Ok(Some(0)));</span>
     <span class="doccomment">/// assert_eq!(cursor.prev_boundary(&amp;s[0..2], 0), Ok(None));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prev_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prev_boundary</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">chunk</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">chunk_start</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>, <span class="ident">GraphemeIncomplete</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">offset</span> <span class="op">==</span> <span class="number">0</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>);
         }

@@ -99,21 +99,21 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Either::A</span>(<span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">park</span>().<span class="ident">map_err</span>(<span class="ident">Either::A</span>),
             <span class="ident">Either::B</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>.<span class="ident">park</span>().<span class="ident">map_err</span>(<span class="ident">Either::B</span>),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">park_timeout</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Either::A</span>(<span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">park_timeout</span>(<span class="ident">duration</span>).<span class="ident">map_err</span>(<span class="ident">Either::A</span>),
             <span class="ident">Either::B</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>.<span class="ident">park_timeout</span>(<span class="ident">duration</span>).<span class="ident">map_err</span>(<span class="ident">Either::B</span>),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Either::A</span>(<span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">shutdown</span>(),
             <span class="ident">Either::B</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>.<span class="ident">shutdown</span>(),
@@ -139,7 +139,7 @@
     <span class="ident">A</span>: <span class="ident">fmt::Debug</span>,
     <span class="ident">B</span>: <span class="ident">fmt::Debug</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident">Either::A</span>(<span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">fmt</span>(<span class="ident">fmt</span>),
             <span class="ident">Either::B</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>.<span class="ident">fmt</span>(<span class="ident">fmt</span>),

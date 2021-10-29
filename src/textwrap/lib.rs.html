@@ -3472,7 +3472,7 @@
 <span class="doccomment">/// Please see the [`linear`</span>
 <span class="doccomment">/// benchmark](https://github.com/mgeisler/textwrap/blob/master/benches/linear.rs)</span>
 <span class="doccomment">/// for details.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fill_inplace</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>, <span class="ident">width</span>: <span class="ident">usize</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fill_inplace</span>(<span class="ident">text</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>, <span class="ident">width</span>: <span class="ident">usize</span>) {
     <span class="kw">use</span> <span class="ident">word_separators::WordSeparator</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">indices</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
 
@@ -4008,63 +4008,63 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_empty</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">80</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">80</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_simple</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;foo bar baz&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;foo bar\nbaz&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_multiple_lines</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;Some text to wrap over multiple lines&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">12</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">12</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;Some text to\nwrap over\nmultiple\nlines&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_long_word</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;Internationalization is hard&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;Internationalization\nis hard&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_no_hyphen_splitting</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;A well-chosen example&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;A\nwell-chosen\nexample&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_newlines</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;foo bar\n\nbaz\n\n\n&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;foo bar\n\nbaz\n\n\n&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_newlines_reset_line_width</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;1 3 5\n1 3 5 7 9\n1 3 5 7 9 1 3&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;1 3 5\n1 3 5 7 9\n1 3 5 7 9\n1 3&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_leading_whitespace</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;  foo bar baz&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;  foo bar\nbaz&quot;</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">fill_inplace_trailing_whitespace</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;foo bar baz  &quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;foo bar\nbaz  &quot;</span>);
     }
 
@@ -4073,7 +4073,7 @@
         <span class="comment">// To avoid an unwanted indentation of &quot;baz&quot;, it is important</span>
         <span class="comment">// to replace the final &#39; &#39; with &#39;\n&#39;.</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;foo  bar    baz&quot;</span>);
-        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+        <span class="ident">fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;foo  bar   \nbaz&quot;</span>);
     }
 

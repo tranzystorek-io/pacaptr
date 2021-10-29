@@ -40,7 +40,7 @@ kqueue. On Linux it uses <a href="http://man7.org/linux/man-pages/man2/eventfd.2
 });
 
 <span class="comment">// On our current thread we&#39;ll poll for events, without a timeout.</span>
-<span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">None</span>)<span class="question-mark">?</span>;
+<span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;mut</span> <span class="ident">events</span>, <span class="prelude-val">None</span>)<span class="question-mark">?</span>;
 
 <span class="comment">// After about 500 milliseconds we should be awoken by the other thread and</span>
 <span class="comment">// get a single event.</span>

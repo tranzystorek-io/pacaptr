@@ -289,7 +289,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ReadGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// We effectively unlock; Release would be enough.</span>
         <span class="self">self</span>.<span class="ident">lock</span>.<span class="ident">fetch_sub</span>(<span class="number">1</span>, <span class="ident">Ordering::SeqCst</span>);
     }
@@ -302,7 +302,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">WriteGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">store</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">T</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">store</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="ident">T</span>) {
         <span class="comment">// Move to the heap and convert to raw pointer for AtomicPtr.</span>
         <span class="kw">let</span> <span class="ident">new</span> <span class="op">=</span> <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="ident">val</span>));
 
@@ -388,7 +388,7 @@
         <span class="ident">ReadGuard</span> { <span class="ident">data</span>, <span class="ident">lock</span> }
     }
 
-    <span class="kw">fn</span> <span class="ident">update_seen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">seen_zero</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">bool</span>; <span class="number">2</span>]) {
+    <span class="kw">fn</span> <span class="ident">update_seen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">seen_zero</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">bool</span>; <span class="number">2</span>]) {
         <span class="kw">for</span> (<span class="ident">seen</span>, <span class="ident">slot</span>) <span class="kw">in</span> <span class="ident">seen_zero</span>.<span class="ident">iter_mut</span>().<span class="ident">zip</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">lock</span>) {
             <span class="kw-2">*</span><span class="ident">seen</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">seen</span> <span class="op">|</span><span class="op">|</span> <span class="ident">slot</span>.<span class="ident">load</span>(<span class="ident">Ordering::SeqCst</span>) <span class="op">==</span> <span class="number">0</span>;
         }
@@ -399,7 +399,7 @@
         <span class="comment">// should be zero by now, due to having drained the generation before leaving the previous</span>
         <span class="comment">// writer.</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">seen_zero</span> <span class="op">=</span> [<span class="bool-val">false</span>; <span class="number">2</span>];
-        <span class="self">self</span>.<span class="ident">update_seen</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">seen_zero</span>);
+        <span class="self">self</span>.<span class="ident">update_seen</span>(<span class="kw-2">&amp;mut</span> <span class="ident">seen_zero</span>);
         <span class="comment">// By switching the generation to the other slot, we make sure the currently active starts</span>
         <span class="comment">// draining while the other will start filling up.</span>
         <span class="self">self</span>.<span class="ident">generation</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::SeqCst</span>); <span class="comment">// Overflow is fine.</span>
@@ -419,7 +419,7 @@
                 }
             }
 
-            <span class="self">self</span>.<span class="ident">update_seen</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">seen_zero</span>);
+            <span class="self">self</span>.<span class="ident">update_seen</span>(<span class="kw-2">&amp;mut</span> <span class="ident">seen_zero</span>);
         }
     }
 
@@ -449,7 +449,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">HalfLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// During drop we are sure there are no other borrows of the data so we are free to just</span>
         <span class="comment">// drop it. Also, the drop impl won&#39;t be called in practice in our case, as it is used</span>
         <span class="comment">// solely as a global variable, but we provide it for completeness and tests anyway.</span>

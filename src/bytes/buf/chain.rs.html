@@ -314,8 +314,8 @@
     <span class="doccomment">/// let full = buf.copy_to_bytes(9);</span>
     <span class="doccomment">/// assert_eq!(full, b&quot;elloworld&quot;[..]);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">first_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">a</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">first_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">a</span>
     }
 
     <span class="doccomment">/// Gets a reference to the last underlying `Buf`.</span>
@@ -349,8 +349,8 @@
     <span class="doccomment">/// let full = buf.copy_to_bytes(10);</span>
     <span class="doccomment">/// assert_eq!(full, b&quot;hello orld&quot;[..]);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">last_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span> {
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">b</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">last_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">U</span> {
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">b</span>
     }
 
     <span class="doccomment">/// Consumes this `Chain`, returning the underlying values.</span>
@@ -389,7 +389,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">advance</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cnt</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">advance</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cnt</span>: <span class="ident">usize</span>) {
         <span class="kw">let</span> <span class="ident">a_rem</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">remaining</span>();
 
         <span class="kw">if</span> <span class="ident">a_rem</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
@@ -408,13 +408,13 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">chunks_vectored</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">IoSlice</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>]) -&gt; <span class="ident">usize</span> {
+    <span class="kw">fn</span> <span class="ident">chunks_vectored</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">IoSlice</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>]) -&gt; <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">n</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">chunks_vectored</span>(<span class="ident">dst</span>);
-        <span class="ident">n</span> <span class="op">+</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">b</span>.<span class="ident">chunks_vectored</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">dst</span>[<span class="ident">n</span>..]);
+        <span class="ident">n</span> <span class="op">+</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">b</span>.<span class="ident">chunks_vectored</span>(<span class="kw-2">&amp;mut</span> <span class="ident">dst</span>[<span class="ident">n</span>..]);
         <span class="ident">n</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Bytes</span> {
+    <span class="kw">fn</span> <span class="ident">copy_to_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Bytes</span> {
         <span class="kw">let</span> <span class="ident">a_rem</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">remaining</span>();
         <span class="kw">if</span> <span class="ident">a_rem</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">len</span> {
             <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">copy_to_bytes</span>(<span class="ident">len</span>)
@@ -426,8 +426,8 @@
                 <span class="string">&quot;`len` greater than remaining&quot;</span>
             );
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::BytesMut::with_capacity</span>(<span class="ident">len</span>);
-            <span class="ident">ret</span>.<span class="ident">put</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">a</span>);
-            <span class="ident">ret</span>.<span class="ident">put</span>((<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">b</span>).<span class="ident">take</span>(<span class="ident">len</span> <span class="op">-</span> <span class="ident">a_rem</span>));
+            <span class="ident">ret</span>.<span class="ident">put</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">a</span>);
+            <span class="ident">ret</span>.<span class="ident">put</span>((<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">b</span>).<span class="ident">take</span>(<span class="ident">len</span> <span class="op">-</span> <span class="ident">a_rem</span>));
             <span class="ident">ret</span>.<span class="ident">freeze</span>()
         }
     }
@@ -445,7 +445,7 @@
             .<span class="ident">unwrap</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">chunk_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">UninitSlice</span> {
+    <span class="kw">fn</span> <span class="ident">chunk_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">UninitSlice</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">has_remaining_mut</span>() {
             <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">chunk_mut</span>()
         } <span class="kw">else</span> {
@@ -453,7 +453,7 @@
         }
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">advance_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cnt</span>: <span class="ident">usize</span>) {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">advance_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cnt</span>: <span class="ident">usize</span>) {
         <span class="kw">let</span> <span class="ident">a_rem</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">a</span>.<span class="ident">remaining_mut</span>();
 
         <span class="kw">if</span> <span class="ident">a_rem</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {

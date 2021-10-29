@@ -53,7 +53,7 @@ when it is ready.</p>
 <span class="kw">impl</span> <span class="ident">Future</span> <span class="kw">for</span> <span class="ident">Flag</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> ();
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="comment">// quick check to avoid registration if already done.</span>
         <span class="kw">if</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">set</span>.<span class="ident">load</span>(<span class="ident">Relaxed</span>) {
             <span class="kw">return</span> <span class="ident">Poll::Ready</span>(());
@@ -102,7 +102,7 @@ but there is no guarantee as to which caller will succeed.</p>
 <span class="kw">impl</span> <span class="ident">Future</span> <span class="kw">for</span> <span class="ident">Flag</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> ();
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="comment">// Register **before** checking `set` to avoid a race condition</span>
         <span class="comment">// that would result in lost notifications.</span>
         <span class="self">self</span>.<span class="ident">waker</span>.<span class="ident">register</span>(<span class="ident">cx</span>.<span class="ident">waker</span>());

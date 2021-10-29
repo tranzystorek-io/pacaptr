@@ -166,7 +166,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">CellOption</span> <span class="kw">for</span> <span class="ident">MaxWidth</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>) {
         <span class="kw">let</span> <span class="ident">content</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">get_cell_content</span>(<span class="ident">row</span>, <span class="ident">column</span>);
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">wrap</span> {
             <span class="ident">Wrap::Truncate</span>(<span class="ident">filler</span>) =&gt; {

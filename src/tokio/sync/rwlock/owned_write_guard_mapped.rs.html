@@ -189,7 +189,7 @@
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">permits_acquired</span>: <span class="ident">u32</span>,
     <span class="comment">// ManuallyDrop allows us to destructure into this field without running the destructor.</span>
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">lock</span>: <span class="ident">ManuallyDrop</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">RwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">data</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">U</span>,
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">data</span>: <span class="kw-2">*mut</span> <span class="ident">U</span>,
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">_p</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
 }
 
@@ -229,10 +229,10 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">map</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">V</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">this</span>: <span class="self">Self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">OwnedRwLockMappedWriteGuard</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">V</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">V</span>,
+        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">U</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">V</span>,
     {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="ident">f</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">this</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">V</span>;
-        <span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">this</span>.<span class="ident">lock</span>) };
+        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="ident">f</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">this</span>) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">V</span>;
+        <span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;mut</span> <span class="ident">this</span>.<span class="ident">lock</span>) };
         <span class="kw">let</span> <span class="ident">permits_acquired</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">permits_acquired</span>;
         <span class="comment">// NB: Forget to avoid drop impl from being called.</span>
         <span class="ident">mem::forget</span>(<span class="ident">this</span>);
@@ -283,13 +283,13 @@
         <span class="ident">f</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OwnedRwLockMappedWriteGuard</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">V</span><span class="op">&gt;</span>, <span class="self">Self</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">V</span><span class="op">&gt;</span>,
+        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">U</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">V</span><span class="op">&gt;</span>,
     {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">f</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">this</span>) {
-            <span class="prelude-val">Some</span>(<span class="ident">data</span>) =&gt; <span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">V</span>,
+        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">f</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">this</span>) {
+            <span class="prelude-val">Some</span>(<span class="ident">data</span>) =&gt; <span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">V</span>,
             <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">this</span>),
         };
-        <span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">this</span>.<span class="ident">lock</span>) };
+        <span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;mut</span> <span class="ident">this</span>.<span class="ident">lock</span>) };
         <span class="kw">let</span> <span class="ident">permits_acquired</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">permits_acquired</span>;
         <span class="comment">// NB: Forget to avoid drop impl from being called.</span>
         <span class="ident">mem::forget</span>(<span class="ident">this</span>);
@@ -311,8 +311,8 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span>, <span class="ident">U</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">ops::DerefMut</span> <span class="kw">for</span> <span class="ident">OwnedRwLockMappedWriteGuard</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">data</span> }
+    <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">U</span> {
+        <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">data</span> }
     }
 }
 
@@ -320,7 +320,7 @@
 <span class="kw">where</span>
     <span class="ident">U</span>: <span class="ident">fmt::Debug</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt::Debug::fmt</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>, <span class="ident">f</span>)
     }
 }
@@ -329,15 +329,15 @@
 <span class="kw">where</span>
     <span class="ident">U</span>: <span class="ident">fmt::Display</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt::Display::fmt</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>, <span class="ident">f</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span>, <span class="ident">U</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">OwnedRwLockMappedWriteGuard</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">lock</span>.<span class="ident">s</span>.<span class="ident">release</span>(<span class="self">self</span>.<span class="ident">permits_acquired</span> <span class="kw">as</span> <span class="ident">usize</span>);
-        <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">lock</span>) };
+        <span class="kw">unsafe</span> { <span class="ident">ManuallyDrop::drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">lock</span>) };
     }
 }
 </code></pre></div>

@@ -1801,7 +1801,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones128</span>();
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes128</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify128</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -1813,7 +1813,7 @@
             <span class="ident">at</span> <span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span>;
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones128</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes128</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify128</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -1828,7 +1828,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m128i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m128i</span>,
     ) -&gt; <span class="ident">__m128i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">16</span>);
 
@@ -1863,7 +1863,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">32</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -1875,7 +1875,7 @@
             <span class="ident">at</span> <span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">32</span>;
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -1890,7 +1890,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
     ) -&gt; <span class="ident">__m256i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">32</span>);
 
@@ -1927,7 +1927,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify_fat256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>)
                 {
@@ -1940,7 +1940,7 @@
             <span class="ident">at</span> <span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span>;
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify_fat256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">c</span>)
                 {
@@ -1956,7 +1956,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
     ) -&gt; <span class="ident">__m256i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">16</span>);
 
@@ -1994,7 +1994,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">mut</span> <span class="ident">prev1</span>) <span class="op">=</span> (<span class="ident">ones128</span>(), <span class="ident">ones128</span>());
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes128</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify128</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -2007,7 +2007,7 @@
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones128</span>();
             <span class="ident">prev1</span> <span class="op">=</span> <span class="ident">ones128</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes128</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify128</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -2022,8 +2022,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m128i</span>,
-        <span class="ident">prev1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m128i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m128i</span>,
+        <span class="ident">prev1</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m128i</span>,
     ) -&gt; <span class="ident">__m128i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">16</span>);
 
@@ -2064,7 +2064,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">mut</span> <span class="ident">prev1</span>) <span class="op">=</span> (<span class="ident">ones256</span>(), <span class="ident">ones256</span>());
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">32</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -2077,7 +2077,7 @@
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
             <span class="ident">prev1</span> <span class="op">=</span> <span class="ident">ones256</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>);
@@ -2092,8 +2092,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
-        <span class="ident">prev1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev1</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
     ) -&gt; <span class="ident">__m256i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">32</span>);
 
@@ -2135,7 +2135,7 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">haystack</span>.<span class="ident">len</span>();
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">mut</span> <span class="ident">prev1</span>) <span class="op">=</span> (<span class="ident">ones256</span>(), <span class="ident">ones256</span>());
         <span class="kw">while</span> <span class="ident">at</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">len</span> <span class="op">-</span> <span class="number">16</span> {
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify_fat256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>)
                 {
@@ -2149,7 +2149,7 @@
             <span class="ident">prev0</span> <span class="op">=</span> <span class="ident">ones256</span>();
             <span class="ident">prev1</span> <span class="op">=</span> <span class="ident">ones256</span>();
 
-            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev1</span>);
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">candidate</span>(<span class="ident">haystack</span>, <span class="ident">at</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev1</span>);
             <span class="kw">if</span> <span class="op">!</span><span class="ident">is_all_zeroes256</span>(<span class="ident">c</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">m</span>) <span class="op">=</span> <span class="ident">teddy</span>.<span class="ident">verify_fat256</span>(<span class="ident">pats</span>, <span class="ident">haystack</span>, <span class="ident">at</span> <span class="op">-</span> <span class="number">2</span>, <span class="ident">c</span>)
                 {
@@ -2165,8 +2165,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
-        <span class="ident">prev0</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
-        <span class="ident">prev1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev0</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
+        <span class="ident">prev1</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__m256i</span>,
     ) -&gt; <span class="ident">__m256i</span> {
         <span class="macro">debug_assert!</span>(<span class="ident">haystack</span>[<span class="ident">at</span>..].<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">16</span>);
 

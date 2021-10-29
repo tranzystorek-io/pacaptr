@@ -376,7 +376,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ResetGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
             <span class="self">self</span>.<span class="ident">cell</span>.<span class="ident">set</span>(<span class="self">self</span>.<span class="ident">prev</span>);
         }
     }
@@ -430,7 +430,7 @@
     }
 
     <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">RestoreOnPending</span> {
-        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
             <span class="comment">// Don&#39;t reset if budget was unconstrained or if we made progress.</span>
             <span class="comment">// They are both represented as the remembered budget being unconstrained.</span>
             <span class="kw">let</span> <span class="ident">budget</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">get</span>();
@@ -455,7 +455,7 @@
     <span class="doccomment">/// `RestRestoreOnPending` is dropped, those adjustments are erased unless the caller indicates</span>
     <span class="doccomment">/// that progress was made.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_proceed</span>(<span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">RestoreOnPending</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">poll_proceed</span>(<span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">RestoreOnPending</span><span class="op">&gt;</span> {
         <span class="ident">CURRENT</span>.<span class="ident">with</span>(<span class="op">|</span><span class="ident">cell</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">budget</span> <span class="op">=</span> <span class="ident">cell</span>.<span class="ident">get</span>();
 
@@ -473,8 +473,8 @@
     <span class="kw">impl</span> <span class="ident">Budget</span> {
         <span class="doccomment">/// Decrement the budget. Returns `true` if successful. Decrementing fails</span>
         <span class="doccomment">/// when there is not enough remaining budget.</span>
-        <span class="kw">fn</span> <span class="ident">decrement</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">num</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="number">0</span> {
+        <span class="kw">fn</span> <span class="ident">decrement</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">bool</span> {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">num</span>) <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="number">0</span> {
                 <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">num</span> <span class="op">&gt;</span> <span class="number">0</span> {
                     <span class="kw-2">*</span><span class="ident">num</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
                     <span class="bool-val">true</span>

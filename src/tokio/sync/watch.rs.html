@@ -845,7 +845,7 @@
     <span class="comment">// ===== impl SendError =====</span>
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">SendError</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;channel closed&quot;</span>)
         }
     }
@@ -859,7 +859,7 @@
     <span class="comment">// ===== impl RecvError =====</span>
 
     <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">RecvError</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;channel closed&quot;</span>)
         }
     }
@@ -1028,7 +1028,7 @@
     <span class="doccomment">/// as short lived as possible.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`changed`]: Receiver::changed</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_and_update</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Ref</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_and_update</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Ref</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">value</span>.<span class="ident">read</span>().<span class="ident">unwrap</span>();
         <span class="self">self</span>.<span class="ident">version</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">state</span>.<span class="ident">load</span>().<span class="ident">version</span>();
         <span class="ident">Ref</span> { <span class="ident">inner</span> }
@@ -1073,14 +1073,14 @@
     <span class="doccomment">///     assert!(rx.changed().await.is_err());</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">changed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">error::RecvError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">changed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">error::RecvError</span><span class="op">&gt;</span> {
         <span class="kw">loop</span> {
             <span class="comment">// In order to avoid a race condition, we first request a notification,</span>
             <span class="comment">// **then** check the current value&#39;s version. If a new version exists,</span>
             <span class="comment">// the notification request is dropped.</span>
             <span class="kw">let</span> <span class="ident">notified</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">notify_rx</span>.<span class="ident">notified</span>();
 
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">maybe_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">version</span>) {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">maybe_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">version</span>) {
                 <span class="kw">return</span> <span class="ident">ret</span>;
             }
 
@@ -1090,15 +1090,15 @@
     }
 
     <span class="macro">cfg_process_driver!</span> {
-        <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_has_changed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">error::RecvError</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-            <span class="ident">maybe_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">version</span>)
+        <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_has_changed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">error::RecvError</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+            <span class="ident">maybe_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">version</span>)
         }
     }
 }
 
 <span class="kw">fn</span> <span class="ident">maybe_changed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(
     <span class="ident">shared</span>: <span class="kw-2">&amp;</span><span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">version</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Version</span>,
+    <span class="ident">version</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Version</span>,
 ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">error::RecvError</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="comment">// Load the version from the state</span>
     <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">shared</span>.<span class="ident">state</span>.<span class="ident">load</span>();
@@ -1128,7 +1128,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// No synchronization necessary as this is only used as a counter and</span>
         <span class="comment">// not memory access.</span>
         <span class="kw">if</span> <span class="number">1</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">ref_count_rx</span>.<span class="ident">fetch_sub</span>(<span class="number">1</span>, <span class="ident">Relaxed</span>) {
@@ -1336,7 +1336,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">state</span>.<span class="ident">set_closed</span>();
         <span class="self">self</span>.<span class="ident">shared</span>.<span class="ident">notify_rx</span>.<span class="ident">notify_waiters</span>();
     }

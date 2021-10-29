@@ -1622,7 +1622,7 @@
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">group</span>: <span class="ident">TypeGroup</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
             <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="macro">Token!</span>[::]) <span class="op">&amp;&amp;</span> <span class="ident">input</span>.<span class="ident">peek3</span>(<span class="ident">Ident::peek_any</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Type::Path</span>(<span class="kw-2">mut</span> <span class="ident">ty</span>) <span class="op">=</span> <span class="kw-2">*</span><span class="ident">group</span>.<span class="ident">elem</span> {
-                    <span class="ident">Path::parse_rest</span>(<span class="ident">input</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ty</span>.<span class="ident">path</span>, <span class="bool-val">false</span>)<span class="question-mark">?</span>;
+                    <span class="ident">Path::parse_rest</span>(<span class="ident">input</span>, <span class="kw-2">&amp;mut</span> <span class="ident">ty</span>.<span class="ident">path</span>, <span class="bool-val">false</span>)<span class="question-mark">?</span>;
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Type::Path</span>(<span class="ident">ty</span>));
                 } <span class="kw">else</span> {
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Type::Path</span>(<span class="ident">TypePath</span> {
@@ -1638,10 +1638,10 @@
                 }
             } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="macro">Token!</span>[<span class="op">&lt;</span>]) <span class="op">|</span><span class="op">|</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="macro">Token!</span>[::]) <span class="op">&amp;&amp;</span> <span class="ident">input</span>.<span class="ident">peek3</span>(<span class="macro">Token!</span>[<span class="op">&lt;</span>]) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Type::Path</span>(<span class="kw-2">mut</span> <span class="ident">ty</span>) <span class="op">=</span> <span class="kw-2">*</span><span class="ident">group</span>.<span class="ident">elem</span> {
-                    <span class="kw">let</span> <span class="ident">arguments</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ty</span>.<span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">last_mut</span>().<span class="ident">unwrap</span>().<span class="ident">arguments</span>;
+                    <span class="kw">let</span> <span class="ident">arguments</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">ty</span>.<span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">last_mut</span>().<span class="ident">unwrap</span>().<span class="ident">arguments</span>;
                     <span class="kw">if</span> <span class="kw">let</span> <span class="ident">PathArguments::None</span> <span class="op">=</span> <span class="ident">arguments</span> {
                         <span class="kw-2">*</span><span class="ident">arguments</span> <span class="op">=</span> <span class="ident">PathArguments::AngleBracketed</span>(<span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>);
-                        <span class="ident">Path::parse_rest</span>(<span class="ident">input</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ty</span>.<span class="ident">path</span>, <span class="bool-val">false</span>)<span class="question-mark">?</span>;
+                        <span class="ident">Path::parse_rest</span>(<span class="ident">input</span>, <span class="kw-2">&amp;mut</span> <span class="ident">ty</span>.<span class="ident">path</span>, <span class="bool-val">false</span>)<span class="question-mark">?</span>;
                         <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Type::Path</span>(<span class="ident">ty</span>));
                     } <span class="kw">else</span> {
                         <span class="ident">group</span>.<span class="ident">elem</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">Type::Path</span>(<span class="ident">ty</span>));
@@ -2327,7 +2327,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeSlice</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">bracket_token</span>.<span class="ident">surround</span>(<span class="ident">tokens</span>, <span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             });
@@ -2336,7 +2336,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeArray</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">bracket_token</span>.<span class="ident">surround</span>(<span class="ident">tokens</span>, <span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
                 <span class="self">self</span>.<span class="ident">semi_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
@@ -2347,7 +2347,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypePtr</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">star_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">mutability</span> {
                 <span class="prelude-val">Some</span>(<span class="ident">tok</span>) =&gt; <span class="ident">tok</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>),
@@ -2361,7 +2361,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeReference</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">and_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">lifetime</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">mutability</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
@@ -2371,7 +2371,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeBareFn</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">lifetimes</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">unsafety</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">abi</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
@@ -2392,14 +2392,14 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeNever</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">bang_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
     }
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeTuple</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">paren_token</span>.<span class="ident">surround</span>(<span class="ident">tokens</span>, <span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">elems</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             });
@@ -2408,14 +2408,14 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypePath</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="ident">private::print_path</span>(<span class="ident">tokens</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">qself</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">path</span>);
         }
     }
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeTraitObject</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">dyn_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">bounds</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
@@ -2423,7 +2423,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeImplTrait</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">impl_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">bounds</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
@@ -2431,7 +2431,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeGroup</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">group_token</span>.<span class="ident">surround</span>(<span class="ident">tokens</span>, <span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             });
@@ -2440,7 +2440,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeParen</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">paren_token</span>.<span class="ident">surround</span>(<span class="ident">tokens</span>, <span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             });
@@ -2449,21 +2449,21 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeInfer</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">underscore_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
     }
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">TypeMacro</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">mac</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
     }
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">ReturnType</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="kw">match</span> <span class="self">self</span> {
                 <span class="ident">ReturnType::Default</span> =&gt; {}
                 <span class="ident">ReturnType::Type</span>(<span class="ident">arrow</span>, <span class="ident">ty</span>) =&gt; {
@@ -2476,7 +2476,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">BareFnArg</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="ident">tokens</span>.<span class="ident">append_all</span>(<span class="self">self</span>.<span class="ident">attrs</span>.<span class="ident">outer</span>());
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="ident">name</span>, <span class="ident">colon</span>)) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span> {
                 <span class="ident">name</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
@@ -2488,7 +2488,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">Variadic</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="ident">tokens</span>.<span class="ident">append_all</span>(<span class="self">self</span>.<span class="ident">attrs</span>.<span class="ident">outer</span>());
             <span class="self">self</span>.<span class="ident">dots</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }
@@ -2496,7 +2496,7 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">doc_cfg</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;printing&quot;</span>)))]</span>
     <span class="kw">impl</span> <span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">Abi</span> {
-        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream</span>) {
+        <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TokenStream</span>) {
             <span class="self">self</span>.<span class="ident">extern_token</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
             <span class="self">self</span>.<span class="ident">name</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
         }

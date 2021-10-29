@@ -1073,7 +1073,7 @@
     <span class="kw">struct</span> <span class="ident">Reset</span>(<span class="ident">coop::Budget</span>);
 
     <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Reset</span> {
-        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
             <span class="ident">CURRENT</span>.<span class="ident">with</span>(<span class="op">|</span><span class="ident">maybe_cx</span><span class="op">|</span> {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">cx</span>) <span class="op">=</span> <span class="ident">maybe_cx</span> {
                     <span class="kw">let</span> <span class="ident">core</span> <span class="op">=</span> <span class="ident">cx</span>.<span class="ident">worker</span>.<span class="ident">core</span>.<span class="ident">take</span>();
@@ -1348,12 +1348,12 @@
 
 <span class="kw">impl</span> <span class="ident">Core</span> {
     <span class="doccomment">/// Increment the tick</span>
-    <span class="kw">fn</span> <span class="ident">tick</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">tick</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">tick</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">tick</span>.<span class="ident">wrapping_add</span>(<span class="number">1</span>);
     }
 
     <span class="doccomment">/// Return the next notified task available to this worker.</span>
-    <span class="kw">fn</span> <span class="ident">next_task</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next_task</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">tick</span> <span class="op">%</span> <span class="ident">GLOBAL_POLL_INTERVAL</span> <span class="op">==</span> <span class="number">0</span> {
             <span class="ident">worker</span>.<span class="ident">inject</span>().<span class="ident">pop</span>().<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">next_local_task</span>())
         } <span class="kw">else</span> {
@@ -1361,11 +1361,11 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">next_local_task</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next_local_task</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">lifo_slot</span>.<span class="ident">take</span>().<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run_queue</span>.<span class="ident">pop</span>())
     }
 
-    <span class="kw">fn</span> <span class="ident">steal_work</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">steal_work</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Notified</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">transition_to_searching</span>(<span class="ident">worker</span>) {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -1385,7 +1385,7 @@
             <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">worker</span>.<span class="ident">shared</span>.<span class="ident">remotes</span>[<span class="ident">i</span>];
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">task</span>) <span class="op">=</span> <span class="ident">target</span>
                 .<span class="ident">steal</span>
-                .<span class="ident">steal_into</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">run_queue</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">stats</span>)
+                .<span class="ident">steal_into</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">run_queue</span>, <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">stats</span>)
             {
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">task</span>);
             }
@@ -1395,7 +1395,7 @@
         <span class="ident">worker</span>.<span class="ident">shared</span>.<span class="ident">inject</span>.<span class="ident">pop</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">transition_to_searching</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">transition_to_searching</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_searching</span> {
             <span class="self">self</span>.<span class="ident">is_searching</span> <span class="op">=</span> <span class="ident">worker</span>.<span class="ident">shared</span>.<span class="ident">idle</span>.<span class="ident">transition_worker_to_searching</span>();
         }
@@ -1403,7 +1403,7 @@
         <span class="self">self</span>.<span class="ident">is_searching</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">transition_from_searching</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
+    <span class="kw">fn</span> <span class="ident">transition_from_searching</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_searching</span> {
             <span class="kw">return</span>;
         }
@@ -1415,7 +1415,7 @@
     <span class="doccomment">/// Prepare the worker state for parking</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns true if the transition happend, false if there is work to do first</span>
-    <span class="kw">fn</span> <span class="ident">transition_to_parked</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">transition_to_parked</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
         <span class="comment">// Workers should not park if they have work to do</span>
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">lifo_slot</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">run_queue</span>.<span class="ident">has_tasks</span>() {
             <span class="kw">return</span> <span class="bool-val">false</span>;
@@ -1441,7 +1441,7 @@
     }
 
     <span class="doccomment">/// Returns `true` if the transition happened.</span>
-    <span class="kw">fn</span> <span class="ident">transition_from_parked</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">transition_from_parked</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) -&gt; <span class="ident">bool</span> {
         <span class="comment">// If a task is in the lifo slot, then we must unpark regardless of</span>
         <span class="comment">// being notified</span>
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">lifo_slot</span>.<span class="ident">is_some</span>() {
@@ -1460,7 +1460,7 @@
     }
 
     <span class="doccomment">/// Runs maintenance work such as checking the pool&#39;s state.</span>
-    <span class="kw">fn</span> <span class="ident">maintenance</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
+    <span class="kw">fn</span> <span class="ident">maintenance</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
         <span class="self">self</span>.<span class="ident">stats</span>.<span class="ident">submit</span>(<span class="kw-2">&amp;</span><span class="ident">worker</span>.<span class="ident">shared</span>.<span class="ident">stats</span>);
 
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_shutdown</span> {
@@ -1471,7 +1471,7 @@
 
     <span class="doccomment">/// Signals all tasks to shut down, and waits for them to complete. Must run</span>
     <span class="doccomment">/// before we enter the single-threaded phase of shutdown processing.</span>
-    <span class="kw">fn</span> <span class="ident">pre_shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
+    <span class="kw">fn</span> <span class="ident">pre_shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">worker</span>: <span class="kw-2">&amp;</span><span class="ident">Worker</span>) {
         <span class="comment">// Signal to all tasks to shut down.</span>
         <span class="ident">worker</span>.<span class="ident">shared</span>.<span class="ident">owned</span>.<span class="ident">close_and_shutdown_all</span>();
 
@@ -1479,7 +1479,7 @@
     }
 
     <span class="doccomment">/// Shutdown the core</span>
-    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// Take the core</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">park</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">park</span>.<span class="ident">take</span>().<span class="ident">expect</span>(<span class="string">&quot;park missing&quot;</span>);
 
@@ -1549,7 +1549,7 @@
         })
     }
 
-    <span class="kw">fn</span> <span class="ident">schedule_local</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">core</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Core</span>, <span class="ident">task</span>: <span class="ident">Notified</span>, <span class="ident">is_yield</span>: <span class="ident">bool</span>) {
+    <span class="kw">fn</span> <span class="ident">schedule_local</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">core</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Core</span>, <span class="ident">task</span>: <span class="ident">Notified</span>, <span class="ident">is_yield</span>: <span class="ident">bool</span>) {
         <span class="comment">// Spawning from the worker thread. If scheduling a &quot;yield&quot; then the</span>
         <span class="comment">// task must always be pushed to the back of the queue, enabling other</span>
         <span class="comment">// tasks to be executed. If **not** a yield, then there is more</span>

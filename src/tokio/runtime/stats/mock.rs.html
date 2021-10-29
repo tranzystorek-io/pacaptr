@@ -42,15 +42,15 @@
         <span class="self">Self</span> {}
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">submit</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">_to</span>: <span class="kw-2">&amp;</span><span class="ident">RuntimeStats</span>) {}
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">submit</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_to</span>: <span class="kw-2">&amp;</span><span class="ident">RuntimeStats</span>) {}
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">about_to_park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {}
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">returned_from_park</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {}
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">about_to_park</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {}
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">returned_from_park</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {}
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;rt-multi-thread&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">incr_steal_count</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">_by</span>: <span class="ident">u16</span>) {}
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">incr_steal_count</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_by</span>: <span class="ident">u16</span>) {}
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">incr_poll_count</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {}
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">incr_poll_count</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {}
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="tokio" data-search-index-js="../../../../search-index.js" data-search-js="../../../../search.js"></div>

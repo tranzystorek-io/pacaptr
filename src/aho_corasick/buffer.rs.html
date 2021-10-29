@@ -210,15 +210,15 @@
     }
 
     <span class="doccomment">/// Return all free capacity in this buffer.</span>
-    <span class="kw">fn</span> <span class="ident">free_buffer</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>] {
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">end</span>..]
+    <span class="kw">fn</span> <span class="ident">free_buffer</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>] {
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">end</span>..]
     }
 
     <span class="doccomment">/// Refill the contents of this buffer by reading as much as possible into</span>
     <span class="doccomment">/// this buffer&#39;s free capacity. If no more bytes could be read, then this</span>
     <span class="doccomment">/// returns false. Otherwise, this reads until it has filled the buffer</span>
     <span class="doccomment">/// past the minimum amount.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fill</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">io::Read</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">rdr</span>: <span class="ident">R</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fill</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">io::Read</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">rdr</span>: <span class="ident">R</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">readany</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">loop</span> {
             <span class="kw">let</span> <span class="ident">readlen</span> <span class="op">=</span> <span class="ident">rdr</span>.<span class="ident">read</span>(<span class="self">self</span>.<span class="ident">free_buffer</span>())<span class="question-mark">?</span>;
@@ -239,7 +239,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This should only be called when the entire contents of this buffer have</span>
     <span class="doccomment">/// been searched.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">roll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">roll</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">let</span> <span class="ident">roll_start</span> <span class="op">=</span> <span class="self">self</span>
             .<span class="ident">end</span>
             .<span class="ident">checked_sub</span>(<span class="self">self</span>.<span class="ident">min</span>)

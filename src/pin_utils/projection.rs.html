@@ -145,7 +145,7 @@
         ) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core_reexport::pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;__a</span> <span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span><span class="op">&gt;</span> {
             <span class="kw">unsafe</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core_reexport::pin::Pin::map_unchecked_mut</span>(
-                    <span class="self">self</span>, <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">x</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span>
+                    <span class="self">self</span>, <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">&amp;mut</span> <span class="ident">x</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span>
                 )
             }
         }
@@ -193,7 +193,7 @@
             <span class="self">self</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core_reexport::pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;__a</span> <span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>
         ) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;__a</span> <span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span> {
             <span class="kw">unsafe</span> {
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core_reexport::pin::Pin::get_unchecked_mut</span>(<span class="self">self</span>).<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span>
+                <span class="kw-2">&amp;mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core_reexport::pin::Pin::get_unchecked_mut</span>(<span class="self">self</span>).<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span>
             }
         }
     )

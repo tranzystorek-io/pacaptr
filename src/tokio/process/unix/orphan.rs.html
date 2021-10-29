@@ -330,15 +330,15 @@
     <span class="doccomment">/// Get the identifier for this process or diagnostics.</span>
     <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u32</span>;
     <span class="doccomment">/// Try waiting for a process to exit in a non-blocking manner.</span>
-    <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Wait</span><span class="op">&gt;</span> <span class="ident">Wait</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Wait</span><span class="op">&gt;</span> <span class="ident">Wait</span> <span class="kw">for</span> <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
     <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u32</span> {
         (<span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">id</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         (<span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">try_wait</span>()
     }
 }
@@ -391,7 +391,7 @@
         <span class="comment">// If someone else is holding the lock, they will be responsible for draining</span>
         <span class="comment">// the queue as necessary, so we can safely bail if that happens</span>
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">mut</span> <span class="ident">sigchild_guard</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">sigchild</span>.<span class="ident">try_lock</span>() {
-            <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">sigchild_guard</span> {
+            <span class="kw">match</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">sigchild_guard</span> {
                 <span class="prelude-val">Some</span>(<span class="ident">sigchild</span>) =&gt; {
                     <span class="kw">if</span> <span class="ident">sigchild</span>.<span class="ident">try_has_changed</span>().<span class="ident">and_then</span>(<span class="ident">Result::ok</span>).<span class="ident">is_some</span>() {
                         <span class="ident">drain_orphan_queue</span>(<span class="self">self</span>.<span class="ident">queue</span>.<span class="ident">lock</span>());
@@ -496,7 +496,7 @@
             <span class="number">42</span>
         }
 
-        <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        <span class="kw">fn</span> <span class="ident">try_wait</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExitStatus</span><span class="op">&gt;</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="ident">waits</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">total_waits</span>.<span class="ident">get</span>();
 
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">num_wait_until_status</span> <span class="op">==</span> <span class="ident">waits</span> {

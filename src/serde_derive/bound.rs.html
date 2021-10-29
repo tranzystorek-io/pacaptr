@@ -521,7 +521,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ast</span><span class="op">&gt;</span> <span class="ident">FindTyParams</span><span class="op">&lt;</span><span class="lifetime">&#39;ast</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">visit_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Field</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_field</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Field</span>) {
             <span class="kw">if</span> <span class="kw">let</span> <span class="ident">syn::Type::Path</span>(<span class="ident">ty</span>) <span class="op">=</span> <span class="ident">ungroup</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>) {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">Pair::Punctuated</span>(<span class="ident">t</span>, <span class="kw">_</span>)) <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">pairs</span>().<span class="ident">next</span>() {
                     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">all_type_params</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">t</span>.<span class="ident">ident</span>) {
@@ -532,7 +532,7 @@
             <span class="self">self</span>.<span class="ident">visit_type</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
         }
 
-        <span class="kw">fn</span> <span class="ident">visit_path</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Path</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_path</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Path</span>) {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">seg</span>) <span class="op">=</span> <span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">last</span>() {
                 <span class="kw">if</span> <span class="ident">seg</span>.<span class="ident">ident</span> <span class="op">==</span> <span class="string">&quot;PhantomData&quot;</span> {
                     <span class="comment">// Hardcoded exception, because PhantomData&lt;T&gt; implements</span>
@@ -553,7 +553,7 @@
 
         <span class="comment">// Everything below is simply traversing the syntax tree.</span>
 
-        <span class="kw">fn</span> <span class="ident">visit_type</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Type</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_type</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Type</span>) {
             <span class="kw">match</span> <span class="ident">ty</span> {
                 <span class="ident">syn::Type::Array</span>(<span class="ident">ty</span>) =&gt; <span class="self">self</span>.<span class="ident">visit_type</span>(<span class="kw-2">&amp;</span><span class="ident">ty</span>.<span class="ident">elem</span>),
                 <span class="ident">syn::Type::BareFn</span>(<span class="ident">ty</span>) =&gt; {
@@ -599,11 +599,11 @@
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">visit_path_segment</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::PathSegment</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_path_segment</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::PathSegment</span>) {
             <span class="self">self</span>.<span class="ident">visit_path_arguments</span>(<span class="kw-2">&amp;</span><span class="ident">segment</span>.<span class="ident">arguments</span>);
         }
 
-        <span class="kw">fn</span> <span class="ident">visit_path_arguments</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arguments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::PathArguments</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_path_arguments</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">arguments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::PathArguments</span>) {
             <span class="kw">match</span> <span class="ident">arguments</span> {
                 <span class="ident">syn::PathArguments::None</span> =&gt; {}
                 <span class="ident">syn::PathArguments::AngleBracketed</span>(<span class="ident">arguments</span>) =&gt; {
@@ -626,14 +626,14 @@
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">visit_return_type</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">return_type</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::ReturnType</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_return_type</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">return_type</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::ReturnType</span>) {
             <span class="kw">match</span> <span class="ident">return_type</span> {
                 <span class="ident">syn::ReturnType::Default</span> =&gt; {}
                 <span class="ident">syn::ReturnType::Type</span>(<span class="kw">_</span>, <span class="ident">output</span>) =&gt; <span class="self">self</span>.<span class="ident">visit_type</span>(<span class="ident">output</span>),
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">visit_type_param_bound</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bound</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::TypeParamBound</span>) {
+        <span class="kw">fn</span> <span class="ident">visit_type_param_bound</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">bound</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::TypeParamBound</span>) {
             <span class="kw">match</span> <span class="ident">bound</span> {
                 <span class="ident">syn::TypeParamBound::Trait</span>(<span class="ident">bound</span>) =&gt; <span class="self">self</span>.<span class="ident">visit_path</span>(<span class="kw-2">&amp;</span><span class="ident">bound</span>.<span class="ident">path</span>),
                 <span class="ident">syn::TypeParamBound::Lifetime</span>(<span class="kw">_</span>) =&gt; {}
@@ -646,7 +646,7 @@
         <span class="comment">//         mac: T!(),</span>
         <span class="comment">//         marker: PhantomData&lt;T&gt;,</span>
         <span class="comment">//     }</span>
-        <span class="kw">fn</span> <span class="ident">visit_macro</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">_mac</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Macro</span>) {}
+        <span class="kw">fn</span> <span class="ident">visit_macro</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_mac</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ast</span> <span class="ident">syn::Macro</span>) {}
     }
 
     <span class="kw">let</span> <span class="ident">all_type_params</span> <span class="op">=</span> <span class="ident">generics</span>
@@ -754,7 +754,7 @@
     <span class="kw">let</span> <span class="ident">params</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">syn::GenericParam::Lifetime</span>(<span class="ident">def</span>))
         .<span class="ident">into_iter</span>()
         .<span class="ident">chain</span>(<span class="ident">generics</span>.<span class="ident">params</span>.<span class="ident">iter</span>().<span class="ident">cloned</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">mut</span> <span class="ident">param</span><span class="op">|</span> {
-            <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">param</span> {
+            <span class="kw">match</span> <span class="kw-2">&amp;mut</span> <span class="ident">param</span> {
                 <span class="ident">syn::GenericParam::Lifetime</span>(<span class="ident">param</span>) =&gt; {
                     <span class="ident">param</span>.<span class="ident">bounds</span>.<span class="ident">push</span>(<span class="ident">bound</span>.<span class="ident">clone</span>());
                 }

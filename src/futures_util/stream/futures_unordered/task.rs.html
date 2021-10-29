@@ -134,7 +134,7 @@
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">next_all</span>: <span class="ident">AtomicPtr</span><span class="op">&lt;</span><span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="comment">// Previous task in linked list tracking all active tasks</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">prev_all</span>: <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">prev_all</span>: <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="comment">// Length of the linked list tracking all active tasks when this node was</span>
     <span class="comment">// inserted (use `spin_next_all` to synchronize before reading when access</span>
@@ -205,9 +205,9 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">spin_next_all</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">pending_next_all</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="self">Self</span>,
+        <span class="ident">pending_next_all</span>: <span class="kw-2">*mut</span> <span class="self">Self</span>,
         <span class="ident">ordering</span>: <span class="ident">Ordering</span>,
-    ) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="self">Self</span> {
+    ) -&gt; <span class="kw-2">*const</span> <span class="self">Self</span> {
         <span class="kw">loop</span> {
             <span class="kw">let</span> <span class="ident">next</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">next_all</span>.<span class="ident">load</span>(<span class="ident">ordering</span>);
             <span class="kw">if</span> <span class="ident">next</span> <span class="op">!</span><span class="op">=</span> <span class="ident">pending_next_all</span> {
@@ -218,7 +218,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">Fut</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// Since `Task&lt;Fut&gt;` is sent across all threads for any lifetime,</span>
         <span class="comment">// regardless of `Fut`, we, to guarantee memory safety, can&#39;t actually</span>
         <span class="comment">// touch `Fut` at any time except when we have a reference to the</span>

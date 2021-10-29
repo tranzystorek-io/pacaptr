@@ -11,7 +11,7 @@ this method if the underlying <a href="trait.AsyncRead.html" title="AsyncRead"><
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">2</span>];
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">take</span> <span class="op">=</span> <span class="ident">reader</span>.<span class="ident">take</span>(<span class="number">4</span>);
-<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
 <span class="macro">assert_eq!</span>(<span class="ident">take</span>.<span class="ident">limit</span>(), <span class="number">2</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_limit" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/take.rs.html#79" title="goto source code">[src]</a></div><a href="#method.set_limit" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_limit" class="fnname">set_limit</a>(&amp;mut self, limit: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</h4></div></summary><div class="docblock"><p>Sets the number of bytes that can be read before this instance will
@@ -25,13 +25,13 @@ calling this method.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">4</span>];
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">take</span> <span class="op">=</span> <span class="ident">reader</span>.<span class="ident">take</span>(<span class="number">4</span>);
-<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
 <span class="macro">assert_eq!</span>(<span class="ident">n</span>, <span class="number">4</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">take</span>.<span class="ident">limit</span>(), <span class="number">0</span>);
 
 <span class="ident">take</span>.<span class="ident">set_limit</span>(<span class="number">10</span>);
-<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">take</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buffer</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 <span class="macro">assert_eq!</span>(<span class="ident">n</span>, <span class="number">4</span>);
 </code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get_ref" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/futures_util/io/take.rs.html#83" title="goto source code">[src]</a></div><a href="#method.get_ref" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get_ref" class="fnname">get_ref</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>R</h4></div></summary><div class="docblock"><p>Acquires a reference to the underlying sink or stream that this combinator is

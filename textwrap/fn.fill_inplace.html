@@ -28,7 +28,7 @@ leave trailing whitespace on lines. This is because we wrap by
 inserting a <code>'\n'</code> at the final whitespace in the input string:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">String::from</span>(<span class="string">&quot;Hello   World!&quot;</span>);
-<span class="ident">textwrap::fill_inplace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>, <span class="number">10</span>);
+<span class="ident">textwrap::fill_inplace</span>(<span class="kw-2">&amp;mut</span> <span class="ident">text</span>, <span class="number">10</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">text</span>, <span class="string">&quot;Hello  \nWorld!&quot;</span>);</code></pre></div>
 <p>If we didn’t do this, the word <code>World!</code> would end up being
 indented. You can avoid this if you make sure that your input text

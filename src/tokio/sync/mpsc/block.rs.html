@@ -553,7 +553,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// * All slots are empty.</span>
     <span class="doccomment">/// * The caller holds a unique pointer to the block.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">reclaim</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">reclaim</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">start_index</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="self">self</span>.<span class="ident">next</span> <span class="op">=</span> <span class="ident">AtomicPtr::new</span>(<span class="ident">ptr::null_mut</span>());
         <span class="self">self</span>.<span class="ident">ready_slots</span> <span class="op">=</span> <span class="ident">AtomicUsize::new</span>(<span class="number">0</span>);
@@ -641,7 +641,7 @@
     <span class="doccomment">/// * `block` is not freed until it has been removed from the list.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_push</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">block</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">Block</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+        <span class="ident">block</span>: <span class="kw-2">&amp;mut</span> <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">Block</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="ident">success</span>: <span class="ident">Ordering</span>,
         <span class="ident">failure</span>: <span class="ident">Ordering</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">Block</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
@@ -719,7 +719,7 @@
 
         <span class="comment">// TODO: Should this iteration be capped?</span>
         <span class="kw">loop</span> {
-            <span class="kw">let</span> <span class="ident">actual</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">curr</span>.<span class="ident">as_ref</span>().<span class="ident">try_push</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">new_block</span>, <span class="ident">AcqRel</span>, <span class="ident">Acquire</span>) };
+            <span class="kw">let</span> <span class="ident">actual</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">curr</span>.<span class="ident">as_ref</span>().<span class="ident">try_push</span>(<span class="kw-2">&amp;mut</span> <span class="ident">new_block</span>, <span class="ident">AcqRel</span>, <span class="ident">Acquire</span>) };
 
             <span class="ident">curr</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">actual</span> {
                 <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
@@ -750,7 +750,7 @@
 
         <span class="comment">// When fuzzing, `UnsafeCell` needs to be initialized.</span>
         <span class="macro">if_loom!</span> {
-            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">MaybeUninit</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">MaybeUninit</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>;
             <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">BLOCK_CAP</span> {
                 <span class="ident">p</span>.<span class="ident">add</span>(<span class="ident">i</span>)
                     .<span class="ident">write</span>(<span class="ident">UnsafeCell::new</span>(<span class="ident">MaybeUninit::uninit</span>()));

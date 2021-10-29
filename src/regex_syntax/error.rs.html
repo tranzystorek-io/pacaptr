@@ -376,7 +376,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">Error::Parse</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">fmt</span>(<span class="ident">f</span>),
             <span class="ident">Error::Translate</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">fmt</span>(<span class="ident">f</span>),
@@ -426,7 +426,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;e</span>, <span class="ident">E</span>: <span class="ident">fmt::Display</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;e</span>, <span class="ident">E</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">spans</span> <span class="op">=</span> <span class="ident">Spans::from_formatter</span>(<span class="self">self</span>);
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">pattern</span>.<span class="ident">contains</span>(<span class="string">&#39;\n&#39;</span>) {
             <span class="kw">let</span> <span class="ident">divider</span> <span class="op">=</span> <span class="ident">repeat_char</span>(<span class="string">&#39;~&#39;</span>, <span class="number">79</span>);
@@ -518,7 +518,7 @@
     }
 
     <span class="doccomment">/// Add the given span to this sequence, putting it in the right place.</span>
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">span</span>: <span class="ident">ast::Span</span>) {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">span</span>: <span class="ident">ast::Span</span>) {
         <span class="comment">// This is grossly inefficient since we sort after each add, but right</span>
         <span class="comment">// now, we only ever add two spans at most.</span>
         <span class="kw">if</span> <span class="ident">span</span>.<span class="ident">is_one_line</span>() {

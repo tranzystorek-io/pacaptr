@@ -38,7 +38,7 @@ an event (from <a href="../struct.Poll.html"><code>Poll</code></a>) once a conne
 <span class="comment">// `Token` is used to determine that we received an event for the listener</span>
 <span class="comment">// later on.</span>
 <span class="kw">const</span> <span class="ident">SERVER</span>: <span class="ident">Token</span> <span class="op">=</span> <span class="ident">Token</span>(<span class="number">0</span>);
-<span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">listener</span>, <span class="ident">SERVER</span>, <span class="ident">Interest::READABLE</span>)<span class="question-mark">?</span>;</code></pre></div>
+<span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(<span class="kw-2">&amp;mut</span> <span class="ident">listener</span>, <span class="ident">SERVER</span>, <span class="ident">Interest::READABLE</span>)<span class="question-mark">?</span>;</code></pre></div>
 <p>Multiple event sources can be <a href="../struct.Registry.html#method.register">registered</a> (concurrently), so we can
 monitor multiple sources at a time.</p>
 <h3 id="3-creating-the-event-loop" class="section-header"><a href="#3-creating-the-event-loop">3. Creating the event loop</a></h3>
@@ -54,7 +54,7 @@ TCP server.</p>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="comment">// Start our event loop.</span>
 <span class="kw">loop</span> {
     <span class="comment">// Poll the OS for events, waiting at most 100 milliseconds.</span>
-    <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">Duration::from_millis</span>(<span class="number">100</span>)))<span class="question-mark">?</span>;
+    <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">Duration::from_millis</span>(<span class="number">100</span>)))<span class="question-mark">?</span>;
 
     <span class="comment">// Process each event.</span>
     <span class="kw">for</span> <span class="ident">event</span> <span class="kw">in</span> <span class="ident">events</span>.<span class="ident">iter</span>() {

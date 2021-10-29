@@ -24,7 +24,7 @@ that the <code>SourceFd</code> is constructed right before a call to
 
 <span class="comment">// Register the listener</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">SourceFd</span>(<span class="kw-2">&amp;</span><span class="ident">listener</span>.<span class="ident">as_raw_fd</span>()),
+    <span class="kw-2">&amp;mut</span> <span class="ident">SourceFd</span>(<span class="kw-2">&amp;</span><span class="ident">listener</span>.<span class="ident">as_raw_fd</span>()),
     <span class="ident">Token</span>(<span class="number">0</span>),
     <span class="ident">Interest::READABLE</span>)<span class="question-mark">?</span>;</code></pre></div>
 <p>Implementing <a href="../event/trait.Source.html"><code>event::Source</code></a> for a custom type backed by a <a href="https://doc.rust-lang.org/nightly/std/os/fd/raw/type.RawFd.html" title="RawFd"><code>RawFd</code></a>.</p>
@@ -40,19 +40,19 @@ that the <code>SourceFd</code> is constructed right before a call to
 }
 
 <span class="kw">impl</span> <span class="ident">event::Source</span> <span class="kw">for</span> <span class="ident">MyIo</span> {
-    <span class="kw">fn</span> <span class="ident">register</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>, <span class="ident">token</span>: <span class="ident">Token</span>, <span class="ident">interests</span>: <span class="ident">Interest</span>)
+    <span class="kw">fn</span> <span class="ident">register</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>, <span class="ident">token</span>: <span class="ident">Token</span>, <span class="ident">interests</span>: <span class="ident">Interest</span>)
         -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     {
         <span class="ident">SourceFd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">fd</span>).<span class="ident">register</span>(<span class="ident">registry</span>, <span class="ident">token</span>, <span class="ident">interests</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">reregister</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>, <span class="ident">token</span>: <span class="ident">Token</span>, <span class="ident">interests</span>: <span class="ident">Interest</span>)
+    <span class="kw">fn</span> <span class="ident">reregister</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>, <span class="ident">token</span>: <span class="ident">Token</span>, <span class="ident">interests</span>: <span class="ident">Interest</span>)
         -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     {
         <span class="ident">SourceFd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">fd</span>).<span class="ident">reregister</span>(<span class="ident">registry</span>, <span class="ident">token</span>, <span class="ident">interests</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">deregister</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">deregister</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">registry</span>: <span class="kw-2">&amp;</span><span class="ident">Registry</span>) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="ident">SourceFd</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">fd</span>).<span class="ident">deregister</span>(<span class="ident">registry</span>)
     }
 }</code></pre></div>

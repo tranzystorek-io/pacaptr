@@ -19,7 +19,7 @@ version of them.</p>
 <span class="comment">// We must provide some type here, as there is no way for the compiler</span>
 <span class="comment">// to infer it. As we don&#39;t need to capture variables, we can just</span>
 <span class="comment">// use a function pointer instead of a closure.</span>
-<span class="kw">fn</span> <span class="ident">prio_left</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ()) -&gt; <span class="ident">PollNext</span> { <span class="ident">PollNext::Left</span> }
+<span class="kw">fn</span> <span class="ident">prio_left</span>(<span class="kw">_</span>: <span class="kw-2">&amp;mut</span> ()) -&gt; <span class="ident">PollNext</span> { <span class="ident">PollNext::Left</span> }
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">select_with_strategy</span>(<span class="ident">left</span>, <span class="ident">right</span>, <span class="ident">prio_left</span>);
 
@@ -36,7 +36,7 @@ Note: this special case is provided by [<code>futures-util::stream::select</code
 <span class="kw">let</span> <span class="ident">left</span> <span class="op">=</span> <span class="ident">repeat</span>(<span class="number">1</span>);
 <span class="kw">let</span> <span class="ident">right</span> <span class="op">=</span> <span class="ident">repeat</span>(<span class="number">2</span>);
 
-<span class="kw">let</span> <span class="ident">rrobin</span> <span class="op">=</span> <span class="op">|</span><span class="ident">last</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PollNext</span><span class="op">|</span> <span class="ident">last</span>.<span class="ident">toggle</span>();
+<span class="kw">let</span> <span class="ident">rrobin</span> <span class="op">=</span> <span class="op">|</span><span class="ident">last</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PollNext</span><span class="op">|</span> <span class="ident">last</span>.<span class="ident">toggle</span>();
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">select_with_strategy</span>(<span class="ident">left</span>, <span class="ident">right</span>, <span class="ident">rrobin</span>);
 

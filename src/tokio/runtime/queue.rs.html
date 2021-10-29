@@ -591,7 +591,7 @@
     }
 
     <span class="doccomment">/// Pushes a task to the back of the local queue, skipping the LIFO slot.</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">push_back</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">task</span>: <span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">inject</span>: <span class="kw-2">&amp;</span><span class="ident">Inject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">push_back</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">task</span>: <span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">inject</span>: <span class="kw-2">&amp;</span><span class="ident">Inject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {
         <span class="kw">let</span> <span class="ident">tail</span> <span class="op">=</span> <span class="kw">loop</span> {
             <span class="kw">let</span> <span class="ident">head</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">head</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>);
             <span class="kw">let</span> (<span class="ident">steal</span>, <span class="ident">real</span>) <span class="op">=</span> <span class="ident">unpack</span>(<span class="ident">head</span>);
@@ -647,7 +647,7 @@
     <span class="doccomment">/// another opportunity.</span>
     <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">never</span>)]</span>
     <span class="kw">fn</span> <span class="ident">push_overflow</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">task</span>: <span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
         <span class="ident">head</span>: <span class="ident">u16</span>,
         <span class="ident">tail</span>: <span class="ident">u16</span>,
@@ -709,7 +709,7 @@
             <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>;
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">i</span> <span class="op">==</span> <span class="ident">u32::from</span>(<span class="ident">NUM_TASKS_TAKEN</span>) {
                     <span class="prelude-val">None</span>
                 } <span class="kw">else</span> {
@@ -739,7 +739,7 @@
     }
 
     <span class="doccomment">/// Pops a task from the local queue.</span>
-    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">head</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">head</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>);
 
         <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="kw">loop</span> {
@@ -788,8 +788,8 @@
     <span class="doccomment">/// Steals half the tasks from self and place them into `dst`.</span>
     <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">steal_into</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Local</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-        <span class="ident">stats</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">WorkerStatsBatcher</span>,
+        <span class="ident">dst</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Local</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
+        <span class="ident">stats</span>: <span class="kw-2">&amp;mut</span> <span class="ident">WorkerStatsBatcher</span>,
     ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">task::Notified</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// Safety: the caller is the only thread that mutates `dst.tail` and</span>
         <span class="comment">// holds a mutable reference.</span>
@@ -839,7 +839,7 @@
 
     <span class="comment">// Steal tasks from `self`, placing them into `dst`. Returns the number of</span>
     <span class="comment">// tasks that were stolen.</span>
-    <span class="kw">fn</span> <span class="ident">steal_into2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Local</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">dst_tail</span>: <span class="ident">u16</span>) -&gt; <span class="ident">u16</span> {
+    <span class="kw">fn</span> <span class="ident">steal_into2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Local</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">dst_tail</span>: <span class="ident">u16</span>) -&gt; <span class="ident">u16</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev_packed</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">head</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">next_packed</span>;
 
@@ -942,7 +942,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Local</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">std::thread::panicking</span>() {
             <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">pop</span>().<span class="ident">is_none</span>(), <span class="string">&quot;queue not empty&quot;</span>);
         }

@@ -62,7 +62,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Spawner</span> {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;rt-multi-thread&quot;</span>)]</span>
         {
             <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Spawner::ThreadPool</span>(<span class="ident">spawner</span>) <span class="op">=</span> <span class="self">self</span> {

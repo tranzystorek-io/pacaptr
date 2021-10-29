@@ -110,7 +110,7 @@ but the value that the closure panicked on might be removed.</p>
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&#39;b&#39;</span>);
 <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&#39;c&#39;</span>);
 <span class="ident">slab</span>.<span class="ident">remove</span>(<span class="ident">a</span>);
-<span class="ident">slab</span>.<span class="ident">compact</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span><span class="op">|</span> {
+<span class="ident">slab</span>.<span class="ident">compact</span>(<span class="op">|</span><span class="kw-2">&amp;mut</span> <span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span><span class="op">|</span> {
     <span class="macro">assert_eq!</span>((<span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span>), (<span class="string">&#39;c&#39;</span>, <span class="number">2</span>, <span class="number">0</span>));
     <span class="bool-val">true</span>
 });
@@ -122,7 +122,7 @@ but the value that the closure panicked on might be removed.</p>
 <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&#39;a&#39;</span>);
 <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">slab</span>.<span class="ident">insert</span>(<span class="string">&#39;b&#39;</span>);
 <span class="ident">slab</span>.<span class="ident">remove</span>(<span class="ident">a</span>);
-<span class="ident">slab</span>.<span class="ident">compact</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span><span class="op">|</span> <span class="bool-val">false</span>);
+<span class="ident">slab</span>.<span class="ident">compact</span>(<span class="op">|</span><span class="kw-2">&amp;mut</span> <span class="ident">value</span>, <span class="ident">from</span>, <span class="ident">to</span><span class="op">|</span> <span class="bool-val">false</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">slab</span>.<span class="ident">iter</span>().<span class="ident">next</span>(), <span class="prelude-val">Some</span>((<span class="ident">b</span>, <span class="kw-2">&amp;</span><span class="string">&#39;b&#39;</span>)));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clear" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/slab/lib.rs.html#548-552" title="goto source code">[src]</a></div><a href="#method.clear" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.clear" class="fnname">clear</a>(&amp;mut self)</h4></div></summary><div class="docblock"><p>Clear the slab of all values.</p>
 <h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
@@ -404,7 +404,7 @@ The keys does not need to be sorted beforehand, and this function always
 takes O(n) time.
 Note that the returned slab will use space proportional to the largest key,
 so don’t use <code>Slab</code> with untrusted keys.</p>
-<h2 id="examples-26" class="section-header"><a href="#examples-26">Examples</a></h2>
+<h4 id="examples-26" class="section-header"><a href="#examples-26">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let</span> <span class="ident">vec</span> <span class="op">=</span> <span class="macro">vec!</span>[(<span class="number">2</span>,<span class="string">&#39;a&#39;</span>), (<span class="number">6</span>,<span class="string">&#39;b&#39;</span>), (<span class="number">7</span>,<span class="string">&#39;c&#39;</span>)];
 <span class="kw">let</span> <span class="ident">slab</span> <span class="op">=</span> <span class="ident">vec</span>.<span class="ident">into_iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Slab</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span><span class="op">&gt;</span>();

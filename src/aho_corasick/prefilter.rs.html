@@ -1114,7 +1114,7 @@
     <span class="doccomment">/// in the given haystack after or at the given position.</span>
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span>;
@@ -1154,7 +1154,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1273,7 +1273,7 @@
     <span class="doccomment">/// Update this state with the number of bytes skipped on the last</span>
     <span class="doccomment">/// invocation of the prefilter.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">update_skipped_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">skipped</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">update_skipped_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">skipped</span>: <span class="ident">usize</span>) {
         <span class="self">self</span>.<span class="ident">skips</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
         <span class="self">self</span>.<span class="ident">skipped</span> <span class="op">+</span><span class="op">=</span> <span class="ident">skipped</span>;
     }
@@ -1289,7 +1289,7 @@
     <span class="doccomment">/// then the prefilter should not be re-run until the search moves past</span>
     <span class="doccomment">/// that position.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">update_at</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">at</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">update_at</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">at</span>: <span class="ident">usize</span>) {
         <span class="kw">if</span> <span class="ident">at</span> <span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">last_scan_at</span> {
             <span class="self">self</span>.<span class="ident">last_scan_at</span> <span class="op">=</span> <span class="ident">at</span>;
         }
@@ -1301,7 +1301,7 @@
     <span class="doccomment">/// The given pos should correspond to the current starting position of the</span>
     <span class="doccomment">/// search.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_effective</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">at</span>: <span class="ident">usize</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_effective</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">at</span>: <span class="ident">usize</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">inert</span> {
             <span class="kw">return</span> <span class="bool-val">false</span>;
         }
@@ -1403,7 +1403,7 @@
     }
 
     <span class="doccomment">/// Add a literal string to this prefilter builder.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
         <span class="self">self</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
         <span class="self">self</span>.<span class="ident">start_bytes</span>.<span class="ident">add</span>(<span class="ident">bytes</span>);
         <span class="self">self</span>.<span class="ident">rare_bytes</span>.<span class="ident">add</span>(<span class="ident">bytes</span>);
@@ -1421,7 +1421,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">Packed</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1480,7 +1480,7 @@
         <span class="ident">ByteSet</span>([<span class="bool-val">false</span>; <span class="number">256</span>])
     }
 
-    <span class="kw">fn</span> <span class="ident">insert</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">insert</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">new</span> <span class="op">=</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">b</span>);
         <span class="self">self</span>.<span class="number">0</span>[<span class="ident">b</span> <span class="kw">as</span> <span class="ident">usize</span>] <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="ident">new</span>
@@ -1492,7 +1492,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">ByteSet</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="macro">vec!</span>[];
         <span class="kw">for</span> <span class="ident">b</span> <span class="kw">in</span> <span class="number">0</span>..<span class="op">=</span><span class="number">255</span> {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">b</span>) {
@@ -1521,14 +1521,14 @@
     <span class="doccomment">/// greater than the existing offset, then it overwrites the previous</span>
     <span class="doccomment">/// value and returns false. If there is no previous value set, then this</span>
     <span class="doccomment">/// sets it and returns true.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>, <span class="ident">off</span>: <span class="ident">RareByteOffset</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>, <span class="ident">off</span>: <span class="ident">RareByteOffset</span>) {
         <span class="self">self</span>.<span class="ident">set</span>[<span class="ident">byte</span> <span class="kw">as</span> <span class="ident">usize</span>].<span class="ident">max</span> <span class="op">=</span>
             <span class="ident">cmp::max</span>(<span class="self">self</span>.<span class="ident">set</span>[<span class="ident">byte</span> <span class="kw">as</span> <span class="ident">usize</span>].<span class="ident">max</span>, <span class="ident">off</span>.<span class="ident">max</span>);
     }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">RareByteOffsets</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">offsets</span> <span class="op">=</span> <span class="macro">vec!</span>[];
         <span class="kw">for</span> <span class="ident">off</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">set</span>.<span class="ident">iter</span>() {
             <span class="kw">if</span> <span class="ident">off</span>.<span class="ident">max</span> <span class="op">&gt;</span> <span class="number">0</span> {
@@ -1639,7 +1639,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// All patterns added to an Aho-Corasick automaton should be added to this</span>
     <span class="doccomment">/// builder before attempting to construct the prefilter.</span>
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
         <span class="comment">// If we&#39;ve already given up, then do nothing.</span>
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">available</span> {
             <span class="kw">return</span>;
@@ -1689,7 +1689,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">set_offset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
+    <span class="kw">fn</span> <span class="ident">set_offset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
         <span class="comment">// This unwrap is OK because pos is never bigger than our max.</span>
         <span class="kw">let</span> <span class="ident">offset</span> <span class="op">=</span> <span class="ident">RareByteOffset::new</span>(<span class="ident">pos</span>).<span class="ident">unwrap</span>();
         <span class="self">self</span>.<span class="ident">byte_offsets</span>.<span class="ident">set</span>(<span class="ident">byte</span>, <span class="ident">offset</span>);
@@ -1698,14 +1698,14 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">add_rare_byte</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
+    <span class="kw">fn</span> <span class="ident">add_rare_byte</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
         <span class="self">self</span>.<span class="ident">add_one_rare_byte</span>(<span class="ident">byte</span>);
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">ascii_case_insensitive</span> {
             <span class="self">self</span>.<span class="ident">add_one_rare_byte</span>(<span class="ident">opposite_ascii_case</span>(<span class="ident">byte</span>));
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">add_one_rare_byte</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
+    <span class="kw">fn</span> <span class="ident">add_one_rare_byte</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">rare_set</span>.<span class="ident">insert</span>(<span class="ident">byte</span>) {
             <span class="self">self</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="self">self</span>.<span class="ident">rank_sum</span> <span class="op">+</span><span class="op">=</span> <span class="ident">freq_rank</span>(<span class="ident">byte</span>) <span class="kw">as</span> <span class="ident">u16</span>;
@@ -1723,7 +1723,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">RareBytesOne</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1783,7 +1783,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">RareBytesTwo</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1823,7 +1823,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">RareBytesThree</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1941,7 +1941,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// All patterns added to an Aho-Corasick automaton should be added to this</span>
     <span class="doccomment">/// builder before attempting to construct the prefilter.</span>
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">count</span> <span class="op">&gt;</span> <span class="number">3</span> {
             <span class="kw">return</span>;
         }
@@ -1953,7 +1953,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">add_one_byte</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
+    <span class="kw">fn</span> <span class="ident">add_one_byte</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">byte</span>: <span class="ident">u8</span>) {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">byteset</span>[<span class="ident">byte</span> <span class="kw">as</span> <span class="ident">usize</span>] {
             <span class="self">self</span>.<span class="ident">byteset</span>[<span class="ident">byte</span> <span class="kw">as</span> <span class="ident">usize</span>] <span class="op">=</span> <span class="bool-val">true</span>;
             <span class="self">self</span>.<span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
@@ -1971,7 +1971,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">StartBytesOne</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -1999,7 +1999,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">StartBytesTwo</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -2028,7 +2028,7 @@
 <span class="kw">impl</span> <span class="ident">Prefilter</span> <span class="kw">for</span> <span class="ident">StartBytesThree</span> {
     <span class="kw">fn</span> <span class="ident">next_candidate</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+        <span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
         <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
         <span class="ident">at</span>: <span class="ident">usize</span>,
     ) -&gt; <span class="ident">Candidate</span> {
@@ -2053,7 +2053,7 @@
 <span class="doccomment">/// to initiate a search.</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Prefilter</span><span class="op">&gt;</span>(
-    <span class="ident">prestate</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">PrefilterState</span>,
+    <span class="ident">prestate</span>: <span class="kw-2">&amp;mut</span> <span class="ident">PrefilterState</span>,
     <span class="ident">prefilter</span>: <span class="ident">P</span>,
     <span class="ident">haystack</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
     <span class="ident">at</span>: <span class="ident">usize</span>,

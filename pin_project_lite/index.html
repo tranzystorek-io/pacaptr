@@ -15,10 +15,10 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> <span class="ident">Struct</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">method</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>) {
+    <span class="kw">fn</span> <span class="ident">method</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>) {
         <span class="kw">let</span> <span class="ident">this</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">project</span>();
-        <span class="kw">let</span> <span class="kw">_</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">pinned</span>; <span class="comment">// Pinned reference to the field</span>
-        <span class="kw">let</span> <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">unpinned</span>; <span class="comment">// Normal reference to the field</span>
+        <span class="kw">let</span> <span class="kw">_</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">pinned</span>; <span class="comment">// Pinned reference to the field</span>
+        <span class="kw">let</span> <span class="kw">_</span>: <span class="kw-2">&amp;mut</span> <span class="ident">U</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">unpinned</span>; <span class="comment">// Normal reference to the field</span>
     }
 }</code></pre></div>
 <p>To use <a href="macro.pin_project.html" title="pin_project!"><code>pin_project!</code></a> on enums, you need to name the projection type
@@ -36,11 +36,11 @@ returned from the method.</p>
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> <span class="ident">Enum</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">method</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>) {
+    <span class="kw">fn</span> <span class="ident">method</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>) {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">project</span>() {
             <span class="ident">EnumProj::Variant</span> { <span class="ident">pinned</span>, <span class="ident">unpinned</span> } =&gt; {
-                <span class="kw">let</span> <span class="kw">_</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">pinned</span>;
-                <span class="kw">let</span> <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">U</span> <span class="op">=</span> <span class="ident">unpinned</span>;
+                <span class="kw">let</span> <span class="kw">_</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">pinned</span>;
+                <span class="kw">let</span> <span class="kw">_</span>: <span class="kw-2">&amp;mut</span> <span class="ident">U</span> <span class="op">=</span> <span class="ident">unpinned</span>;
             }
         }
     }

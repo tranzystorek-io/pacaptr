@@ -138,7 +138,7 @@ by value, no associated types, etc.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">async_trait</span>]</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ObjectSafe</span> {
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">f</span>(<span class="kw-2">&amp;</span><span class="self">self</span>);
-    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">g</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>);
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">g</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>);
 }
 
 <span class="kw">impl</span> <span class="ident">ObjectSafe</span> <span class="kw">for</span> <span class="ident">MyType</span> {...}

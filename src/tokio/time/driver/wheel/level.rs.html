@@ -477,7 +477,7 @@
         <span class="prelude-val">Some</span>(<span class="ident">slot</span>)
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">add_entry</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">item</span>: <span class="ident">TimerHandle</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">add_entry</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">item</span>: <span class="ident">TimerHandle</span>) {
         <span class="kw">let</span> <span class="ident">slot</span> <span class="op">=</span> <span class="ident">slot_for</span>(<span class="ident">item</span>.<span class="ident">cached_when</span>(), <span class="self">self</span>.<span class="ident">level</span>);
 
         <span class="self">self</span>.<span class="ident">slot</span>[<span class="ident">slot</span>].<span class="ident">push_front</span>(<span class="ident">item</span>);
@@ -485,7 +485,7 @@
         <span class="self">self</span>.<span class="ident">occupied</span> <span class="op">|</span><span class="op">=</span> <span class="ident">occupied_bit</span>(<span class="ident">slot</span>);
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">remove_entry</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">item</span>: <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">TimerShared</span><span class="op">&gt;</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">remove_entry</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">item</span>: <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">TimerShared</span><span class="op">&gt;</span>) {
         <span class="kw">let</span> <span class="ident">slot</span> <span class="op">=</span> <span class="ident">slot_for</span>(<span class="kw">unsafe</span> { <span class="ident">item</span>.<span class="ident">as_ref</span>().<span class="ident">cached_when</span>() }, <span class="self">self</span>.<span class="ident">level</span>);
 
         <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">slot</span>[<span class="ident">slot</span>].<span class="ident">remove</span>(<span class="ident">item</span>) };
@@ -498,15 +498,15 @@
         }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">take_slot</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">slot</span>: <span class="ident">usize</span>) -&gt; <span class="ident">EntryList</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">take_slot</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">slot</span>: <span class="ident">usize</span>) -&gt; <span class="ident">EntryList</span> {
         <span class="self">self</span>.<span class="ident">occupied</span> <span class="op">&amp;=</span> <span class="op">!</span><span class="ident">occupied_bit</span>(<span class="ident">slot</span>);
 
-        <span class="ident">std::mem::take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">slot</span>[<span class="ident">slot</span>])
+        <span class="ident">std::mem::take</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">slot</span>[<span class="ident">slot</span>])
     }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Level</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Level&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;occupied&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">occupied</span>)
             .<span class="ident">finish</span>()

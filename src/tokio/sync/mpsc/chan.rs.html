@@ -425,7 +425,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span>: <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Tx</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Tx&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;inner&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>).<span class="ident">finish</span>()
     }
 }
@@ -436,7 +436,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span>: <span class="ident">Semaphore</span> <span class="op">+</span> <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Rx</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Rx&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;inner&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>).<span class="ident">finish</span>()
     }
 }
@@ -477,7 +477,7 @@
 <span class="kw">where</span>
     <span class="ident">S</span>: <span class="ident">fmt::Debug</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Chan&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;tx&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">tx</span>)
             .<span class="ident">field</span>(<span class="string">&quot;semaphore&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">semaphore</span>)
@@ -498,7 +498,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">RxFields</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;RxFields&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;list&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">list</span>)
             .<span class="ident">field</span>(<span class="string">&quot;rx_closed&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">rx_closed</span>)
@@ -585,7 +585,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Tx</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">tx_count</span>.<span class="ident">fetch_sub</span>(<span class="number">1</span>, <span class="ident">AcqRel</span>) <span class="op">!</span><span class="op">=</span> <span class="number">1</span> {
             <span class="kw">return</span>;
         }
@@ -605,9 +605,9 @@
         <span class="ident">Rx</span> { <span class="ident">inner</span>: <span class="ident">chan</span> }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
+            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
 
             <span class="kw">if</span> <span class="ident">rx_fields</span>.<span class="ident">rx_closed</span> {
                 <span class="kw">return</span>;
@@ -621,14 +621,14 @@
     }
 
     <span class="doccomment">/// Receive the next value</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">recv</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">recv</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read</span>::<span class="kw-2">*</span>;
 
         <span class="comment">// Keep track of task budget</span>
         <span class="kw">let</span> <span class="ident">coop</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="ident"><span class="kw">crate</span>::coop::poll_proceed</span>(<span class="ident">cx</span>));
 
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
+            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
 
             <span class="macro">macro_rules!</span> <span class="ident">try_recv</span> {
                 () =&gt; {
@@ -673,11 +673,11 @@
     }
 
     <span class="doccomment">/// Try to receive the next value.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_recv</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">TryRecvError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_recv</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">TryRecvError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::list::TryPopResult</span>;
 
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
+            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
 
             <span class="macro">macro_rules!</span> <span class="ident">try_recv</span> {
                 () =&gt; {
@@ -719,13 +719,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span>: <span class="ident">Semaphore</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Rx</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read::Value</span>;
 
         <span class="self">self</span>.<span class="ident">close</span>();
 
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
+            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
 
             <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">Value</span>(<span class="kw">_</span>)) <span class="op">=</span> <span class="ident">rx_fields</span>.<span class="ident">list</span>.<span class="ident">pop</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">tx</span>) {
                 <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">semaphore</span>.<span class="ident">add_permit</span>();
@@ -747,13 +747,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Chan</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::block::Read::Value</span>;
 
         <span class="comment">// Safety: the only owner of the rx fields is Chan, and eing</span>
         <span class="comment">// inside its own Drop means we&#39;re the last ones to touch it.</span>
         <span class="self">self</span>.<span class="ident">rx_fields</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">rx_fields_ptr</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
+            <span class="kw">let</span> <span class="ident">rx_fields</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">rx_fields_ptr</span> };
 
             <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">Value</span>(<span class="kw">_</span>)) <span class="op">=</span> <span class="ident">rx_fields</span>.<span class="ident">list</span>.<span class="ident">pop</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">tx</span>) {}
             <span class="kw">unsafe</span> { <span class="ident">rx_fields</span>.<span class="ident">list</span>.<span class="ident">free_blocks</span>() };

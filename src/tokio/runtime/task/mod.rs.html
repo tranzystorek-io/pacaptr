@@ -637,7 +637,7 @@
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">LocalNotified</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
     <span class="ident">task</span>: <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
-    <span class="ident">_not_send</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">*</span><span class="kw">const</span> ()<span class="op">&gt;</span>,
+    <span class="ident">_not_send</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">*const</span> ()<span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// A task that is not owned by any OwnedTasks. Used for blocking tasks.</span>
@@ -827,7 +827,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// Decrement the ref count</span>
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">header</span>().<span class="ident">state</span>.<span class="ident">ref_dec</span>() {
             <span class="comment">// Deallocate if this is the final ref count</span>
@@ -837,7 +837,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">UnownedTask</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="comment">// Decrement the ref count</span>
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">raw</span>.<span class="ident">header</span>().<span class="ident">state</span>.<span class="ident">ref_dec_twice</span>() {
             <span class="comment">// Deallocate if this is the final ref count</span>
@@ -847,13 +847,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Task</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;Task({:p})&quot;</span>, <span class="self">self</span>.<span class="ident">header</span>())
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Notified</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;task::Notified({:p})&quot;</span>, <span class="self">self</span>.<span class="number">0</span>.<span class="ident">header</span>())
     }
 }
@@ -875,7 +875,7 @@
 
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">pointers</span>(<span class="ident">target</span>: <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">Header</span><span class="op">&gt;</span>) -&gt; <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">linked_list::Pointers</span><span class="op">&lt;</span><span class="ident">Header</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// Not super great as it avoids some of looms checking...</span>
-        <span class="ident">NonNull::from</span>(<span class="ident">target</span>.<span class="ident">as_ref</span>().<span class="ident">owned</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>))
+        <span class="ident">NonNull::from</span>(<span class="ident">target</span>.<span class="ident">as_ref</span>().<span class="ident">owned</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>))
     }
 }
 </code></pre></div>

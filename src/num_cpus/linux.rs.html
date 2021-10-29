@@ -452,7 +452,7 @@
 
 <span class="kw">fn</span> <span class="ident">logical_cpus</span>() -&gt; <span class="ident">usize</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">set</span>: <span class="ident">libc::cpu_set_t</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem::zeroed</span>() };
-    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc::sched_getaffinity</span>(<span class="number">0</span>, <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::cpu_set_t</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">set</span>) } <span class="op">==</span> <span class="number">0</span> {
+    <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc::sched_getaffinity</span>(<span class="number">0</span>, <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">libc::cpu_set_t</span><span class="op">&gt;</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">set</span>) } <span class="op">==</span> <span class="number">0</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">count</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">libc::CPU_SETSIZE</span> <span class="kw">as</span> <span class="ident">usize</span> {
             <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">libc::CPU_ISSET</span>(<span class="ident">i</span>, <span class="kw-2">&amp;</span><span class="ident">set</span>) } {
@@ -632,7 +632,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="macro">some!</span>(<span class="ident">File::open</span>(<span class="self">self</span>.<span class="ident">base</span>.<span class="ident">join</span>(<span class="ident">param</span>)).<span class="ident">ok</span>());
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">String::new</span>();
-        <span class="macro">some!</span>(<span class="ident">file</span>.<span class="ident">read_to_string</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>).<span class="ident">ok</span>());
+        <span class="macro">some!</span>(<span class="ident">file</span>.<span class="ident">read_to_string</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">ok</span>());
 
         <span class="ident">buf</span>.<span class="ident">trim</span>().<span class="ident">parse</span>().<span class="ident">ok</span>()
     }

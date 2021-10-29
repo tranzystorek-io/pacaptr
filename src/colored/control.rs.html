@@ -450,7 +450,7 @@
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="ident">GetStdHandle</span>(<span class="ident">STD_OUTPUT_HANDLE</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">original_mode</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="ident">GetConsoleMode</span>(<span class="ident">handle</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">original_mode</span>);
+        <span class="ident">GetConsoleMode</span>(<span class="ident">handle</span>, <span class="kw-2">&amp;mut</span> <span class="ident">original_mode</span>);
 
         <span class="kw">let</span> <span class="ident">enabled</span> <span class="op">=</span> <span class="ident">original_mode</span> <span class="op">&amp;</span> <span class="ident">ENABLE_VIRTUAL_TERMINAL_PROCESSING</span>
             <span class="op">==</span> <span class="ident">ENABLE_VIRTUAL_TERMINAL_PROCESSING</span>;
@@ -584,7 +584,7 @@
     <span class="kw">fn</span> <span class="ident">clicolor_behavior</span>() {
         <span class="kw">use</span> <span class="ident">std::io</span>;
 
-        <span class="kw">let</span> <span class="ident">stdout</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">io::stdout</span>();
+        <span class="kw">let</span> <span class="ident">stdout</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">io::stdout</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">formatter</span> <span class="op">=</span> <span class="ident">rspec::formatter::Simple::new</span>(<span class="ident">stdout</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">runner</span> <span class="op">=</span> <span class="ident">describe</span>(<span class="string">&quot;ShouldColorize&quot;</span>, <span class="op">|</span><span class="ident">ctx</span><span class="op">|</span> {
             <span class="ident">ctx</span>.<span class="ident">describe</span>(<span class="string">&quot;::normalize_env&quot;</span>, <span class="op">|</span><span class="ident">ctx</span><span class="op">|</span> {
@@ -816,7 +816,7 @@
                 });
             });
         });
-        <span class="ident">runner</span>.<span class="ident">add_event_handler</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">formatter</span>);
+        <span class="ident">runner</span>.<span class="ident">add_event_handler</span>(<span class="kw-2">&amp;mut</span> <span class="ident">formatter</span>);
         <span class="ident">runner</span>.<span class="ident">run</span>().<span class="ident">unwrap</span>();
     }
 }

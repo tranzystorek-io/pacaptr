@@ -245,7 +245,7 @@
 
 <span class="kw">impl</span> <span class="ident">PollNext</span> {
     <span class="doccomment">/// Toggle the value and return the old one.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">toggle</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">toggle</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">old</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span>;
 
         <span class="kw">match</span> <span class="self">self</span> {
@@ -345,7 +345,7 @@
 <span class="kw">where</span>
     <span class="ident">St1</span>: <span class="ident">Stream</span>,
     <span class="ident">St2</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">St1::Item</span><span class="op">&gt;</span>,
-    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
+    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
     <span class="ident">State</span>: <span class="ident">Default</span>,
 {
     <span class="ident">assert_stream</span>::<span class="op">&lt;</span><span class="ident">St1::Item</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">SelectWithStrategy</span> {
@@ -368,7 +368,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that care must be taken to avoid tampering with the state of the</span>
     <span class="doccomment">/// stream which may otherwise confuse this combinator.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St1</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St2</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; (<span class="kw-2">&amp;mut</span> <span class="ident">St1</span>, <span class="kw-2">&amp;mut</span> <span class="ident">St2</span>) {
         (<span class="self">self</span>.<span class="ident">stream1</span>.<span class="ident">get_mut</span>(), <span class="self">self</span>.<span class="ident">stream2</span>.<span class="ident">get_mut</span>())
     }
 
@@ -377,7 +377,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that care must be taken to avoid tampering with the state of the</span>
     <span class="doccomment">/// stream which may otherwise confuse this combinator.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_pin_mut</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>) -&gt; (<span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St1</span><span class="op">&gt;</span>, <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St2</span><span class="op">&gt;</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_pin_mut</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>) -&gt; (<span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">St1</span><span class="op">&gt;</span>, <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">St2</span><span class="op">&gt;</span>) {
         <span class="kw">let</span> <span class="ident">this</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">project</span>();
         (<span class="ident">this</span>.<span class="ident">stream1</span>.<span class="ident">get_pin_mut</span>(), <span class="ident">this</span>.<span class="ident">stream2</span>.<span class="ident">get_pin_mut</span>())
     }
@@ -395,7 +395,7 @@
 <span class="kw">where</span>
     <span class="ident">St1</span>: <span class="ident">Stream</span>,
     <span class="ident">St2</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">St1::Item</span><span class="op">&gt;</span>,
-    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
+    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
 {
     <span class="kw">fn</span> <span class="ident">is_terminated</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">stream1</span>.<span class="ident">is_terminated</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">stream2</span>.<span class="ident">is_terminated</span>()
@@ -406,11 +406,11 @@
 <span class="kw">where</span>
     <span class="ident">St1</span>: <span class="ident">Stream</span>,
     <span class="ident">St2</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">St1::Item</span><span class="op">&gt;</span>,
-    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
+    <span class="ident">Clos</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State</span>) -&gt; <span class="ident">PollNext</span>,
 {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">St1::Item</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">St1::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">St1::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">this</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">project</span>();
 
         <span class="kw">match</span> (<span class="ident">this</span>.<span class="ident">clos</span>)(<span class="ident">this</span>.<span class="ident">state</span>) {
@@ -421,9 +421,9 @@
 }
 
 <span class="kw">fn</span> <span class="ident">poll_inner</span><span class="op">&lt;</span><span class="ident">St1</span>, <span class="ident">St2</span><span class="op">&gt;</span>(
-    <span class="ident">a</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St1</span><span class="op">&gt;</span>,
-    <span class="ident">b</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">St2</span><span class="op">&gt;</span>,
-    <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+    <span class="ident">a</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">St1</span><span class="op">&gt;</span>,
+    <span class="ident">b</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">St2</span><span class="op">&gt;</span>,
+    <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
 ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">St1::Item</span><span class="op">&gt;</span><span class="op">&gt;</span>
 <span class="kw">where</span>
     <span class="ident">St1</span>: <span class="ident">Stream</span>,
@@ -448,7 +448,7 @@
     <span class="ident">St2</span>: <span class="ident">fmt::Debug</span>,
     <span class="ident">State</span>: <span class="ident">fmt::Debug</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;SelectWithStrategy&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;stream1&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">stream1</span>)
             .<span class="ident">field</span>(<span class="string">&quot;stream2&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">stream2</span>)

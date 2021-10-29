@@ -45,7 +45,7 @@ if the event source is deregistered from the poll instance using
 
 <span class="comment">// Register the socket with `poll`</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">socket</span>,
+    <span class="kw-2">&amp;mut</span> <span class="ident">socket</span>,
     <span class="ident">Token</span>(<span class="number">0</span>),
     <span class="ident">Interest::READABLE</span> <span class="op">|</span> <span class="ident">Interest::WRITABLE</span>)<span class="question-mark">?</span>;
 
@@ -62,7 +62,7 @@ if the event source is deregistered from the poll instance using
     }
 
     <span class="kw">let</span> <span class="ident">remaining</span> <span class="op">=</span> <span class="ident">timeout</span> <span class="op">-</span> <span class="ident">elapsed</span>;
-    <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">remaining</span>))<span class="question-mark">?</span>;
+    <span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">remaining</span>))<span class="question-mark">?</span>;
 
     <span class="kw">for</span> <span class="ident">event</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">events</span> {
         <span class="kw">if</span> <span class="ident">event</span>.<span class="ident">token</span>() <span class="op">==</span> <span class="ident">Token</span>(<span class="number">0</span>) {
@@ -97,14 +97,14 @@ polling.</p>
 
 <span class="comment">// Register the socket with `poll`, requesting readable</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">socket</span>,
+    <span class="kw-2">&amp;mut</span> <span class="ident">socket</span>,
     <span class="ident">Token</span>(<span class="number">0</span>),
     <span class="ident">Interest::READABLE</span>)<span class="question-mark">?</span>;
 
 <span class="comment">// Reregister the socket specifying write interest instead. Even though</span>
 <span class="comment">// the token is the same it must be specified.</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">reregister</span>(
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">socket</span>,
+    <span class="kw-2">&amp;mut</span> <span class="ident">socket</span>,
     <span class="ident">Token</span>(<span class="number">0</span>),
     <span class="ident">Interest::WRITABLE</span>)<span class="question-mark">?</span>;</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.deregister" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/mio/poll.rs.html#605-611" title="goto source code">[src]</a></div><a href="#method.deregister" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.deregister" class="fnname">deregister</a>&lt;S&gt;(&amp;self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>S) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="event/trait.Source.html" title="trait mio::event::Source">Source</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Deregister an <a href="event/trait.Source.html" title="event::Source"><code>event::Source</code></a> with the <code>Poll</code> instance.</p>
@@ -134,16 +134,16 @@ instance, otherwise the behavior is undefined.</p>
 
 <span class="comment">// Register the socket with `poll`</span>
 <span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">register</span>(
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">socket</span>,
+    <span class="kw-2">&amp;mut</span> <span class="ident">socket</span>,
     <span class="ident">Token</span>(<span class="number">0</span>),
     <span class="ident">Interest::READABLE</span>)<span class="question-mark">?</span>;
 
-<span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">deregister</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">socket</span>)<span class="question-mark">?</span>;
+<span class="ident">poll</span>.<span class="ident">registry</span>().<span class="ident">deregister</span>(<span class="kw-2">&amp;mut</span> <span class="ident">socket</span>)<span class="question-mark">?</span>;
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">events</span> <span class="op">=</span> <span class="ident">Events::with_capacity</span>(<span class="number">1024</span>);
 
 <span class="comment">// Set a timeout because this poll should never receive any events.</span>
-<span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">Duration::from_secs</span>(<span class="number">1</span>)))<span class="question-mark">?</span>;
+<span class="ident">poll</span>.<span class="ident">poll</span>(<span class="kw-2">&amp;mut</span> <span class="ident">events</span>, <span class="prelude-val">Some</span>(<span class="ident">Duration::from_secs</span>(<span class="number">1</span>)))<span class="question-mark">?</span>;
 <span class="macro">assert!</span>(<span class="ident">events</span>.<span class="ident">is_empty</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_clone" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/mio/poll.rs.html#617-621" title="goto source code">[src]</a></div><a href="#method.try_clone" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_clone" class="fnname">try_clone</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="struct.Registry.html" title="struct mio::Registry">Registry</a>&gt;</h4></div></summary><div class="docblock"><p>Creates a new independently owned <code>Registry</code>.</p>
 <p>Event sources registered with this <code>Registry</code> will be registered with

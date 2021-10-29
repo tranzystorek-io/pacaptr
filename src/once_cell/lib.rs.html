@@ -1561,7 +1561,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">get</span>() {
                 <span class="prelude-val">Some</span>(<span class="ident">v</span>) =&gt; <span class="ident">f</span>.<span class="ident">debug_tuple</span>(<span class="string">&quot;OnceCell&quot;</span>).<span class="ident">field</span>(<span class="ident">v</span>).<span class="ident">finish</span>(),
                 <span class="prelude-val">None</span> =&gt; <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;OnceCell(Uninit)&quot;</span>),
@@ -1613,9 +1613,9 @@
         <span class="doccomment">/// Gets a mutable reference to the underlying value.</span>
         <span class="doccomment">///</span>
         <span class="doccomment">/// Returns `None` if the cell is empty.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span><span class="op">&gt;</span> {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">T</span><span class="op">&gt;</span> {
             <span class="comment">// Safe because we have unique access</span>
-            <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get</span>() }.<span class="ident">as_mut</span>()
+            <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get</span>() }.<span class="ident">as_mut</span>()
         }
 
         <span class="doccomment">/// Sets the contents of this cell to `value`.</span>
@@ -1660,7 +1660,7 @@
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">old</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">get</span>() {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>((<span class="ident">old</span>, <span class="ident">value</span>));
             }
-            <span class="kw">let</span> <span class="ident">slot</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get</span>() };
+            <span class="kw">let</span> <span class="ident">slot</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get</span>() };
             <span class="comment">// This is the only place where we set the slot, no races</span>
             <span class="comment">// due to reentrancy/concurrency are possible, and we&#39;ve</span>
             <span class="comment">// checked that slot is currently `None`, so this write</span>
@@ -1762,7 +1762,7 @@
         <span class="doccomment">/// assert_eq!(cell.take(), Some(&quot;hello&quot;.to_string()));</span>
         <span class="doccomment">/// assert_eq!(cell.get(), None);</span>
         <span class="doccomment">/// ```</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
             <span class="ident">mem::replace</span>(<span class="self">self</span>, <span class="ident"><span class="self">Self</span>::default</span>()).<span class="ident">into_inner</span>()
         }
 
@@ -1818,7 +1818,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">RefUnwindSafe</span><span class="op">&gt;</span> <span class="ident">RefUnwindSafe</span> <span class="kw">for</span> <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>: <span class="ident">RefUnwindSafe</span> {}
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Debug</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Lazy&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;cell&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cell</span>).<span class="ident">field</span>(<span class="string">&quot;init&quot;</span>, <span class="kw-2">&amp;</span><span class="string">&quot;..&quot;</span>).<span class="ident">finish</span>()
         }
     }
@@ -1885,7 +1885,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">DerefMut</span> <span class="kw">for</span> <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
+        <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
             <span class="ident">Lazy::force</span>(<span class="self">self</span>);
             <span class="self">self</span>.<span class="ident">cell</span>.<span class="ident">get_mut</span>().<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">unreachable!</span>())
         }
@@ -1948,7 +1948,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">OnceCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">get</span>() {
                 <span class="prelude-val">Some</span>(<span class="ident">v</span>) =&gt; <span class="ident">f</span>.<span class="ident">debug_tuple</span>(<span class="string">&quot;OnceCell&quot;</span>).<span class="ident">field</span>(<span class="ident">v</span>).<span class="ident">finish</span>(),
                 <span class="prelude-val">None</span> =&gt; <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;OnceCell(Uninit)&quot;</span>),
@@ -2007,7 +2007,7 @@
         <span class="doccomment">/// Gets the mutable reference to the underlying value.</span>
         <span class="doccomment">///</span>
         <span class="doccomment">/// Returns `None` if the cell is empty.</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span><span class="op">&gt;</span> {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">T</span><span class="op">&gt;</span> {
             <span class="self">self</span>.<span class="number">0</span>.<span class="ident">get_mut</span>()
         }
 
@@ -2171,7 +2171,7 @@
         <span class="doccomment">/// assert_eq!(cell.take(), Some(&quot;hello&quot;.to_string()));</span>
         <span class="doccomment">/// assert_eq!(cell.get(), None);</span>
         <span class="doccomment">/// ```</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
             <span class="ident">mem::replace</span>(<span class="self">self</span>, <span class="ident"><span class="self">Self</span>::default</span>()).<span class="ident">into_inner</span>()
         }
 
@@ -2234,7 +2234,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Debug</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Lazy&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;cell&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cell</span>).<span class="ident">field</span>(<span class="string">&quot;init&quot;</span>, <span class="kw-2">&amp;</span><span class="string">&quot;..&quot;</span>).<span class="ident">finish</span>()
         }
     }
@@ -2298,7 +2298,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">DerefMut</span> <span class="kw">for</span> <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
+        <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
             <span class="ident">Lazy::force</span>(<span class="self">self</span>);
             <span class="self">self</span>.<span class="ident">cell</span>.<span class="ident">get_mut</span>().<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">unreachable!</span>())
         }
@@ -2333,7 +2333,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">race</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">take_unchecked</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">T</span> {
+<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">take_unchecked</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="kw-2">&amp;mut</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">T</span> {
     <span class="kw">match</span> <span class="ident">val</span>.<span class="ident">take</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">it</span>) =&gt; <span class="ident">it</span>,
         <span class="prelude-val">None</span> =&gt; {

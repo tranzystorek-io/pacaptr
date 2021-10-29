@@ -546,7 +546,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">TableOption</span> <span class="kw">for</span> <span class="ident">Style</span> {
-    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>) {
+    <span class="kw">fn</span> <span class="ident">change</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>) {
         <span class="kw">let</span> <span class="ident">count_rows</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">count_rows</span>();
         <span class="kw">for</span> <span class="ident">row</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">count_rows</span> {
             <span class="kw">let</span> <span class="ident">border</span> <span class="op">=</span> <span class="ident">grid</span>.<span class="ident">get_border_mut</span>(<span class="ident">row</span>);
@@ -555,7 +555,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">make_style</span>(<span class="ident">style</span>: <span class="kw-2">&amp;</span><span class="ident">Style</span>, <span class="ident">border</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Border</span>, <span class="ident">is_first_row</span>: <span class="ident">bool</span>, <span class="ident">is_last_row</span>: <span class="ident">bool</span>) {
+<span class="kw">fn</span> <span class="ident">make_style</span>(<span class="ident">style</span>: <span class="kw-2">&amp;</span><span class="ident">Style</span>, <span class="ident">border</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Border</span>, <span class="ident">is_first_row</span>: <span class="ident">bool</span>, <span class="ident">is_last_row</span>: <span class="ident">bool</span>) {
     <span class="kw">let</span> <span class="ident">border</span> <span class="op">=</span> <span class="ident">border</span>.<span class="ident">empty</span>();
 
     <span class="kw">if</span> <span class="ident">is_first_row</span> {

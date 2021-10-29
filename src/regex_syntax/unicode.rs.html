@@ -1037,7 +1037,7 @@
 <span class="kw">impl</span> <span class="ident">error::Error</span> <span class="kw">for</span> <span class="ident">CaseFoldError</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">CaseFoldError</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;Unicode-aware case folding is not available \
@@ -1057,7 +1057,7 @@
 <span class="kw">impl</span> <span class="ident">error::Error</span> <span class="kw">for</span> <span class="ident">UnicodeWordError</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">UnicodeWordError</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;Unicode-aware \\w class is not available \
@@ -1802,7 +1802,7 @@
 <span class="doccomment">/// Like symbolic_name_normalize_bytes, but operates on a string.</span>
 <span class="kw">fn</span> <span class="ident">symbolic_name_normalize</span>(<span class="ident">x</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">x</span>.<span class="ident">as_bytes</span>().<span class="ident">to_vec</span>();
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">tmp</span>).<span class="ident">len</span>();
+    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="ident">tmp</span>).<span class="ident">len</span>();
     <span class="ident">tmp</span>.<span class="ident">truncate</span>(<span class="ident">len</span>);
     <span class="comment">// This should always succeed because `symbolic_name_normalize_bytes`</span>
     <span class="comment">// guarantees that `&amp;tmp[..len]` is always valid UTF-8.</span>
@@ -1823,7 +1823,7 @@
 <span class="doccomment">/// of `slice`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See: https://unicode.org/reports/tr44/#UAX44-LM3</span>
-<span class="kw">fn</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>] {
+<span class="kw">fn</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>] {
     <span class="comment">// I couldn&#39;t find a place in the standard that specified that property</span>
     <span class="comment">// names/aliases had a particular structure (unlike character names), but</span>
     <span class="comment">// we assume that it&#39;s ASCII only and drop anything that isn&#39;t ASCII.</span>
@@ -1865,7 +1865,7 @@
         <span class="ident">slice</span>[<span class="number">2</span>] <span class="op">=</span> <span class="string">b&#39;c&#39;</span>;
         <span class="ident">next_write</span> <span class="op">=</span> <span class="number">3</span>;
     }
-    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">slice</span>[..<span class="ident">next_write</span>]
+    <span class="kw-2">&amp;mut</span> <span class="ident">slice</span>[..<span class="ident">next_write</span>]
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
@@ -1992,7 +1992,7 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">valid_utf8_symbolic</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">x</span> <span class="op">=</span> <span class="string">b&quot;abc\xFFxyz&quot;</span>.<span class="ident">to_vec</span>();
-        <span class="kw">let</span> <span class="ident">y</span> <span class="op">=</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">x</span>);
+        <span class="kw">let</span> <span class="ident">y</span> <span class="op">=</span> <span class="ident">symbolic_name_normalize_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="ident">x</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">y</span>, <span class="string">b&quot;abcxyz&quot;</span>);
     }
 }

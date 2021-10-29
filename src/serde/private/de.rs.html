@@ -3025,7 +3025,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CowStrVisitor</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">formatter</span>.<span class="ident">write_str</span>(<span class="string">&quot;a string&quot;</span>)
         }
 
@@ -3098,7 +3098,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CowBytesVisitor</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">u8</span>]<span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">formatter</span>.<span class="ident">write_str</span>(<span class="string">&quot;a byte array&quot;</span>)
         }
 
@@ -3270,7 +3270,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ContentVisitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">Content</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">fmt</span>.<span class="ident">write_str</span>(<span class="string">&quot;any value&quot;</span>)
         }
 
@@ -3498,7 +3498,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">TagOrContentVisitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">TagOrContent</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;a type tag `{}` or any other value&quot;</span>, <span class="self">self</span>.<span class="ident">name</span>)
         }
 
@@ -3801,7 +3801,7 @@
     {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">TaggedContent</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="ident">T</span><span class="op">&gt;</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="ident">fmt</span>.<span class="ident">write_str</span>(<span class="self">self</span>.<span class="ident">expecting</span>)
         }
 
@@ -3880,7 +3880,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">TagOrContentFieldVisitor</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">TagOrContentField</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(<span class="ident">formatter</span>, <span class="string">&quot;{:?} or {:?}&quot;</span>, <span class="self">self</span>.<span class="ident">tag</span>, <span class="self">self</span>.<span class="ident">content</span>)
         }
 
@@ -3928,7 +3928,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">TagContentOtherFieldVisitor</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">TagContentOtherField</span>;
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(
                 <span class="ident">formatter</span>,
                 <span class="string">&quot;{:?}, {:?}, or other ignored fields&quot;</span>,
@@ -4009,7 +4009,7 @@
     {
         <span class="kw">let</span> <span class="ident">seq</span> <span class="op">=</span> <span class="ident">content</span>.<span class="ident">into_iter</span>().<span class="ident">map</span>(<span class="ident">ContentDeserializer::new</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">seq_visitor</span> <span class="op">=</span> <span class="ident">de::value::SeqDeserializer::new</span>(<span class="ident">seq</span>);
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">seq_visitor</span>));
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;mut</span> <span class="ident">seq_visitor</span>));
         <span class="macro">try!</span>(<span class="ident">seq_visitor</span>.<span class="ident">end</span>());
         <span class="prelude-val">Ok</span>(<span class="ident">value</span>)
     }
@@ -4026,7 +4026,7 @@
             .<span class="ident">into_iter</span>()
             .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">k</span>, <span class="ident">v</span>)<span class="op">|</span> (<span class="ident">ContentDeserializer::new</span>(<span class="ident">k</span>), <span class="ident">ContentDeserializer::new</span>(<span class="ident">v</span>)));
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map_visitor</span> <span class="op">=</span> <span class="ident">de::value::MapDeserializer::new</span>(<span class="ident">map</span>);
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_map</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">map_visitor</span>));
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_map</span>(<span class="kw-2">&amp;mut</span> <span class="ident">map_visitor</span>));
         <span class="macro">try!</span>(<span class="ident">map_visitor</span>.<span class="ident">end</span>());
         <span class="prelude-val">Ok</span>(<span class="ident">value</span>)
     }
@@ -4555,7 +4555,7 @@
             <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
                 <span class="ident">visitor</span>.<span class="ident">visit_unit</span>()
             } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>));
+                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>));
                 <span class="kw">let</span> <span class="ident">remaining</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">iter</span>.<span class="ident">len</span>();
                 <span class="kw">if</span> <span class="ident">remaining</span> <span class="op">==</span> <span class="number">0</span> {
                     <span class="prelude-val">Ok</span>(<span class="ident">ret</span>)
@@ -4578,7 +4578,7 @@
     {
         <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-        <span class="kw">fn</span> <span class="ident">next_element_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_element_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -4621,7 +4621,7 @@
     {
         <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-        <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -4634,7 +4634,7 @@
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -4732,7 +4732,7 @@
     {
         <span class="kw">let</span> <span class="ident">seq</span> <span class="op">=</span> <span class="ident">content</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">ContentRefDeserializer::new</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">seq_visitor</span> <span class="op">=</span> <span class="ident">de::value::SeqDeserializer::new</span>(<span class="ident">seq</span>);
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">seq_visitor</span>));
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;mut</span> <span class="ident">seq_visitor</span>));
         <span class="macro">try!</span>(<span class="ident">seq_visitor</span>.<span class="ident">end</span>());
         <span class="prelude-val">Ok</span>(<span class="ident">value</span>)
     }
@@ -4752,7 +4752,7 @@
             )
         });
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map_visitor</span> <span class="op">=</span> <span class="ident">de::value::MapDeserializer::new</span>(<span class="ident">map</span>);
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_map</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">map_visitor</span>));
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_map</span>(<span class="kw-2">&amp;mut</span> <span class="ident">map_visitor</span>));
         <span class="macro">try!</span>(<span class="ident">map_visitor</span>.<span class="ident">end</span>());
         <span class="prelude-val">Ok</span>(<span class="ident">value</span>)
     }
@@ -5253,7 +5253,7 @@
             <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
                 <span class="ident">visitor</span>.<span class="ident">visit_unit</span>()
             } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>));
+                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="macro">try!</span>(<span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>));
                 <span class="kw">let</span> <span class="ident">remaining</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">iter</span>.<span class="ident">len</span>();
                 <span class="kw">if</span> <span class="ident">remaining</span> <span class="op">==</span> <span class="number">0</span> {
                     <span class="prelude-val">Ok</span>(<span class="ident">ret</span>)
@@ -5276,7 +5276,7 @@
     {
         <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-        <span class="kw">fn</span> <span class="ident">next_element_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_element_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -5321,7 +5321,7 @@
     {
         <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-        <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -5334,7 +5334,7 @@
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+        <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span>
             <span class="ident">T</span>: <span class="ident">de::DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
         {
@@ -5413,7 +5413,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">InternallyTaggedUnitVisitor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> ();
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(
                 <span class="ident">formatter</span>,
                 <span class="string">&quot;unit variant {}::{}&quot;</span>,
@@ -5458,7 +5458,7 @@
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">UntaggedUnitVisitor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> ();
 
-        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
             <span class="macro">write!</span>(
                 <span class="ident">formatter</span>,
                 <span class="string">&quot;unit variant {}::{}&quot;</span>,
@@ -5787,11 +5787,11 @@
 {
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {
-        <span class="kw">for</span> <span class="ident">item</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">iter</span> {
+        <span class="kw">for</span> <span class="ident">item</span> <span class="kw">in</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">iter</span> {
             <span class="comment">// Items in the vector are nulled out when used by a struct.</span>
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="kw-2">ref</span> <span class="ident">key</span>, <span class="kw-2">ref</span> <span class="ident">content</span>)) <span class="op">=</span> <span class="kw-2">*</span><span class="ident">item</span> {
                 <span class="self">self</span>.<span class="ident">pending_content</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">content</span>);
@@ -5801,7 +5801,7 @@
         <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {
@@ -5842,7 +5842,7 @@
 {
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {
@@ -5864,7 +5864,7 @@
         <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {
@@ -5889,11 +5889,11 @@
 {
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
 
-    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_key_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {
-        <span class="kw">for</span> <span class="ident">item</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">iter</span> {
+        <span class="kw">for</span> <span class="ident">item</span> <span class="kw">in</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">iter</span> {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="kw-2">ref</span> <span class="ident">key</span>, <span class="kw-2">ref</span> <span class="ident">content</span>)) <span class="op">=</span> <span class="kw-2">*</span><span class="ident">item</span> {
                 <span class="comment">// Do not take(), instead borrow this entry. The internally tagged</span>
                 <span class="comment">// enum does its own buffering so we can&#39;t tell whether this entry</span>
@@ -5906,7 +5906,7 @@
         <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">next_value_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Value</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
     {

@@ -60,7 +60,7 @@
 <span class="doccomment">/// through immutable references.</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">VecDequeCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="ident">inner</span>: <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">VecDeque</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">_not_sync</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">*</span><span class="kw">const</span> ()<span class="op">&gt;</span>,
+    <span class="ident">_not_sync</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">*const</span> ()<span class="op">&gt;</span>,
 }
 
 <span class="comment">// This is Send for the same reasons that RefCell&lt;VecDeque&lt;T&gt;&gt; is Send.</span>
@@ -78,14 +78,14 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">R</span>
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VecDeque</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">R</span>,
+        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">VecDeque</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">R</span>,
     {
         <span class="comment">// safety: This type is not Sync, so concurrent calls of this method</span>
         <span class="comment">// cannot happen. Furthermore, the caller guarantees that the method is</span>
         <span class="comment">// not called recursively. Finally, this is the only place that can</span>
         <span class="comment">// create mutable references to the inner VecDeque. This ensures that</span>
         <span class="comment">// any mutable references created here are exclusive.</span>
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">f</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>))
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">with_mut</span>(<span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">f</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>))
     }
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">pop_front</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {

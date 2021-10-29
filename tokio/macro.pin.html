@@ -18,7 +18,7 @@ with the <code>pin!</code> macro.</p>
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
 <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">future</span> <span class="op">=</span> <span class="ident">my_async_fn</span>();
-    (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
+    (<span class="kw-2">&amp;mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
 }</code></pre></div>
 <p>To make this work requires pinning:</p>
 
@@ -33,7 +33,7 @@ with the <code>pin!</code> macro.</p>
     <span class="kw">let</span> <span class="ident">future</span> <span class="op">=</span> <span class="ident">my_async_fn</span>();
     <span class="macro">pin!</span>(<span class="ident">future</span>);
 
-    (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
+    (<span class="kw-2">&amp;mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
 }</code></pre></div>
 <p>Pinning is useful when using <code>select!</code> and stream operators that require <code>T: Stream + Unpin</code>.</p>
 <h2 id="usage" class="section-header"><a href="#usage">Usage</a></h2>
@@ -48,7 +48,7 @@ with expressions.</p>
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
 <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">future</span> <span class="op">=</span> <span class="macro">pin!</span>(<span class="ident">my_async_fn</span>());
-    (<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
+    (<span class="kw-2">&amp;mut</span> <span class="ident">future</span>).<span class="kw">await</span>;
 }</code></pre></div>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>Using with select:</p>
@@ -69,7 +69,7 @@ with expressions.</p>
 
     <span class="kw">loop</span> {
         <span class="macro">select!</span> {
-            <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future</span> =&gt; {
+            <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">future</span> =&gt; {
                 <span class="comment">// Stop looping `future` will be polled after completion</span>
                 <span class="kw">break</span>;
             }
@@ -96,8 +96,8 @@ a variant of the macro that supports doing both in one go.</p>
     }
 
     <span class="macro">select!</span> {
-        <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future1</span> =&gt; {}
-        <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">future2</span> =&gt; {}
+        <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">future1</span> =&gt; {}
+        <span class="kw">_</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">future2</span> =&gt; {}
     }
 }</code></pre></div>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="tokio" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>

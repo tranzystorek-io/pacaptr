@@ -28,7 +28,7 @@ details.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="macro">vec!</span>[].<span class="ident">writer</span>();
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">src</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">b&quot;hello world&quot;</span>[..];
 
-<span class="ident">io::copy</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">src</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>).<span class="ident">unwrap</span>();
+<span class="ident">io::copy</span>(<span class="kw-2">&amp;mut</span> <span class="ident">src</span>, <span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">unwrap</span>();
 
 <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">into_inner</span>();
 <span class="macro">assert_eq!</span>(<span class="kw-2">*</span><span class="ident">buf</span>, <span class="string">b&quot;hello world&quot;</span>[..]);</code></pre></div>

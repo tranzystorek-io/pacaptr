@@ -240,8 +240,8 @@
 
 <span class="kw">fn</span> <span class="ident">transform</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">G</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">with_word</span>: <span class="ident">F</span>, <span class="ident">boundary</span>: <span class="ident">G</span>) -&gt; <span class="ident">String</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>),
-    <span class="ident">G</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>),
+    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;mut</span> <span class="ident">String</span>),
+    <span class="ident">G</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;mut</span> <span class="ident">String</span>),
 {
     <span class="doccomment">/// Tracks the current &#39;mode&#39; of the transformation algorithm as it scans</span>
     <span class="doccomment">/// the input string.</span>
@@ -295,9 +295,9 @@
                 <span class="comment">// not uppercase and next is uppercase</span>
                 <span class="kw">if</span> <span class="ident">next</span> <span class="op">==</span> <span class="string">&#39;_&#39;</span> <span class="op">|</span><span class="op">|</span> (<span class="ident">next_mode</span> <span class="op">==</span> <span class="ident">WordMode::Lowercase</span> <span class="op">&amp;&amp;</span> <span class="ident">next</span>.<span class="ident">is_uppercase</span>()) {
                     <span class="kw">if</span> <span class="op">!</span><span class="ident">first_word</span> {
-                        <span class="ident">boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                        <span class="ident">boundary</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                     }
-                    <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..<span class="ident">next_i</span>], <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                    <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..<span class="ident">next_i</span>], <span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                     <span class="ident">first_word</span> <span class="op">=</span> <span class="bool-val">false</span>;
                     <span class="ident">init</span> <span class="op">=</span> <span class="ident">next_i</span>;
                     <span class="ident">mode</span> <span class="op">=</span> <span class="ident">WordMode::Boundary</span>;
@@ -306,11 +306,11 @@
                 <span class="comment">// is lowercase, word boundary before</span>
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">mode</span> <span class="op">==</span> <span class="ident">WordMode::Uppercase</span> <span class="op">&amp;&amp;</span> <span class="ident">c</span>.<span class="ident">is_uppercase</span>() <span class="op">&amp;&amp;</span> <span class="ident">next</span>.<span class="ident">is_lowercase</span>() {
                     <span class="kw">if</span> <span class="op">!</span><span class="ident">first_word</span> {
-                        <span class="ident">boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                        <span class="ident">boundary</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                     } <span class="kw">else</span> {
                         <span class="ident">first_word</span> <span class="op">=</span> <span class="bool-val">false</span>;
                     }
-                    <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..<span class="ident">i</span>], <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                    <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..<span class="ident">i</span>], <span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                     <span class="ident">init</span> <span class="op">=</span> <span class="ident">i</span>;
                     <span class="ident">mode</span> <span class="op">=</span> <span class="ident">WordMode::Boundary</span>;
 
@@ -321,11 +321,11 @@
             } <span class="kw">else</span> {
                 <span class="comment">// Collect trailing characters as a word</span>
                 <span class="kw">if</span> <span class="op">!</span><span class="ident">first_word</span> {
-                    <span class="ident">boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                    <span class="ident">boundary</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                 } <span class="kw">else</span> {
                     <span class="ident">first_word</span> <span class="op">=</span> <span class="bool-val">false</span>;
                 }
-                <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..], <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">out</span>);
+                <span class="ident">with_word</span>(<span class="kw-2">&amp;</span><span class="ident">word</span>[<span class="ident">init</span>..], <span class="kw-2">&amp;mut</span> <span class="ident">out</span>);
                 <span class="kw">break</span>;
             }
         }
@@ -334,7 +334,7 @@
     <span class="ident">out</span>
 }
 
-<span class="kw">fn</span> <span class="ident">lowercase</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>) {
+<span class="kw">fn</span> <span class="ident">lowercase</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>) {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">chars</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">peekable</span>();
     <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">c</span>) <span class="op">=</span> <span class="ident">chars</span>.<span class="ident">next</span>() {
         <span class="kw">if</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;Σ&#39;</span> <span class="op">&amp;&amp;</span> <span class="ident">chars</span>.<span class="ident">peek</span>().<span class="ident">is_none</span>() {
@@ -345,13 +345,13 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">uppercase</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>) {
+<span class="kw">fn</span> <span class="ident">uppercase</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>) {
     <span class="kw">for</span> <span class="ident">c</span> <span class="kw">in</span> <span class="ident">s</span>.<span class="ident">chars</span>() {
         <span class="ident">out</span>.<span class="ident">extend</span>(<span class="ident">c</span>.<span class="ident">to_uppercase</span>())
     }
 }
 
-<span class="kw">fn</span> <span class="ident">capitalize</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>) {
+<span class="kw">fn</span> <span class="ident">capitalize</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">out</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>) {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">char_indices</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">char_indices</span>();
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="kw">_</span>, <span class="ident">c</span>)) <span class="op">=</span> <span class="ident">char_indices</span>.<span class="ident">next</span>() {
         <span class="ident">out</span>.<span class="ident">extend</span>(<span class="ident">c</span>.<span class="ident">to_uppercase</span>());

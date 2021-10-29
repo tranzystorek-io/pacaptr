@@ -444,7 +444,7 @@
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lines</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">lines</span>();
 
     <span class="comment">// We first search for a non-empty line to find a prefix.</span>
-    <span class="kw">for</span> <span class="ident">line</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">lines</span> {
+    <span class="kw">for</span> <span class="ident">line</span> <span class="kw">in</span> <span class="kw-2">&amp;mut</span> <span class="ident">lines</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">whitespace_idx</span> <span class="op">=</span> <span class="ident">line</span>.<span class="ident">len</span>();
         <span class="kw">for</span> (<span class="ident">idx</span>, <span class="ident">ch</span>) <span class="kw">in</span> <span class="ident">line</span>.<span class="ident">char_indices</span>() {
             <span class="kw">if</span> <span class="op">!</span><span class="ident">ch</span>.<span class="ident">is_whitespace</span>() {
@@ -462,7 +462,7 @@
 
     <span class="comment">// We then continue looking through the remaining lines to</span>
     <span class="comment">// possibly shorten the prefix.</span>
-    <span class="kw">for</span> <span class="ident">line</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">lines</span> {
+    <span class="kw">for</span> <span class="ident">line</span> <span class="kw">in</span> <span class="kw-2">&amp;mut</span> <span class="ident">lines</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">whitespace_idx</span> <span class="op">=</span> <span class="ident">line</span>.<span class="ident">len</span>();
         <span class="kw">for</span> ((<span class="ident">idx</span>, <span class="ident">a</span>), <span class="ident">b</span>) <span class="kw">in</span> <span class="ident">line</span>.<span class="ident">char_indices</span>().<span class="ident">zip</span>(<span class="ident">prefix</span>.<span class="ident">chars</span>()) {
             <span class="kw">if</span> <span class="ident">a</span> <span class="op">!</span><span class="op">=</span> <span class="ident">b</span> {

@@ -47,7 +47,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">CellOption</span> <span class="kw">for</span> <span class="ident">Indent</span> {
-    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">change_cell</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">grid</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Grid</span>, <span class="ident">row</span>: <span class="ident">usize</span>, <span class="ident">column</span>: <span class="ident">usize</span>) {
         <span class="ident">grid</span>.<span class="ident">set</span>(
             <span class="ident">Entity::Cell</span>(<span class="ident">row</span>, <span class="ident">column</span>),
             <span class="ident">Settings::new</span>().<span class="ident">indent</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="self">self</span>.<span class="number">1</span>, <span class="self">self</span>.<span class="number">2</span>, <span class="self">self</span>.<span class="number">3</span>),

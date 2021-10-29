@@ -56,7 +56,7 @@ bytes.</p>
 <span class="macro">assert_eq!</span>(<span class="string">b&#39;l&#39;</span>, <span class="ident">buf</span>.<span class="ident">get_u8</span>());
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rest</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">8</span>];
-<span class="ident">buf</span>.<span class="ident">copy_to_slice</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rest</span>);
+<span class="ident">buf</span>.<span class="ident">copy_to_slice</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rest</span>);
 
 <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">rest</span>[..], <span class="kw-2">&amp;</span><span class="string">b&quot;lo world&quot;</span>[..]);</code></pre></div>
 </div></details><h2 id="required-methods" class="small-section-header">Required methods<a href="#required-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><div id="tymethod.remaining" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/buf_impl.rs.html#102" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.remaining" class="fnname">remaining</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Returns the number of bytes between the current position and the end of
@@ -155,7 +155,7 @@ enough remaining bytes to fill <code>dst</code>.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">b&quot;hello world&quot;</span>[..];
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dst</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">5</span>];
 
-<span class="ident">buf</span>.<span class="ident">copy_to_slice</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">dst</span>);
+<span class="ident">buf</span>.<span class="ident">copy_to_slice</span>(<span class="kw-2">&amp;mut</span> <span class="ident">dst</span>);
 <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="string">b&quot;hello&quot;</span>[..], <span class="kw-2">&amp;</span><span class="ident">dst</span>);
 <span class="macro">assert_eq!</span>(<span class="number">6</span>, <span class="ident">buf</span>.<span class="ident">remaining</span>());</code></pre></div>
 <h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
@@ -417,12 +417,12 @@ copies. For example, <code>Bytes</code> implementation will do a shallow copy
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="string">b&quot;hello world&quot;</span>[..].<span class="ident">take</span>(<span class="number">5</span>);
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dst</span> <span class="op">=</span> <span class="macro">vec!</span>[];
 
-<span class="ident">dst</span>.<span class="ident">put</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>);
+<span class="ident">dst</span>.<span class="ident">put</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">dst</span>, <span class="string">b&quot;hello&quot;</span>);
 
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">into_inner</span>();
 <span class="ident">dst</span>.<span class="ident">clear</span>();
-<span class="ident">dst</span>.<span class="ident">put</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>);
+<span class="ident">dst</span>.<span class="ident">put</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">dst</span>, <span class="string">b&quot; world&quot;</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle" open><summary><div id="method.chain" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/bytes/buf/buf_impl.rs.html#869-874" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#method.chain" class="fnname">chain</a>&lt;U:&nbsp;<a class="trait" href="trait.Buf.html" title="trait bytes::buf::Buf">Buf</a>&gt;(self, next: U) -&gt; <a class="struct" href="struct.Chain.html" title="struct bytes::buf::Chain">Chain</a>&lt;Self, U&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h4></div></summary><div class="docblock"><p>Creates an adaptor which will chain this buffer with another.</p>
 <p>The returned <code>Buf</code> instance will first consume all bytes from <code>self</code>.
@@ -448,7 +448,7 @@ return with <code>Err</code>.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">reader</span>();
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dst</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">1024</span>];
 
-<span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident">reader</span>.<span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">dst</span>).<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident">reader</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">dst</span>).<span class="ident">unwrap</span>();
 
 <span class="macro">assert_eq!</span>(<span class="number">11</span>, <span class="ident">num</span>);
 <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">dst</span>[..<span class="number">11</span>], <span class="kw-2">&amp;</span><span class="string">b&quot;hello world&quot;</span>[..]);</code></pre></div>

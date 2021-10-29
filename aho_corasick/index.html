@@ -87,7 +87,7 @@ loading the entire stream into memory first.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">wtr</span> <span class="op">=</span> <span class="macro">vec!</span>[];
 
 <span class="kw">let</span> <span class="ident">ac</span> <span class="op">=</span> <span class="ident">AhoCorasick::new</span>(<span class="ident">patterns</span>);
-<span class="ident">ac</span>.<span class="ident">stream_replace_all</span>(<span class="ident">rdr</span>.<span class="ident">as_bytes</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">wtr</span>, <span class="ident">replace_with</span>)<span class="question-mark">?</span>;
+<span class="ident">ac</span>.<span class="ident">stream_replace_all</span>(<span class="ident">rdr</span>.<span class="ident">as_bytes</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">wtr</span>, <span class="ident">replace_with</span>)<span class="question-mark">?</span>;
 <span class="macro">assert_eq!</span>(<span class="string">b&quot;The slow grey sloth.&quot;</span>.<span class="ident">to_vec</span>(), <span class="ident">wtr</span>);</code></pre></div>
 <h2 id="example-finding-the-leftmost-first-match" class="section-header"><a href="#example-finding-the-leftmost-first-match">Example: finding the leftmost first match</a></h2>
 <p>In the textbook description of Aho-Corasick, its formulation is typically

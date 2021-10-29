@@ -161,16 +161,16 @@
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">px</span>, <span class="kw-2">mut</span> <span class="ident">py</span>) <span class="op">=</span> (<span class="ident">x</span>.<span class="ident">as_ptr</span>(), <span class="ident">y</span>.<span class="ident">as_ptr</span>());
         <span class="kw">let</span> (<span class="ident">pxend</span>, <span class="ident">pyend</span>) <span class="op">=</span> (<span class="ident">px</span>.<span class="ident">add</span>(<span class="ident">x</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">4</span>), <span class="ident">py</span>.<span class="ident">add</span>(<span class="ident">y</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">4</span>));
         <span class="kw">while</span> <span class="ident">px</span> <span class="op">&lt;</span> <span class="ident">pxend</span> {
-            <span class="kw">let</span> <span class="ident">vx</span> <span class="op">=</span> (<span class="ident">px</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
-            <span class="kw">let</span> <span class="ident">vy</span> <span class="op">=</span> (<span class="ident">py</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
+            <span class="kw">let</span> <span class="ident">vx</span> <span class="op">=</span> (<span class="ident">px</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
+            <span class="kw">let</span> <span class="ident">vy</span> <span class="op">=</span> (<span class="ident">py</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
             <span class="kw">if</span> <span class="ident">vx</span> <span class="op">!</span><span class="op">=</span> <span class="ident">vy</span> {
                 <span class="kw">return</span> <span class="bool-val">false</span>;
             }
             <span class="ident">px</span> <span class="op">=</span> <span class="ident">px</span>.<span class="ident">add</span>(<span class="number">4</span>);
             <span class="ident">py</span> <span class="op">=</span> <span class="ident">py</span>.<span class="ident">add</span>(<span class="number">4</span>);
         }
-        <span class="kw">let</span> <span class="ident">vx</span> <span class="op">=</span> (<span class="ident">pxend</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
-        <span class="kw">let</span> <span class="ident">vy</span> <span class="op">=</span> (<span class="ident">pyend</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
+        <span class="kw">let</span> <span class="ident">vx</span> <span class="op">=</span> (<span class="ident">pxend</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
+        <span class="kw">let</span> <span class="ident">vy</span> <span class="op">=</span> (<span class="ident">pyend</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u32</span>).<span class="ident">read_unaligned</span>();
         <span class="ident">vx</span> <span class="op">==</span> <span class="ident">vy</span>
     }
 }

@@ -15,7 +15,7 @@ standard library <code>.zip()</code>. Prefer <code>multizip</code> if a nameable
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">results</span> <span class="op">=</span> [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];
 <span class="kw">let</span> <span class="ident">inputs</span> <span class="op">=</span> [<span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">6</span>];
 
-<span class="kw">for</span> (<span class="ident">r</span>, <span class="ident">index</span>, <span class="ident">input</span>) <span class="kw">in</span> <span class="ident">multizip</span>((<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">results</span>, <span class="number">0</span>..<span class="number">10</span>, <span class="kw-2">&amp;</span><span class="ident">inputs</span>)) {
+<span class="kw">for</span> (<span class="ident">r</span>, <span class="ident">index</span>, <span class="ident">input</span>) <span class="kw">in</span> <span class="ident">multizip</span>((<span class="kw-2">&amp;mut</span> <span class="ident">results</span>, <span class="number">0</span>..<span class="number">10</span>, <span class="kw-2">&amp;</span><span class="ident">inputs</span>)) {
     <span class="kw-2">*</span><span class="ident">r</span> <span class="op">=</span> <span class="ident">index</span> <span class="op">*</span> <span class="number">10</span> <span class="op">+</span> <span class="ident">input</span>;
 }
 

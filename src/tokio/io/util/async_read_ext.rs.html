@@ -1316,7 +1316,7 @@
         (
             $(
                 $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">outer</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span>
-                <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fut</span>:<span class="ident">ident</span>)<span class="kw-2">*</span>;
+                <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fut</span>:<span class="ident">ident</span>)<span class="kw-2">*</span>;
             )<span class="op">*</span>
         ) =&gt; {
             $(
@@ -1639,7 +1639,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU8</span>;
+            <span class="kw">fn</span> <span class="ident">read_u8</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU8</span>;
 
             <span class="doccomment">/// Reads a signed 8 bit integer from the underlying reader.</span>
             <span class="doccomment">///</span>
@@ -1677,7 +1677,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i8</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI8</span>;
+            <span class="kw">fn</span> <span class="ident">read_i8</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI8</span>;
 
             <span class="doccomment">/// Reads an unsigned 16-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1715,7 +1715,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU16</span>;
+            <span class="kw">fn</span> <span class="ident">read_u16</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU16</span>;
 
             <span class="doccomment">/// Reads a signed 16-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1753,7 +1753,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i16</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI16</span>;
+            <span class="kw">fn</span> <span class="ident">read_i16</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI16</span>;
 
             <span class="doccomment">/// Reads an unsigned 32-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1790,7 +1790,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU32</span>;
+            <span class="kw">fn</span> <span class="ident">read_u32</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU32</span>;
 
             <span class="doccomment">/// Reads a signed 32-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1828,7 +1828,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI32</span>;
+            <span class="kw">fn</span> <span class="ident">read_i32</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI32</span>;
 
             <span class="doccomment">/// Reads an unsigned 64-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1867,7 +1867,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU64</span>;
+            <span class="kw">fn</span> <span class="ident">read_u64</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU64</span>;
 
             <span class="doccomment">/// Reads an signed 64-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1904,7 +1904,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI64</span>;
+            <span class="kw">fn</span> <span class="ident">read_i64</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI64</span>;
 
             <span class="doccomment">/// Reads an unsigned 128-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1944,7 +1944,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU128</span>;
+            <span class="kw">fn</span> <span class="ident">read_u128</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU128</span>;
 
             <span class="doccomment">/// Reads an signed 128-bit integer in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -1984,7 +1984,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i128</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI128</span>;
+            <span class="kw">fn</span> <span class="ident">read_i128</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI128</span>;
 
             <span class="doccomment">/// Reads an 32-bit floating point type in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2021,7 +2021,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_f32</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF32</span>;
+            <span class="kw">fn</span> <span class="ident">read_f32</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF32</span>;
 
             <span class="doccomment">/// Reads an 64-bit floating point type in big-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2060,7 +2060,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_f64</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF64</span>;
+            <span class="kw">fn</span> <span class="ident">read_f64</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF64</span>;
 
             <span class="doccomment">/// Reads an unsigned 16-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2098,7 +2098,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU16Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_u16_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU16Le</span>;
 
             <span class="doccomment">/// Reads a signed 16-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2136,7 +2136,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i16_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI16Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_i16_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI16Le</span>;
 
             <span class="doccomment">/// Reads an unsigned 32-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2173,7 +2173,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU32Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_u32_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU32Le</span>;
 
             <span class="doccomment">/// Reads a signed 32-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2211,7 +2211,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI32Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_i32_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI32Le</span>;
 
             <span class="doccomment">/// Reads an unsigned 64-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2250,7 +2250,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU64Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_u64_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU64Le</span>;
 
             <span class="doccomment">/// Reads an signed 64-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2287,7 +2287,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI64Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_i64_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI64Le</span>;
 
             <span class="doccomment">/// Reads an unsigned 128-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2327,7 +2327,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_u128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU128Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_u128_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadU128Le</span>;
 
             <span class="doccomment">/// Reads an signed 128-bit integer in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2367,7 +2367,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_i128_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI128Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_i128_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadI128Le</span>;
 
             <span class="doccomment">/// Reads an 32-bit floating point type in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2404,7 +2404,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_f32_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF32Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_f32_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF32Le</span>;
 
             <span class="doccomment">/// Reads an 64-bit floating point type in little-endian order from the</span>
             <span class="doccomment">/// underlying reader.</span>
@@ -2443,7 +2443,7 @@
             <span class="doccomment">///     Ok(())</span>
             <span class="doccomment">/// }</span>
             <span class="doccomment">/// ```</span>
-            <span class="kw">fn</span> <span class="ident">read_f64_le</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF64Le</span>;
+            <span class="kw">fn</span> <span class="ident">read_f64_le</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">ReadF64Le</span>;
         }
 
         <span class="doccomment">/// Reads all bytes until EOF in this source, placing them into `buf`.</span>

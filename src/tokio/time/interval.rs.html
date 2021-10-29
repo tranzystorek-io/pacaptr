@@ -832,7 +832,7 @@
     <span class="doccomment">///     // approximately 20ms have elapsed.</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">tick</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Instant</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">tick</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Instant</span> {
         <span class="ident">poll_fn</span>(<span class="op">|</span><span class="ident">cx</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">poll_tick</span>(<span class="ident">cx</span>)).<span class="kw">await</span>
     }
 
@@ -848,9 +848,9 @@
     <span class="doccomment">/// calls to `poll_tick`, only the [`Waker`](std::task::Waker) from the</span>
     <span class="doccomment">/// [`Context`] passed to the most recent call is scheduled to receive a</span>
     <span class="doccomment">/// wakeup.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_tick</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">Instant</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_tick</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">Instant</span><span class="op">&gt;</span> {
         <span class="comment">// Wait for the delay to be done</span>
-        <span class="macro">ready!</span>(<span class="ident">Pin::new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">delay</span>).<span class="ident">poll</span>(<span class="ident">cx</span>));
+        <span class="macro">ready!</span>(<span class="ident">Pin::new</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">delay</span>).<span class="ident">poll</span>(<span class="ident">cx</span>));
 
         <span class="comment">// Get the time when we were scheduled to tick</span>
         <span class="kw">let</span> <span class="ident">timeout</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">delay</span>.<span class="ident">deadline</span>();
@@ -883,7 +883,7 @@
     }
 
     <span class="doccomment">/// Sets the [`MissedTickBehavior`] strategy that should be used.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_missed_tick_behavior</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">behavior</span>: <span class="ident">MissedTickBehavior</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_missed_tick_behavior</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">behavior</span>: <span class="ident">MissedTickBehavior</span>) {
         <span class="self">self</span>.<span class="ident">missed_tick_behavior</span> <span class="op">=</span> <span class="ident">behavior</span>;
     }
 
