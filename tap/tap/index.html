@@ -24,6 +24,7 @@ is actually implemented on slices, to which <code>Vec</code> dereferences.</p>
 <span class="ident">make_vec</span>().<span class="ident">tap_deref_mut</span>(<span class="op">&lt;</span>[<span class="kw">_</span>]<span class="op">&gt;</span><span class="ident">::sort</span>);
 <span class="comment">// but has no inherent method `sort`.</span>
 <span class="comment">// make_vec().tap_mut(Vec::sort);</span></code></pre></div>
+<p>!</p>
 </div></details><h2 id="traits" class="section-header"><a href="#traits">Traits</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Tap.html" title="tap::tap::Tap trait">Tap</a></div><div class="item-right docblock-short"><p>Point-free value inspection and modification.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.TapFallible.html" title="tap::tap::TapFallible trait">TapFallible</a></div><div class="item-right docblock-short"><p>Fallible tapping, conditional on the optional success of an expression.</p>
