@@ -467,6 +467,9 @@
 <span id="467">467</span>
 <span id="468">468</span>
 <span id="469">469</span>
+<span id="470">470</span>
+<span id="471">471</span>
+<span id="472">472</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Definitions for command line argument mapping and dispatching.</span>
 
 <span class="kw">use</span> <span class="ident">clap</span>::{<span class="self">self</span>, <span class="ident">AppSettings</span>, <span class="ident">Parser</span>};
@@ -679,14 +682,16 @@
     <span class="doccomment">/// detected.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// See [`Error`](crate::error::Error) for a  list of possible errors.</span>
+    <span class="doccomment">/// See [`Error`](crate::error::Error) for a list of possible errors.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">cfg</span>: <span class="ident">Config</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="comment">// Collect options as a `String`, eg. `-S -y -u =&gt; &quot;Suy&quot;`.</span>
-        <span class="comment">// ! HACK: In `Pm` we ensure the Pacman methods are all named with flags in</span>
-        <span class="comment">// ! ASCII order, ! eg. `Suy` instead of `Syu`.</span>
-        <span class="comment">// ! Then, in order to stay coherent with Rust coding style the method name</span>
-        <span class="comment">// ! should be `suy`.</span>
+        <span class="doccomment">/// Collect options as a `String`, eg. `-S -y -u =&gt; &quot;Suy&quot;`.</span>
+        <span class="doccomment">///</span>
+        <span class="doccomment">/// # Hack</span>
+        <span class="doccomment">/// In `Pm` we ensure the Pacman methods are all named with flags in</span>
+        <span class="doccomment">/// ASCII order, eg. `Suy` instead of `Syu`. Then, in order to</span>
+        <span class="doccomment">/// stay coherent with Rust coding style the method name should be</span>
+        <span class="doccomment">/// `suy`.</span>
         <span class="macro">macro_rules!</span> <span class="ident">collect_options</span> {(
             $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">op</span>:<span class="ident">ident</span> {
                 $( <span class="ident">mappings</span>: [$( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span>:<span class="ident">ident</span> -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span>:<span class="ident">ident</span> ), <span class="kw-2">*</span>], )<span class="question-mark">?</span>
@@ -733,13 +738,14 @@
         <span class="kw">let</span> <span class="ident">kws</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">keywords</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">collect_vec</span>();
         <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">extra_flags</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span> <span class="kw">as</span> <span class="kw">_</span>).<span class="ident">collect_vec</span>();
 
-        <span class="comment">// Call the method indicated by `options` on `pm`. That is:</span>
-        <span class="comment">// ```rust</span>
-        <span class="comment">// match &amp;options.to_lowercase() as _ {</span>
-        <span class="comment">//     &quot;q&quot; =&gt; pm.q(&amp;kws, &amp;flags).await,</span>
-        <span class="comment">//     ..</span>
-        <span class="comment">// }</span>
-        <span class="comment">// ```</span>
+        <span class="doccomment">/// Call the method indicated by `options` on `pm`. That is:</span>
+        <span class="doccomment">///</span>
+        <span class="doccomment">/// ```rust</span>
+        <span class="doccomment">/// match &amp;options.to_lowercase() as _ {</span>
+        <span class="doccomment">///     &quot;q&quot; =&gt; pm.q(&amp;kws, &amp;flags).await,</span>
+        <span class="doccomment">///     ..</span>
+        <span class="doccomment">/// }</span>
+        <span class="doccomment">/// ```</span>
         <span class="macro">macro_rules!</span> <span class="ident">dispatch_match</span> {(
             <span class="ident">methods</span> <span class="op">=</span> [{ $(
                 $( <span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">meta</span>:<span class="ident">meta</span>]</span> )<span class="op">*</span>
@@ -766,7 +772,7 @@
     <span class="doccomment">/// detected [`Config`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// See [`Error`](crate::error::Error) for a  list of possible errors.</span>
+    <span class="doccomment">/// See [`Error`](crate::error::Error) for a list of possible errors.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
     <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">dotfile</span> <span class="op">=</span> <span class="ident">task::block_in_place</span>(<span class="ident">Config::try_load</span>);
