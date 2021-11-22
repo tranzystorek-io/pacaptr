@@ -77,17 +77,17 @@ matches as they are detected.</p>
 <p>The main conclusion to draw from this section is that the match semantics
 can be tweaked to precisely match either Perl-like regex alternations or
 POSIX regex alternations.</p>
-</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><div id="variant.Standard" class="variant small-section-header"><a href="#variant.Standard" class="anchor field"></a><code>Standard</code></div><div class="docblock"><p>Use standard match semantics, which support overlapping matches. When
+</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><h3 id="variant.Standard" class="variant small-section-header"><a href="#variant.Standard" class="anchor field"></a><code>Standard</code></h3><div class="docblock"><p>Use standard match semantics, which support overlapping matches. When
 used with non-overlapping matches, matches are reported as they are
 seen.</p>
-</div><div id="variant.LeftmostFirst" class="variant small-section-header"><a href="#variant.LeftmostFirst" class="anchor field"></a><code>LeftmostFirst</code></div><div class="docblock"><p>Use leftmost-first match semantics, which reports leftmost matches.
+</div><h3 id="variant.LeftmostFirst" class="variant small-section-header"><a href="#variant.LeftmostFirst" class="anchor field"></a><code>LeftmostFirst</code></h3><div class="docblock"><p>Use leftmost-first match semantics, which reports leftmost matches.
 When there are multiple possible leftmost matches, the match
 corresponding to the pattern that appeared earlier when constructing
 the automaton is reported.</p>
 <p>This does <strong>not</strong> support overlapping matches or stream searching. If
 this match kind is used, attempting to find overlapping matches or
 stream matches will panic.</p>
-</div><div id="variant.LeftmostLongest" class="variant small-section-header"><a href="#variant.LeftmostLongest" class="anchor field"></a><code>LeftmostLongest</code></div><div class="docblock"><p>Use leftmost-longest match semantics, which reports leftmost matches.
+</div><h3 id="variant.LeftmostLongest" class="variant small-section-header"><a href="#variant.LeftmostLongest" class="anchor field"></a><code>LeftmostLongest</code></h3><div class="docblock"><p>Use leftmost-longest match semantics, which reports leftmost matches.
 When there are multiple possible leftmost matches, the longest match
 is chosen.</p>
 <p>This does <strong>not</strong> support overlapping matches or stream searching. If

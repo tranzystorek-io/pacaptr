@@ -8,21 +8,21 @@
     EmptyClassNotAllowed,
     // some variants omitted
 }</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The type of an error that occurred while building an <code>Hir</code>.</p>
-</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><div id="variant.UnicodeNotAllowed" class="variant small-section-header"><a href="#variant.UnicodeNotAllowed" class="anchor field"></a><code>UnicodeNotAllowed</code></div><div class="docblock"><p>This error occurs when a Unicode feature is used when Unicode
+</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><h3 id="variant.UnicodeNotAllowed" class="variant small-section-header"><a href="#variant.UnicodeNotAllowed" class="anchor field"></a><code>UnicodeNotAllowed</code></h3><div class="docblock"><p>This error occurs when a Unicode feature is used when Unicode
 support is disabled. For example <code>(?-u:\pL)</code> would trigger this error.</p>
-</div><div id="variant.InvalidUtf8" class="variant small-section-header"><a href="#variant.InvalidUtf8" class="anchor field"></a><code>InvalidUtf8</code></div><div class="docblock"><p>This error occurs when translating a pattern that could match a byte
+</div><h3 id="variant.InvalidUtf8" class="variant small-section-header"><a href="#variant.InvalidUtf8" class="anchor field"></a><code>InvalidUtf8</code></h3><div class="docblock"><p>This error occurs when translating a pattern that could match a byte
 sequence that isn’t UTF-8 and <code>allow_invalid_utf8</code> was disabled.</p>
-</div><div id="variant.UnicodePropertyNotFound" class="variant small-section-header"><a href="#variant.UnicodePropertyNotFound" class="anchor field"></a><code>UnicodePropertyNotFound</code></div><div class="docblock"><p>This occurs when an unrecognized Unicode property name could not
+</div><h3 id="variant.UnicodePropertyNotFound" class="variant small-section-header"><a href="#variant.UnicodePropertyNotFound" class="anchor field"></a><code>UnicodePropertyNotFound</code></h3><div class="docblock"><p>This occurs when an unrecognized Unicode property name could not
 be found.</p>
-</div><div id="variant.UnicodePropertyValueNotFound" class="variant small-section-header"><a href="#variant.UnicodePropertyValueNotFound" class="anchor field"></a><code>UnicodePropertyValueNotFound</code></div><div class="docblock"><p>This occurs when an unrecognized Unicode property value could not
+</div><h3 id="variant.UnicodePropertyValueNotFound" class="variant small-section-header"><a href="#variant.UnicodePropertyValueNotFound" class="anchor field"></a><code>UnicodePropertyValueNotFound</code></h3><div class="docblock"><p>This occurs when an unrecognized Unicode property value could not
 be found.</p>
-</div><div id="variant.UnicodePerlClassNotFound" class="variant small-section-header"><a href="#variant.UnicodePerlClassNotFound" class="anchor field"></a><code>UnicodePerlClassNotFound</code></div><div class="docblock"><p>This occurs when a Unicode-aware Perl character class (<code>\w</code>, <code>\s</code> or
+</div><h3 id="variant.UnicodePerlClassNotFound" class="variant small-section-header"><a href="#variant.UnicodePerlClassNotFound" class="anchor field"></a><code>UnicodePerlClassNotFound</code></h3><div class="docblock"><p>This occurs when a Unicode-aware Perl character class (<code>\w</code>, <code>\s</code> or
 <code>\d</code>) could not be found. This can occur when the <code>unicode-perl</code>
 crate feature is not enabled.</p>
-</div><div id="variant.UnicodeCaseUnavailable" class="variant small-section-header"><a href="#variant.UnicodeCaseUnavailable" class="anchor field"></a><code>UnicodeCaseUnavailable</code></div><div class="docblock"><p>This occurs when the Unicode simple case mapping tables are not
+</div><h3 id="variant.UnicodeCaseUnavailable" class="variant small-section-header"><a href="#variant.UnicodeCaseUnavailable" class="anchor field"></a><code>UnicodeCaseUnavailable</code></h3><div class="docblock"><p>This occurs when the Unicode simple case mapping tables are not
 available, and the regular expression required Unicode aware case
 insensitivity.</p>
-</div><div id="variant.EmptyClassNotAllowed" class="variant small-section-header"><a href="#variant.EmptyClassNotAllowed" class="anchor field"></a><code>EmptyClassNotAllowed</code></div><div class="docblock"><p>This occurs when the translator attempts to construct a character class
+</div><h3 id="variant.EmptyClassNotAllowed" class="variant small-section-header"><a href="#variant.EmptyClassNotAllowed" class="anchor field"></a><code>EmptyClassNotAllowed</code></h3><div class="docblock"><p>This occurs when the translator attempts to construct a character class
 that is empty.</p>
 <p>Note that this restriction in the translator may be removed in the
 future.</p>

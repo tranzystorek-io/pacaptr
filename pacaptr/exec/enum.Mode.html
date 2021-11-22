@@ -5,16 +5,16 @@
     CheckErr,
     Prompt,
 }</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Different ways in which a <a href="struct.Cmd.html" title="Cmd"><code>Cmd</code></a> shall be dealt with.</p>
-</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><div id="variant.PrintCmd" class="variant small-section-header"><a href="#variant.PrintCmd" class="anchor field"></a><code>PrintCmd</code></div><div class="docblock"><p>Solely prints out the command that should be executed and stops.</p>
-</div><div id="variant.Mute" class="variant small-section-header"><a href="#variant.Mute" class="anchor field"></a><code>Mute</code></div><div class="docblock"><p>Silently collects all the <code>stdout</code>/<code>stderr</code> combined. Prints nothing.</p>
-</div><div id="variant.CheckAll" class="variant small-section-header"><a href="#variant.CheckAll" class="anchor field"></a><code>CheckAll</code></div><div class="docblock"><p>Prints out the command which should be executed, runs it and collects
+</div></details><h2 id="variants" class="variants small-section-header">Variants<a href="#variants" class="anchor"></a></h2><h3 id="variant.PrintCmd" class="variant small-section-header"><a href="#variant.PrintCmd" class="anchor field"></a><code>PrintCmd</code></h3><div class="docblock"><p>Solely prints out the command that should be executed and stops.</p>
+</div><h3 id="variant.Mute" class="variant small-section-header"><a href="#variant.Mute" class="anchor field"></a><code>Mute</code></h3><div class="docblock"><p>Silently collects all the <code>stdout</code>/<code>stderr</code> combined. Prints nothing.</p>
+</div><h3 id="variant.CheckAll" class="variant small-section-header"><a href="#variant.CheckAll" class="anchor field"></a><code>CheckAll</code></h3><div class="docblock"><p>Prints out the command which should be executed, runs it and collects
 its <code>stdout</code>/<code>stderr</code> combined.</p>
 <p>This is potentially dangerous as it destroys the colored <code>stdout</code>. Use
 it only if really necessary.</p>
-</div><div id="variant.CheckErr" class="variant small-section-header"><a href="#variant.CheckErr" class="anchor field"></a><code>CheckErr</code></div><div class="docblock"><p>Prints out the command which should be executed, runs it and collects
+</div><h3 id="variant.CheckErr" class="variant small-section-header"><a href="#variant.CheckErr" class="anchor field"></a><code>CheckErr</code></h3><div class="docblock"><p>Prints out the command which should be executed, runs it and collects
 its <code>stderr</code>.</p>
 <p>This will work with a colored <code>stdout</code>.</p>
-</div><div id="variant.Prompt" class="variant small-section-header"><a href="#variant.Prompt" class="anchor field"></a><code>Prompt</code></div><div class="docblock"><p>A CUSTOM prompt implemented by a <code>pacaptr</code> module itself.</p>
+</div><h3 id="variant.Prompt" class="variant small-section-header"><a href="#variant.Prompt" class="anchor field"></a><code>Prompt</code></h3><div class="docblock"><p>A CUSTOM prompt implemented by a <code>pacaptr</code> module itself.</p>
 <p>Prints out the command which should be executed, runs it and collects
 its <code>stderr</code>. Also, this will ask for confirmation before
 proceeding.</p>
