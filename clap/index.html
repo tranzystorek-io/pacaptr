@@ -64,9 +64,9 @@
 <li><a href="#related-crates">Related Crates</a></li>
 </ol>
 <h3 id="about" class="section-header"><a href="#about">About</a></h3>
-<p><code>clap</code> is used to parse <em>and validate</em> the string of command line arguments provided by a user at runtime. You provide the list of valid possibilities, and <code>clap</code> handles the rest. This means you focus on your <em>applications</em> functionality, and less on the parsing and validating of arguments.</p>
+<p><code>clap</code> is used to parse <em>and validate</em> the string of command line arguments provided by a user at runtime. You provide the list of valid possibilities, and <code>clap</code> handles the rest. This means you focus on your <em>application’s</em> functionality, and less on the parsing and validating of arguments.</p>
 <p><code>clap</code> provides many things ‘for free’ (with no configuration) including the traditional version and help switches (or flags) along with associated messages. If you are using subcommands, <code>clap</code> will also auto-generate a <code>help</code> subcommand and separate associated help messages.</p>
-<p>Once <code>clap</code> parses the user provided string of arguments, it returns the matches along with any applicable values. If the user made an error or typo, <code>clap</code> informs them with a friendly message and exits gracefully (or returns a <code>Result</code> type and allows you to perform any clean up prior to exit). Because of this, you can make reasonable assumptions in your code about the validity of the arguments prior to your applications main execution.</p>
+<p>Once <code>clap</code> parses the user-provided string of arguments, it returns the matches along with any applicable values. If the user made an error or typo, <code>clap</code> informs them with a friendly message and exits gracefully (or returns a <code>Result</code> type and allows you to perform any clean up prior to exit). Because of this, you can make reasonable assumptions in your code about the validity of the arguments prior to your applications main execution.</p>
 <h3 id="faq" class="section-header"><a href="#faq">FAQ</a></h3>
 <p><a href="https://github.com/clap-rs/clap/blob/master/FAQ.md#how-does-clap-compare-to-structopt">How does <code>clap</code> compare to structopt?</a></p>
 <p>For a full FAQ, see <a href="https://github.com/clap-rs/clap/blob/master/FAQ.md">this</a></p>
@@ -76,13 +76,13 @@
 <li>Generate a CLI simply by defining a struct!</li>
 <li><strong>Auto-generated Help, Version, and Usage information</strong>
 <ul>
-<li>Can optionally be fully, or partially overridden if you want a custom help, version, or usage statements</li>
+<li>Can optionally be fully, or partially overridden if you want custom help, version, or usage statements</li>
 </ul>
 </li>
 <li><strong>Auto-generated completion scripts (Bash, Zsh, Fish, Fig, Elvish and PowerShell)</strong>
 <ul>
 <li>Using <a href="https://github.com/clap-rs/clap/tree/master/clap_generate"><code>clap_generate</code></a></li>
-<li>Even works through many multiple levels of subcommands</li>
+<li>Even works through multiple levels of subcommands</li>
 <li>Works with options which only accept certain values</li>
 <li>Works with subcommand aliases</li>
 </ul>
@@ -99,7 +99,7 @@
 <li>Supports multiple values (i.e. <code>myprog &lt;file&gt;...</code> such as <code>myprog file1.txt file2.txt</code> being two values for the same “file” argument)</li>
 <li>Supports Specific Value Sets (See below)</li>
 <li>Can set value parameters (such as the minimum number of values, the maximum number of values, or the exact number of values)</li>
-<li>Can set custom validations on values to extend the argument parsing capability to truly custom domains</li>
+<li>Can set custom validations on values to extend the argument-parsing capability to truly custom domains</li>
 </ul>
 </li>
 <li><strong>Option Arguments</strong> (i.e. those that take values)
@@ -110,7 +110,7 @@
 <li>Supports Specific Value Sets (See below)</li>
 <li>Supports named values so that the usage/help info appears as <code>-o &lt;FILE&gt; &lt;INTERFACE&gt;</code> etc. for when you require specific multiple values</li>
 <li>Can set value parameters (such as the minimum number of values, the maximum number of values, or the exact number of values)</li>
-<li>Can set custom validations on values to extend the argument parsing capability to truly custom domains</li>
+<li>Can set custom validations on values to extend the argument-parsing capability to truly custom domains</li>
 </ul>
 </li>
 <li><strong>Sub-Commands</strong> (i.e. <code>git add &lt;file&gt;</code> where <code>add</code> is a sub-command of <code>git</code>)
