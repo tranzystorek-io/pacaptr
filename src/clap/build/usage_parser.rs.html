@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;72e6b80&#x2F;src&#x2F;build&#x2F;usage_parser.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>usage_parser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css"disabled><link rel="stylesheet" type="text/css" href="../../../dark.css"disabled><link rel="stylesheet" type="text/css" href="../../../light.css"id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href='../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container rust-logo" href='../../../clap/index.html'><img src='https:&#x2F;&#x2F;clap.rs&#x2F;images&#x2F;media&#x2F;clap.png' alt='logo'></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;clap-78dbe9b58f9073fe&#x2F;a779f2c&#x2F;src&#x2F;build&#x2F;usage_parser.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>usage_parser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css"disabled><link rel="stylesheet" type="text/css" href="../../../dark.css"disabled><link rel="stylesheet" type="text/css" href="../../../light.css"id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href='../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;clap-rs&#x2F;clap&#x2F;master&#x2F;assets&#x2F;clap.png' alt='logo'></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container rust-logo" href='../../../clap/index.html'><img src='https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;clap-rs&#x2F;clap&#x2F;master&#x2F;assets&#x2F;clap.png' alt='logo'></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1259,6 +1259,22 @@
 <span id="1258">1258</span>
 <span id="1259">1259</span>
 <span id="1260">1260</span>
+<span id="1261">1261</span>
+<span id="1262">1262</span>
+<span id="1263">1263</span>
+<span id="1264">1264</span>
+<span id="1265">1265</span>
+<span id="1266">1266</span>
+<span id="1267">1267</span>
+<span id="1268">1268</span>
+<span id="1269">1269</span>
+<span id="1270">1270</span>
+<span id="1271">1271</span>
+<span id="1272">1272</span>
+<span id="1273">1273</span>
+<span id="1274">1274</span>
+<span id="1275">1275</span>
+<span id="1276">1276</span>
 </pre><pre class="rust"><code><span class="comment">// Internal</span>
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">build</span>::{<span class="ident">Arg</span>, <span class="ident">ArgSettings</span>},
@@ -1305,10 +1321,7 @@
 
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">parse</span>(<span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Arg</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span> {
         <span class="macro">debug!</span>(<span class="string">&quot;UsageParser::parse&quot;</span>);
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">arg</span> <span class="op">=</span> <span class="ident">Arg</span> {
-            <span class="ident">disp_ord</span>: <span class="number">999</span>,
-            ..<span class="ident">Default::default</span>()
-        };
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">arg</span> <span class="op">=</span> <span class="ident">Arg::default</span>();
         <span class="kw">loop</span> {
             <span class="macro">debug!</span>(<span class="string">&quot;UsageParser::parse:iter: pos={}&quot;</span>, <span class="self">self</span>.<span class="ident">pos</span>);
             <span class="self">self</span>.<span class="ident">stop_at</span>(<span class="ident">token</span>);
@@ -1434,12 +1447,11 @@
             <span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="kw">if</span> <span class="ident">dot_counter</span> <span class="op">==</span> <span class="number">3</span> {
                 <span class="macro">debug!</span>(<span class="string">&quot;UsageParser::multiple: setting multiple&quot;</span>);
+                <span class="ident">arg</span>.<span class="ident">settings</span>.<span class="ident">set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>);
                 <span class="kw">if</span> <span class="ident">arg</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>) {
-                    <span class="comment">// This is after `--name=value`, so requesting multiple value</span>
                     <span class="ident">arg</span>.<span class="ident">settings</span>.<span class="ident">set</span>(<span class="ident">ArgSettings::MultipleValues</span>);
-                } <span class="kw">else</span> {
-                    <span class="comment">// This is after `[name]` (or a flag), so requesting multiple occurrences</span>
-                    <span class="ident">arg</span>.<span class="ident">settings</span>.<span class="ident">set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>);
+                    <span class="ident">arg</span>.<span class="ident">settings</span>.<span class="ident">set</span>(<span class="ident">ArgSettings::UseValueDelimiter</span>);
+                    <span class="ident">arg</span>.<span class="ident">val_delim</span>.<span class="ident">get_or_insert</span>(<span class="string">&#39;,&#39;</span>);
                 }
                 <span class="self">self</span>.<span class="ident">prev</span> <span class="op">=</span> <span class="ident">UsageToken::Multiple</span>;
                 <span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
@@ -1457,7 +1469,7 @@
             <span class="string">&quot;UsageParser::help: setting help...{}&quot;</span>,
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">usage</span>[<span class="self">self</span>.<span class="ident">start</span>..<span class="self">self</span>.<span class="ident">pos</span>]
         );
-        <span class="ident">arg</span>.<span class="ident">about</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">usage</span>[<span class="self">self</span>.<span class="ident">start</span>..<span class="self">self</span>.<span class="ident">pos</span>]);
+        <span class="ident">arg</span>.<span class="ident">help</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">usage</span>[<span class="self">self</span>.<span class="ident">start</span>..<span class="self">self</span>.<span class="ident">pos</span>]);
         <span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>; <span class="comment">// Move to next byte to keep from thinking ending &#39; is a start</span>
         <span class="self">self</span>.<span class="ident">prev</span> <span class="op">=</span> <span class="ident">UsageToken::Help</span>;
     }
@@ -1506,103 +1518,105 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">test</span> {
+    <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
+
     <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::build</span>::{<span class="ident">Arg</span>, <span class="ident">ArgSettings</span>};
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::cognitive_complexity</span>)]</span>
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_flag_usage</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flag] -f &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flag] -f &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flag] --flag &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flag] --flag &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--flag &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--flag &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flag] -f --flag &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flag] -f --flag &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flag&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flag] -f... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flag] -f... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flag] -f --flag... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flag] -f --flag... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-f --flag... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-f --flag... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flag&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--flags&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--flags&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--flags...&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--flags...&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flags] -f&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flags] -f&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[flags] -f...&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[flags] -f...&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;flags&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-f &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-f &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;f&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-f&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-f&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;f&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">is_empty</span>());
 
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-f...&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-f...&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;f&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;f&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
@@ -1612,11 +1626,11 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage0</span>() {
         <span class="comment">// Short only</span>
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] -o [opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] -o [opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1626,11 +1640,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o [opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o [opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1640,11 +1654,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; -o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; -o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1654,11 +1668,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1668,12 +1682,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] -o [opt]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] -o [opt]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1682,11 +1696,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... -o [opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option]... -o [opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1696,12 +1710,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage6</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o [opt]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o [opt]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1710,12 +1724,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage7</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; -o &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; -o &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1724,11 +1738,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage8</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt;... -o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt;... -o &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1738,12 +1752,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage9</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1751,26 +1765,12 @@
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">create_option_usage10</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... -o [opt]... &#39;some help info&#39;&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
-        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
-        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), [<span class="kw-2">&amp;</span><span class="string">&quot;opt&quot;</span>]);
-    }
-
-    <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] --opt [opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] --opt [opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1780,11 +1780,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt [option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt [option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1794,11 +1794,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1808,11 +1808,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt &lt;option&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt &lt;option&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1822,12 +1822,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] --opt [opt]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] --opt [opt]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1836,11 +1836,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long6</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... --opt [opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option]... --opt [opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1850,12 +1850,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long7</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt [option]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt [option]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1864,12 +1864,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long8</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; --opt &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; --opt &lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1878,11 +1878,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long9</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt;... --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt;... --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1892,12 +1892,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long10</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt &lt;option&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt &lt;option&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1906,11 +1906,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] --opt=[opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] --opt=[opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1920,11 +1920,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt=[option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt=[option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1934,11 +1934,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1948,11 +1948,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt=&lt;option&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt=&lt;option&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1962,12 +1962,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] --opt=[opt]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] --opt=[opt]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -1976,11 +1976,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals6</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... --opt=[opt] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option]... --opt=[opt] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -1990,12 +1990,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals7</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt=[option]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt=[option]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2004,12 +2004,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals8</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; --opt=&lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; --opt=&lt;opt&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2018,11 +2018,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals9</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt;... --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt;... --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2032,12 +2032,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_long_equals10</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt=&lt;option&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt=&lt;option&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2046,11 +2046,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] -o --opt [option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] -o --opt [option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2060,11 +2060,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt [option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt [option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2074,11 +2074,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; -o --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; -o --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2088,11 +2088,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt &lt;option&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt &lt;option&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2102,11 +2102,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... -o --opt [option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option]... -o --opt [option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2116,12 +2116,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both6</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt [option]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt [option]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2130,11 +2130,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both7</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt;... -o --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt;... -o --opt &lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2144,12 +2144,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both8</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt &lt;option&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt &lt;option&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2158,11 +2158,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option] -o --opt=[option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option] -o --opt=[option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2172,11 +2172,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt=[option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt=[option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2186,11 +2186,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt; -o --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt; -o --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2200,11 +2200,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt=&lt;option&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt=&lt;option&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2214,11 +2214,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[option]... -o --opt=[option] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[option]... -o --opt=[option] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2228,12 +2228,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals6</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt=[option]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt=[option]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2242,11 +2242,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals7</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;option&gt;... -o --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;option&gt;... -o --opt=&lt;opt&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;option&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2256,12 +2256,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_usage_both_equals8</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o --opt=&lt;option&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o --opt=&lt;option&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2270,11 +2270,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals1</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2284,12 +2284,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals2</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2298,12 +2298,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals3</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt &lt;file&gt; &lt;mode&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt &lt;file&gt; &lt;mode&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2312,11 +2312,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals4</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[myopt] --opt &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[myopt] --opt &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;myopt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2326,11 +2326,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals5</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--opt &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--opt &lt;file&gt; &lt;mode&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;opt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2339,9 +2339,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_positional_usage</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[pos] &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[pos] &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2350,9 +2350,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_positional_usage0</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;pos&gt; &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;pos&gt; &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2361,9 +2361,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_mult_help</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[pos]... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[pos]... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2372,9 +2372,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_help_lit_single_quote</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[pos]... &#39;some help\&#39; info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[pos]... &#39;some help\&#39; info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help&#39; info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help&#39; info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2383,9 +2383,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_help_double_lit_single_quote</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[pos]... &#39;some \&#39;help\&#39; info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[pos]... &#39;some \&#39;help\&#39; info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some &#39;help&#39; info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some &#39;help&#39; info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2394,12 +2394,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_help_newline</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(
             <span class="string">&quot;[pos]... &#39;some help\n\
              info&#39;&quot;</span>,
         );
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help\ninfo&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help\ninfo&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2408,12 +2408,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_help_newline_lit_sq</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(
             <span class="string">&quot;[pos]... &#39;some help\&#39; stuff\n\
              info&#39;&quot;</span>,
         );
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help&#39; stuff\ninfo&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help&#39; stuff\ninfo&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2422,9 +2422,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_req_mult_help</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;pos&gt;... &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;pos&gt;... &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2433,7 +2433,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_req</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;pos&gt;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;pos&gt;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
@@ -2443,7 +2443,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_mult</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[pos]...&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[pos]...&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
@@ -2453,9 +2453,9 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">pos_req_mult_def_help</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;pos&gt;... @a &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;pos&gt;... @a &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;pos&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::Required</span>));
@@ -2465,11 +2465,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals1_def</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt; @a &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-o &lt;file&gt; &lt;mode&gt; @a &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;o&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">unwrap</span>(), <span class="string">&#39;o&#39;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2480,11 +2480,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">create_option_with_vals4_def</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[myopt] --opt &lt;file&gt; &lt;mode&gt; @a &#39;some help info&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[myopt] --opt &lt;file&gt; &lt;mode&gt; @a &#39;some help info&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;myopt&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">short</span>.<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;opt&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>.<span class="ident">unwrap</span>(), <span class="string">&quot;some help info&quot;</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::MultipleValues</span>));
         <span class="macro">assert!</span>(<span class="ident">a</span>.<span class="ident">is_set</span>(<span class="ident">ArgSettings::TakesValue</span>));
@@ -2495,30 +2495,62 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">nonascii</span>() {
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;ASCII&gt; &#39;üñíčöĐ€&#39;&quot;</span>);
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;ASCII&gt; &#39;üñíčöĐ€&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;ASCII&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;üñíčöĐ€&quot;</span>));
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;üñíčöĐ€&gt; &#39;ASCII&#39;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;üñíčöĐ€&quot;</span>));
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;üñíčöĐ€&gt; &#39;ASCII&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;üñíčöĐ€&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;ASCII&quot;</span>));
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;&lt;üñíčöĐ€&gt; &#39;üñíčöĐ€&#39;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;ASCII&quot;</span>));
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;&lt;üñíčöĐ€&gt; &#39;üñíčöĐ€&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;üñíčöĐ€&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;üñíčöĐ€&quot;</span>));
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;-ø &#39;ø&#39;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;üñíčöĐ€&quot;</span>));
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;-ø &#39;ø&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;ø&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">short</span>, <span class="prelude-val">Some</span>(<span class="string">&#39;ø&#39;</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;ø&quot;</span>));
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;--üñíčöĐ€ &#39;Nōṫ ASCII&#39;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;ø&quot;</span>));
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--üñíčöĐ€ &#39;Nōṫ ASCII&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;üñíčöĐ€&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;üñíčöĐ€&quot;</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;Nōṫ ASCII&quot;</span>));
-        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from</span>(<span class="string">&quot;[ñämê] --ôpt=[üñíčöĐ€] &#39;hælp&#39;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;Nōṫ ASCII&quot;</span>));
+        <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> <span class="ident">Arg::from_usage</span>(<span class="string">&quot;[ñämê] --ôpt=[üñíčöĐ€] &#39;hælp&#39;&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">name</span>, <span class="string">&quot;ñämê&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">long</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;ôpt&quot;</span>));
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">val_names</span>.<span class="ident">iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(), [<span class="kw-2">&amp;</span><span class="string">&quot;üñíčöĐ€&quot;</span>]);
-        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">about</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;hælp&quot;</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">help</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;hælp&quot;</span>));
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">value_names_building_num_vals_from_usage</span>() {
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::App</span>;
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;test&quot;</span>)
+            .<span class="ident">arg</span>(<span class="ident">Arg::from_usage</span>(<span class="string">&quot;--pos &lt;who&gt; &lt;what&gt; &lt;why&gt;&quot;</span>))
+            .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;myprog&quot;</span>, <span class="string">&quot;--pos&quot;</span>, <span class="string">&quot;val1&quot;</span>, <span class="string">&quot;val2&quot;</span>, <span class="string">&quot;val3&quot;</span>]);
+
+        <span class="macro">assert!</span>(<span class="ident">m</span>.<span class="ident">is_ok</span>(), <span class="string">&quot;{:?}&quot;</span>, <span class="ident">m</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>);
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">m</span>.<span class="ident">unwrap</span>();
+
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">m</span>.<span class="ident">values_of</span>(<span class="string">&quot;pos&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(),
+            [<span class="string">&quot;val1&quot;</span>, <span class="string">&quot;val2&quot;</span>, <span class="string">&quot;val3&quot;</span>]
+        );
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">issue_665</span>() {
+        <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">App</span>, <span class="ident">ErrorKind</span>};
+        <span class="comment">// Verify fix for &quot;arg_from_usage(): required values not being enforced when followed by another option&quot;</span>
+        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;tester&quot;</span>)
+        .<span class="ident">arg</span>(<span class="ident">Arg::from_usage</span>(<span class="string">&quot;-v, --reroll-count=[N] &#39;Mark the patch series as PATCH vN&#39;&quot;</span>))
+        .<span class="ident">arg</span>(
+            <span class="ident">Arg::from_usage</span>(<span class="string">&quot;--subject-prefix [Subject-Prefix] &#39;Use [Subject-Prefix] instead of the standard [PATCH] prefix&#39;&quot;</span>)
+                .<span class="ident">setting</span>(<span class="ident">ArgSettings::ForbidEmptyValues</span>)
+        )
+        .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;test&quot;</span>, <span class="string">&quot;--subject-prefix&quot;</span>, <span class="string">&quot;-v&quot;</span>, <span class="string">&quot;2&quot;</span>]);
+
+        <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
+        <span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::EmptyValue</span>);
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (0fb1c371d 2021-12-06)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (0b6f079e4 2021-12-07)" ></div>
 </body></html>
