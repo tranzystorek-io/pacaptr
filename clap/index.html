@@ -55,8 +55,9 @@
         <span class="macro">println!</span>(<span class="string">&quot;Hello {}!&quot;</span>, <span class="ident">args</span>.<span class="ident">name</span>)
     }
 }</code></pre></div>
-<p><em>(note: requires feature <code>derive</code>)</em></p>
-<div class="example-wrap"><pre class="language-bash"><code>$ demo --help
+<p>Add this to <code>Cargo.toml</code>:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[dependencies]
+clap = { version = &quot;3.0.0-rc.7&quot;, features = [&quot;derive&quot;] }</code></pre></div><div class="example-wrap"><pre class="language-bash"><code>$ demo --help
 clap [..]
 
 A simple to use, efficient, and full-featured Command Line Argument Parser
