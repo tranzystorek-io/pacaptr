@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled-0.3.0&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled-0.4.0&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../tabled/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
         </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../tabled/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
@@ -426,6 +426,63 @@
 <span id="424">424</span>
 <span id="425">425</span>
 <span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
+<span id="464">464</span>
+<span id="465">465</span>
+<span id="466">466</span>
+<span id="467">467</span>
+<span id="468">468</span>
+<span id="469">469</span>
+<span id="470">470</span>
+<span id="471">471</span>
+<span id="472">472</span>
+<span id="473">473</span>
+<span id="474">474</span>
+<span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
 </pre><pre class="rust"><code><span class="doccomment">//! An easy to use library for pretty print tables of Rust `struct`s and `enum`s.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The library is based on a [Tabled] trait which is used to actually build tables.</span>
@@ -433,10 +490,12 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! [Table] can be build from vast majority of Rust&#39;s standart types.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ## Examples</span>
+<span class="doccomment">//! ## Usage</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! If you wan&#39;t to build a table for your data.</span>
-<span class="doccomment">//! Most likely a starting point is to anotate your type with `#[derive(Tabled)]`.</span>
+<span class="doccomment">//! If you want to build a table for your custom type.</span>
+<span class="doccomment">//! A starting point is to a anotate your type with `#[derive(Tabled)]`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Then you can create `Table::new` to create a table;</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust</span>
 <span class="doccomment">//! use tabled::{Tabled, Table};</span>
@@ -479,6 +538,14 @@
 <span class="doccomment">//!                 +------+----------------+---------------+\n&quot;;</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! assert_eq!(table, expected);</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! You can also create a table by using [TableIteratorExt].</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```rust,no_run</span>
+<span class="doccomment">//! # let languages = [&quot;&quot;];</span>
+<span class="doccomment">//! use tabled::TableIteratorExt;</span>
+<span class="doccomment">//! let table = languages.table();</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! Not all types can derive [Tabled] trait though.</span>
@@ -548,7 +615,7 @@
 <span class="doccomment">//!     (Developer(&quot;Maxim Zhiburt&quot;), Domain::Unknown),</span>
 <span class="doccomment">//! ];</span>
 <span class="doccomment">//!     </span>
-<span class="doccomment">//! let table = Table::new(data).with(Style::psql()).to_string();</span>
+<span class="doccomment">//! let table = Table::new(data).with(Style::PSQL).to_string();</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! assert_eq!(</span>
 <span class="doccomment">//!     table,</span>
@@ -569,26 +636,31 @@
 <span class="doccomment">//! [README.md](https://github.com/zhiburt/tabled/blob/master/README.md)</span>
 <span class="doccomment">//!</span>
 
-<span class="kw">use</span> <span class="ident">papergrid</span>::{<span class="ident">AlignmentHorizontal</span>, <span class="ident">Entity</span>, <span class="ident">Grid</span>, <span class="ident">Settings</span>};
+<span class="kw">use</span> <span class="ident">papergrid</span>::{<span class="ident">Entity</span>, <span class="ident">Grid</span>, <span class="ident">Settings</span>};
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 
 <span class="kw">mod</span> <span class="ident">alignment</span>;
+<span class="kw">mod</span> <span class="ident">concat</span>;
 <span class="kw">mod</span> <span class="ident">disable</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">display</span>;
 <span class="kw">mod</span> <span class="ident">formating</span>;
+<span class="kw">mod</span> <span class="ident">highlight</span>;
 <span class="kw">mod</span> <span class="ident">indent</span>;
 <span class="kw">mod</span> <span class="ident">object</span>;
 <span class="kw">mod</span> <span class="ident">panel</span>;
 <span class="kw">mod</span> <span class="ident">rotate</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">style</span>;
 <span class="kw">mod</span> <span class="ident">width</span>;
 
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">display</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">style</span>;
+
 <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
-    <span class="ident">alignment</span>::<span class="kw-2">*</span>, <span class="ident">disable</span>::<span class="kw-2">*</span>, <span class="ident">formating</span>::<span class="kw-2">*</span>, <span class="ident">indent</span>::<span class="kw-2">*</span>, <span class="ident">object</span>::<span class="kw-2">*</span>, <span class="ident">panel</span>::<span class="kw-2">*</span>, <span class="ident">rotate</span>::<span class="kw-2">*</span>,
-    <span class="ident">style::Style</span>, <span class="ident">width</span>::<span class="kw-2">*</span>,
+    <span class="ident">alignment</span>::<span class="kw-2">*</span>, <span class="ident">concat</span>::<span class="kw-2">*</span>, <span class="ident">disable</span>::<span class="kw-2">*</span>, <span class="ident">formating</span>::<span class="kw-2">*</span>, <span class="ident">highlight</span>::<span class="kw-2">*</span>, <span class="ident">indent</span>::<span class="kw-2">*</span>, <span class="ident">object</span>::<span class="kw-2">*</span>,
+    <span class="ident">panel</span>::<span class="kw-2">*</span>, <span class="ident">rotate</span>::<span class="kw-2">*</span>, <span class="ident">style::Style</span>, <span class="ident">width</span>::<span class="kw-2">*</span>,
 };
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">papergrid</span>;
+
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">tabled_derive::Tabled</span>;
+
+<span class="comment">// todo: change return type to impl Iterator&lt;Cow&lt;str</span>
 
 <span class="doccomment">/// Tabled a trait responsible for providing a header fields and a row fields.</span>
 <span class="doccomment">///</span>
@@ -598,6 +670,10 @@
 <span class="doccomment">/// Self::headers().len() == self.fields().len()</span>
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Tabled</span> {
+    <span class="doccomment">/// A length of fields and headers,</span>
+    <span class="doccomment">/// which must be the same.</span>
+    <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span>;
+
     <span class="doccomment">/// Fields method must return a list of cells.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The cells will be placed in the same row, preserving the order.</span>
@@ -610,6 +686,8 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Tabled</span>,
 {
+    <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">T::LENGTH</span>;
+
     <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="ident">T::fields</span>(<span class="self">self</span>)
     }
@@ -660,7 +738,7 @@
 <span class="doccomment">/// use tabled::{Table, Style, Alignment, Full, Modify};</span>
 <span class="doccomment">/// let data = vec![&quot;Hello&quot;, &quot;2021&quot;];</span>
 <span class="doccomment">/// let table = Table::new(&amp;data)</span>
-<span class="doccomment">///                 .with(Style::psql())</span>
+<span class="doccomment">///                 .with(Style::PSQL)</span>
 <span class="doccomment">///                 .with(Modify::new(Full).with(Alignment::left()));</span>
 <span class="doccomment">/// println!(&quot;{}&quot;, table);</span>
 <span class="doccomment">/// ```</span>
@@ -673,7 +751,13 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Tabled</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">grid</span> <span class="op">=</span> <span class="ident">build_grid</span>(<span class="ident">iter</span>);
 
-        <span class="self">Self</span> { <span class="ident">grid</span> }
+        <span class="kw">let</span> <span class="ident">table</span> <span class="op">=</span> <span class="self">Self</span> { <span class="ident">grid</span> };
+        <span class="ident">table</span>.<span class="ident">with</span>(<span class="ident">Style::ASCII</span>)
+    }
+
+    <span class="doccomment">/// Returns a table shape (count rows, count columns).</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shape</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">usize</span>, <span class="ident">usize</span>) {
+        (<span class="self">self</span>.<span class="ident">grid</span>.<span class="ident">count_rows</span>(), <span class="self">self</span>.<span class="ident">grid</span>.<span class="ident">count_columns</span>())
     }
 
     <span class="doccomment">/// With is a generic function which applies options to the [Table].</span>
@@ -685,6 +769,30 @@
     {
         <span class="ident">option</span>.<span class="ident">change</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">grid</span>);
         <span class="self">self</span>
+    }
+}
+
+<span class="doccomment">/// A trait for [IntoIterator] whose Item type is bound to [Tabled].</span>
+<span class="doccomment">/// Any type implements [IntoIterator] can call this function directly</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```rust</span>
+<span class="doccomment">/// use tabled::{TableIteratorExt, Style};</span>
+<span class="doccomment">/// let strings: &amp;[&amp;str] = &amp;[&quot;Hello&quot;, &quot;World&quot;];</span>
+<span class="doccomment">/// let table = strings.table().with(Style::PSQL);</span>
+<span class="doccomment">/// println!(&quot;{}&quot;, table);</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TableIteratorExt</span> {
+    <span class="doccomment">/// Returns a [Table] instance from a given type</span>
+    <span class="kw">fn</span> <span class="ident">table</span>(<span class="self">self</span>) -&gt; <span class="ident">Table</span>;
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> <span class="ident">TableIteratorExt</span> <span class="kw">for</span> <span class="ident">U</span>
+<span class="kw">where</span>
+    <span class="ident">T</span>: <span class="ident">Tabled</span>,
+    <span class="ident">U</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
+{
+    <span class="kw">fn</span> <span class="ident">table</span>(<span class="self">self</span>) -&gt; <span class="ident">Table</span> {
+        <span class="ident">Table::new</span>(<span class="self">self</span>)
     }
 }
 
@@ -752,20 +860,20 @@
     <span class="comment">// it&#39;s crusial to set a global setting rather than a setting for an each cell</span>
     <span class="comment">// as it will be hard to override that since how Grid::style method works</span>
     <span class="ident">grid</span>.<span class="ident">set</span>(
-        <span class="ident">Entity::Global</span>,
+        <span class="kw-2">&amp;</span><span class="ident">Entity::Global</span>,
         <span class="ident">Settings::new</span>()
             .<span class="ident">indent</span>(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)
             .<span class="ident">alignment</span>(<span class="ident">AlignmentHorizontal::Center</span>),
     );
 
     <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">h</span>) <span class="kw">in</span> <span class="ident">headers</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="ident">grid</span>.<span class="ident">set</span>(<span class="ident">Entity::Cell</span>(<span class="number">0</span>, <span class="ident">i</span>), <span class="ident">Settings::new</span>().<span class="ident">text</span>(<span class="ident">h</span>));
+        <span class="ident">grid</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">Entity::Cell</span>(<span class="number">0</span>, <span class="ident">i</span>), <span class="ident">Settings::new</span>().<span class="ident">text</span>(<span class="ident">h</span>));
     }
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">row</span> <span class="op">=</span> <span class="number">1</span>;
     <span class="kw">for</span> <span class="ident">fields</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">obj</span> {
         <span class="kw">for</span> (<span class="ident">column</span>, <span class="ident">field</span>) <span class="kw">in</span> <span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-            <span class="ident">grid</span>.<span class="ident">set</span>(<span class="ident">Entity::Cell</span>(<span class="ident">row</span>, <span class="ident">column</span>), <span class="ident">Settings::new</span>().<span class="ident">text</span>(<span class="ident">field</span>));
+            <span class="ident">grid</span>.<span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="ident">Entity::Cell</span>(<span class="ident">row</span>, <span class="ident">column</span>), <span class="ident">Settings::new</span>().<span class="ident">text</span>(<span class="ident">field</span>));
         }
 
         <span class="comment">// don&#39;t show off a empty data array</span>
@@ -781,6 +889,8 @@
 <span class="macro">macro_rules!</span> <span class="ident">tuple_table</span> {
     ( $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>)<span class="op">+</span> ) =&gt; {
         <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">Tabled</span>),<span class="op">+</span><span class="op">&gt;</span> <span class="ident">Tabled</span> <span class="kw">for</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,)<span class="op">+</span>){
+            <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name::LENGTH</span><span class="op">+</span>)<span class="op">+</span> <span class="number">0</span>;
+
             <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
                 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
                 <span class="kw">let</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,)<span class="op">+</span>) <span class="op">=</span> <span class="self">self</span>;
@@ -808,6 +918,8 @@
 <span class="macro">macro_rules!</span> <span class="ident">default_table</span> {
     ( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span> ) =&gt; {
         <span class="kw">impl</span> <span class="ident">Tabled</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span> {
+            <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">1</span>;
+
             <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
                 <span class="macro">vec!</span>[<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="self">self</span>)]
             }
@@ -844,6 +956,8 @@
 <span class="macro">default_table!</span>(<span class="ident">f64</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">fmt::Display</span>, <span class="kw">const</span> <span class="ident">N</span>: <span class="ident">usize</span><span class="op">&gt;</span> <span class="ident">Tabled</span> <span class="kw">for</span> [<span class="ident">T</span>; <span class="ident">N</span>] {
+    <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">N</span>;
+
     <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">to_string</span>()).<span class="ident">collect</span>()
     }
@@ -853,5 +967,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tabled" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (f8abed9ed 2021-12-26)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tabled" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (78fd0f633 2021-12-29)" ></div>
 </body></html>

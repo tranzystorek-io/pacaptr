@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled_derive-0.1.8&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;tabled_derive-0.1.9&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../tabled_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
         </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../tabled_derive/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
@@ -542,9 +542,30 @@
 <span id="540">540</span>
 <span id="541">541</span>
 <span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
 </pre><pre class="rust"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">proc_macro</span>;
 
-<span class="kw">use</span> <span class="ident">proc_macro::TokenStream</span>;
+<span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">quote</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std::str</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{
@@ -553,21 +574,24 @@
 };
 
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Tabled</span>, <span class="ident">attributes</span>(<span class="ident">header</span>, <span class="ident">field</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tabled</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tabled</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="ident">impl_tabled</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>)
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="ident">impl_tabled</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
+    <span class="ident">proc_macro::TokenStream::from</span>(<span class="ident">ast</span>)
 }
 
 <span class="kw">fn</span> <span class="ident">impl_tabled</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>) -&gt; <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">data_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>);
-    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">get_headers</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>);
-    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">get_fields</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>);
+    <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">get_tabled_length</span>(<span class="ident">ast</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">info</span> <span class="op">=</span> <span class="ident">collect_info</span>(<span class="ident">ast</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">values</span>;
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">headers</span>;
 
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> (<span class="ident">impl_generics</span>, <span class="ident">ty_generics</span>, <span class="ident">where_clause</span>) <span class="op">=</span> <span class="ident">ast</span>.<span class="ident">generics</span>.<span class="ident">split_for_impl</span>();
-
     <span class="kw">let</span> <span class="ident">expanded</span> <span class="op">=</span> <span class="macro">quote!</span> {
         <span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">Tabled</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
+            <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> #<span class="ident">length</span>;
+
             <span class="kw">fn</span> <span class="ident">fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
                 #<span class="ident">fields</span>
             }
@@ -578,146 +602,207 @@
         }
     };
 
-    <span class="ident">TokenStream::from</span>(<span class="ident">expanded</span>)
+    <span class="ident">expanded</span>
 }
 
-<span class="kw">fn</span> <span class="ident">get_headers</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; <span class="ident">get_st_headers</span>(<span class="ident">st</span>, <span class="ident">attrs</span>),
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">get_enum_headers</span>(<span class="ident">e</span>, <span class="ident">attrs</span>).<span class="ident">concat</span>(),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
-    };
-
-    <span class="macro">quote!</span>({
-        <span class="kw">let</span> <span class="ident">v</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[
-            #(#<span class="ident">headers</span>,)<span class="op">*</span>
-        ];
-
-        <span class="ident">v</span>.<span class="ident">concat</span>()
-    })
+<span class="kw">fn</span> <span class="ident">get_tabled_length</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span> {
+        <span class="ident">Data::Struct</span>(<span class="ident">data</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">get_fields_length</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>.<span class="ident">fields</span>)),
+        <span class="ident">Data::Enum</span>(<span class="ident">data</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">get_enum_length</span>(<span class="ident">data</span>)),
+        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(<span class="string">&quot;Union type isn&#39;t supported&quot;</span>.<span class="ident">to_owned</span>()),
+    }
 }
 
-<span class="kw">fn</span> <span class="ident">data_attributes</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Attr</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">attrs_of_fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]<span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; <span class="ident">st</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">e</span>.<span class="ident">variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">attrs</span>.<span class="ident">as_slice</span>()).<span class="ident">collect</span>(),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
-    };
-
-    <span class="ident">attrs_of_fields</span>
-        .<span class="ident">into_iter</span>()
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">attrs</span><span class="op">|</span> <span class="ident">Attr::parse</span>(<span class="ident">attrs</span>))
-        .<span class="ident">collect</span>()
-}
-
-<span class="kw">fn</span> <span class="ident">get_st_headers</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
-    <span class="ident">st</span>.<span class="ident">fields</span>
+<span class="kw">fn</span> <span class="ident">get_fields_length</span>(<span class="ident">fields</span>: <span class="kw-2">&amp;</span><span class="ident">Fields</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">size_compontents</span> <span class="op">=</span> <span class="ident">fields</span>
         .<span class="ident">iter</span>()
-        .<span class="ident">enumerate</span>()
-        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attrs</span>[<span class="kw-2">*</span><span class="ident">i</span>].<span class="ident">is_ignored</span>())
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">f</span>)<span class="op">|</span> <span class="ident">field_headers</span>(<span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="ident">attrs</span>[<span class="ident">i</span>], <span class="ident">i</span>, <span class="string">&quot;&quot;</span>))
-        .<span class="ident">collect</span>()
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">field</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">Attributes::parse</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">attrs</span>);
+            (<span class="ident">field</span>, <span class="ident">attributes</span>)
+        })
+        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">attr</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">is_ignored</span>())
+        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">field</span>, <span class="ident">attr</span>)<span class="op">|</span> {
+            <span class="kw">if</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">inline</span> {
+                <span class="macro">quote!</span>({ <span class="number">1</span> })
+            } <span class="kw">else</span> {
+                <span class="kw">let</span> <span class="ident">field_type</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>;
+                <span class="macro">quote!</span>({<span class="op">&lt;</span>#<span class="ident">field_type</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::LENGTH</span>})
+            }
+        });
+
+    <span class="kw">let</span> <span class="ident">size_compontents</span> <span class="op">=</span> <span class="ident">std::iter::once</span>(<span class="macro">quote!</span>(<span class="number">0</span>)).<span class="ident">chain</span>(<span class="ident">size_compontents</span>);
+
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">TokenStream::new</span>();
+    <span class="ident">stream</span>.<span class="ident">append_separated</span>(<span class="ident">size_compontents</span>, <span class="ident">syn::token::Add::default</span>());
+
+    <span class="ident">stream</span>
+}
+
+<span class="kw">fn</span> <span class="ident">get_enum_length</span>(<span class="ident">enum_ast</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">variant_sizes</span> <span class="op">=</span> <span class="ident">get_enum_variant_length</span>(<span class="ident">enum_ast</span>);
+    <span class="kw">let</span> <span class="ident">variant_sizes</span> <span class="op">=</span> <span class="ident">std::iter::once</span>(<span class="macro">quote!</span>(<span class="number">0</span>)).<span class="ident">chain</span>(<span class="ident">variant_sizes</span>);
+
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">TokenStream::new</span>();
+    <span class="ident">stream</span>.<span class="ident">append_separated</span>(<span class="ident">variant_sizes</span>, <span class="ident">syn::token::Add::default</span>());
+
+    <span class="ident">stream</span>
+}
+
+<span class="kw">fn</span> <span class="ident">get_enum_variant_length</span>(<span class="ident">enum_ast</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>) -&gt; <span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">TokenStream</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;_</span> {
+    <span class="ident">enum_ast</span>
+        .<span class="ident">variants</span>
+        .<span class="ident">iter</span>()
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">variant</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">Attributes::parse</span>(<span class="kw-2">&amp;</span><span class="ident">variant</span>.<span class="ident">attrs</span>);
+            (<span class="ident">variant</span>, <span class="ident">attributes</span>)
+        })
+        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">attr</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">is_ignored</span>())
+        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">variant</span>, <span class="ident">attr</span>)<span class="op">|</span> {
+            <span class="kw">if</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">inline</span> {
+                <span class="macro">quote!</span>(<span class="number">1</span>)
+            } <span class="kw">else</span> {
+                <span class="ident">get_fields_length</span>(<span class="kw-2">&amp;</span><span class="ident">variant</span>.<span class="ident">fields</span>)
+            }
+        })
+}
+
+<span class="kw">fn</span> <span class="ident">collect_info</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Impl</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span> {
+        <span class="ident">Data::Struct</span>(<span class="ident">data</span>) =&gt; <span class="ident">collect_info_struct</span>(<span class="ident">data</span>),
+        <span class="ident">Data::Enum</span>(<span class="ident">data</span>) =&gt; <span class="ident">collect_info_enum</span>(<span class="ident">data</span>),
+        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(<span class="string">&quot;Union type isn&#39;t supported&quot;</span>.<span class="ident">to_owned</span>()),
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">collect_info_struct</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Impl</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="ident">info_from_fields</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">fields</span>, <span class="ident">field_var_name</span>, <span class="string">&quot;&quot;</span>)
+}
+
+<span class="comment">// todo: refactoring. instead of using a lambda + prefix</span>
+<span class="comment">// we could just not emit `self.` `_x` inside</span>
+<span class="comment">// So the calle would prefix it on its own</span>
+<span class="kw">fn</span> <span class="ident">info_from_fields</span>(
+    <span class="ident">fields</span>: <span class="kw-2">&amp;</span><span class="ident">Fields</span>,
+    <span class="ident">field_name</span>: <span class="kw">impl</span> <span class="ident">Fn</span>(<span class="ident">usize</span>, <span class="kw-2">&amp;</span><span class="ident">Field</span>) -&gt; <span class="ident">TokenStream</span>,
+    <span class="ident">header_prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Impl</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">fields</span>.<span class="ident">into_iter</span>().<span class="ident">enumerate</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">field</span>)<span class="op">|</span> {
+        <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">Attributes::parse</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">attrs</span>);
+        (<span class="ident">i</span>, <span class="ident">field</span>, <span class="ident">attributes</span>)
+    });
+
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">values</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+
+    <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">field</span>, <span class="ident">attributes</span>) <span class="kw">in</span> <span class="ident">fields</span> {
+        <span class="kw">if</span> <span class="ident">attributes</span>.<span class="ident">is_ignored</span>() {
+            <span class="kw">continue</span>;
+        }
+
+        <span class="kw">let</span> <span class="ident">header</span> <span class="op">=</span> <span class="ident">field_headers</span>(<span class="ident">field</span>, <span class="ident">i</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>, <span class="ident">header_prefix</span>);
+
+        <span class="ident">headers</span>.<span class="ident">push</span>(<span class="ident">header</span>);
+
+        <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="ident">field_name</span>(<span class="ident">i</span>, <span class="ident">field</span>);
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">get_field_fields</span>(<span class="ident">field_name</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>);
+
+        <span class="ident">values</span>.<span class="ident">push</span>(<span class="ident">value</span>);
+    }
+
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="macro">quote!</span>({
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+        #(<span class="ident">out</span>.<span class="ident">extend</span>(#<span class="ident">headers</span>);)<span class="op">*</span>
+        <span class="ident">out</span>
+    });
+
+    <span class="kw">let</span> <span class="ident">values</span> <span class="op">=</span> <span class="macro">quote!</span>({
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+        #(<span class="ident">out</span>.<span class="ident">extend</span>(#<span class="ident">values</span>);)<span class="op">*</span>
+        <span class="ident">out</span>
+    });
+
+    <span class="prelude-val">Ok</span>(<span class="ident">Impl</span> { <span class="ident">headers</span>, <span class="ident">values</span> })
 }
 
 <span class="kw">fn</span> <span class="ident">field_headers</span>(
     <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>,
-    <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>,
     <span class="ident">index</span>: <span class="ident">usize</span>,
+    <span class="ident">attributes</span>: <span class="kw-2">&amp;</span><span class="ident">Attributes</span>,
     <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
-        <span class="ident">inline_header</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>, <span class="ident">attr</span>, <span class="ident">prefix</span>)
+) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">if</span> <span class="ident">attributes</span>.<span class="ident">inline</span> {
+        <span class="kw">return</span> <span class="ident">get_type_headers</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>.<span class="ident">inline_prefix</span>, <span class="string">&quot;&quot;</span>);
+    }
+
+    <span class="kw">let</span> <span class="ident">header_name</span> <span class="op">=</span> <span class="ident">field_header_name</span>(<span class="ident">field</span>, <span class="ident">attributes</span>, <span class="ident">index</span>);
+    <span class="kw">if</span> <span class="op">!</span><span class="ident">prefix</span>.<span class="ident">is_empty</span>() {
+        <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, #<span class="ident">prefix</span>, #<span class="ident">header_name</span>)])
     } <span class="kw">else</span> {
-        <span class="kw">let</span> <span class="ident">header</span> <span class="op">=</span> <span class="ident">field_header_name</span>(<span class="ident">field</span>, <span class="ident">attr</span>, <span class="ident">index</span>);
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">prefix</span>.<span class="ident">is_empty</span>() {
-            <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, #<span class="ident">prefix</span>, #<span class="ident">header</span>)])
-        } <span class="kw">else</span> {
-            <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="ident">String::from</span>(#<span class="ident">header</span>)])
-        }
+        <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="ident">String::from</span>(#<span class="ident">header_name</span>)])
     }
 }
 
-<span class="kw">fn</span> <span class="ident">inline_header</span>(<span class="ident">t</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">inline_prefix</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">inline_prefix</span>;
-    <span class="kw">if</span> <span class="ident">inline_prefix</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">prefix</span>.<span class="ident">is_empty</span>() {
-        <span class="macro">quote!</span> {
-            <span class="op">&lt;</span>#<span class="ident">t</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::headers</span>()
+<span class="kw">fn</span> <span class="ident">collect_info_enum</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Impl</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers_list</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">variants</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+    <span class="kw">for</span> <span class="ident">variant</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">variants</span> {
+        <span class="kw">let</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="ident">Attributes::parse</span>(<span class="kw-2">&amp;</span><span class="ident">variant</span>.<span class="ident">attrs</span>);
+        <span class="kw">if</span> <span class="ident">attributes</span>.<span class="ident">is_ignored</span>() {
+            <span class="kw">continue</span>;
         }
+
+        <span class="kw">let</span> <span class="ident">info</span> <span class="op">=</span> <span class="ident">info_from_variant</span>(<span class="ident">variant</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>)<span class="question-mark">?</span>;
+        <span class="ident">variants</span>.<span class="ident">push</span>((<span class="ident">variant</span>, <span class="ident">info</span>.<span class="ident">values</span>));
+        <span class="ident">headers_list</span>.<span class="ident">push</span>(<span class="ident">info</span>.<span class="ident">headers</span>);
+    }
+
+    <span class="kw">let</span> <span class="ident">variant_sizes</span> <span class="op">=</span> <span class="ident">get_enum_variant_length</span>(<span class="ident">ast</span>);
+    <span class="kw">let</span> <span class="ident">values</span> <span class="op">=</span> <span class="ident">values_for_enum</span>(<span class="ident">variant_sizes</span>, <span class="ident">variants</span>);
+
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="macro">quote!</span> {
+        <span class="macro">vec!</span>[
+            #(#<span class="ident">headers_list</span>,)<span class="op">*</span>
+        ]
+        .<span class="ident">concat</span>()
+    };
+
+    <span class="prelude-val">Ok</span>(<span class="ident">Impl</span> { <span class="ident">headers</span>, <span class="ident">values</span> })
+}
+
+<span class="kw">fn</span> <span class="ident">info_from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attributes</span>: <span class="kw-2">&amp;</span><span class="ident">Attributes</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Impl</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">if</span> <span class="ident">attributes</span>.<span class="ident">inline</span> {
+        <span class="kw">return</span> <span class="ident">info_from_fields</span>(<span class="kw-2">&amp;</span><span class="ident">variant</span>.<span class="ident">fields</span>, <span class="ident">variant_var_name</span>, <span class="kw-2">&amp;</span><span class="ident">attributes</span>.<span class="ident">inline_prefix</span>);
+    }
+
+    <span class="kw">let</span> <span class="ident">variant_name</span> <span class="op">=</span> <span class="ident">variant_name</span>(<span class="ident">variant</span>, <span class="ident">attributes</span>);
+    <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="string">&quot;+&quot;</span>;
+
+    <span class="comment">// we need exactly string because of it must be inlined as string</span>
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="macro">quote!</span> {<span class="macro">vec!</span>[#<span class="ident">variant_name</span>.<span class="ident">to_string</span>()]};
+    <span class="comment">// we need exactly string because of it must be inlined as string</span>
+    <span class="kw">let</span> <span class="ident">values</span> <span class="op">=</span> <span class="macro">quote!</span> {<span class="macro">vec!</span>[#<span class="ident">value</span>.<span class="ident">to_string</span>()]};
+
+    <span class="prelude-val">Ok</span>(<span class="ident">Impl</span> { <span class="ident">headers</span>, <span class="ident">values</span> })
+}
+
+<span class="kw">struct</span> <span class="ident">Impl</span> {
+    <span class="ident">headers</span>: <span class="ident">TokenStream</span>,
+    <span class="ident">values</span>: <span class="ident">TokenStream</span>,
+}
+
+<span class="kw">fn</span> <span class="ident">get_type_headers</span>(<span class="ident">field_type</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>, <span class="ident">inline_prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">if</span> <span class="ident">prefix</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">inline_prefix</span>.<span class="ident">is_empty</span>() {
+        <span class="macro">quote!</span> { <span class="op">&lt;</span>#<span class="ident">field_type</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::headers</span>() }
     } <span class="kw">else</span> {
         <span class="macro">quote!</span> {
-            <span class="op">&lt;</span>#<span class="ident">t</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::headers</span>().<span class="ident">into_iter</span>()
+            <span class="op">&lt;</span>#<span class="ident">field_type</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::headers</span>().<span class="ident">into_iter</span>()
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">header</span><span class="op">|</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}{}&quot;</span>, #<span class="ident">prefix</span>, #<span class="ident">inline_prefix</span>, <span class="ident">header</span>))
                 .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">get_enum_headers</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-    <span class="ident">e</span>.<span class="ident">variants</span>
-        .<span class="ident">iter</span>()
-        .<span class="ident">enumerate</span>()
-        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attrs</span>[<span class="kw-2">*</span><span class="ident">i</span>].<span class="ident">is_ignored</span>())
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">v</span>)<span class="op">|</span> <span class="ident">variant_headers</span>(<span class="ident">v</span>, <span class="kw-2">&amp;</span><span class="ident">attrs</span>[<span class="ident">i</span>]))
-        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
-}
-
-<span class="kw">fn</span> <span class="ident">variant_headers</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
-    <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
-        <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">inline_prefix</span>;
-
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">calls</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
-        <span class="kw">for</span> (<span class="ident">index</span>, <span class="ident">field</span>) <span class="kw">in</span> <span class="ident">variant</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-            <span class="kw">let</span> <span class="ident">field_attr</span> <span class="op">=</span> <span class="ident">Attr::parse</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">attrs</span>);
-            <span class="kw">let</span> <span class="ident">call</span> <span class="op">=</span> <span class="ident">field_headers</span>(<span class="ident">field</span>, <span class="kw-2">&amp;</span><span class="ident">field_attr</span>, <span class="ident">index</span>, <span class="ident">prefix</span>);
-            <span class="ident">calls</span>.<span class="ident">push</span>(<span class="ident">call</span>);
-        }
-
-        <span class="ident">calls</span>
-    } <span class="kw">else</span> {
-        <span class="kw">let</span> <span class="ident">header</span> <span class="op">=</span> <span class="ident">attr</span>
-            .<span class="ident">name</span>
-            .<span class="ident">clone</span>()
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">variant</span>.<span class="ident">ident</span>.<span class="ident">to_string</span>());
-        <span class="macro">vec!</span>[<span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="ident">String::from</span>(#<span class="ident">header</span>)])]
-    }
-}
-
-<span class="kw">fn</span> <span class="ident">get_fields</span>(<span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="ident">Data</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">match</span> <span class="ident">d</span> {
-        <span class="ident">Data::Struct</span>(<span class="ident">st</span>) =&gt; {
-            <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">get_st_fields</span>(<span class="ident">st</span>, <span class="ident">attrs</span>);
-            <span class="macro">quote!</span> {
-                {
-                    <span class="kw">let</span> <span class="ident">v</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[
-                        #(#<span class="ident">fields</span>,)<span class="op">*</span>
-                    ];
-
-                    <span class="ident">v</span>.<span class="ident">concat</span>()
-                }
-            }
-        }
-        <span class="ident">Data::Enum</span>(<span class="ident">e</span>) =&gt; <span class="ident">get_enum_fields</span>(<span class="ident">e</span>, <span class="ident">attrs</span>),
-        <span class="ident">Data::Union</span>(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">&quot;it&#39;s not clear how to handle union type&quot;</span>),
-    }
-}
-
-<span class="kw">fn</span> <span class="ident">get_st_fields</span>(<span class="ident">st</span>: <span class="kw-2">&amp;</span><span class="ident">DataStruct</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
-    <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">field</span>) <span class="kw">in</span> <span class="ident">st</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="kw">if</span> <span class="ident">attrs</span>[<span class="ident">i</span>].<span class="ident">is_ignored</span>() {
-            <span class="kw">continue</span>;
-        }
-
-        <span class="kw">let</span> <span class="ident">field_var</span> <span class="op">=</span> <span class="ident">field_var_name</span>(<span class="ident">field</span>, <span class="ident">i</span>);
-        <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">get_field_fields</span>(<span class="ident">field_var</span>, <span class="kw-2">&amp;</span><span class="ident">attrs</span>[<span class="ident">i</span>]);
-
-        <span class="ident">v</span>.<span class="ident">push</span>(<span class="ident">fields</span>);
-    }
-
-    <span class="ident">v</span>
-}
-
-<span class="kw">fn</span> <span class="ident">get_field_fields</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">get_field_fields</span>(<span class="ident">field</span>: <span class="ident">TokenStream</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attributes</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
         <span class="kw">return</span> <span class="macro">quote!</span> { #<span class="ident">field</span>.<span class="ident">fields</span>() };
     }
@@ -730,7 +815,7 @@
     <span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, #<span class="ident">field</span>)])
 }
 
-<span class="kw">fn</span> <span class="ident">use_function_for</span>(<span class="ident">field</span>: <span class="ident">proc_macro2::TokenStream</span>, <span class="ident">function</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">use_function_for</span>(<span class="ident">field</span>: <span class="ident">TokenStream</span>, <span class="ident">function</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">path</span>: <span class="ident">syn::Result</span><span class="op">&lt;</span><span class="ident">syn::ExprPath</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="ident">function</span>);
     <span class="kw">match</span> <span class="ident">path</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">path</span>) =&gt; {
@@ -743,53 +828,42 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">field_var_name</span>(<span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>().<span class="ident">map_or_else</span>(
-        <span class="op">|</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="macro">quote!</span>(<span class="self">self</span>.);
-            <span class="ident">s</span>.<span class="ident">extend</span>(<span class="ident">Index::from</span>(<span class="ident">index</span>).<span class="ident">to_token_stream</span>());
-            <span class="ident">s</span>
-        },
-        <span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">f</span>),
-    )
+<span class="kw">fn</span> <span class="ident">field_var_name</span>(<span class="ident">index</span>: <span class="ident">usize</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>().<span class="ident">map_or_else</span>(
+        <span class="op">|</span><span class="op">|</span> <span class="ident">Index::from</span>(<span class="ident">index</span>).<span class="ident">to_token_stream</span>(),
+        <span class="op">|</span><span class="ident">i</span><span class="op">|</span> <span class="ident">i</span>.<span class="ident">to_token_stream</span>(),
+    );
+    <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">f</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">get_enum_fields</span>(<span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="ident">DataEnum</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attr</span>]) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">e</span>
-        .<span class="ident">variants</span>
+<span class="kw">fn</span> <span class="ident">variant_var_name</span>(<span class="ident">index</span>: <span class="ident">usize</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ident</span> {
+        <span class="prelude-val">Some</span>(<span class="ident">indent</span>) =&gt; <span class="ident">indent</span>.<span class="ident">to_token_stream</span>(),
+        <span class="prelude-val">None</span> =&gt; <span class="ident">Ident::new</span>(
+            <span class="macro">format!</span>(<span class="string">&quot;x_{}&quot;</span>, <span class="ident">index</span>).<span class="ident">as_str</span>(),
+            <span class="ident">proc_macro2::Span::call_site</span>(),
+        )
+        .<span class="ident">to_token_stream</span>(),
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">values_for_enum</span>(
+    <span class="ident">variant_sizes</span>: <span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">TokenStream</span><span class="op">&gt;</span>,
+    <span class="ident">variants</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">TokenStream</span>)<span class="op">&gt;</span>,
+) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">branches</span> <span class="op">=</span> <span class="ident">variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">variant</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="ident">match_variant</span>(<span class="ident">variant</span>));
+
+    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">variants</span>
         .<span class="ident">iter</span>()
-        .<span class="ident">enumerate</span>()
-        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attrs</span>[<span class="kw-2">*</span><span class="ident">i</span>].<span class="ident">is_ignored</span>())
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">v</span>)<span class="op">|</span> <span class="ident">variant_fields</span>(<span class="ident">v</span>, <span class="kw-2">&amp;</span><span class="ident">attrs</span>[<span class="ident">i</span>]))
+        .<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">values</span>)<span class="op">|</span> <span class="ident">values</span>)
         .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
-    <span class="kw">let</span> <span class="ident">branches</span> <span class="op">=</span> <span class="ident">e</span>
-        .<span class="ident">variants</span>
-        .<span class="ident">iter</span>()
-        .<span class="ident">enumerate</span>()
-        .<span class="ident">filter</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="kw">_</span>)<span class="op">|</span> <span class="op">!</span><span class="ident">attrs</span>[<span class="kw-2">*</span><span class="ident">i</span>].<span class="ident">is_ignored</span>())
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">v</span>)<span class="op">|</span> <span class="ident">variant_match_branches</span>(<span class="ident">v</span>, <span class="kw-2">&amp;</span><span class="ident">attrs</span>[<span class="ident">i</span>]))
-        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
-
-    <span class="macro">assert_eq!</span>(<span class="ident">branches</span>.<span class="ident">len</span>(), <span class="ident">fields</span>.<span class="ident">len</span>());
-
-    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">get_enum_headers</span>(<span class="ident">e</span>, <span class="ident">attrs</span>)
-        .<span class="ident">into_iter</span>()
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">headers</span><span class="op">|</span> {
-            <span class="macro">quote!</span> {
-                <span class="macro">vec!</span>[
-                    #(#<span class="ident">headers</span>,)<span class="op">*</span>
-                ]
-            }
-        })
-        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span><span class="op">&gt;</span>();
-
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">TokenStream::new</span>();
     <span class="kw">for</span> (<span class="ident">i</span>, (<span class="ident">branch</span>, <span class="ident">fields</span>)) <span class="kw">in</span> <span class="ident">branches</span>.<span class="ident">into_iter</span>().<span class="ident">zip</span>(<span class="ident">fields</span>).<span class="ident">enumerate</span>() {
         <span class="kw">let</span> <span class="ident">branch</span> <span class="op">=</span> <span class="macro">quote!</span> {
             <span class="self">Self</span>::#<span class="ident">branch</span> =&gt; {
                 <span class="kw">let</span> <span class="ident">offset</span> <span class="op">=</span> <span class="ident">offsets</span>[#<span class="ident">i</span>];
-                <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[#(#<span class="ident">fields</span>),<span class="kw-2">*</span>].<span class="ident">concat</span>();
+                <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> #<span class="ident">fields</span>;
 
                 <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">field</span>) <span class="kw">in</span> <span class="ident">fields</span>.<span class="ident">into_iter</span>().<span class="ident">enumerate</span>() {
                     <span class="ident">out_vec</span>[<span class="ident">i</span><span class="op">+</span><span class="ident">offset</span>] <span class="op">=</span> <span class="ident">field</span>;
@@ -808,21 +882,13 @@
         <span class="comment">//</span>
         <span class="comment">// It&#39;s a bit strange trick but I haven&#39;t found any better</span>
         <span class="comment">// how to calculate a size and offset.</span>
-        <span class="kw">let</span> <span class="ident">headers</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[#(#<span class="ident">headers</span>,)<span class="kw-2">*</span>];
-        <span class="kw">let</span> <span class="ident">lengths</span> <span class="op">=</span> <span class="ident">headers</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">values</span><span class="op">|</span> <span class="ident">values</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">values</span><span class="op">|</span> <span class="ident">values</span>.<span class="ident">len</span>()).<span class="ident">sum</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>()).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
-        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">lengths</span>.<span class="ident">iter</span>().<span class="ident">sum</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>();
-        <span class="kw">let</span> <span class="ident">offsets</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">lengths</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="ident">Vec::new</span>(), <span class="op">|</span><span class="kw-2">mut</span> <span class="ident">acc</span>, <span class="ident">len</span><span class="op">|</span> {
-            <span class="comment">// offset of 1 element is 0</span>
-            <span class="kw">if</span> <span class="ident">acc</span>.<span class="ident">is_empty</span>() {
-                <span class="ident">acc</span>.<span class="ident">push</span>(<span class="number">0</span>);
-            }
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">offsets</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">usize</span>] <span class="op">=</span> <span class="kw-2">&amp;mut</span> [<span class="number">0</span>, #(#<span class="ident">variant_sizes</span>,)<span class="kw-2">*</span>];
+        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">1</span> .. <span class="ident">offsets</span>.<span class="ident">len</span>() {
+            <span class="ident">offsets</span>[<span class="ident">i</span>] <span class="op">+</span><span class="op">=</span> <span class="ident">offsets</span>[<span class="ident">i</span><span class="op">-</span><span class="number">1</span>]
+        }
 
-            <span class="kw">let</span> <span class="ident">privious_len</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">acc</span>.<span class="ident">last</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">l</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">l</span>).<span class="ident">unwrap_or</span>(<span class="number">0</span>);
-            <span class="ident">acc</span>.<span class="ident">push</span>(<span class="ident">privious_len</span> <span class="op">+</span> <span class="ident">len</span>);
-            <span class="ident">acc</span>
-        });
-
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out_vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std::iter::repeat</span>(<span class="ident">String::new</span>()).<span class="ident">take</span>(<span class="ident">size</span>).<span class="ident">collect</span>();
+        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">Tabled</span><span class="op">&gt;</span><span class="ident">::LENGTH</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out_vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">String::new</span>(); <span class="ident">size</span>];
 
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_variables</span>)]</span>
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span> {
@@ -834,62 +900,31 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">variant_fields</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span> {
-    <span class="kw">if</span> <span class="op">!</span><span class="ident">attr</span>.<span class="ident">inline</span> {
-        <span class="kw">return</span> <span class="macro">vec!</span>[<span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="string">&quot;+&quot;</span>.<span class="ident">to_string</span>()])];
-    }
-
-    <span class="kw">let</span> <span class="ident">branch_idents</span> <span class="op">=</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>);
-    <span class="kw">if</span> <span class="ident">branch_idents</span>.<span class="ident">is_empty</span>() {
-        <span class="kw">return</span> <span class="macro">vec!</span>[<span class="macro">quote!</span>(<span class="macro">vec!</span>[<span class="string">&quot;+&quot;</span>.<span class="ident">to_string</span>()])];
-    }
-
-    <span class="ident">branch_idents</span>
-        .<span class="ident">into_iter</span>()
-        .<span class="ident">zip</span>(<span class="ident">v</span>.<span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">field</span><span class="op">|</span> <span class="ident">Attr::parse</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">attrs</span>)))
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">ident</span>, <span class="ident">attr</span>)<span class="op">|</span> <span class="ident">get_field_fields</span>(<span class="ident">ident</span>.<span class="ident">to_token_stream</span>(), <span class="kw-2">&amp;</span><span class="ident">attr</span>))
-        .<span class="ident">collect</span>()
-}
-
-<span class="kw">fn</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Ident</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span> {
     <span class="ident">v</span>.<span class="ident">fields</span>
         .<span class="ident">iter</span>()
         .<span class="ident">enumerate</span>()
-        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">index</span>, <span class="ident">field</span>)<span class="op">|</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ident</span>) <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>() {
-                <span class="ident">ident</span>.<span class="ident">clone</span>()
-            } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">tmp_var</span> <span class="op">=</span> <span class="ident">Ident::new</span>(
-                    <span class="macro">format!</span>(<span class="string">&quot;x_{}&quot;</span>, <span class="ident">index</span>).<span class="ident">as_str</span>(),
-                    <span class="ident">proc_macro2::Span::call_site</span>(),
-                );
-
-                <span class="ident">tmp_var</span>
-            }
-        })
+        <span class="comment">// we intentionally not ignore these fields to be able to build a pattern correctly</span>
+        <span class="comment">// .filter(|(_, field)| !Attr::parse(&amp;field.attrs).is_ignored())</span>
+        .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">index</span>, <span class="ident">field</span>)<span class="op">|</span> <span class="ident">variant_var_name</span>(<span class="ident">index</span>, <span class="ident">field</span>))
         .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">variant_match_branches</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">token</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
+<span class="kw">fn</span> <span class="ident">match_variant</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">token</span> <span class="op">=</span> <span class="ident">TokenStream::new</span>();
     <span class="ident">token</span>.<span class="ident">append_all</span>(<span class="ident">v</span>.<span class="ident">ident</span>.<span class="ident">to_token_stream</span>());
 
-    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">inline</span> {
-        <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>);
-        <span class="macro">quote!</span> (#(#<span class="ident">fields</span>, )<span class="kw-2">*</span>)
-    } <span class="kw">else</span> {
-        <span class="macro">quote!</span>(..)
-    };
+    <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">variant_idents</span>(<span class="ident">v</span>);
 
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">fields</span> {
         <span class="ident">Fields::Named</span>(<span class="kw">_</span>) =&gt; {
             <span class="ident">token::Brace::default</span>().<span class="ident">surround</span>(<span class="kw-2">&amp;mut</span> <span class="ident">token</span>, <span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
-                <span class="ident">s</span>.<span class="ident">append_all</span>(<span class="ident">fields</span>);
+                <span class="ident">s</span>.<span class="ident">append_separated</span>(<span class="ident">fields</span>, <span class="macro">quote!</span> {,});
             });
         }
         <span class="ident">Fields::Unnamed</span>(<span class="kw">_</span>) =&gt; {
             <span class="ident">token::Paren::default</span>().<span class="ident">surround</span>(<span class="kw-2">&amp;mut</span> <span class="ident">token</span>, <span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
-                <span class="ident">s</span>.<span class="ident">append_all</span>(<span class="ident">fields</span>);
+                <span class="ident">s</span>.<span class="ident">append_separated</span>(<span class="ident">fields</span>, <span class="macro">quote!</span> {,});
             });
         }
         <span class="ident">Fields::Unit</span> =&gt; {}
@@ -898,7 +933,14 @@
     <span class="ident">token</span>
 }
 
-<span class="kw">fn</span> <span class="ident">field_header_name</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attr</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">variant_name</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">attributes</span>: <span class="kw-2">&amp;</span><span class="ident">Attributes</span>) -&gt; <span class="ident">String</span> {
+    <span class="ident">attributes</span>
+        .<span class="ident">name</span>
+        .<span class="ident">clone</span>()
+        .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">variant</span>.<span class="ident">ident</span>.<span class="ident">to_string</span>())
+}
+
+<span class="kw">fn</span> <span class="ident">field_header_name</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>, <span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">Attributes</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">attr</span>.<span class="ident">name</span> {
         <span class="prelude-val">Some</span>(<span class="ident">name</span>) =&gt; <span class="ident">name</span>.<span class="ident">to_string</span>(),
         <span class="prelude-val">None</span> =&gt; <span class="kw">match</span> <span class="ident">f</span>.<span class="ident">ident</span>.<span class="ident">as_ref</span>() {
@@ -910,7 +952,7 @@
 
 <span class="comment">// It would be cool to create a library for a parsing attributes</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">struct</span> <span class="ident">Attr</span> {
+<span class="kw">struct</span> <span class="ident">Attributes</span> {
     <span class="ident">hidden</span>: <span class="ident">bool</span>,
     <span class="ident">inline</span>: <span class="ident">bool</span>,
     <span class="ident">inline_prefix</span>: <span class="ident">String</span>,
@@ -918,7 +960,7 @@
     <span class="ident">display_with</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span> <span class="ident">Attr</span> {
+<span class="kw">impl</span> <span class="ident">Attributes</span> {
     <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">is_ignored</span> <span class="op">=</span> <span class="ident">attrs_has_ignore_sign</span>(<span class="ident">attrs</span>);
         <span class="kw">let</span> <span class="ident">should_be_inlined</span> <span class="op">=</span> <span class="ident">should_be_inlined</span>(<span class="ident">attrs</span>);
@@ -926,7 +968,7 @@
         <span class="kw">let</span> <span class="ident">display_with</span> <span class="op">=</span> <span class="ident">check_display_with_func</span>(<span class="ident">attrs</span>);
         <span class="kw">let</span> <span class="ident">override_header_name</span> <span class="op">=</span> <span class="ident">override_header_name</span>(<span class="ident">attrs</span>);
 
-        <span class="ident">Attr</span> {
+        <span class="self">Self</span> {
             <span class="ident">display_with</span>,
             <span class="ident">hidden</span>: <span class="ident">is_ignored</span>,
             <span class="ident">inline</span>: <span class="ident">should_be_inlined</span>,
@@ -1085,5 +1127,5 @@
         .<span class="ident">find_map</span>(<span class="op">|</span><span class="ident">attr</span><span class="op">|</span> <span class="ident">parse_name_attribute</span>(<span class="ident">attr</span>, <span class="ident">method</span>, <span class="ident">name</span>, <span class="ident">lookup</span>.<span class="ident">clone</span>()))
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tabled_derive" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (f8abed9ed 2021-12-26)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tabled_derive" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (78fd0f633 2021-12-29)" ></div>
 </body></html>
