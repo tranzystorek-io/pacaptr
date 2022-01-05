@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;clap-3.0.1&#x2F;src&#x2F;build&#x2F;arg&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><script defer src="../../../../main.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;clap-3.0.4&#x2F;src&#x2F;build&#x2F;arg&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><script defer src="../../../../main.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../../../clap/index.html"><div class="logo-container"><img src="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;clap-rs&#x2F;clap&#x2F;master&#x2F;assets&#x2F;clap.png" alt="logo"></div>
         </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../clap/index.html"><img src="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;clap-rs&#x2F;clap&#x2F;master&#x2F;assets&#x2F;clap.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
@@ -5256,6 +5256,104 @@
 <span id="5254">5254</span>
 <span id="5255">5255</span>
 <span id="5256">5256</span>
+<span id="5257">5257</span>
+<span id="5258">5258</span>
+<span id="5259">5259</span>
+<span id="5260">5260</span>
+<span id="5261">5261</span>
+<span id="5262">5262</span>
+<span id="5263">5263</span>
+<span id="5264">5264</span>
+<span id="5265">5265</span>
+<span id="5266">5266</span>
+<span id="5267">5267</span>
+<span id="5268">5268</span>
+<span id="5269">5269</span>
+<span id="5270">5270</span>
+<span id="5271">5271</span>
+<span id="5272">5272</span>
+<span id="5273">5273</span>
+<span id="5274">5274</span>
+<span id="5275">5275</span>
+<span id="5276">5276</span>
+<span id="5277">5277</span>
+<span id="5278">5278</span>
+<span id="5279">5279</span>
+<span id="5280">5280</span>
+<span id="5281">5281</span>
+<span id="5282">5282</span>
+<span id="5283">5283</span>
+<span id="5284">5284</span>
+<span id="5285">5285</span>
+<span id="5286">5286</span>
+<span id="5287">5287</span>
+<span id="5288">5288</span>
+<span id="5289">5289</span>
+<span id="5290">5290</span>
+<span id="5291">5291</span>
+<span id="5292">5292</span>
+<span id="5293">5293</span>
+<span id="5294">5294</span>
+<span id="5295">5295</span>
+<span id="5296">5296</span>
+<span id="5297">5297</span>
+<span id="5298">5298</span>
+<span id="5299">5299</span>
+<span id="5300">5300</span>
+<span id="5301">5301</span>
+<span id="5302">5302</span>
+<span id="5303">5303</span>
+<span id="5304">5304</span>
+<span id="5305">5305</span>
+<span id="5306">5306</span>
+<span id="5307">5307</span>
+<span id="5308">5308</span>
+<span id="5309">5309</span>
+<span id="5310">5310</span>
+<span id="5311">5311</span>
+<span id="5312">5312</span>
+<span id="5313">5313</span>
+<span id="5314">5314</span>
+<span id="5315">5315</span>
+<span id="5316">5316</span>
+<span id="5317">5317</span>
+<span id="5318">5318</span>
+<span id="5319">5319</span>
+<span id="5320">5320</span>
+<span id="5321">5321</span>
+<span id="5322">5322</span>
+<span id="5323">5323</span>
+<span id="5324">5324</span>
+<span id="5325">5325</span>
+<span id="5326">5326</span>
+<span id="5327">5327</span>
+<span id="5328">5328</span>
+<span id="5329">5329</span>
+<span id="5330">5330</span>
+<span id="5331">5331</span>
+<span id="5332">5332</span>
+<span id="5333">5333</span>
+<span id="5334">5334</span>
+<span id="5335">5335</span>
+<span id="5336">5336</span>
+<span id="5337">5337</span>
+<span id="5338">5338</span>
+<span id="5339">5339</span>
+<span id="5340">5340</span>
+<span id="5341">5341</span>
+<span id="5342">5342</span>
+<span id="5343">5343</span>
+<span id="5344">5344</span>
+<span id="5345">5345</span>
+<span id="5346">5346</span>
+<span id="5347">5347</span>
+<span id="5348">5348</span>
+<span id="5349">5349</span>
+<span id="5350">5350</span>
+<span id="5351">5351</span>
+<span id="5352">5352</span>
+<span id="5353">5353</span>
+<span id="5354">5354</span>
 </pre><pre class="rust"><code><span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">debug_asserts</span>;
 <span class="kw">mod</span> <span class="ident">possible_value</span>;
@@ -5385,6 +5483,7 @@
     <span class="doccomment">/// Set the identifier used for referencing this argument in the clap API.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See [`Arg::new`] for more details.</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">n</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">n</span>.<span class="ident">into</span>();
         <span class="self">self</span>.<span class="ident">id</span> <span class="op">=</span> <span class="ident">Id::from</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">name</span>);
@@ -5416,6 +5515,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;config&quot;));</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">short</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">s</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">assert!</span>(<span class="ident">s</span> <span class="op">!</span><span class="op">=</span> <span class="string">&#39;-&#39;</span>, <span class="string">&quot;short option name cannot be `-`&quot;</span>);
 
@@ -5452,6 +5552,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;cfg&quot;));</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">long</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">l</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">long</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">l</span>.<span class="ident">trim_start_matches</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>));
         <span class="self">self</span>
@@ -5477,6 +5578,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// assert_eq!(m.value_of(&quot;test&quot;), Some(&quot;cool&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alias</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">aliases</span>.<span class="ident">push</span>((<span class="ident">name</span>.<span class="ident">into</span>(), <span class="bool-val">false</span>));
         <span class="self">self</span>
@@ -5502,6 +5604,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// assert_eq!(m.value_of(&quot;test&quot;), Some(&quot;cool&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">short_alias</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">assert!</span>(<span class="ident">name</span> <span class="op">!</span><span class="op">=</span> <span class="string">&#39;-&#39;</span>, <span class="string">&quot;short alias name cannot be `-`&quot;</span>);
 
@@ -5529,6 +5632,7 @@
     <span class="doccomment">///             ]);</span>
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">aliases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">aliases</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> (<span class="ident">x</span>, <span class="bool-val">false</span>)));
         <span class="self">self</span>
@@ -5554,6 +5658,7 @@
     <span class="doccomment">///             ]);</span>
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">short_aliases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="ident">char</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">for</span> <span class="ident">s</span> <span class="kw">in</span> <span class="ident">names</span> {
             <span class="macro">assert!</span>(<span class="ident">s</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&#39;-&#39;</span>, <span class="string">&quot;short alias name cannot be `-`&quot;</span>);
@@ -5582,6 +5687,7 @@
     <span class="doccomment">/// assert_eq!(m.value_of(&quot;test&quot;), Some(&quot;coffee&quot;));</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`App::alias`]: Arg::alias()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visible_alias</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">aliases</span>.<span class="ident">push</span>((<span class="ident">name</span>.<span class="ident">into</span>(), <span class="bool-val">true</span>));
         <span class="self">self</span>
@@ -5606,6 +5712,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// assert_eq!(m.value_of(&quot;test&quot;), Some(&quot;coffee&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visible_short_alias</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">assert!</span>(<span class="ident">name</span> <span class="op">!</span><span class="op">=</span> <span class="string">&#39;-&#39;</span>, <span class="string">&quot;short alias name cannot be `-`&quot;</span>);
 
@@ -5631,6 +5738,7 @@
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`App::aliases`]: Arg::aliases()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visible_aliases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">aliases</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> (<span class="kw-2">*</span><span class="ident">n</span>, <span class="bool-val">true</span>)));
         <span class="self">self</span>
@@ -5653,6 +5761,7 @@
     <span class="doccomment">///         ]);</span>
     <span class="doccomment">/// assert!(m.is_present(&quot;test&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visible_short_aliases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="ident">char</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">for</span> <span class="ident">n</span> <span class="kw">in</span> <span class="ident">names</span> {
             <span class="macro">assert!</span>(<span class="ident">n</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&#39;-&#39;</span>, <span class="string">&quot;short alias name cannot be `-`&quot;</span>);
@@ -5712,6 +5821,7 @@
     <span class="doccomment">/// [`panic!`]: https://doc.rust-lang.org/std/macro.panic!.html</span>
     <span class="doccomment">/// [`App`]: crate::App</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">idx</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">index</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">idx</span>);
         <span class="self">self</span>
@@ -5793,6 +5903,7 @@
     <span class="doccomment">/// [index]: Arg::index()</span>
     <span class="doccomment">/// [`UnknownArgument`]: crate::ErrorKind::UnknownArgument</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">last</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::Last</span>)
@@ -5855,6 +5966,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::Required</span>)
@@ -5921,6 +6033,7 @@
     <span class="doccomment">/// [`Arg::requires(name)`]: Arg::requires()</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [override]: Arg::overrides_with()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">requires</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">requires</span>.<span class="ident">push</span>((<span class="prelude-val">None</span>, <span class="ident">arg_id</span>.<span class="ident">into</span>()));
         <span class="self">self</span>
@@ -5959,6 +6072,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::ArgumentConflict);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exclusive</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::Exclusive</span>)
@@ -6001,6 +6115,7 @@
     <span class="doccomment">/// [`Subcommand`]: crate::Subcommand</span>
     <span class="doccomment">/// [`ArgMatches::is_present(&quot;flag&quot;)`]: ArgMatches::is_present()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">global</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::Global</span>)
@@ -6055,6 +6170,7 @@
     <span class="doccomment">/// assert_eq!(files, [&quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot;]);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">multiple_occurrences</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::MultipleOccurrences</span>)
@@ -6113,6 +6229,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::multiple_occurrences(true)`]: Arg::multiple_occurrences()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_occurrences</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">qty</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">max_occurs</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">qty</span>);
         <span class="kw">if</span> <span class="ident">qty</span> <span class="op">&gt;</span> <span class="number">1</span> {
@@ -6151,6 +6268,7 @@
     <span class="doccomment">/// # ;</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setting</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">setting</span>: <span class="ident">F</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ArgFlags</span><span class="op">&gt;</span>,
@@ -6180,6 +6298,7 @@
     <span class="doccomment">/// # ;</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset_setting</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">setting</span>: <span class="ident">F</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ArgFlags</span><span class="op">&gt;</span>,
@@ -6223,6 +6342,7 @@
     <span class="doccomment">/// [`Arg::value_delimiter(char)`]: Arg::value_delimiter()</span>
     <span class="doccomment">/// [multiple values]: Arg::multiple_values</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">takes_value</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::TakesValue</span>)
@@ -6397,6 +6517,7 @@
     <span class="doccomment">/// [maximum]: Arg::max_values()</span>
     <span class="doccomment">/// [specific]: Arg::number_of_values()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">multiple_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::MultipleValues</span>)
@@ -6445,6 +6566,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::multiple_occurrences(true)`]: Arg::multiple_occurrences()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">number_of_values</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">qty</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">num_vals</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">qty</span>);
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>).<span class="ident">multiple_values</span>(<span class="bool-val">true</span>)
@@ -6508,6 +6630,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::multiple_occurrences(true)`]: Arg::multiple_occurrences()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_values</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">qty</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">max_vals</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">qty</span>);
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>).<span class="ident">multiple_values</span>(<span class="bool-val">true</span>)
@@ -6572,6 +6695,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::multiple_occurrences(true)`]: Arg::multiple_occurrences()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">min_values</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">qty</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">min_vals</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">qty</span>);
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>).<span class="ident">multiple_values</span>(<span class="bool-val">true</span>)
@@ -6624,6 +6748,7 @@
     <span class="doccomment">/// [positional]: Arg::index()</span>
     <span class="doccomment">/// [`Arg::takes_value(true)`]: Arg::takes_value()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value_name</span>(<span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">value_names</span>(<span class="kw-2">&amp;</span>[<span class="ident">name</span>])
     }
@@ -6681,6 +6806,7 @@
     <span class="doccomment">/// [`Arg::number_of_values`]: Arg::number_of_values()</span>
     <span class="doccomment">/// [`Arg::takes_value(true)`]: Arg::takes_value()</span>
     <span class="doccomment">/// [`Arg::multiple_values(true)`]: Arg::multiple_values()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value_names</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">val_names</span> <span class="op">=</span> <span class="ident">names</span>.<span class="ident">to_vec</span>();
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
@@ -6715,6 +6841,7 @@
     <span class="doccomment">///             .value_hint(ValueHint::CommandWithArguments)</span>
     <span class="doccomment">///     );</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value_hint</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value_hint</span>: <span class="ident">ValueHint</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">value_hint</span> <span class="op">=</span> <span class="ident">value_hint</span>;
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
@@ -6758,6 +6885,7 @@
     <span class="doccomment">/// [`Result`]: std::result::Result</span>
     <span class="doccomment">/// [`Err(String)`]: std::result::Result::Err</span>
     <span class="doccomment">/// [`Arc`]: std::sync::Arc</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validator</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;help</span>,
@@ -6800,6 +6928,7 @@
     <span class="doccomment">/// [`Result`]: std::result::Result</span>
     <span class="doccomment">/// [`Err(String)`]: std::result::Result::Err</span>
     <span class="doccomment">/// [`Rc`]: std::rc::Rc</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validator_os</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">F</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;help</span>,
@@ -6865,6 +6994,7 @@
     <span class="doccomment">/// assert_eq!(res.err().unwrap().kind, ErrorKind::ValueValidation)</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;regex&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validator_regex</span>(
         <span class="self">self</span>,
         <span class="ident">regex</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">RegexRef</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span><span class="op">&gt;</span>,
@@ -6950,6 +7080,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [options]: Arg::takes_value()</span>
     <span class="doccomment">/// [positional arguments]: Arg::index()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">possible_value</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PossibleValue</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span><span class="op">&gt;</span>,
@@ -7025,6 +7156,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [options]: Arg::takes_value()</span>
     <span class="doccomment">/// [positional arguments]: Arg::index()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">possible_values</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">values</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
@@ -7084,6 +7216,7 @@
     <span class="doccomment">/// assert_eq!(&amp;*matched_vals, &amp;[&quot;TeSt123&quot;, &quot;teST123&quot;, &quot;tESt321&quot;]);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_case</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::IgnoreCase</span>)
@@ -7143,6 +7276,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::number_of_values(1)`]: Arg::number_of_values()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">allow_hyphen_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::AllowHyphenValues</span>)
@@ -7183,6 +7317,7 @@
     <span class="doccomment">/// [`ArgMatches::value_of_lossy`]: crate::ArgMatches::value_of_lossy()</span>
     <span class="doccomment">/// [`ArgMatches::values_of_lossy`]: crate::ArgMatches::values_of_lossy()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">allow_invalid_utf8</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::AllowInvalidUtf8</span>)
@@ -7237,6 +7372,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::EmptyValue);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">forbid_empty_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::ForbidEmptyValues</span>)
@@ -7288,6 +7424,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::NoEquals);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">require_equals</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::RequireEquals</span>)
@@ -7346,6 +7483,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::value_delimiter`]: Arg::value_delimiter()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">use_delimiter</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">val_delim</span>.<span class="ident">is_none</span>() {
@@ -7383,6 +7521,7 @@
     <span class="doccomment">/// [`Arg::use_delimiter(true)`]: Arg::use_delimiter()</span>
     <span class="doccomment">/// [`Arg::takes_value(true)`]: Arg::takes_value()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value_delimiter</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">d</span>: <span class="ident">char</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">val_delim</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">d</span>);
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>).<span class="ident">use_delimiter</span>(<span class="bool-val">true</span>)
@@ -7465,6 +7604,7 @@
     <span class="doccomment">/// assert_eq!(delims.values_of(&quot;opt&quot;).unwrap().collect::&lt;Vec&lt;_&gt;&gt;(), [&quot;val1&quot;, &quot;val2&quot;, &quot;val3&quot;]);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">require_delimiter</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::RequireDelimiter</span>)
@@ -7523,6 +7663,7 @@
     <span class="doccomment">/// [`number_of_values`]: Arg::number_of_values()</span>
     <span class="doccomment">/// [`max_values`]: Arg::max_values()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value_terminator</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">term</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">terminator</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">term</span>);
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
@@ -7551,6 +7692,7 @@
     <span class="doccomment">/// [`Arg::allow_hyphen_values(true)`]: Arg::allow_hyphen_values()</span>
     <span class="doccomment">/// [`Arg::last(true)`]: Arg::last()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="ident">yes</span>)
             .<span class="ident">multiple_values</span>(<span class="ident">yes</span>)
@@ -7622,6 +7764,7 @@
     <span class="doccomment">/// [`ArgMatches::is_present`]: crate::ArgMatches::is_present()</span>
     <span class="doccomment">/// [`Arg::default_value_if`]: Arg::default_value_if()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value</span>(<span class="self">self</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_values_os</span>(<span class="kw-2">&amp;</span>[<span class="ident">OsStr::new</span>(<span class="ident">val</span>)])
     }
@@ -7633,6 +7776,7 @@
     <span class="doccomment">/// [`Arg::default_value`]: Arg::default_value()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value_os</span>(<span class="self">self</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_values_os</span>(<span class="kw-2">&amp;</span>[<span class="ident">val</span>])
     }
@@ -7643,6 +7787,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg::default_value`]: Arg::default_value()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_values</span>(<span class="self">self</span>, <span class="ident">vals</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">vals_vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">val</span><span class="op">|</span> <span class="ident">OsStr::new</span>(<span class="kw-2">*</span><span class="ident">val</span>)).<span class="ident">collect</span>();
         <span class="self">self</span>.<span class="ident">default_values_os</span>(<span class="kw-2">&amp;</span><span class="ident">vals_vec</span>[..])
@@ -7655,6 +7800,7 @@
     <span class="doccomment">/// [`Arg::default_values`]: Arg::default_values()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_values_os</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">vals</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_vals</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">to_vec</span>();
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
@@ -7732,6 +7878,7 @@
     <span class="doccomment">/// [`ArgMatches::is_present`]: ArgMatches::is_present()</span>
     <span class="doccomment">/// [`Arg::default_value`]: Arg::default_value()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_missing_value</span>(<span class="self">self</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_missing_values_os</span>(<span class="kw-2">&amp;</span>[<span class="ident">OsStr::new</span>(<span class="ident">val</span>)])
     }
@@ -7743,6 +7890,7 @@
     <span class="doccomment">/// [`Arg::default_missing_value`]: Arg::default_missing_value()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_missing_value_os</span>(<span class="self">self</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_missing_values_os</span>(<span class="kw-2">&amp;</span>[<span class="ident">val</span>])
     }
@@ -7753,6 +7901,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg::default_missing_value`]: Arg::default_missing_value()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_missing_values</span>(<span class="self">self</span>, <span class="ident">vals</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">vals_vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">val</span><span class="op">|</span> <span class="ident">OsStr::new</span>(<span class="kw-2">*</span><span class="ident">val</span>)).<span class="ident">collect</span>();
         <span class="self">self</span>.<span class="ident">default_missing_values_os</span>(<span class="kw-2">&amp;</span><span class="ident">vals_vec</span>[..])
@@ -7765,6 +7914,7 @@
     <span class="doccomment">/// [`Arg::default_missing_values`]: Arg::default_missing_values()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_missing_values_os</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">vals</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">default_missing_vals</span> <span class="op">=</span> <span class="ident">vals</span>.<span class="ident">to_vec</span>();
         <span class="self">self</span>.<span class="ident">takes_value</span>(<span class="bool-val">true</span>)
@@ -7910,6 +8060,7 @@
     <span class="doccomment">/// [`Arg::use_delimiter(true)`]: Arg::use_delimiter()</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;env&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">env</span>(<span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">env_os</span>(<span class="ident">OsStr::new</span>(<span class="ident">name</span>))
     }
@@ -7919,6 +8070,7 @@
     <span class="doccomment">/// See [`Arg::env`].</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;env&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">env_os</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">env</span> <span class="op">=</span> <span class="prelude-val">Some</span>((<span class="ident">name</span>, <span class="ident">env::var_os</span>(<span class="ident">name</span>)));
         <span class="self">self</span>
@@ -7970,6 +8122,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::long_help`]: Arg::long_help()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">help</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">h</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">help</span> <span class="op">=</span> <span class="ident">h</span>.<span class="ident">into</span>();
         <span class="self">self</span>
@@ -8031,6 +8184,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::help`]: Arg::help()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">long_help</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">h</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">long_help</span> <span class="op">=</span> <span class="ident">h</span>.<span class="ident">into</span>();
         <span class="self">self</span>
@@ -8090,6 +8244,7 @@
     <span class="doccomment">/// [positional arguments]: Arg::index()</span>
     <span class="doccomment">/// [index]: Arg::index()</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_order</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ord</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">disp_ord</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">ord</span>);
         <span class="self">self</span>
@@ -8099,6 +8254,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [current]: crate::App::help_heading</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">help_heading</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">heading</span>: <span class="ident">O</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">O</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
@@ -8151,6 +8307,7 @@
     <span class="doccomment">///         on a line after the option</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_line_help</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::NextLineHelp</span>)
@@ -8192,6 +8349,7 @@
     <span class="doccomment">/// -V, --version    Print version information</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::Hidden</span>)
@@ -8224,6 +8382,7 @@
     <span class="doccomment">/// If we were to run the above program with `--help` the `[values: fast, slow]` portion of</span>
     <span class="doccomment">/// the help text would be omitted.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_possible_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HidePossibleValues</span>)
@@ -8254,6 +8413,7 @@
     <span class="doccomment">/// If we were to run the above program with `--help` the `[default: localhost]` portion of</span>
     <span class="doccomment">/// the help text would be omitted.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_default_value</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HideDefaultValue</span>)
@@ -8282,6 +8442,7 @@
     <span class="doccomment">/// text would be omitted.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;env&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_env</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HideEnv</span>)
@@ -8311,6 +8472,7 @@
     <span class="doccomment">/// `[default: CONNECT=super_secret]` portion of the help text would be omitted.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;env&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_env_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HideEnvValues</span>)
@@ -8389,6 +8551,7 @@
     <span class="doccomment">/// -V, --version    Print version information</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_short_help</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HiddenShortHelp</span>)
@@ -8461,6 +8624,7 @@
     <span class="doccomment">/// -V, --version    Print version information</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_long_help</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">if</span> <span class="ident">yes</span> {
             <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">ArgSettings::HiddenLongHelp</span>)
@@ -8503,6 +8667,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`ArgGroup`]: crate::ArgGroup</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">group</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">group_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">groups</span>.<span class="ident">push</span>(<span class="ident">group_id</span>.<span class="ident">into</span>());
         <span class="self">self</span>
@@ -8540,6 +8705,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`ArgGroup`]: crate::ArgGroup</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">groups</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">group_ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">groups</span>.<span class="ident">extend</span>(<span class="ident">group_ids</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">Id::from</span>));
         <span class="self">self</span>
@@ -8654,6 +8820,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::takes_value(true)`]: Arg::takes_value()</span>
     <span class="doccomment">/// [`Arg::default_value`]: Arg::default_value()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value_if</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(
         <span class="self">self</span>,
         <span class="ident">arg_id</span>: <span class="ident">T</span>,
@@ -8668,6 +8835,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg::default_value_if`]: Arg::default_value_if()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value_if_os</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(
         <span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">arg_id</span>: <span class="ident">T</span>,
@@ -8755,6 +8923,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::takes_value(true)`]: Arg::takes_value()</span>
     <span class="doccomment">/// [`Arg::default_value_if`]: Arg::default_value_if()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value_ifs</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(
         <span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span>)],
@@ -8770,6 +8939,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg::default_value_ifs`]: Arg::default_value_ifs()</span>
     <span class="doccomment">/// [`OsStr`]: std::ffi::OsStr</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value_ifs_os</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(
         <span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">OsStr</span><span class="op">&gt;</span>)],
@@ -8832,6 +9002,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [required]: Arg::required()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_present</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">r_unless</span>.<span class="ident">push</span>(<span class="ident">arg_id</span>.<span class="ident">into</span>());
         <span class="self">self</span>
@@ -8902,6 +9073,7 @@
     <span class="doccomment">/// [required]: Arg::required()</span>
     <span class="doccomment">/// [`Arg::required_unless_present_any`]: Arg::required_unless_present_any()</span>
     <span class="doccomment">/// [`Arg::required_unless_present_all(names)`]: Arg::required_unless_present_all()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_present_all</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
@@ -8978,6 +9150,7 @@
     <span class="doccomment">/// [required]: Arg::required()</span>
     <span class="doccomment">/// [`Arg::required_unless_present_any(names)`]: Arg::required_unless_present_any()</span>
     <span class="doccomment">/// [`Arg::required_unless_present_all`]: Arg::required_unless_present_all()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_present_any</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
@@ -9068,6 +9241,7 @@
     <span class="doccomment">/// [`Arg::requires(name)`]: Arg::requires()</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [required]: Arg::required()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_if_eq</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">r_ifs</span>.<span class="ident">push</span>((<span class="ident">arg_id</span>.<span class="ident">into</span>(), <span class="ident">val</span>));
         <span class="self">self</span>
@@ -9146,6 +9320,7 @@
     <span class="doccomment">/// [`Arg::requires(name)`]: Arg::requires()</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [required]: Arg::required()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_if_eq_any</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>)]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">r_ifs</span>
             .<span class="ident">extend</span>(<span class="ident">ifs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">id</span>, <span class="ident">val</span>)<span class="op">|</span> (<span class="ident">Id::from_ref</span>(<span class="ident">id</span>), <span class="kw-2">*</span><span class="ident">val</span>)));
@@ -9223,6 +9398,7 @@
     <span class="doccomment">/// assert_eq!(res.unwrap_err().kind, ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [required]: Arg::required()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_if_eq_all</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>)]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">r_ifs_all</span>
             .<span class="ident">extend</span>(<span class="ident">ifs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">id</span>, <span class="ident">val</span>)<span class="op">|</span> (<span class="ident">Id::from_ref</span>(<span class="ident">id</span>), <span class="kw-2">*</span><span class="ident">val</span>)));
@@ -9286,6 +9462,7 @@
     <span class="doccomment">/// [`Arg::requires(name)`]: Arg::requires()</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [override]: Arg::overrides_with()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">requires_if</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">requires</span>.<span class="ident">push</span>((<span class="prelude-val">Some</span>(<span class="ident">val</span>), <span class="ident">arg_id</span>.<span class="ident">into</span>()));
         <span class="self">self</span>
@@ -9337,6 +9514,7 @@
     <span class="doccomment">/// [`Arg::requires(name)`]: Arg::requires()</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [override]: Arg::overrides_with()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">requires_ifs</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>, <span class="ident">T</span>)]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">requires</span>
             .<span class="ident">extend</span>(<span class="ident">ifs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">val</span>, <span class="ident">arg</span>)<span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="kw-2">*</span><span class="ident">val</span>), <span class="ident">Id::from</span>(<span class="ident">arg</span>))));
@@ -9407,6 +9585,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [Conflicting]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [override]: Arg::overrides_with()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">requires_all</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">requires</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> (<span class="prelude-val">None</span>, <span class="ident">s</span>.<span class="ident">into</span>())));
         <span class="self">self</span>
@@ -9457,6 +9636,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg::conflicts_with_all(names)`]: Arg::conflicts_with_all()</span>
     <span class="doccomment">/// [`Arg::exclusive(true)`]: Arg::exclusive()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">conflicts_with</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">blacklist</span>.<span class="ident">push</span>(<span class="ident">arg_id</span>.<span class="ident">into</span>());
         <span class="self">self</span>
@@ -9509,6 +9689,7 @@
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [`Arg::conflicts_with`]: Arg::conflicts_with()</span>
     <span class="doccomment">/// [`Arg::exclusive(true)`]: Arg::exclusive()</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">conflicts_with_all</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">blacklist</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">Id::from</span>));
         <span class="self">self</span>
@@ -9624,6 +9805,7 @@
     <span class="doccomment">/// assert_eq!(m.occurrences_of(&quot;opt&quot;), 2);</span>
     <span class="doccomment">/// assert_eq!(m.values_of(&quot;opt&quot;).unwrap().collect::&lt;Vec&lt;_&gt;&gt;(), &amp;[&quot;first&quot;, &quot;over&quot;, &quot;other&quot;, &quot;val&quot;]);</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">overrides_with</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">overrides</span>.<span class="ident">push</span>(<span class="ident">arg_id</span>.<span class="ident">into</span>());
         <span class="self">self</span>
@@ -9657,6 +9839,7 @@
     <span class="doccomment">/// assert!(!m.is_present(&quot;debug&quot;));</span>
     <span class="doccomment">/// assert!(!m.is_present(&quot;flag&quot;));</span>
     <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">overrides_with_all</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">names</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">overrides</span>.<span class="ident">extend</span>(<span class="ident">names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">Id::from</span>));
         <span class="self">self</span>
@@ -9944,6 +10127,7 @@
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::required_unless_present`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">required_unless_present</span>(<span class="ident">arg_id</span>)
     }
@@ -9953,6 +10137,7 @@
         <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present_all`&quot;</span>
     )]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_all</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
@@ -9966,6 +10151,7 @@
         <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_unless_present_any`&quot;</span>
     )]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_unless_one</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">names</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
@@ -9976,12 +10162,14 @@
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::required_if_eq`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_if_eq`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_if</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg_id</span>: <span class="ident">T</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">required_if_eq</span>(<span class="ident">arg_id</span>, <span class="ident">val</span>)
     }
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::required_if_eq_any`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::required_if_eq_any`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_ifs</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Key</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ifs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">T</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span>)]) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">required_if_eq_any</span>(<span class="ident">ifs</span>)
     }
@@ -9989,6 +10177,7 @@
     <span class="doccomment">/// Deprecated, replaced with [`Arg::hide`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::hide`&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hidden</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">hide</span>(<span class="ident">yes</span>)
     }
@@ -9996,12 +10185,14 @@
     <span class="doccomment">/// Deprecated, replaced with [`Arg::ignore_case`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::ignore_case`&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">case_insensitive</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">ignore_case</span>(<span class="ident">yes</span>)
     }
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::forbid_empty_values`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::forbid_empty_values`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">empty_values</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">forbid_empty_values</span>(<span class="op">!</span><span class="ident">yes</span>)
     }
@@ -10012,6 +10203,7 @@
         <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>,
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Split into `Arg::multiple_occurrences` (most likely what you want)  and `Arg::multiple_values`&quot;</span>
     )]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">multiple</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">multiple_occurrences</span>(<span class="ident">yes</span>).<span class="ident">multiple_values</span>(<span class="ident">yes</span>)
     }
@@ -10019,6 +10211,7 @@
     <span class="doccomment">/// Deprecated, replaced with [`Arg::hide_short_help`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::hide_short_help`&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hidden_short_help</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">hide_short_help</span>(<span class="ident">yes</span>)
     }
@@ -10026,18 +10219,21 @@
     <span class="doccomment">/// Deprecated, replaced with [`Arg::hide_long_help`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::hide_long_help`&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hidden_long_help</span>(<span class="self">self</span>, <span class="ident">yes</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">hide_long_help</span>(<span class="ident">yes</span>)
     }
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::setting`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::setting`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set</span>(<span class="self">self</span>, <span class="ident">s</span>: <span class="ident">ArgSettings</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">setting</span>(<span class="ident">s</span>)
     }
 
     <span class="doccomment">/// Deprecated, replaced with [`Arg::unset_setting`]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;3.0.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Replaced with `Arg::unset_setting`&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset</span>(<span class="self">self</span>, <span class="ident">s</span>: <span class="ident">ArgSettings</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">unset_setting</span>(<span class="ident">s</span>)
     }
@@ -10513,5 +10709,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (399ba6bb3 2022-01-03)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (7d6f94817 2022-01-04)" ></div>
 </body></html>
