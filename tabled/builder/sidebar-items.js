@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Builder","Builder creates a [Table] from dynamic data set."]]});
