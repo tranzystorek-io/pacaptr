@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-3.0.13/src/build/arg_group.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>arg_group.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-3.0.14/src/build/arg_group.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>arg_group.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../clap/index.html"><div class="logo-container"><img src="https://raw.githubusercontent.com/clap-rs/clap/master/assets/clap.png" alt="logo"></div>
         </a><h2 class="location"></h2>
     </nav>
@@ -654,7 +654,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// You can also do things such as name an entire `ArgGroup` as a [conflict] or [requirement] for</span>
 <span class="doccomment">/// another argument, meaning any of the arguments that belong to that group will cause a failure</span>
-<span class="doccomment">/// if present, or must present respectively.</span>
+<span class="doccomment">/// if present, or must be present respectively.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Perhaps the most common use of `ArgGroup`s is to require one and *only* one argument to be</span>
 <span class="doccomment">/// present out of a given set. Imagine that you had multiple arguments, and you want one of them</span>
@@ -688,7 +688,7 @@
 <span class="doccomment">/// // Because we used two args in the group it&#39;s an error</span>
 <span class="doccomment">/// assert!(result.is_err());</span>
 <span class="doccomment">/// let err = result.unwrap_err();</span>
-<span class="doccomment">/// assert_eq!(err.kind, ErrorKind::ArgumentConflict);</span>
+<span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::ArgumentConflict);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">/// This next example shows a passing parse of the same scenario</span>
 <span class="doccomment">///</span>
@@ -762,7 +762,7 @@
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">n</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">name</span> <span class="op">=</span> <span class="ident">n</span>.<span class="ident">into</span>();
-        <span class="self">self</span>.<span class="ident">id</span> <span class="op">=</span> <span class="ident">Id::from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span>);
+        <span class="self">self</span>.<span class="ident">id</span> <span class="op">=</span> <span class="ident">Id::from</span>(<span class="self">self</span>.<span class="ident">name</span>);
         <span class="self">self</span>
     }
 
@@ -858,7 +858,7 @@
     <span class="doccomment">/// // Because we used both args in the group it&#39;s an error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::ArgumentConflict);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::ArgumentConflict);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Arg`]: crate::Arg</span>
@@ -901,7 +901,7 @@
     <span class="doccomment">/// // Because we didn&#39;t use any of the args in the group, it&#39;s an error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::MissingRequiredArgument);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Subcommand`]: crate::Subcommand</span>
@@ -944,7 +944,7 @@
     <span class="doccomment">/// // error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::MissingRequiredArgument);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [required group]: ArgGroup::required()</span>
     <span class="doccomment">/// [argument requirement rules]: crate::Arg::requires()</span>
@@ -986,7 +986,7 @@
     <span class="doccomment">/// // yet we only used &quot;-d&quot; it&#39;s an error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::MissingRequiredArgument);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::MissingRequiredArgument);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [required group]: ArgGroup::required()</span>
     <span class="doccomment">/// [argument requirement rules]: crate::Arg::requires_all()</span>
@@ -1027,7 +1027,7 @@
     <span class="doccomment">/// // because we used an arg from the group, and the group conflicts with &quot;-d&quot;, it&#39;s an error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::ArgumentConflict);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::ArgumentConflict);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// [argument exclusion rules]: crate::Arg::conflicts_with()</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
@@ -1067,7 +1067,7 @@
     <span class="doccomment">/// // it&#39;s an error</span>
     <span class="doccomment">/// assert!(result.is_err());</span>
     <span class="doccomment">/// let err = result.unwrap_err();</span>
-    <span class="doccomment">/// assert_eq!(err.kind, ErrorKind::ArgumentConflict);</span>
+    <span class="doccomment">/// assert_eq!(err.kind(), ErrorKind::ArgumentConflict);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [argument exclusion rules]: crate::Arg::conflicts_with_all()</span>
@@ -1268,5 +1268,5 @@ requires:
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (2681f253b 2022-02-01)" ></div>
 </body></html>
