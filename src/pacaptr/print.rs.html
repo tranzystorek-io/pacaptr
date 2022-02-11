@@ -149,7 +149,7 @@
     <span class="macro">eprintln!</span>(
         <span class="macro">msg_format!</span>(),
         <span class="ident">prompt</span>.<span class="ident">bright_red</span>().<span class="ident">bold</span>(),
-        <span class="macro">format!</span>(<span class="string">&quot;{:#}&quot;</span>, <span class="ident">err</span>),
+        <span class="macro">format_args!</span>(<span class="string">&quot;{err:#}&quot;</span>),
         <span class="ident">indent</span> <span class="op">=</span> <span class="ident">PROMPT_INDENT</span>
     );
 }
