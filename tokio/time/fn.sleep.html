@@ -12,10 +12,10 @@ operates at millisecond granularity and should not be used for tasks that
 require high-resolution timers.</p>
 <p>To run something regularly on a schedule, see <a href="fn.interval.html"><code>interval</code></a>.</p>
 <p>The maximum duration for a sleep is 68719476734 milliseconds (approximately 2.2 years).</p>
-<h2 id="cancellation" class="section-header"><a href="#cancellation">Cancellation</a></h2>
+<h2 id="cancellation"><a href="#cancellation">Cancellation</a></h2>
 <p>Canceling a sleep instance is done by dropping the returned future. No additional
 cleanup work is required.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>Wait 100ms and print “100 ms have elapsed”.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time</span>::{<span class="ident">sleep</span>, <span class="ident">Duration</span>};
@@ -26,7 +26,7 @@ cleanup work is required.</p>
     <span class="macro">println!</span>(<span class="string">&quot;100 ms have elapsed&quot;</span>);
 }</code></pre></div>
 <p>See the documentation for the <a href="struct.Sleep.html"><code>Sleep</code></a> type for more examples.</p>
-<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
+<h2 id="panics"><a href="#panics">Panics</a></h2>
 <p>This function panics if there is no current timer set.</p>
 <p>It can be triggered when <a href="../runtime/struct.Builder.html#method.enable_time"><code>Builder::enable_time</code></a> or
 <a href="../runtime/struct.Builder.html#method.enable_all"><code>Builder::enable_all</code></a> are not included in the builder.</p>
@@ -37,5 +37,5 @@ Whereas <code>rt.block_on(async {sleep(...).await})</code> doesn’t panic.
 And this is because wrapping the function on an async makes it lazy,
 and so gets executed inside the runtime successfully without
 panicking.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

@@ -33,7 +33,7 @@ details.</p>
 should point to the index <em>after</em> the split point, i.e., after
 <code>-</code> if splitting on hyphens. This way, <code>word.split_at(idx)</code>
 will break the word into two well-formed pieces.</p>
-<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
+<h5 id="examples"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">textwrap::word_splitters</span>::{<span class="ident">HyphenSplitter</span>, <span class="ident">NoHyphenation</span>, <span class="ident">WordSplitter</span>};
 <span class="macro">assert_eq!</span>(<span class="ident">NoHyphenation</span>.<span class="ident">split_points</span>(<span class="string">&quot;cannot-be-split&quot;</span>), <span class="macro">vec!</span>[]);
 <span class="macro">assert_eq!</span>(<span class="ident">HyphenSplitter</span>.<span class="ident">split_points</span>(<span class="string">&quot;can-be-split&quot;</span>), <span class="macro">vec!</span>[<span class="number">4</span>, <span class="number">7</span>]);</code></pre></div>
@@ -45,5 +45,5 @@ characters, which prevents a word like <code>&quot;--foo-bar&quot;</code> from b
 split into <code>&quot;--&quot;</code> and <code>&quot;foo-bar&quot;</code>.</p>
 </div><section id="impl-WordSplitter-1" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../../src/textwrap/word_splitters.rs.html#103-107">source</a></span><a href="#impl-WordSplitter-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="trait.WordSplitter.html" title="trait textwrap::word_splitters::WordSplitter">WordSplitter</a> for <a class="struct" href="struct.NoHyphenation.html" title="struct textwrap::word_splitters::NoHyphenation">NoHyphenation</a></h3></section><div class="docblock"><p><code>NoHyphenation</code> implements <code>WordSplitter</code> by not splitting the
 word at all.</p>
-</div></div><script type="text/javascript" src="../../implementors/textwrap/word_splitters/trait.WordSplitter.js" async></script></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></div><script type="text/javascript" src="../../implementors/textwrap/word_splitters/trait.WordSplitter.js" async></script></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

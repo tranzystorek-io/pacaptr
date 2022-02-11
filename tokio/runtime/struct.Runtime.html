@@ -11,7 +11,7 @@ blocking pool, necessary for running asynchronous tasks.</p>
 However, most users will use the <code>#[tokio::main]</code> annotation on their
 entry point instead.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h2 id="shutdown" class="section-header"><a href="#shutdown">Shutdown</a></h2>
+<h2 id="shutdown"><a href="#shutdown">Shutdown</a></h2>
 <p>Shutting down the runtime is done by dropping the value. The current
 thread will block until the shut down operation has completed.</p>
 <ul>
@@ -22,7 +22,7 @@ thread will block until the shut down operation has completed.</p>
 <p>Once the reactor has dropped, any outstanding I/O resources bound to
 that reactor will no longer function. Calling any method on them will
 result in an error.</p>
-<h2 id="sharing" class="section-header"><a href="#sharing">Sharing</a></h2>
+<h2 id="sharing"><a href="#sharing">Sharing</a></h2>
 <p>The Tokio runtime implements <code>Sync</code> and <code>Send</code> to allow you to wrap it
 in a <code>Arc</code>. Most fn take <code>&amp;self</code> to allow you to call them concurrently
 across multiple threads.</p>
@@ -36,7 +36,7 @@ initialized.</p>
 they will use the  <a href="../attr.main.html"><code>#[tokio::main]</code> attribute</a>. When a more complex
 configuration is necessary, the <a href="struct.Builder.html">runtime builder</a> may be used.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
+<h5 id="examples"><a href="#examples">Examples</a></h5>
 <p>Creating a new <code>Runtime</code> with default configuration values.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
@@ -48,7 +48,7 @@ configuration is necessary, the <a href="struct.Builder.html">runtime builder</a
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.handle" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../src/tokio/runtime/mod.rs.html#363-365">source</a></span><a href="#method.handle" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.handle" class="fnname">handle</a>(&amp;self) -&gt; &amp;<a class="struct" href="struct.Handle.html" title="struct tokio::runtime::Handle">Handle</a></h4></section></summary><div class="docblock"><p>Returns a handle to the runtime’s spawner.</p>
 <p>The returned handle can be used to spawn tasks that run on this runtime, and can
 be cloned to allow moving the <code>Handle</code> to other threads.</p>
-<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
+<h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">Runtime::new</span>()
@@ -62,7 +62,7 @@ be cloned to allow moving the <code>Handle</code> to other threads.</p>
 thread pool. The thread pool is then responsible for polling the future
 until it completes.</p>
 <p>See <a href="index.html">module level</a> documentation for more details.</p>
-<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
+<h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -73,7 +73,7 @@ until it completes.</p>
     <span class="macro">println!</span>(<span class="string">&quot;now running on a worker thread&quot;</span>);
 });</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.spawn_blocking" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../src/tokio/runtime/mod.rs.html#418-424">source</a></span><a href="#method.spawn_blocking" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.spawn_blocking" class="fnname">spawn_blocking</a>&lt;F, R&gt;(&amp;self, func: F) -&gt; <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;R&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<span class="notable-traits-tooltiptext"><span class="docblock"><span class="notable">Notable traits for <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;T&gt;</span><code class="content"><span class="where fmt-newline">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> for <a class="struct" href="../task/struct.JoinHandle.html" title="struct tokio::task::JoinHandle">JoinHandle</a>&lt;T&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html#associatedtype.Output" class="associatedtype">Output</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="struct" href="../task/struct.JoinError.html" title="struct tokio::task::JoinError">JoinError</a>&gt;;</span></code></span></span></span></span> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>() -&gt; R + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,&nbsp;</span></h4></section></summary><div class="docblock"><p>Runs the provided function on an executor dedicated to blocking operations.</p>
-<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
+<h5 id="examples-3"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -88,20 +88,20 @@ runtime’s entry point.</p>
 <p>This runs the given future on the current thread, blocking until it is
 complete, and yielding its resolved result. Any tasks or timers
 which the future spawns internally will be executed on the runtime.</p>
-<h5 id="multi-thread-scheduler" class="section-header"><a href="#multi-thread-scheduler">Multi thread scheduler</a></h5>
+<h5 id="multi-thread-scheduler"><a href="#multi-thread-scheduler">Multi thread scheduler</a></h5>
 <p>When the multi thread scheduler is used this will allow futures
 to run within the io driver and timer context of the overall runtime.</p>
-<h5 id="current-thread-scheduler" class="section-header"><a href="#current-thread-scheduler">Current thread scheduler</a></h5>
+<h5 id="current-thread-scheduler"><a href="#current-thread-scheduler">Current thread scheduler</a></h5>
 <p>When the current thread scheduler is enabled <code>block_on</code>
 can be called concurrently from multiple threads. The first call
 will take ownership of the io and timer drivers. This means
 other threads which do not own the drivers will hook into that one.
 When the first <code>block_on</code> completes, other threads will be able to
 “steal” the driver to allow continued execution of their futures.</p>
-<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
+<h5 id="panics"><a href="#panics">Panics</a></h5>
 <p>This function panics if the provided future panics, or if called within an
 asynchronous execution context.</p>
-<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
+<h5 id="examples-4"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="comment">// Create the runtime</span>
@@ -115,7 +115,7 @@ asynchronous execution context.</p>
 <p>This allows you to construct types that must have an executor
 available on creation such as <a href="../time/struct.Sleep.html"><code>Sleep</code></a> or <a href="struct@crate::net::TcpStream"><code>TcpStream</code></a>. It will
 also allow you to call methods such as <a href="../task/fn.spawn.html"><code>tokio::spawn</code></a>.</p>
-<h5 id="example" class="section-header"><a href="#example">Example</a></h5>
+<h5 id="example"><a href="#example">Example</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 
 <span class="kw">fn</span> <span class="ident">function_that_spawns</span>(<span class="ident">msg</span>: <span class="ident">String</span>) {
@@ -145,7 +145,7 @@ can work. The <code>shutdown_timeout</code> will signal all tasks to shutdown an
 will wait for at most <code>duration</code> for all spawned tasks to terminate. If
 <code>timeout</code> elapses before all tasks are dropped, the function returns and
 outstanding tasks are potentially leaked.</p>
-<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
+<h5 id="examples-5"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::runtime::Runtime</span>;
 <span class="kw">use</span> <span class="ident">tokio::task</span>;
 
@@ -195,5 +195,5 @@ return.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

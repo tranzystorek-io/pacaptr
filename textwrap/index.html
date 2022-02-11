@@ -6,7 +6,7 @@
         </a><h2 class="location"><a href="#">Crate textwrap</a></h2><div class="sidebar-elems"><div class="block"><ul><li class="version">Version 0.14.2</li><li><a id="all-types" href="all.html">All Items</a></li></div></ul><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><div id="sidebar-vars" data-name="textwrap" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../textwrap/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
     <h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">textwrap</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/textwrap/lib.rs.html#1-2135">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The textwrap library provides functions for word wrapping and
 indenting text.</p>
-<h2 id="wrapping-text" class="section-header"><a href="#wrapping-text">Wrapping Text</a></h2>
+<h2 id="wrapping-text"><a href="#wrapping-text">Wrapping Text</a></h2>
 <p>Wrapping text can be very useful in command-line programs where
 you want to format dynamic output nicely so it looks good in a
 terminal. A quick example:</p>
@@ -38,10 +38,10 @@ library for wrap-
 ping text.</code></pre></div>
 <p>See also the <a href="fn.unfill.html" title="unfill"><code>unfill</code></a> and <a href="fn.refill.html" title="refill"><code>refill</code></a> functions which allow you to
 manipulate already wrapped text.</p>
-<h3 id="wrapping-strings-at-compile-time" class="section-header"><a href="#wrapping-strings-at-compile-time">Wrapping Strings at Compile Time</a></h3>
+<h3 id="wrapping-strings-at-compile-time"><a href="#wrapping-strings-at-compile-time">Wrapping Strings at Compile Time</a></h3>
 <p>If your strings are known at compile time, please take a look at
 the procedural macros from the <a href="https://docs.rs/textwrap-macros/">textwrap-macros</a> crate.</p>
-<h3 id="displayed-width-vs-byte-size" class="section-header"><a href="#displayed-width-vs-byte-size">Displayed Width vs Byte Size</a></h3>
+<h3 id="displayed-width-vs-byte-size"><a href="#displayed-width-vs-byte-size">Displayed Width vs Byte Size</a></h3>
 <p>To word wrap text, one must know the width of each word so one can
 know when to break lines. This library will by default measure the
 width of text using the <em>displayed width</em>, not the size in bytes.
@@ -57,7 +57,7 @@ byte count when computing line lengths. All functions in this
 library handle Unicode characters like this when the
 <code>unicode-width</code> Cargo feature is enabled (it is enabled by
 default).</p>
-<h2 id="indentation-and-dedentation" class="section-header"><a href="#indentation-and-dedentation">Indentation and Dedentation</a></h2>
+<h2 id="indentation-and-dedentation"><a href="#indentation-and-dedentation">Indentation and Dedentation</a></h2>
 <p>The textwrap library also offers functions for adding a prefix to
 every line of a string and to remove leading whitespace. As an
 example, the <a href="fn.indent.html" title="indent"><code>indent</code></a> function allows you to turn lines of text
@@ -87,14 +87,14 @@ Some
     text
 &quot;</span>;
 <span class="macro">assert_eq!</span>(<span class="ident">textwrap::dedent</span>(<span class="ident">before</span>), <span class="ident">after</span>);</code></pre></div>
-<h2 id="cargo-features" class="section-header"><a href="#cargo-features">Cargo Features</a></h2>
+<h2 id="cargo-features"><a href="#cargo-features">Cargo Features</a></h2>
 <p>The textwrap library can be slimmed down as needed via a number of
 Cargo features. This means you only pay for the features you
 actually use.</p>
 <p>The full dependency graph, where dashed lines indicate optional
 dependencies, is shown below:</p>
 <img src="https://raw.githubusercontent.com/mgeisler/textwrap/master/images/textwrap-0.14.2.svg">
-<h3 id="default-features" class="section-header"><a href="#default-features">Default Features</a></h3>
+<h3 id="default-features"><a href="#default-features">Default Features</a></h3>
 <p>These features are enabled by default:</p>
 <ul>
 <li>
@@ -127,7 +127,7 @@ function for details on the optimal-fit algorithm.</p>
 <a href="wrap_algorithms/fn.wrap_first_fit.html" title="wrap_algorithms::wrap_first_fit"><code>wrap_algorithms::wrap_first_fit</code></a>.</p>
 </li>
 </ul>
-<h3 id="optional-features" class="section-header"><a href="#optional-features">Optional Features</a></h3>
+<h3 id="optional-features"><a href="#optional-features">Optional Features</a></h3>
 <p>These Cargo features enable new functionality:</p>
 <ul>
 <li>
@@ -156,5 +156,5 @@ width via the <a href="https://docs.rs/terminal_size/">terminal_size</a> crate. 
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.unfill.html" title="textwrap::unfill fn">unfill</a></div><div class="item-right docblock-short"><p>Unpack a paragraph of already-wrapped text.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.wrap.html" title="textwrap::wrap fn">wrap</a></div><div class="item-right docblock-short"><p>Wrap a line of text at a given width.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.wrap_columns.html" title="textwrap::wrap_columns fn">wrap_columns</a></div><div class="item-right docblock-short"><p>Wrap text into columns with a given total width.</p>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

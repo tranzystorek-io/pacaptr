@@ -48,7 +48,7 @@ The <code>TryFrom&lt;TokenTree&gt;</code> impls check for those two special iden
 return a <code>BoolLit</code> appropriately. For that reason, there is also no
 <code>TryFrom&lt;proc_macro::Literal&gt;</code> impl for <code>BoolLit</code>. The <code>proc_macro::Literal</code>
 simply cannot represent bool literals.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>In a proc-macro:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -94,7 +94,7 @@ simply cannot represent bool literals.</p>
     <span class="ident">Literal::Byte</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
     <span class="ident">Literal::ByteString</span>(<span class="ident">lit</span>) =&gt; { <span class="comment">/* ... */</span> }
 }</code></pre></div>
-<h2 id="crate-features" class="section-header"><a href="#crate-features">Crate features</a></h2>
+<h2 id="crate-features"><a href="#crate-features">Crate features</a></h2>
 <ul>
 <li><code>proc-macro2</code> (<strong>default</strong>): adds the dependency <code>proc_macro2</code>, a bunch of
 <code>From</code> and <code>TryFrom</code> impls, and <a href="struct.InvalidToken.html#method.to_compile_error2" title="InvalidToken::to_compile_error2"><code>InvalidToken::to_compile_error2</code></a>.</li>
@@ -121,5 +121,5 @@ the various <code>TryFrom</code> impls.</p>
 </div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2>
 <div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.OwnedLiteral.html" title="litrs::OwnedLiteral type">OwnedLiteral</a></div><div class="item-right docblock-short"><p>A literal which owns the underlying buffer.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="type" href="type.SharedLiteral.html" title="litrs::SharedLiteral type">SharedLiteral</a></div><div class="item-right docblock-short"><p>A literal whose underlying buffer is borrowed.</p>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="litrs" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="litrs" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

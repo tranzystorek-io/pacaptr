@@ -8,7 +8,7 @@
 <p>Serialization can fail if <code>T</code>’s implementation of <code>Serialize</code> decides to
 fail, if <code>T</code> contains a map with non-string keys, or if <code>T</code> attempts to
 serialize an unsupported datatype such as an enum, tuple, or tuple struct.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">serde_derive::Serialize</span>;
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>)]</span>
@@ -37,5 +37,5 @@ serialize an unsupported datatype such as an enum, tuple, or tuple struct.</p>
     <span class="kw">let</span> <span class="ident">toml</span> <span class="op">=</span> <span class="ident">toml::to_string</span>(<span class="kw-2">&amp;</span><span class="ident">config</span>).<span class="ident">unwrap</span>();
     <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">toml</span>)
 }</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="toml" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="toml" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

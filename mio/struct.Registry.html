@@ -10,7 +10,7 @@
 readiness state changes. When it notices a state change, it will return
 a readiness event for the handle the next time <a href="struct.Poll.html#method.poll"><code>poll</code></a> is called.</p>
 <p>See <a href="struct.Poll.html#method.poll"><code>Poll</code></a> docs for a high level overview.</p>
-<h5 id="arguments" class="section-header"><a href="#arguments">Arguments</a></h5>
+<h5 id="arguments"><a href="#arguments">Arguments</a></h5>
 <p><code>source: &amp;S: event::Source</code>: This is the source of events that the
 <code>Poll</code> instance should monitor for readiness state changes.</p>
 <p><code>token: Token</code>: The caller picks a token to associate with the socket.
@@ -27,7 +27,7 @@ specified by this argument.</p>
 writable, no event will be returned from <a href="struct.Poll.html#method.poll"><code>poll</code></a>.</p>
 <p>The readiness interest for an <code>event::Source</code> can be changed at any time
 by calling <a href="struct.Registry.html#method.reregister"><code>reregister</code></a>.</p>
-<h5 id="notes" class="section-header"><a href="#notes">Notes</a></h5>
+<h5 id="notes"><a href="#notes">Notes</a></h5>
 <p>Callers must ensure that if a source being registered with a <code>Poll</code>
 instance was previously registered with that <code>Poll</code> instance, then a
 call to <a href="struct.Registry.html#method.deregister"><code>deregister</code></a> has already occurred. Consecutive calls to
@@ -37,7 +37,7 @@ source is registered with a <code>Poll</code> instance, it is bound to that <cod
 instance for the lifetime of the event source. This remains true even
 if the event source is deregistered from the poll instance using
 <a href="struct.Registry.html#method.deregister"><code>deregister</code></a>.</p>
-<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
+<h5 id="examples"><a href="#examples">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
@@ -90,7 +90,7 @@ of <code>Poll</code>, otherwise the behavior is undefined.</p>
 <p>See the <a href="struct.Registry.html#method.register"><code>register</code></a> documentation for details about the function
 arguments and see the <a href="struct.Poll.html"><code>struct</code></a> docs for a high level overview of
 polling.</p>
-<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
+<h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
@@ -126,7 +126,7 @@ of <code>Poll</code>, otherwise the behavior is undefined.</p>
 <p>A handle can be passed back to <code>register</code> after it has been
 deregistered; however, it must be passed back to the <strong>same</strong> <code>Poll</code>
 instance, otherwise the behavior is undefined.</p>
-<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
+<h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">mio</span>::{<span class="ident">Events</span>, <span class="ident">Poll</span>, <span class="ident">Interest</span>, <span class="ident">Token</span>};
 <span class="kw">use</span> <span class="ident">mio::net::TcpStream</span>;
 <span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
@@ -165,5 +165,5 @@ the original <code>Registry</code> and <code>Poll</code> instance.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="mio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="mio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

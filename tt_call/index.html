@@ -22,7 +22,7 @@ expansion for macro_rules.</p>
 tt-call = &quot;1.0&quot;</code></pre></div>
 <p><em>Version requirement: tt-call requires a Rust compiler version 1.31 or
 newer.</em></p>
-<h3 id="calling-convention-rules" class="section-header"><a href="#calling-convention-rules">Calling convention rules</a></h3>
+<h3 id="calling-convention-rules"><a href="#calling-convention-rules">Calling convention rules</a></h3>
 <ul>
 <li>
 <p><strong>Macros that conform to tt-call must be invoked with curly braces.</strong></p>
@@ -71,7 +71,7 @@ Expanding to nothing, expanding to more than one macro invocation, or
 expanding to anything other than a macro invocation are not permitted.</p>
 </li>
 </ul>
-<h3 id="examples" class="section-header"><a href="#examples">Examples</a></h3>
+<h3 id="examples"><a href="#examples">Examples</a></h3>
 <p>Just as a flavor of the syntax, one of the rules from the implementation of
 the built-in <a href="macro.tt_replace.html"><code>tt_replace!</code></a> macro is written as follows. The macro takes in
 a token stream and for each token that matches a given predicate it replaces
@@ -179,7 +179,7 @@ building blocks.</p>
     <span class="kw">let</span> <span class="ident">add_one</span> <span class="op">=</span> <span class="macro">closure!</span>(<span class="self">self</span> <span class="op">+</span> <span class="number">1</span>);
     <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">add_one</span>(<span class="number">1</span>));
 }</code></pre></div>
-<h3 id="motivation" class="section-header"><a href="#motivation">Motivation</a></h3>
+<h3 id="motivation"><a href="#motivation">Motivation</a></h3>
 <p>This may seem like a lot of ceremony around what should be very simple macro
 calls. After all, couldn’t we write <code>is_lowercase_self</code> in a much more
 straightforward way as follows?</p>
@@ -221,14 +221,14 @@ adventures and can be even nastier than tt-call once you get the hang of
 both. In addition, procedural macros must be defined in a separate crate
 from the rest of your library so they are not well suited for quick one-off
 helper macros.</p>
-<h3 id="design-philosphy" class="section-header"><a href="#design-philosphy">Design philosphy</a></h3>
+<h3 id="design-philosphy"><a href="#design-philosphy">Design philosphy</a></h3>
 <p>As may be no surprise by this point, the calling convention design
 prioritizes scalability and composability over conciseness. A reader
 familiar with the calling convention (maybe you, six months after writing
 the macro) should be able to look at any individual tt-call rule by itself
 and comfortably read off what it does top to bottom and identify its
 purpose.</p>
-<h3 id="links" class="section-header"><a href="#links">Links</a></h3>
+<h3 id="links"><a href="#links">Links</a></h3>
 <ul>
 <li>
 <p>The code that implements <code>closure!(self + 1)</code>, all of which is shown
@@ -285,5 +285,5 @@ sequence of tokens.
 </div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.tt_return.html" title="tt_call::tt_return macro">tt_return</a></div><div class="item-right docblock-short"><p>Return zero or more output values to the caller macro.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.tt_true.html" title="tt_call::tt_true macro">tt_true</a></div><div class="item-right docblock-short"><p>Predicate that is always true.
 <sup><strong>[tt-call]</strong></sup></p>
-</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="tt_call" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="tt_call" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

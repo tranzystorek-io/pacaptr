@@ -9,7 +9,7 @@
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#837-947">source</a></span><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.RawOsString.html" title="struct os_str_bytes::RawOsString">RawOsString</a></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><section id="method.new" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#858-860">source</a></span><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>(string: <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a>) -&gt; Self</h4></section></summary><div class="docblock"><p>Converts a platform-native string into a representation that can be
 more easily manipulated.</p>
 <p>For more information, see <a href="struct.RawOsStr.html#method.new" title="RawOsStr::new"><code>RawOsStr::new</code></a>.</p>
-<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
+<h5 id="examples"><a href="#examples">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::RawOsString</span>;
@@ -19,14 +19,14 @@ more easily manipulated.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.from_string" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#880-882">source</a></span><a href="#method.from_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_string" class="fnname">from_string</a>(string: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Self</h4></section></summary><div class="docblock"><p>Wraps a string, without copying or encoding conversion.</p>
 <p>This method is much more efficient than <a href="struct.RawOsString.html#method.new" title="RawOsString::new"><code>RawOsString::new</code></a>, since the
 <a href="index.html#encoding">encoding</a> used by this crate is compatible with UTF-8.</p>
-<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
+<h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsString</span>;
 
 <span class="kw">let</span> <span class="ident">string</span> <span class="op">=</span> <span class="string">&quot;foobar&quot;</span>.<span class="ident">to_owned</span>();
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsString::from_string</span>(<span class="ident">string</span>.<span class="ident">clone</span>());
 <span class="macro">assert_eq!</span>(<span class="ident">string</span>, <span class="ident">raw</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.into_os_string" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#902-904">source</a></span><a href="#method.into_os_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_os_string" class="fnname">into_os_string</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a></h4></section></summary><div class="docblock"><p>Converts this representation back to a platform-native string.</p>
-<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
+<h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::RawOsString</span>;
@@ -37,7 +37,7 @@ more easily manipulated.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.into_raw_vec" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#928-930">source</a></span><a href="#method.into_raw_vec" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_raw_vec" class="fnname">into_raw_vec</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;</h4></section></summary><div class="docblock"><p>Returns the byte string stored by this container.</p>
 <p>The result will match what would be returned by
 <a href="trait.OsStringBytes.html#tymethod.into_raw_vec" title="OsStringBytes::into_raw_vec"><code>OsStringBytes::into_raw_vec</code></a> for the same string.</p>
-<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
+<h5 id="examples-3"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::OsStringBytes</span>;
@@ -47,7 +47,7 @@ more easily manipulated.</p>
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsString::new</span>(<span class="ident">os_string</span>.<span class="ident">clone</span>());
 <span class="macro">assert_eq!</span>(<span class="ident">os_string</span>.<span class="ident">into_raw_vec</span>(), <span class="ident">raw</span>.<span class="ident">into_raw_vec</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.into_string" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#944-946">source</a></span><a href="#method.into_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.into_string" class="fnname">into_string</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, Self&gt;</h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html#method.into_string" title="OsString::into_string"><code>OsString::into_string</code></a>.</p>
-<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
+<h5 id="examples-4"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsString</span>;
 
 <span class="kw">let</span> <span class="ident">string</span> <span class="op">=</span> <span class="string">&quot;foobar&quot;</span>.<span class="ident">to_owned</span>();
@@ -56,7 +56,7 @@ more easily manipulated.</p>
 </div></details></div></details><h2 id="deref-methods-RawOsStr" class="small-section-header"><span>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = <a class="struct" href="struct.RawOsStr.html" title="struct os_str_bytes::RawOsStr">RawOsStr</a>&gt;</span><a href="#deref-methods-RawOsStr" class="anchor"></a></h2><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><section id="method.as_raw_bytes" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#203-205">source</a></span><a href="#method.as_raw_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_raw_bytes" class="fnname">as_raw_bytes</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<span class="notable-traits-tooltiptext"><span class="docblock"><span class="notable">Notable traits for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span><code class="content"><span class="where fmt-newline">impl&lt;'_&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span><span class="where fmt-newline">impl&lt;'_&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html" title="trait std::io::Write">Write</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span></code></span></span></span></span></h4></section></summary><div class="docblock"><p>Returns the byte string stored by this container.</p>
 <p>The result will match what would be returned by
 <a href="trait.OsStrBytes.html#tymethod.to_raw_bytes" title="OsStrBytes::to_raw_bytes"><code>OsStrBytes::to_raw_bytes</code></a> for the same string.</p>
-<h5 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h5>
+<h5 id="examples-5"><a href="#examples-5">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::OsStrBytes</span>;
@@ -66,43 +66,43 @@ more easily manipulated.</p>
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::new</span>(<span class="kw-2">&amp;</span><span class="ident">os_string</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">os_string</span>.<span class="ident">to_raw_bytes</span>(), <span class="ident">raw</span>.<span class="ident">as_raw_bytes</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.contains" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#224-229">source</a></span><a href="#method.contains" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.contains" class="fnname">contains</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.contains" title="str::contains"><code>str::contains</code></a>.</p>
-<h5 id="panics" class="section-header"><a href="#panics">Panics</a></h5>
+<h5 id="panics"><a href="#panics">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h5>
+<h5 id="examples-6"><a href="#examples-6">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert!</span>(<span class="ident">raw</span>.<span class="ident">contains</span>(<span class="string">&quot;oo&quot;</span>));
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">raw</span>.<span class="ident">contains</span>(<span class="string">&quot;of&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.ends_with" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#248-256">source</a></span><a href="#method.ends_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ends_with" class="fnname">ends_with</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.ends_with" title="str::ends_with"><code>str::ends_with</code></a>.</p>
-<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
+<h5 id="panics-1"><a href="#panics-1">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h5>
+<h5 id="examples-7"><a href="#examples-7">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert!</span>(<span class="ident">raw</span>.<span class="ident">ends_with</span>(<span class="string">&quot;bar&quot;</span>));
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">raw</span>.<span class="ident">ends_with</span>(<span class="string">&quot;foo&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.ends_with_os" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#275-277">source</a></span><a href="#method.ends_with_os" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ends_with_os" class="fnname">ends_with_os</a>(&amp;self, pat: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.ends_with" title="str::ends_with"><code>str::ends_with</code></a> but accepts this type for the pattern.</p>
-<h5 id="panics-2" class="section-header"><a href="#panics-2">Panics</a></h5>
+<h5 id="panics-2"><a href="#panics-2">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h5>
+<h5 id="examples-8"><a href="#examples-8">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert!</span>(<span class="ident">raw</span>.<span class="ident">ends_with_os</span>(<span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;bar&quot;</span>)));
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">raw</span>.<span class="ident">ends_with_os</span>(<span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foo&quot;</span>)));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.find" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#296-304">source</a></span><a href="#method.find" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.find" class="fnname">find</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.find" title="str::find"><code>str::find</code></a>.</p>
-<h5 id="panics-3" class="section-header"><a href="#panics-3">Panics</a></h5>
+<h5 id="panics-3"><a href="#panics-3">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h5>
+<h5 id="examples-9"><a href="#examples-9">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="number">1</span>), <span class="ident">raw</span>.<span class="ident">find</span>(<span class="string">&quot;o&quot;</span>));
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">find</span>(<span class="string">&quot;of&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.is_empty" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#318-320">source</a></span><a href="#method.is_empty" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_empty" class="fnname">is_empty</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.is_empty" title="str::is_empty"><code>str::is_empty</code></a>.</p>
-<h5 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h5>
+<h5 id="examples-10"><a href="#examples-10">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="macro">assert!</span>(<span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;&quot;</span>).<span class="ident">is_empty</span>());
@@ -118,24 +118,24 @@ lengths that sum to the length of the original string.</li>
 <p>This method may return a different result than would <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.len" title="OsStr::len"><code>OsStr::len</code></a>
 when called on same string, since <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="OsStr"><code>OsStr</code></a> uses an unspecified
 encoding.</p>
-<h5 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h5>
+<h5 id="examples-11"><a href="#examples-11">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="macro">assert_eq!</span>(<span class="number">6</span>, <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>).<span class="ident">raw_len</span>());
 <span class="macro">assert_eq!</span>(<span class="number">0</span>, <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;&quot;</span>).<span class="ident">raw_len</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.rfind" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#365-373">source</a></span><a href="#method.rfind" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.rfind" class="fnname">rfind</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.rfind" title="str::rfind"><code>str::rfind</code></a>.</p>
-<h5 id="panics-4" class="section-header"><a href="#panics-4">Panics</a></h5>
+<h5 id="panics-4"><a href="#panics-4">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h5>
+<h5 id="examples-12"><a href="#examples-12">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="number">2</span>), <span class="ident">raw</span>.<span class="ident">rfind</span>(<span class="string">&quot;o&quot;</span>));
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">rfind</span>(<span class="string">&quot;of&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.rsplit_once" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#402-407">source</a></span><a href="#method.rsplit_once" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.rsplit_once" class="fnname">rsplit_once</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.rsplit_once" title="str::rsplit_once"><code>str::rsplit_once</code></a>.</p>
-<h5 id="panics-5" class="section-header"><a href="#panics-5">Panics</a></h5>
+<h5 id="panics-5"><a href="#panics-5">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h5>
+<h5 id="examples-13"><a href="#examples-13">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
@@ -145,17 +145,17 @@ encoding.</p>
 );
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">rsplit_once</span>(<span class="string">&quot;of&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.split" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#458-463">source</a></span><a href="#method.split" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split" class="fnname">split</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="struct" href="iter/struct.Split.html" title="struct os_str_bytes::iter::Split">Split</a>&lt;'_, P&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<span class="notable-traits-tooltiptext"><span class="docblock"><span class="notable">Notable traits for <a class="struct" href="iter/struct.Split.html" title="struct os_str_bytes::iter::Split">Split</a>&lt;'a, P&gt;</span><code class="content"><span class="where fmt-newline">impl&lt;'a, P&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="iter/struct.Split.html" title="struct os_str_bytes::iter::Split">Split</a>&lt;'a, P&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="associatedtype">Item</a> = &amp;'a <a class="struct" href="struct.RawOsStr.html" title="struct os_str_bytes::RawOsStr">RawOsStr</a>;</span></code></span></span></span></span> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.split" title="str::split"><code>str::split</code></a>, but empty patterns are not accepted.</p>
-<h5 id="panics-6" class="section-header"><a href="#panics-6">Panics</a></h5>
+<h5 id="panics-6"><a href="#panics-6">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range or empty.</p>
-<h5 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h5>
+<h5 id="examples-14"><a href="#examples-14">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert_eq!</span>([<span class="string">&quot;f&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bar&quot;</span>], <span class="kw-2">*</span><span class="ident">raw</span>.<span class="ident">split</span>(<span class="string">&quot;o&quot;</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.split_at" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#486-494">source</a></span><a href="#method.split_at" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split_at" class="fnname">split_at</a>(&amp;self, mid: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.split_at" title="str::split_at"><code>str::split_at</code></a>.</p>
-<h5 id="panics-7" class="section-header"><a href="#panics-7">Panics</a></h5>
+<h5 id="panics-7"><a href="#panics-7">Panics</a></h5>
 <p>Panics if the index is not a <a href="#indices">valid boundary</a>.</p>
-<h5 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h5>
+<h5 id="examples-15"><a href="#examples-15">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
@@ -164,9 +164,9 @@ encoding.</p>
     <span class="ident">raw</span>.<span class="ident">split_at</span>(<span class="number">2</span>),
 );</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.split_once" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#523-528">source</a></span><a href="#method.split_once" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split_once" class="fnname">split_once</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.split_once" title="str::split_once"><code>str::split_once</code></a>.</p>
-<h5 id="panics-8" class="section-header"><a href="#panics-8">Panics</a></h5>
+<h5 id="panics-8"><a href="#panics-8">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h5>
+<h5 id="examples-16"><a href="#examples-16">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
@@ -176,9 +176,9 @@ encoding.</p>
 );
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">split_once</span>(<span class="string">&quot;of&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.starts_with" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#547-555">source</a></span><a href="#method.starts_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.starts_with" class="fnname">starts_with</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.starts_with" title="str::starts_with"><code>str::starts_with</code></a>.</p>
-<h5 id="panics-9" class="section-header"><a href="#panics-9">Panics</a></h5>
+<h5 id="panics-9"><a href="#panics-9">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h5>
+<h5 id="examples-17"><a href="#examples-17">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
@@ -186,18 +186,18 @@ encoding.</p>
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">raw</span>.<span class="ident">starts_with</span>(<span class="string">&quot;bar&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.starts_with_os" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#575-577">source</a></span><a href="#method.starts_with_os" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.starts_with_os" class="fnname">starts_with_os</a>(&amp;self, pat: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.starts_with" title="str::starts_with"><code>str::starts_with</code></a> but accepts this type for the
 pattern.</p>
-<h5 id="panics-10" class="section-header"><a href="#panics-10">Panics</a></h5>
+<h5 id="panics-10"><a href="#panics-10">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h5>
+<h5 id="examples-18"><a href="#examples-18">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foobar&quot;</span>);
 <span class="macro">assert!</span>(<span class="ident">raw</span>.<span class="ident">starts_with_os</span>(<span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;foo&quot;</span>)));
 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">raw</span>.<span class="ident">starts_with_os</span>(<span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;bar&quot;</span>)));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.strip_prefix" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#599-607">source</a></span><a href="#method.strip_prefix" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.strip_prefix" class="fnname">strip_prefix</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.strip_prefix" title="str::strip_prefix"><code>str::strip_prefix</code></a>.</p>
-<h5 id="panics-11" class="section-header"><a href="#panics-11">Panics</a></h5>
+<h5 id="panics-11"><a href="#panics-11">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h5>
+<h5 id="examples-19"><a href="#examples-19">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;111foo1bar111&quot;</span>);
@@ -207,9 +207,9 @@ pattern.</p>
 );
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">strip_prefix</span>(<span class="string">&quot;o&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.strip_suffix" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#629-637">source</a></span><a href="#method.strip_suffix" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.strip_suffix" class="fnname">strip_suffix</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.strip_suffix" title="str::strip_suffix"><code>str::strip_suffix</code></a>.</p>
-<h5 id="panics-12" class="section-header"><a href="#panics-12">Panics</a></h5>
+<h5 id="panics-12"><a href="#panics-12">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h5>
+<h5 id="examples-20"><a href="#examples-20">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;111foo1bar111&quot;</span>);
@@ -219,7 +219,7 @@ pattern.</p>
 );
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">raw</span>.<span class="ident">strip_suffix</span>(<span class="string">&quot;o&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.to_os_str" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#657-659">source</a></span><a href="#method.to_os_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_os_str" class="fnname">to_os_str</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/alloc/borrow/enum.Cow.html" title="enum alloc::borrow::Cow">Cow</a>&lt;'_, <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr">OsStr</a>&gt;</h4></section></summary><div class="docblock"><p>Converts this representation back to a platform-native string.</p>
-<h5 id="examples-21" class="section-header"><a href="#examples-21">Examples</a></h5>
+<h5 id="examples-21"><a href="#examples-21">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
@@ -228,7 +228,7 @@ pattern.</p>
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::new</span>(<span class="kw-2">&amp;</span><span class="ident">os_string</span>);
 <span class="macro">assert_eq!</span>(<span class="ident">os_string</span>, <span class="ident">raw</span>.<span class="ident">to_os_str</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.to_str" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#674-676">source</a></span><a href="#method.to_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_str" class="fnname">to_str</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_str" title="OsStr::to_str"><code>OsStr::to_str</code></a>.</p>
-<h5 id="examples-22" class="section-header"><a href="#examples-22">Examples</a></h5>
+<h5 id="examples-22"><a href="#examples-22">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">string</span> <span class="op">=</span> <span class="string">&quot;foobar&quot;</span>;
@@ -240,7 +240,7 @@ pattern.</p>
 <p>This method may return a different result than would
 <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_string_lossy" title="OsStr::to_string_lossy"><code>OsStr::to_string_lossy</code></a> when called on same string, since <a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html" title="OsStr"><code>OsStr</code></a>
 uses an unspecified encoding.</p>
-<h5 id="examples-23" class="section-header"><a href="#examples-23">Examples</a></h5>
+<h5 id="examples-23"><a href="#examples-23">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::env</span>;
 
 <span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
@@ -249,18 +249,18 @@ uses an unspecified encoding.</p>
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::new</span>(<span class="kw-2">&amp;</span><span class="ident">os_string</span>);
 <span class="macro">println!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">raw</span>.<span class="ident">to_str_lossy</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.trim_end_matches" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#723-728">source</a></span><a href="#method.trim_end_matches" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.trim_end_matches" class="fnname">trim_end_matches</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.trim_end_matches" title="str::trim_end_matches"><code>str::trim_end_matches</code></a>.</p>
-<h5 id="panics-13" class="section-header"><a href="#panics-13">Panics</a></h5>
+<h5 id="panics-13"><a href="#panics-13">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-24" class="section-header"><a href="#examples-24">Examples</a></h5>
+<h5 id="examples-24"><a href="#examples-24">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;111foo1bar111&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="string">&quot;111foo1bar&quot;</span>, <span class="ident">raw</span>.<span class="ident">trim_end_matches</span>(<span class="string">&quot;1&quot;</span>));
 <span class="macro">assert_eq!</span>(<span class="string">&quot;111foo1bar111&quot;</span>, <span class="ident">raw</span>.<span class="ident">trim_end_matches</span>(<span class="string">&quot;o&quot;</span>));</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.trim_start_matches" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/os_str_bytes/raw_str.rs.html#746-751">source</a></span><a href="#method.trim_start_matches" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.trim_start_matches" class="fnname">trim_start_matches</a>&lt;P&gt;(&amp;self, pat: P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="trait.Pattern.html" title="trait os_str_bytes::Pattern">Pattern</a>,&nbsp;</span></h4></section></summary><div class="docblock"><p>Equivalent to <a href="https://doc.rust-lang.org/nightly/std/primitive.str.html#method.trim_start_matches" title="str::trim_start_matches"><code>str::trim_start_matches</code></a>.</p>
-<h5 id="panics-14" class="section-header"><a href="#panics-14">Panics</a></h5>
+<h5 id="panics-14"><a href="#panics-14">Panics</a></h5>
 <p>Panics if the pattern is a byte outside of the ASCII range.</p>
-<h5 id="examples-25" class="section-header"><a href="#examples-25">Examples</a></h5>
+<h5 id="examples-25"><a href="#examples-25">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">os_str_bytes::RawOsStr</span>;
 
 <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="ident">RawOsStr::from_str</span>(<span class="string">&quot;111foo1bar111&quot;</span>);
@@ -346,5 +346,5 @@ operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.h
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="os_str_bytes" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="os_str_bytes" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

@@ -12,7 +12,7 @@ used to signal the end of a computation and provide its value. The second
 half is a <code>Receiver</code> which implements the <code>Future</code> trait, resolving to the
 value that was given to the <code>Sender</code> handle.</p>
 <p>Each half can be separately owned and sent across tasks.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::channel::oneshot</span>;
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">thread</span>, <span class="ident">time::Duration</span>};
 
@@ -31,5 +31,5 @@ value that was given to the <code>Sender</code> handle.</p>
     <span class="macro">println!</span>(<span class="string">&quot;MAIN: waiting for msg...&quot;</span>);
     <span class="macro">println!</span>(<span class="string">&quot;MAIN: got: {:?}&quot;</span>, <span class="ident">receiver</span>.<span class="kw">await</span>)
 });</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="futures_channel" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="futures_channel" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

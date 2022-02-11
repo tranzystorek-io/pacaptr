@@ -14,7 +14,7 @@ points in the process or it can be used concurrently from an <code>Arc</code>. N
 <p>If all <a href="struct.Receiver.html"><code>Receiver</code></a> handles are dropped, the <code>send</code> method will return a
 <a href="error/struct.SendError.html"><code>SendError</code></a>. Similarly, if all <a href="struct.Sender.html"><code>Sender</code></a> handles are dropped, the <a href="struct.Receiver.html#method.recv"><code>recv</code></a>
 method will return a <a href="error/enum.RecvError.html"><code>RecvError</code></a>.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -35,5 +35,5 @@ method will return a <a href="error/enum.RecvError.html"><code>RecvError</code><
     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="number">20</span>).<span class="ident">unwrap</span>();
 }</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

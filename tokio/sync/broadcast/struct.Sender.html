@@ -7,7 +7,7 @@
     <h1 class="fqn"><span class="in-band">Struct <a href="../../index.html">tokio</a>::<wbr><a href="../index.html">sync</a>::<wbr><a href="index.html">broadcast</a>::<wbr><a class="struct" href="#">Sender</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../../src/tokio/sync/broadcast.rs.html#157-159">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust struct"><code>pub struct Sender&lt;T&gt; { /* private fields */ }</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Sending-half of the <a href="index.html"><code>broadcast</code></a> channel.</p>
 <p>May be used from many threads. Messages can be sent with
 <a href="struct.Sender.html#method.send" title="Sender::send"><code>send</code></a>.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -33,18 +33,18 @@ it back if it could not be sent.</p>
 <p>A successful send occurs when there is at least one active <a href="struct.Receiver.html"><code>Receiver</code></a>
 handle. An unsuccessful send would be one where all associated
 <a href="struct.Receiver.html"><code>Receiver</code></a> handles have already been dropped.</p>
-<h5 id="return" class="section-header"><a href="#return">Return</a></h5>
+<h5 id="return"><a href="#return">Return</a></h5>
 <p>On success, the number of subscribed <a href="struct.Receiver.html"><code>Receiver</code></a> handles is returned.
 This does not mean that this number of receivers will see the message as
 a receiver may drop before receiving the message.</p>
-<h5 id="note" class="section-header"><a href="#note">Note</a></h5>
+<h5 id="note"><a href="#note">Note</a></h5>
 <p>A return value of <code>Ok</code> <strong>does not</strong> mean that the sent value will be
 observed by all or any of the active <a href="struct.Receiver.html"><code>Receiver</code></a> handles. <a href="struct.Receiver.html"><code>Receiver</code></a>
 handles may be dropped before receiving the sent message.</p>
 <p>A return value of <code>Err</code> <strong>does not</strong> mean that future calls to <code>send</code>
 will fail. New <a href="struct.Receiver.html"><code>Receiver</code></a> handles may be created by calling
 <a href="struct.Sender.html#method.subscribe"><code>subscribe</code></a>.</p>
-<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
+<h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -67,7 +67,7 @@ will fail. New <a href="struct.Receiver.html"><code>Receiver</code></a> handles 
 }</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.subscribe" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../../src/tokio/sync/broadcast.rs.html#553-556">source</a></span><a href="#method.subscribe" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.subscribe" class="fnname">subscribe</a>(&amp;self) -&gt; <a class="struct" href="struct.Receiver.html" title="struct tokio::sync::broadcast::Receiver">Receiver</a>&lt;T&gt;</h4></section></summary><div class="docblock"><p>Creates a new <a href="struct.Receiver.html" title="Receiver"><code>Receiver</code></a> handle that will receive values sent <strong>after</strong>
 this call to <code>subscribe</code>.</p>
-<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
+<h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -88,11 +88,11 @@ this call to <code>subscribe</code>.</p>
 <p>An active receiver is a <a href="struct.Receiver.html"><code>Receiver</code></a> handle returned from <a href="fn.channel.html"><code>channel</code></a> or
 <a href="struct.Sender.html#method.subscribe"><code>subscribe</code></a>. These are the handles that will receive values sent on
 this <a href="struct.Sender.html"><code>Sender</code></a>.</p>
-<h5 id="note-1" class="section-header"><a href="#note-1">Note</a></h5>
+<h5 id="note-1"><a href="#note-1">Note</a></h5>
 <p>It is not guaranteed that a sent message will reach this number of
 receivers. Active receivers may never call <a href="struct.Receiver.html#method.recv"><code>recv</code></a> again before
 dropping.</p>
-<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
+<h5 id="examples-3"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::broadcast</span>;
 
 <span class="attribute">#[<span class="ident">tokio::main</span>]</span>
@@ -123,5 +123,5 @@ dropping.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

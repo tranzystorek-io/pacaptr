@@ -8,12 +8,12 @@
 <p>If the future completes before the duration has elapsed, then the completed
 value is returned. Otherwise, an error is returned and the future is
 canceled.</p>
-<h2 id="cancelation" class="section-header"><a href="#cancelation">Cancelation</a></h2>
+<h2 id="cancelation"><a href="#cancelation">Cancelation</a></h2>
 <p>Cancelling a timeout is done by dropping the future. No additional cleanup
 or other work is required.</p>
 <p>The original future may be obtained by calling <a href="struct.Timeout.html#method.into_inner" title="Timeout::into_inner"><code>Timeout::into_inner</code></a>. This
 consumes the <code>Timeout</code>.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>Create a new <code>Timeout</code> set to expire in 10 milliseconds.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::time::timeout</span>;
@@ -27,7 +27,7 @@ consumes the <code>Timeout</code>.</p>
 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="ident">timeout</span>(<span class="ident">Duration::from_millis</span>(<span class="number">10</span>), <span class="ident">rx</span>).<span class="kw">await</span> {
     <span class="macro">println!</span>(<span class="string">&quot;did not receive value within 10 ms&quot;</span>);
 }</code></pre></div>
-<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
+<h2 id="panics"><a href="#panics">Panics</a></h2>
 <p>This function panics if there is no current timer set.</p>
 <p>It can be triggered when <a href="../runtime/struct.Builder.html#method.enable_time"><code>Builder::enable_time</code></a> or
 <a href="../runtime/struct.Builder.html#method.enable_all"><code>Builder::enable_all</code></a> are not included in the builder.</p>
@@ -38,5 +38,5 @@ Whereas <code>rt.block_on(async {sleep(...).await})</code> doesn’t panic.
 And this is because wrapping the function on an async makes it lazy,
 and so gets executed inside the runtime successfully without
 panicking.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

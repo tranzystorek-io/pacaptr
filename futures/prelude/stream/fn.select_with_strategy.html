@@ -13,7 +13,7 @@ polled exclusively. The returned stream completes when both input
 streams have completed.</p>
 <p>Note that this function consumes both streams and returns a wrapped
 version of them.</p>
-<h3 id="examples" class="section-header"><a href="#examples">Examples</a></h3><h4 id="priority" class="section-header"><a href="#priority">Priority</a></h4>
+<h3 id="examples"><a href="#examples">Examples</a></h3><h4 id="priority"><a href="#priority">Priority</a></h4>
 <p>This example shows how to always prioritize the left stream.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::stream</span>::{ <span class="ident">repeat</span>, <span class="ident">select_with_strategy</span>, <span class="ident">PollNext</span>, <span class="ident">StreamExt</span> };
@@ -33,7 +33,7 @@ version of them.</p>
     <span class="comment">// Whenever we poll out, we will alwas get `1`.</span>
     <span class="macro">assert_eq!</span>(<span class="number">1</span>, <span class="ident">out</span>.<span class="ident">select_next_some</span>().<span class="kw">await</span>);
 }</code></pre></div>
-<h4 id="round-robin" class="section-header"><a href="#round-robin">Round Robin</a></h4>
+<h4 id="round-robin"><a href="#round-robin">Round Robin</a></h4>
 <p>This example shows how to select from both streams round robin.
 Note: this special case is provided by [<code>futures-util::stream::select</code>].</p>
 
@@ -51,5 +51,5 @@ Note: this special case is provided by [<code>futures-util::stream::select</code
     <span class="macro">assert_eq!</span>(<span class="number">1</span>, <span class="ident">out</span>.<span class="ident">select_next_some</span>().<span class="kw">await</span>);
     <span class="macro">assert_eq!</span>(<span class="number">2</span>, <span class="ident">out</span>.<span class="ident">select_next_some</span>().<span class="kw">await</span>);
 }</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="futures" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="futures" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

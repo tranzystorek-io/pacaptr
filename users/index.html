@@ -17,7 +17,7 @@ of low-level pointers and strings. It also offers basic caching
 functionality.</p>
 <p>It does not (yet) offer <em>editing</em> functionality; the values returned are
 read-only.</p>
-<h3 id="users" class="section-header"><a href="#users">Users</a></h3>
+<h3 id="users"><a href="#users">Users</a></h3>
 <p>The function <a href="fn.get_current_uid.html"><code>get_current_uid</code></a> returns a
 <code>uid_t</code> value representing the user currently running the program, and the
 <a href="fn.get_user_by_uid.html"><code>get_user_by_uid</code></a> function scans the users
@@ -44,7 +44,7 @@ So always check the return values!</p>
 <p>There is also a <a href="fn.get_current_username.html"><code>get_current_username</code></a>
 function, as it’s such a common operation that it deserves special
 treatment.</p>
-<h3 id="caching" class="section-header"><a href="#caching">Caching</a></h3>
+<h3 id="caching"><a href="#caching">Caching</a></h3>
 <p>Despite the above warning, the users and groups database rarely changes.
 While a short program may only need to get user information once, a
 long-running one may need to re-query the database many times, and a
@@ -67,7 +67,7 @@ same names as the ones from earlier. For example:</p>
 selected entries, as when the database may have been modified, it’s best to
 start entirely afresh. So to accomplish this, just start using a new
 <code>UsersCache</code>.</p>
-<h3 id="groups" class="section-header"><a href="#groups">Groups</a></h3>
+<h3 id="groups"><a href="#groups">Groups</a></h3>
 <p>Finally, it’s possible to get groups in a similar manner.
 A <a href="struct.Group.html"><code>Group</code></a> has the following accessors:</p>
 <ul>
@@ -81,10 +81,10 @@ A <a href="struct.Group.html"><code>Group</code></a> has the following accessors
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cache</span> <span class="op">=</span> <span class="ident">UsersCache::new</span>();
 <span class="kw">let</span> <span class="ident">group</span> <span class="op">=</span> <span class="ident">cache</span>.<span class="ident">get_group_by_name</span>(<span class="string">&quot;admin&quot;</span>).<span class="ident">expect</span>(<span class="string">&quot;No such group &#39;admin&#39;!&quot;</span>);
 <span class="macro">println!</span>(<span class="string">&quot;The &#39;{}&#39; group has the ID {}&quot;</span>, <span class="ident">group</span>.<span class="ident">name</span>().<span class="ident">to_string_lossy</span>(), <span class="ident">group</span>.<span class="ident">gid</span>());</code></pre></div>
-<h3 id="logging" class="section-header"><a href="#logging">Logging</a></h3>
+<h3 id="logging"><a href="#logging">Logging</a></h3>
 <p>The <code>logging</code> feature, which is on by default, uses the <code>log</code> crate to
 record all interactions with the operating system.</p>
-<h3 id="caveats" class="section-header"><a href="#caveats">Caveats</a></h3>
+<h3 id="caveats"><a href="#caveats">Caveats</a></h3>
 <p>You should be prepared for the users and groups tables to be completely
 broken: IDs shouldn’t be assumed to map to actual users and groups, and
 usernames and group names aren’t guaranteed to map either!</p>
@@ -123,5 +123,5 @@ Returns it if one is found, otherwise returns <code>None</code>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.get_user_groups.html" title="users::get_user_groups fn">get_user_groups</a></div><div class="item-right docblock-short"><p>Returns groups for a provided user name and primary group id.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.group_access_list.html" title="users::group_access_list fn">group_access_list</a></div><div class="item-right docblock-short"><p>Returns the group access list for the current process.</p>
 </div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2>
-<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.gid_t.html" title="users::gid_t type">gid_t</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="type" href="type.uid_t.html" title="users::uid_t type">uid_t</a></div><div class="item-right docblock-short"></div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="users" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.gid_t.html" title="users::gid_t type">gid_t</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="type" href="type.uid_t.html" title="users::uid_t type">uid_t</a></div><div class="item-right docblock-short"></div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="users" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

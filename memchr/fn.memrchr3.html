@@ -12,7 +12,7 @@ index is returned, it is guaranteed to be less than <code>usize::MAX</code>.</p>
 <p>While this is operationally the same as something like
 <code>haystack.iter().rposition(|&amp;b| b == needle1 || b == needle2 || b == needle3)</code>, <code>memrchr3</code> will use a highly optimized routine that can be
 up to an order of magnitude faster in some cases.</p>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h2 id="example"><a href="#example">Example</a></h2>
 <p>This shows how to find the last position of any of three bytes in a byte
 string.</p>
 
@@ -20,5 +20,5 @@ string.</p>
 
 <span class="kw">let</span> <span class="ident">haystack</span> <span class="op">=</span> <span class="string">b&quot;the quick brown fox&quot;</span>;
 <span class="macro">assert_eq!</span>(<span class="ident">memrchr3</span>(<span class="string">b&#39;k&#39;</span>, <span class="string">b&#39;q&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="ident">haystack</span>), <span class="prelude-val">Some</span>(<span class="number">8</span>));</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="memchr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="memchr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

@@ -9,7 +9,7 @@
 match semantics (either leftmost-first or leftmost-longest), then one can
 use the <a href="struct.Config.html"><code>Config</code></a> and/or
 <a href="struct.Builder.html"><code>Builder</code></a> types for more fine grained control.</p>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h2 id="example"><a href="#example">Example</a></h2>
 <p>This example shows how to create a searcher from an iterator of patterns.
 By default, leftmost-first match semantics are used.</p>
 
@@ -26,7 +26,7 @@ of things that can be converted to a <code>&amp;[u8]</code>.</p>
 <p>If a searcher could not be constructed (either because of an
 unsupported CPU or because there are too many patterns), then <code>None</code>
 is returned.</p>
-<h5 id="example-1" class="section-header"><a href="#example-1">Example</a></h5>
+<h5 id="example-1"><a href="#example-1">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -42,7 +42,7 @@ according to its match semantics, in the given haystack. The <code>Match</code>
 returned will include the identifier of the pattern that matched, which
 corresponds to the index of the pattern (starting from <code>0</code>) in which it
 was added.</p>
-<h5 id="example-2" class="section-header"><a href="#example-2">Example</a></h5>
+<h5 id="example-2"><a href="#example-2">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -59,7 +59,7 @@ the given position.</p>
 matched, which corresponds to the index of the pattern (starting from
 <code>0</code>) in which it was added. The offsets in the <code>Match</code> will be relative
 to the start of <code>haystack</code> (and not <code>at</code>).</p>
-<h5 id="example-3" class="section-header"><a href="#example-3">Example</a></h5>
+<h5 id="example-3"><a href="#example-3">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -71,7 +71,7 @@ to the start of <code>haystack</code> (and not <code>at</code>).</p>
 <span class="macro">assert_eq!</span>(<span class="number">9</span>, <span class="ident">mat</span>.<span class="ident">end</span>());</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.find_iter" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../src/aho_corasick/packed/api.rs.html#532-537">source</a></span><a href="#method.find_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.find_iter" class="fnname">find_iter</a>&lt;'a, 'b, B:&nbsp;?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;'a self, <br>&nbsp;&nbsp;&nbsp;&nbsp;haystack: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'b </a>B<br>) -&gt; <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'a, 'b&gt;<span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<span class="notable-traits-tooltiptext"><span class="docblock"><span class="notable">Notable traits for <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'s, 'h&gt;</span><code class="content"><span class="where fmt-newline">impl&lt;'s, 'h&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a> for <a class="struct" href="struct.FindIter.html" title="struct aho_corasick::packed::FindIter">FindIter</a>&lt;'s, 'h&gt;</span><span class="where fmt-newline">    type <a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#associatedtype.Item" class="associatedtype">Item</a> = <a class="struct" href="../struct.Match.html" title="struct aho_corasick::Match">Match</a>;</span></code></span></span></span></span></h4></section></summary><div class="docblock"><p>Return an iterator of non-overlapping occurrences of the patterns in
 this searcher, according to its match semantics, in the given haystack.</p>
-<h5 id="example-4" class="section-header"><a href="#example-4">Example</a></h5>
+<h5 id="example-4"><a href="#example-4">Example</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -83,7 +83,7 @@ this searcher, according to its match semantics, in the given haystack.</p>
     .<span class="ident">collect</span>();
 <span class="macro">assert_eq!</span>(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], <span class="ident">matches</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.match_kind" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../src/aho_corasick/packed/api.rs.html#559-561">source</a></span><a href="#method.match_kind" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.match_kind" class="fnname">match_kind</a>(&amp;self) -&gt; &amp;<a class="enum" href="enum.MatchKind.html" title="enum aho_corasick::packed::MatchKind">MatchKind</a></h4></section></summary><div class="docblock"><p>Returns the match kind used by this packed searcher.</p>
-<h5 id="examples" class="section-header"><a href="#examples">Examples</a></h5>
+<h5 id="examples"><a href="#examples">Examples</a></h5>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">aho_corasick::packed</span>::{<span class="ident">MatchKind</span>, <span class="ident">Searcher</span>};
@@ -117,5 +117,5 @@ units of bytes.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="aho_corasick" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="aho_corasick" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

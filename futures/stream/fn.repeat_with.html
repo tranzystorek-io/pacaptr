@@ -12,7 +12,7 @@ applying the provided closure, the repeater, <code>F: FnMut() -&gt; A</code>.</p
 <p>If the element type of the stream you need implements <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="Clone"><code>Clone</code></a>, and
 it is OK to keep the source element in memory, you should instead use
 the [<code>stream.repeat()</code>] function.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>Basic usage:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">futures::stream</span>::{<span class="self">self</span>, <span class="ident">StreamExt</span>};
@@ -44,5 +44,5 @@ the [<code>stream.repeat()</code>] function.</p>
 
 <span class="comment">// ... and now we&#39;re done</span>
 <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">pow2</span>.<span class="ident">next</span>().<span class="kw">await</span>);</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="futures" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="futures" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

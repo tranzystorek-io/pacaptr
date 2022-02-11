@@ -16,11 +16,11 @@ A direction is shut down when the reader reports EOF,
 at which point <a href="trait.AsyncWriteExt.html#method.shutdown"><code>shutdown()</code></a> is called on the corresponding writer. When finished,
 it will return a tuple of the number of bytes copied from a to b
 and the number of bytes copied from b to a, in that order.</p>
-<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
+<h2 id="errors"><a href="#errors">Errors</a></h2>
 <p>The future will immediately return an error if any IO operation on <code>a</code>
 or <code>b</code> returns an error. Some data read from either stream may be lost (not
 written to the other stream) in this case.</p>
-<h2 id="return-value" class="section-header"><a href="#return-value">Return value</a></h2>
+<h2 id="return-value"><a href="#return-value">Return value</a></h2>
 <p>Returns a tuple of bytes copied <code>a</code> to <code>b</code> and bytes copied <code>b</code> to <code>a</code>.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

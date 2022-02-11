@@ -22,7 +22,7 @@ subsequent calls to <code>notified().await</code> will wait for a new permit.</p
 <p>If <code>notify_one()</code> is called <strong>multiple</strong> times before <code>notified().await</code>, only a
 <strong>single</strong> permit is stored. The next call to <code>notified().await</code> will
 complete immediately, but the one after will wait for a new permit.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>Basic usage.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Notify</span>;
@@ -78,7 +78,7 @@ complete immediately, but the one after will wait for a new permit.</p>
     }
 }</code></pre></div>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../../src/tokio/sync/notify.rs.html#203-457">source</a></span><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Notify.html" title="struct tokio::sync::Notify">Notify</a></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><section id="method.new" class="method has-srclink"><span class="rightside"><a class="srclink" href="../../src/tokio/sync/notify.rs.html#213-218">source</a></span><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.Notify.html" title="struct tokio::sync::Notify">Notify</a></h4></section></summary><div class="docblock"><p>Create a new <code>Notify</code>, initialized without a permit.</p>
-<h5 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h5>
+<h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Notify</span>;
 
 <span class="kw">let</span> <span class="ident">notify</span> <span class="op">=</span> <span class="ident">Notify::new</span>();</code></pre></div>
@@ -90,11 +90,11 @@ complete immediately, but the one after will wait for a new permit.</p>
 an earlier call to <a href="struct.Notify.html#method.notify_one"><code>notify_one()</code></a>, then <code>notified().await</code> will complete
 immediately, consuming that permit. Otherwise, <code>notified().await</code> waits
 for a permit to be made available by the next call to <code>notify_one()</code>.</p>
-<h5 id="cancel-safety" class="section-header"><a href="#cancel-safety">Cancel safety</a></h5>
+<h5 id="cancel-safety"><a href="#cancel-safety">Cancel safety</a></h5>
 <p>This method uses a queue to fairly distribute notifications in the order
 they were requested. Cancelling a call to <code>notified</code> makes you lose your
 place in the queue.</p>
-<h5 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h5>
+<h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Notify</span>;
 <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 
@@ -120,7 +120,7 @@ available by this call to <code>notify_one()</code>.</p>
 <code>notify_one</code> will result in a single permit being stored. The next call to
 <code>notified().await</code> will complete immediately, but the one after that
 will wait.</p>
-<h5 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h5>
+<h5 id="examples-3"><a href="#examples-3">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Notify</span>;
 <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 
@@ -143,7 +143,7 @@ will wait.</p>
 <code>notified().await</code>. The purpose of this method is to notify all
 already registered waiters. Registering for notification is done by
 acquiring an instance of the <code>Notified</code> future via calling <code>notified()</code>.</p>
-<h5 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h5>
+<h5 id="examples-4"><a href="#examples-4">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">tokio::sync::Notify</span>;
 <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 
@@ -175,5 +175,5 @@ acquiring an instance of the <code>Notified</code> future via calling <code>noti
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="tokio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

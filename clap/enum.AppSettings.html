@@ -79,7 +79,7 @@ exiting</p>
 <p>This is most useful when writing an application which is run from a GUI shortcut, or on
 Windows where a user tries to open the binary by double-clicking instead of using the
 command line.</p>
-<h4 id="examples" class="section-header"><a href="#examples">Examples</a></h4>
+<h4 id="examples"><a href="#examples">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::WaitOnError</span>);</code></pre></div>
 </div><h3 id="variant.AllowHyphenValues" class="variant small-section-header"><a href="#variant.AllowHyphenValues" class="anchor field"></a><code>AllowHyphenValues</code></h3><div class="docblock"><p>Specifies that leading hyphens are allowed in all argument <em>values</em> (e.g. <code>-10</code>).</p>
@@ -88,7 +88,7 @@ command line.</p>
 <p><strong>NOTE:</strong> Use this setting with caution as it silences certain circumstances which would
 otherwise be an error (such as accidentally forgetting to specify a value for leading
 option). It is preferred to set this on a per argument basis, via <a href="struct.Arg.html#method.allow_hyphen_values"><code>Arg::allow_hyphen_values</code></a>.</p>
-<h4 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h4>
+<h4 id="examples-1"><a href="#examples-1">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Imagine you needed to represent negative numbers as well, such as -10</span>
 <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;nums&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::AllowHyphenValues</span>)
@@ -101,7 +101,7 @@ option). It is preferred to set this on a per argument basis, via <a href="struc
 </div><h3 id="variant.AllowNegativeNumbers" class="variant small-section-header"><a href="#variant.AllowNegativeNumbers" class="anchor field"></a><code>AllowNegativeNumbers</code></h3><div class="docblock"><p>Allows negative numbers to pass as values.</p>
 <p>This is similar to <a href="enum.AppSettings.html#variant.AllowHyphenValues" title="AppSettings::AllowHyphenValues"><code>AppSettings::AllowHyphenValues</code></a> except that it only allows numbers,
 all other undefined leading hyphens will fail to parse.</p>
-<h4 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h4>
+<h4 id="examples-2"><a href="#examples-2">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::AllowNegativeNumbers</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;num&quot;</span>))
@@ -137,7 +137,7 @@ of the <code>--</code> operator is OK (but not required if all arguments will be
 <li><code>$ prog foo -- baz1 baz2 baz3</code></li>
 <li><code>$ prog -- baz1 baz2 baz3</code></li>
 </ul>
-<h4 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h4>
+<h4 id="examples-3"><a href="#examples-3">Examples</a></h4>
 <p>Style number one from above:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Assume there is an external subcommand named &quot;subcmd&quot;</span>
@@ -202,7 +202,7 @@ attempt to parse any further args.</p>
 <p>The values of the trailing positional argument will contain all args from itself on.</p>
 <p><strong>NOTE:</strong> The final positional argument <strong>must</strong> have <a href="struct.Arg.html#method.multiple_values"><code>Arg::multiple_values(true)</code></a> or the usage
 string equivalent.</p>
-<h4 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h4>
+<h4 id="examples-4"><a href="#examples-4">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::TrailingVarArg</span>)
     .<span class="ident">arg</span>(<span class="macro">arg!</span>(<span class="op">&lt;</span><span class="ident">cmd</span><span class="op">&gt;</span> ... <span class="string">&quot;commands to run&quot;</span>))
@@ -215,7 +215,7 @@ was used.</p>
 <p><strong>NOTE:</strong> The same thing can be done manually by setting the final positional argument to
 <a href="struct.Arg.html#method.use_delimiter"><code>Arg::use_delimiter(false)</code></a>. Using this setting is safer, because it’s easier to locate
 when making changes.</p>
-<h4 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h4>
+<h4 id="examples-5"><a href="#examples-5">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::DontDelimitTrailingValues</span>)
     .<span class="ident">get_matches</span>();</code></pre></div>
@@ -235,7 +235,7 @@ designing CLIs which allow inferred subcommands and have potential positional/fr
 arguments whose values could start with the same characters as subcommands. If this is the
 case, it’s recommended to use settings such as <a href="enum.AppSettings.html#variant.ArgsNegateSubcommands" title="AppSettings::ArgsNegateSubcommands"><code>AppSettings::ArgsNegateSubcommands</code></a> in
 conjunction with this setting.</p>
-<h4 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h4>
+<h4 id="examples-6"><a href="#examples-6">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::InferSubcommands</span>)
     .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;test&quot;</span>))
@@ -244,7 +244,7 @@ conjunction with this setting.</p>
     ]);
 <span class="macro">assert_eq!</span>(<span class="ident">m</span>.<span class="ident">subcommand_name</span>(), <span class="prelude-val">Some</span>(<span class="string">&quot;test&quot;</span>));</code></pre></div>
 </div><h3 id="variant.SubcommandRequired" class="variant small-section-header"><a href="#variant.SubcommandRequired" class="anchor field"></a><code>SubcommandRequired</code></h3><div class="docblock"><p>If no <a href="struct.App.html#method.subcommand"><code>subcommand</code></a> is present at runtime, error and exit gracefully.</p>
-<h4 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h4>
+<h4 id="examples-7"><a href="#examples-7">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::SubcommandRequired</span>)
     .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;test&quot;</span>))
@@ -260,7 +260,7 @@ nearly same thing; this prints the help text, and the other prints an error.</p>
 <p><strong>NOTE:</strong> If the user specifies arguments at runtime, but no subcommand the help text will
 still be displayed and exit. If this is <em>not</em> the desired result, consider using
 <a href="enum.AppSettings.html#variant.ArgRequiredElseHelp" title="AppSettings::ArgRequiredElseHelp"><code>AppSettings::ArgRequiredElseHelp</code></a> instead.</p>
-<h4 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h4>
+<h4 id="examples-8"><a href="#examples-8">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::SubcommandRequiredElseHelp</span>);</code></pre></div>
 </div><h3 id="variant.AllowExternalSubcommands" class="variant small-section-header"><a href="#variant.AllowExternalSubcommands" class="anchor field"></a><code>AllowExternalSubcommands</code></h3><div class="docblock"><p>Assume unexpected positional arguments are a <a href="struct.App.html#method.subcommand"><code>subcommand</code></a>.</p>
@@ -268,7 +268,7 @@ still be displayed and exit. If this is <em>not</em> the desired result, conside
 as a truly unexpected argument (i.e. one that is <em>NOT</em> an external subcommand)
 will <strong>not</strong> cause an error and instead be treated as a potential subcommand.
 One should check for such cases manually and inform the user appropriately.</p>
-<h4 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h4>
+<h4 id="examples-9"><a href="#examples-9">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Assume there is an external subcommand named &quot;subcmd&quot;</span>
 <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::AllowExternalSubcommands</span>)
@@ -291,9 +291,9 @@ One should check for such cases manually and inform the user appropriately.</p>
 <a href="struct.ArgMatches.html#method.values_of_os"><code>ArgMatches::values_of_os</code></a> or <a href="struct.ArgMatches.html#method.values_of_lossy"><code>ArgMatches::values_of_lossy</code></a> for those particular
 arguments which may contain invalid UTF-8 values</p>
 <p><strong>NOTE:</strong> Setting this requires <a href="enum.AppSettings.html#variant.AllowExternalSubcommands" title="AppSettings::AllowExternalSubcommands"><code>AppSettings::AllowExternalSubcommands</code></a></p>
-<h4 id="platform-specific" class="section-header"><a href="#platform-specific">Platform Specific</a></h4>
+<h4 id="platform-specific"><a href="#platform-specific">Platform Specific</a></h4>
 <p>Non Windows systems only</p>
-<h4 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h4>
+<h4 id="examples-10"><a href="#examples-10">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Assume there is an external subcommand named &quot;subcmd&quot;</span>
 <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
    .<span class="ident">setting</span>(<span class="ident">AppSettings::AllowInvalidUtf8ForExternalSubcommands</span>)
@@ -315,7 +315,7 @@ arguments which may contain invalid UTF-8 values</p>
 </div><h3 id="variant.UseLongFormatForHelpSubcommand" class="variant small-section-header"><a href="#variant.UseLongFormatForHelpSubcommand" class="anchor field"></a><code>UseLongFormatForHelpSubcommand</code></h3><div class="docblock"><p>Specifies that the help subcommand should print the long help message (<code>--help</code>).</p>
 <p><strong>NOTE:</strong> This setting is useless if <a href="enum.AppSettings.html#variant.DisableHelpSubcommand" title="AppSettings::DisableHelpSubcommand"><code>AppSettings::DisableHelpSubcommand</code></a> or <a href="enum.AppSettings.html#variant.NoAutoHelp" title="AppSettings::NoAutoHelp"><code>AppSettings::NoAutoHelp</code></a> is set,
 or if the app contains no subcommands at all.</p>
-<h4 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h4>
+<h4 id="examples-11"><a href="#examples-11">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::UseLongFormatForHelpSubcommand</span>)
     .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;test&quot;</span>)
@@ -331,7 +331,7 @@ that is only required as long as there is no subcommand present,
 using this setting would allow you to set those arguments to <a href="struct.Arg.html#method.required"><code>Arg::required(true)</code></a>
 and yet receive no error so long as the user uses a valid subcommand instead.</p>
 <p><strong>NOTE:</strong> This defaults to false (using subcommand does <em>not</em> negate requirements)</p>
-<h4 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h4>
+<h4 id="examples-12"><a href="#examples-12">Examples</a></h4>
 <p>This first example shows that it is an error to not use a required argument</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
@@ -365,7 +365,7 @@ makes only the following invocations possible:</p>
 <li><code>&lt;cmd&gt; &lt;subcmd&gt; [subcmd_args]</code></li>
 <li><code>&lt;cmd&gt; [cmd_args]</code></li>
 </ul>
-<h4 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h4>
+<h4 id="examples-13"><a href="#examples-13">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::ArgsNegateSubcommands</span>);</code></pre></div>
 </div><h3 id="variant.SubcommandPrecedenceOverArg" class="variant small-section-header"><a href="#variant.SubcommandPrecedenceOverArg" class="anchor field"></a><code>SubcommandPrecedenceOverArg</code></h3><div class="docblock"><p>Prevent subcommands from being consumed as an arguments value.</p>
@@ -381,7 +381,7 @@ greedily consuming arguments.</p>
             values   subcommand</code></pre></div>
 <p><strong>Note:</strong> Make sure you apply it as <code>global_setting</code> if you want this setting
 to be propagated to subcommands and sub-subcommands!</p>
-<h4 id="examples-14" class="section-header"><a href="#examples-14">Examples</a></h4>
+<h4 id="examples-14"><a href="#examples-14">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">app</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;app&quot;</span>).<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;sub&quot;</span>)).<span class="ident">arg</span>(
     <span class="ident">Arg::new</span>(<span class="string">&quot;arg&quot;</span>)
         .<span class="ident">long</span>(<span class="string">&quot;arg&quot;</span>)
@@ -414,33 +414,33 @@ to be propagated to subcommands and sub-subcommands!</p>
 <p><strong>NOTE:</strong> <a href="struct.App.html#method.subcommand"><code>subcommands</code></a> count as arguments</p>
 <p><strong>NOTE:</strong> Setting <a href="struct.Arg.html#method.default_value"><code>Arg::default_value</code></a> effectively disables this option as it will
 ensure that some argument is always present.</p>
-<h4 id="examples-15" class="section-header"><a href="#examples-15">Examples</a></h4>
+<h4 id="examples-15"><a href="#examples-15">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::ArgRequiredElseHelp</span>);</code></pre></div>
 </div><h3 id="variant.DeriveDisplayOrder" class="variant small-section-header"><a href="#variant.DeriveDisplayOrder" class="anchor field"></a><code>DeriveDisplayOrder</code></h3><div class="docblock"><p>Displays the arguments and <a href="struct.App.html#method.subcommand"><code>subcommands</code></a> in the help message in the order that they were
 declared in, and not alphabetically which is the default.</p>
 <p>To override the declaration order, see <a href="struct.Arg.html#method.display_order"><code>Arg::display_order</code></a> and <a href="struct.App.html#method.display_order"><code>App::display_order</code></a>.</p>
-<h4 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h4>
+<h4 id="examples-16"><a href="#examples-16">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::DeriveDisplayOrder</span>)
     .<span class="ident">get_matches</span>();</code></pre></div>
 </div><h3 id="variant.DontCollapseArgsInUsage" class="variant small-section-header"><a href="#variant.DontCollapseArgsInUsage" class="anchor field"></a><code>DontCollapseArgsInUsage</code></h3><div class="docblock"><p>Disables the automatic collapsing of positional args into <code>[ARGS]</code> inside the usage string.</p>
-<h4 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h4>
+<h4 id="examples-17"><a href="#examples-17">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::DontCollapseArgsInUsage</span>)
     .<span class="ident">get_matches</span>();</code></pre></div>
 </div><h3 id="variant.NextLineHelp" class="variant small-section-header"><a href="#variant.NextLineHelp" class="anchor field"></a><code>NextLineHelp</code></h3><div class="docblock"><p>Places the help string for all arguments on the line after the argument.</p>
-<h4 id="examples-18" class="section-header"><a href="#examples-18">Examples</a></h4>
+<h4 id="examples-18"><a href="#examples-18">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::NextLineHelp</span>)
     .<span class="ident">get_matches</span>();</code></pre></div>
 </div><h3 id="variant.DisableColoredHelp" class="variant small-section-header"><a href="#variant.DisableColoredHelp" class="anchor field"></a><code>DisableColoredHelp</code></h3><div class="docblock"><p>Disables colorized help messages.</p>
-<h4 id="examples-19" class="section-header"><a href="#examples-19">Examples</a></h4>
+<h4 id="examples-19"><a href="#examples-19">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::DisableColoredHelp</span>)
     .<span class="ident">get_matches</span>();</code></pre></div>
 </div><h3 id="variant.DisableHelpFlag" class="variant small-section-header"><a href="#variant.DisableHelpFlag" class="anchor field"></a><code>DisableHelpFlag</code></h3><div class="docblock"><p>Disables <code>-h</code> and <code>--help</code> flag.</p>
-<h4 id="examples-20" class="section-header"><a href="#examples-20">Examples</a></h4>
+<h4 id="examples-20"><a href="#examples-20">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::DisableHelpFlag</span>)
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[
@@ -449,7 +449,7 @@ declared in, and not alphabetically which is the default.</p>
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
 <span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.DisableHelpSubcommand" class="variant small-section-header"><a href="#variant.DisableHelpSubcommand" class="anchor field"></a><code>DisableHelpSubcommand</code></h3><div class="docblock"><p>Disables the <code>help</code> <a href="struct.App.html#method.subcommand"><code>subcommand</code></a>.</p>
-<h4 id="examples-21" class="section-header"><a href="#examples-21">Examples</a></h4>
+<h4 id="examples-21"><a href="#examples-21">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::DisableHelpSubcommand</span>)
     <span class="comment">// Normally, creating a subcommand causes a `help` subcommand to automatically</span>
@@ -461,7 +461,7 @@ declared in, and not alphabetically which is the default.</p>
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
 <span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.DisableVersionFlag" class="variant small-section-header"><a href="#variant.DisableVersionFlag" class="anchor field"></a><code>DisableVersionFlag</code></h3><div class="docblock"><p>Disables <code>-V</code> and <code>--version</code> flag.</p>
-<h4 id="examples-22" class="section-header"><a href="#examples-22">Examples</a></h4>
+<h4 id="examples-22"><a href="#examples-22">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::DisableVersionFlag</span>)
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[
@@ -473,7 +473,7 @@ declared in, and not alphabetically which is the default.</p>
 <p>Defaults to <code>false</code>; subcommands have independent version strings from their parents.</p>
 <p><strong>Note:</strong> Make sure you apply it as <code>global_setting</code> if you want this setting
 to be propagated to subcommands and sub-subcommands!</p>
-<h4 id="examples-23" class="section-header"><a href="#examples-23">Examples</a></h4>
+<h4 id="examples-23"><a href="#examples-23">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">version</span>(<span class="string">&quot;v1.1&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::PropagateVersion</span>)
@@ -482,7 +482,7 @@ to be propagated to subcommands and sub-subcommands!</p>
 <span class="comment">// running `$ myprog test --version` will display</span>
 <span class="comment">// &quot;myprog-test v1.1&quot;</span></code></pre></div>
 </div><h3 id="variant.Hidden" class="variant small-section-header"><a href="#variant.Hidden" class="anchor field"></a><code>Hidden</code></h3><div class="docblock"><p>Specifies that this <a href="struct.App.html#method.subcommand"><code>subcommand</code></a> should be hidden from help messages</p>
-<h4 id="examples-24" class="section-header"><a href="#examples-24">Examples</a></h4>
+<h4 id="examples-24"><a href="#examples-24">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">subcommand</span>(<span class="ident">App::new</span>(<span class="string">&quot;test&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::Hidden</span>))</code></pre></div>
@@ -493,14 +493,14 @@ to be propagated to subcommands and sub-subcommands!</p>
 </div><h3 id="variant.HelpExpected" class="variant small-section-header"><a href="#variant.HelpExpected" class="anchor field"></a><code>HelpExpected</code></h3><div class="docblock"><p>Panic if help descriptions are omitted.</p>
 <p><strong>NOTE:</strong> When deriving <a href="trait.Parser.html" title="crate::Parser"><code>Parser</code></a>, you could instead check this at
 compile-time with <code>#![deny(missing_docs)]</code></p>
-<h4 id="examples-25" class="section-header"><a href="#examples-25">Examples</a></h4>
+<h4 id="examples-25"><a href="#examples-25">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::HelpExpected</span>)
     .<span class="ident">arg</span>(
         <span class="ident">Arg::new</span>(<span class="string">&quot;foo&quot;</span>).<span class="ident">help</span>(<span class="string">&quot;It does foo stuff&quot;</span>)
         <span class="comment">// As required via AppSettings::HelpExpected, a help message was supplied</span>
      )</code></pre></div>
-<h4 id="panics" class="section-header"><a href="#panics">Panics</a></h4>
+<h4 id="panics"><a href="#panics">Panics</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">App::new</span>(<span class="string">&quot;myapp&quot;</span>)
     .<span class="ident">global_setting</span>(<span class="ident">AppSettings::HelpExpected</span>)
     .<span class="ident">arg</span>(
@@ -512,7 +512,7 @@ compile-time with <code>#![deny(missing_docs)]</code></p>
 </div><h3 id="variant.NoBinaryName" class="variant small-section-header"><a href="#variant.NoBinaryName" class="anchor field"></a><code>NoBinaryName</code></h3><div class="docblock"><p>Specifies that the parser should not assume the first argument passed is the binary name.</p>
 <p>This is normally the case when using a “daemon” style mode, or an interactive CLI where
 one would not normally type the binary or program name for each command.</p>
-<h4 id="examples-26" class="section-header"><a href="#examples-26">Examples</a></h4>
+<h4 id="examples-26"><a href="#examples-26">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
     .<span class="ident">setting</span>(<span class="ident">AppSettings::NoBinaryName</span>)
     .<span class="ident">arg</span>(<span class="macro">arg!</span>(<span class="op">&lt;</span><span class="ident">cmd</span><span class="op">&gt;</span> ... <span class="string">&quot;commands to run&quot;</span>))
@@ -595,5 +595,5 @@ by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Pa
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></div></details></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

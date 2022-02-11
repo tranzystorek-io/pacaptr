@@ -9,7 +9,7 @@
 and false if the action wasn’t found.</p>
 <p>It can unregister all the actions installed by <a href="fn.register.html" title="register"><code>register</code></a> as well as the ones from downstream
 crates (like <a href="https://docs.rs/signal-hook"><code>signal-hook</code></a>).</p>
-<h2 id="warning" class="section-header"><a href="#warning">Warning</a></h2>
+<h2 id="warning"><a href="#warning">Warning</a></h2>
 <p>This does <em>not</em> currently return the default/previous signal handler if the last action for a
 signal was just unregistered. That means that if you replaced for example <code>SIGTERM</code> and then
 removed the action, the program will effectively ignore <code>SIGTERM</code> signals from now on, not
@@ -17,5 +17,5 @@ terminate on them as is the default action. This is OK if you remove it as part 
 but it is not recommended to remove termination actions during the normal runtime of
 application (unless the desired effect is to create something that can be terminated only by
 SIGKILL).</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="signal_hook_registry" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="signal_hook_registry" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

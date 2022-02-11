@@ -8,17 +8,17 @@
 given group ID.</p>
 <p>Typically, trying to switch to any group other than the group already
 running the process requires root privileges.</p>
-<h2 id="libc-functions-used" class="section-header"><a href="#libc-functions-used">libc functions used</a></h2>
+<h2 id="libc-functions-used"><a href="#libc-functions-used">libc functions used</a></h2>
 <ul>
 <li><a href="https://docs.rs/libc/*/libc/fn.setegid.html"><code>setegid</code></a></li>
 </ul>
-<h2 id="errors" class="section-header"><a href="#errors">Errors</a></h2>
+<h2 id="errors"><a href="#errors">Errors</a></h2>
 <p>This function will return <code>Err</code> when an I/O error occurs during the
 <code>setegid</code> call.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">users::switch::set_effective_gid</span>;
 
 <span class="ident">set_effective_gid</span>(<span class="number">1001</span>);
 <span class="comment">// current effective group ID is 1001</span></code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="users" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="users" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

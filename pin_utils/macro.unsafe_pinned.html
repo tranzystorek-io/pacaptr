@@ -8,7 +8,7 @@
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f</span>:<span class="ident">tt</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>) =&gt; { ... };
 }</code></pre></div>
 </div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A pinned projection of a struct field.</p>
-<h2 id="safety" class="section-header"><a href="#safety">Safety</a></h2>
+<h2 id="safety"><a href="#safety">Safety</a></h2>
 <p>To make using this macro safe, three things need to be ensured:</p>
 <ul>
 <li>If the struct implements <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop"><code>Drop</code></a>, the <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop"><code>drop</code></a> method is not allowed to
@@ -17,7 +17,7 @@ move the value of the field.</li>
 The struct can only implement <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html"><code>Unpin</code></a> if the field’s type is <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Unpin.html"><code>Unpin</code></a>.</li>
 <li>The struct must not be <code>#[repr(packed)]</code>.</li>
 </ul>
-<h2 id="example" class="section-header"><a href="#example">Example</a></h2>
+<h2 id="example"><a href="#example">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">pin_utils::unsafe_pinned</span>;
 <span class="kw">use</span> <span class="ident">std::marker::Unpin</span>;
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
@@ -37,5 +37,5 @@ The struct can only implement <a href="https://doc.rust-lang.org/nightly/core/ma
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Unpin</span><span class="op">&gt;</span> <span class="ident">Unpin</span> <span class="kw">for</span> <span class="ident">Foo</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {} <span class="comment">// Conditional Unpin impl</span></code></pre></div>
 <p>Note: borrowing the field multiple times requires using <code>.as_mut()</code> to
 avoid consuming the <code>Pin</code>.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="pin_utils" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="pin_utils" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

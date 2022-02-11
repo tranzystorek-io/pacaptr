@@ -35,7 +35,7 @@ instead of an <code>usize</code>:</p>
     <span class="string">&quot;  garbage&quot;</span>,
     <span class="string">&quot;  collection.&quot;</span>,
 ]);</code></pre></div>
-<h2 id="optimal-fit-wrapping" class="section-header"><a href="#optimal-fit-wrapping">Optimal-Fit Wrapping</a></h2>
+<h2 id="optimal-fit-wrapping"><a href="#optimal-fit-wrapping">Optimal-Fit Wrapping</a></h2>
 <p>By default, <code>wrap</code> will try to ensure an even right margin by
 finding breaks which avoid short lines. We call this an
 “optimal-fit algorithm” since the line breaks are computed by
@@ -65,7 +65,7 @@ second last line:</p>
 <span class="ident">is</span> <span class="ident">the</span>
 <span class="ident">question</span></code></pre></div>
 <p>Please see the <a href="wrap_algorithms/trait.WrapAlgorithm.html" title="wrap_algorithms::WrapAlgorithm"><code>wrap_algorithms::WrapAlgorithm</code></a> trait for details.</p>
-<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
 <p>The returned iterator yields lines of type <code>Cow&lt;'_, str&gt;</code>. If
 possible, the wrapped lines will borrow from the input string. As
 an example, a hanging indentation, the first line can borrow from
@@ -91,7 +91,7 @@ the input, but the subsequent lines become owned strings:</p>
         <span class="string">&quot;[Owned]    ....long.&quot;</span>,
     ]
 );</code></pre></div>
-<h3 id="leading-and-trailing-whitespace" class="section-header"><a href="#leading-and-trailing-whitespace">Leading and Trailing Whitespace</a></h3>
+<h3 id="leading-and-trailing-whitespace"><a href="#leading-and-trailing-whitespace">Leading and Trailing Whitespace</a></h3>
 <p>As a rule, leading whitespace (indentation) is preserved and
 trailing whitespace is discarded.</p>
 <p>In more details, when wrapping words into lines, words are found
@@ -120,5 +120,5 @@ on the first line, otherwise you end up with an empty line:</p>
 
 <span class="macro">assert_eq!</span>(<span class="ident">wrap</span>(<span class="string">&quot;  foo bar&quot;</span>, <span class="number">8</span>), <span class="macro">vec!</span>[<span class="string">&quot;  foo&quot;</span>, <span class="string">&quot;bar&quot;</span>]);
 <span class="macro">assert_eq!</span>(<span class="ident">wrap</span>(<span class="string">&quot;  foo bar&quot;</span>, <span class="number">4</span>), <span class="macro">vec!</span>[<span class="string">&quot;&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>]);</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="textwrap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>
